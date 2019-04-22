@@ -12,7 +12,8 @@ export const subjectEach = beforeEach
 
 afterEach(() => sinon.restore())
 
-const delay = period => new Promise(res => setTimeout(res, period))
+const _setTimeout = setTimeout
+export const delay = period => new Promise(res => _setTimeout(res, period))
 
 chai.Assertion.addMethod('iterateTo', async function(expectedValues) {
   const result = []

@@ -11,6 +11,7 @@ A set of async generators and iterator functions
 
 * [map](#Map)
 * [persisted](#Persisted)
+* [rateLimit](#rateLimit)
 * [take](#Take)
 
 #### Itertor generators
@@ -48,6 +49,8 @@ A promise that resolves to an object containing:
 **completed**: A function that must be called to removed the item.
 > If completed not called, and iteration is restarted, then the item will be re-emitted.
 
+Example:
+
 ```javascript
   import {persisted} from 'async_iter'
 
@@ -63,6 +66,38 @@ A promise that resolves to an object containing:
 > `Persisted` will consume items as fast as the source will emit.
 The consumer of the iteration will be 'decoupled' from the source
 
+### RateLimit
+#### `items = rateLimit(source, maxAmount, perPeriod, counterFn)`
+
+Emits the values from the source iteration at upto a limited rate
+
+
+**source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)
+
+**maxAmount** the maxmimum number of units to be emitted within the time of `perPeriod`
+> Units may be emitted elements or a customed defined concept
+
+**perPeriod** the period in milliseconds to be applied
+
+**counterFn(item)** an optional callback function, called for each item.  It needs to
+return the number of unit cost for the item
+
+Defaults to 1 per emitted item
+
+> The source iteration will be consumed only as required - there is no queing within rateLimit function
+
+Example:
+
+```javascript
+  import {rateLimit} from 'async_iter'
+
+  // Emit at no more than 5 characters per 2s
+  const items = ['first', 'second', 'third', 'fourth', 'fifth']
+    |> rateLimit(?, 5, 2000, v => v.toString().length)
+
+```
+
+
 ### Take
 #### `items = take(source, count)`
 
@@ -75,6 +110,8 @@ Re-emits the first n item of the source iteration
 Returns
 
 An async iterator the will have upto *count* items.  Finishes when count items reached.
+
+Example:
 
 ```javascript
   import {take} from 'async_iter'
@@ -101,6 +138,8 @@ And the 'pushing' of values can be blocked, until the consumer has consumed the 
 
 If the code pushing values, does not await the return promise, the values are then queued
 for processing by the consumer.
+
+Example:
 
 ```javascript
 
