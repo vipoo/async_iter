@@ -5,7 +5,7 @@ const True = true
 function timeoutTrigger(state, period) {
   clearTimeout(state.timerHandle)
   const timeout = deferredPromise()
-  state.timerHandle = setTimeout(() => timeout.res())
+  state.timerHandle = setTimeout(() => timeout.res(), period)
   state.promise = timeout.promise.then(() => ({timed: true}))
 }
 
