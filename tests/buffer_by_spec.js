@@ -19,7 +19,7 @@ async function* source(neverEnd = false) {
     yield await delay(3000).then(() => 'ignored')
 }
 
-describe('buffer_by', () => {
+describe('#buffer_by', () => {
   it('buffer by single', () => {
     const items = bufferBy(source(), () => true, 0)
 

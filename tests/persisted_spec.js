@@ -38,7 +38,7 @@ async function* source(neverEnd = false) {
   }
 }
 
-describe('persisted', () => {
+describe('#persisted', () => {
   beforeEach(async () => {
     sinon.stub(process.hrtime, 'bigint')
     for (let i = 0; i < 10; i++)

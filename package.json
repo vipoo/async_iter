@@ -42,8 +42,9 @@
     "build": "./scripts/build.sh",
     "lint": "eslint --fix src tests",
     "clean": "./scripts/clean.sh",
-    "posttest": "eslint --fix src tests",
+    "pretest": "./scripts/clean.sh",
     "test": "NODE_ENV=test mocha --require \"@babel/register\" tests/**",
+    "posttest": "eslint --fix src tests",
     "watch": "npm-watch",
     "prepack": "./scripts/clean.sh && ./scripts/build.sh"
   },

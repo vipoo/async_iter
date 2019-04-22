@@ -4,4 +4,4 @@ set -e
 
 rm -rf ./examples
 rm -rf ./lib
-rm *.js
+rm -f *.js

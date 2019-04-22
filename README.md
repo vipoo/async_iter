@@ -15,6 +15,7 @@ A set of async generators and iterator functions
 
 #### Itertor generators
 
+* [createLatch](#CreateLatch)
 * [range](#Range)
 
 ### Map
@@ -29,7 +30,7 @@ Returns
 The transformed iteration
 
 ### Persisted
-#### `{value, completed} = persisted(source, localPath)`
+#### `{value, completed} = await persisted(source, localPath)`
 
 Persist items of an async iterator to files for later retrieval
 
@@ -39,6 +40,8 @@ Persist items of an async iterator to files for later retrieval
 
 Returns
 
+A promise that resolves to an object containing:
+
 **Value**: the emitted value from the persisted store -
   as a buffer (ie: you need to apply, toString())
 
@@ -46,6 +49,7 @@ Returns
 > If completed not called, and iteration is restarted, then the item will be re-emitted.
 
 ```javascript
+  import {persisted} from 'async_iter'
 
   const items = await persisted(source, './tmp/buffering_example')
 
@@ -73,6 +77,7 @@ Returns
 An async iterator the will have upto *count* items.  Finishes when count items reached.
 
 ```javascript
+  import {take} from 'async_iter'
 
   const items = take([1, 2, 3, 4, 5], 3)
 
@@ -80,6 +85,47 @@ An async iterator the will have upto *count* items.  Finishes when count items r
     console.log(item)
 
 ```
+
+## CreateLatch
+#### {push, abort, stop, items, hasStoppedConsuming} = await createLatch()
+
+createLatch allows for the async 'pushing' of values to an async iteration
+
+The `push` operation returns a promise, that resolves when the iteration has consumed the item
+
+This iterator is similiar to Observable (rxjs), in that it supports a kind
+of push value to consumer, as events happen in your application.
+
+But it only supports one consumer per one producer.
+And the 'pushing' of values can be blocked, until the consumer has consumed the value
+
+If the code pushing values, does not await the return promise, the values are then queued
+for processing by the consumer.
+
+```javascript
+
+  import {createLatch} from 'async_iter'
+
+  // Create a push based iteration set
+  const {push, abort, stop, items} = await createLatch()
+
+  //Set up a background task to consume the items
+  setTimeout(async () => {
+    for await (const item of items())
+      console.log(item)
+  }, 0)
+
+  //Values can be push to the iteration
+  await push(1) // if you dont 'await' the values will be queued.
+  await push(2)
+  await push(3)
+  await stop()
+
+  // If you want to push an 'error' to the consumer
+  await abort(new Error('My error'))
+
+```
+
 
 ### Range
 #### `items = range({start, step, end})`
