@@ -31,13 +31,20 @@ Returns
 The transformed iteration
 
 ### Persisted
-#### `{value, completed} = await persisted(source, localPath)`
+#### `{value, completed} = await persisted(source, localPath, opts)`
 
 Persist items of an async iterator to files for later retrieval
+
+> if a previously iteration was persisted and completed, you can not start a
+> new iteration unless you set the `allowRetart` to true
 
 **source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)
 
 **localPath**: is a directory for storage of items.
+
+**opts**: a set of optional flags:
+
+**allowRestart**: (default false) - allows a restart of a previously completed iteration
 
 Returns
 

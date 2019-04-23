@@ -12,11 +12,13 @@ const delay = period => new Promise(res => setTimeout(res, period))
 /* Clean directory unless a specific directory given */
 let dir
 let count = 1
-function persistedSource(neverEnd = false, _dir = undefined) {
+function persistedSource(_dir = undefined, opts = {}) {
+  opts = {neverEnd: false, allowRestart: false, ...opts}
+  const {neverEnd} = opts
   dir = _dir || `/tmp/test-store-${count++}`
   const clean = _dir ? Promise.resolve() : rmfr(dir)
 
-  return clean.then(() => persisted(source(neverEnd), dir))
+  return clean.then(() => persisted(source(neverEnd), dir, opts))
 }
 
 const readFile = (p, _dir) => fs.readFileSync(path.join(_dir || dir, p), 'utf-8')
@@ -25,7 +27,7 @@ const exists = p => fs.existsSync(path.join(dir, p), 'utf-8')
 /***************************************************************/
 /* Create a stub source iteration, that can end of be unending */
 let sourceHasStopped
-async function* source(neverEnd = false) {
+async function* source(neverEnd) {
   try {
     sourceHasStopped = false
     yield await 1
@@ -91,22 +93,24 @@ describe('#persisted', () => {
   describe('reuse of iteration', () => {
     it('it allows reuse after source is fully consumed', async () => {
       await rmfr('/tmp/test-store-reuse')
-      let items = await persistedSource(false, '/tmp/test-store-reuse')
+      let items = await persistedSource('/tmp/test-store-reuse')
       for await (const item of items)
         await item.completed()
 
-      items = await persistedSource(false, '/tmp/test-store-reuse')
+      await eventually(() => expect(readFile('stopped')).to.eq(''))
+
+      items = await persistedSource('/tmp/test-store-reuse')
 
       return expect(items |> map(?, i => i.value.toString())).to.iterateTo(['1', '2'])
     })
 
     it('can resume from an aborted iteration', async () => {
       await rmfr('/tmp/test-store-resume')
-      const itemSet1 = await persistedSource(true, '/tmp/test-store-resume')
+      const itemSet1 = await persistedSource('/tmp/test-store-resume', {neverEnd: true})
       try {
         const firstItem = await itemSet1.next()
         await firstItem.value.completed()
-        const itemSet2 = await persistedSource(false, '/tmp/test-store-resume')
+        const itemSet2 = await persistedSource('/tmp/test-store-resume', {neverEnd: false})
 
         return expect(itemSet2 |> map(?, i => i.value.toString())).to.iterateTo(['2', '1', '2'])
       } finally {
@@ -116,7 +120,7 @@ describe('#persisted', () => {
 
     it('stops consuming if consumer stops', async () => {
       sourceHasStopped = false
-      const itemSet1 = await persistedSource(true)
+      const itemSet1 = await persistedSource(undefined, {neverEnd: true})
       await itemSet1.next()
       await itemSet1.return()
       return eventually(() => expect(sourceHasStopped).to.be.true)
@@ -125,11 +129,22 @@ describe('#persisted', () => {
     it('prevents multiple iterations to be stored', async () => {
       sourceHasStopped = false
       await rmfr('/tmp/test-store-repeat')
-      await persistedSource(false, '/tmp/test-store-repeat')
+      await persistedSource('/tmp/test-store-repeat', {neverEnd: false})
       await eventually(() => expect(sourceHasStopped).to.be.true)
       await eventually(() => expect(readFile('stopped', '/tmp/test-store-repeat')).to.eq(''))
 
-      return expect(persistedSource(false, '/tmp/test-store-repeat')).to.be.rejectedWith('Attempt to restart when a previous stopped non-empty iteration exists')
+      return expect(persistedSource('/tmp/test-store-repeat', {neverEnd: false})).to.be.rejectedWith('Attempt to restart when a previous stopped non-empty iteration exists')
+    })
+
+    it('allow previous store/completed iteration to be consumed', async () => {
+      sourceHasStopped = false
+      await rmfr('/tmp/test-store-repeat')
+      await persistedSource('/tmp/test-store-repeat', {neverEnd: false})
+      await eventually(() => expect(sourceHasStopped).to.be.true)
+      await eventually(() => expect(readFile('stopped', '/tmp/test-store-repeat')).to.eq(''))
+
+      const items = await persistedSource('/tmp/test-store-repeat', {neverEnd: false, allowRestart: true})
+      return expect(items |> map(?, i => i.value.toString())).to.iterateTo(['1', '2', '1', '2'])
     })
   })
 })

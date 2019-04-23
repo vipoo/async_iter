@@ -27,6 +27,22 @@ export async function popItem(readDirectory, processingDirectory) {
   return filename
 }
 
+export async function removeLast(readDirectory) {
+  let x
+  do {
+    x = await fs.readdir(readDirectory)
+    if ( x.length === 0)
+      delay(100)
+
+  } while (x.length === 0)
+
+  const name = x.sort()[x.length - 1]
+  const filename = join(readDirectory, name)
+  const item = await fs.readFile(filename)
+  if (item.length === 0)
+    await fs.unlink(filename)
+}
+
 export async function restoreUnprocessedItems(readDirectory, processingDirectory) {
   const x = await fs.readdir(processingDirectory)
   for (const f of x)

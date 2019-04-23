@@ -51,7 +51,6 @@
   "dependencies": {
     "core-js": "^3.0.0",
     "mkdirp-promise": "^5.0.1",
-    "rmfr": "^2.0.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -80,6 +79,7 @@
     "eslint-plugin-node": "^8.0.1",
     "mocha": "^6.1.4",
     "npm-watch": "^0.6.0",
+    "rmfr": "^2.0.0",
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0"
   }

@@ -3,9 +3,8 @@ import mkdirp from 'mkdirp-promise'
 import {join} from 'path'
 import _fs from 'fs'
 const fs = _fs.promises
-import rmfr from 'rmfr'
-import {pushItem, popItem, restoreUnprocessedItems, isEmpty} from './item_queue'
-import {flagAsStop, hasStoppedFlag} from './stop_flaging'
+import {pushItem, popItem, removeLast, restoreUnprocessedItems, isEmpty} from './item_queue'
+import {flagAsStop, unflagAsStop, hasStoppedFlag} from './stop_flaging'
 
 function dirs(storeDirectory) {
   storeDirectory = resolve(storeDirectory)
@@ -25,7 +24,7 @@ async function push(readDirectory, writingDirectory, data) {
   return pushItem(readDirectory, writingDirectory, data)
 }
 
-async function* items(readDirectory, processingDirectory, consumerStopped) {
+async function* getItems(readDirectory, processingDirectory, consumerStopped) {
   await restoreUnprocessedItems(readDirectory, processingDirectory)
   try {
     while (true) {
@@ -44,19 +43,24 @@ async function* items(readDirectory, processingDirectory, consumerStopped) {
   }
 }
 
-export async function open(storeDirectory) {
+export async function open(storeDirectory, opts) {
+  const {allowRestart} = opts
   const {readDirectory, processingDirectory, writingDirectory} = dirs(storeDirectory)
 
   let _consumerHasStopped = false
   const consumerHasStopped = () => _consumerHasStopped
   const consumerStopped = () => { _consumerHasStopped = true }
 
-  if (await hasStoppedFlag(storeDirectory)) {
-    if (!await isEmpty(readDirectory))
-      throw new Error('Attempt to restart when a previous stopped non-empty iteration exists')
+  const items = getItems(readDirectory, processingDirectory, consumerStopped)
 
-    await rmfr(storeDirectory)
-  }
+  if (await hasStoppedFlag(storeDirectory))
+    if (!await isEmpty(readDirectory)) {
+      if (!allowRestart)
+        throw new Error('Attempt to restart when a previous stopped non-empty iteration exists')
+
+      await unflagAsStop(storeDirectory)
+      await removeLast(readDirectory)
+    }
 
   await Promise.all([
     mkdirp(readDirectory),
@@ -68,6 +72,6 @@ export async function open(storeDirectory) {
     push: push(readDirectory, writingDirectory, ?),
     stop: writeStopMarker(storeDirectory, readDirectory, writingDirectory, ?),
     consumerHasStopped,
-    items: items(readDirectory, processingDirectory, consumerStopped)
+    items
   }
 }

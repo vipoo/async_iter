@@ -1,9 +1,7 @@
 
 function* forwardRange({start, end = Infinity, step}) {
-  for (let i = start; i <= end; i += step) {
-    console.log('??', i)
+  for (let i = start; i <= end; i += step)
     yield i
-  }
 }
 
 function* reverseRange({start, end = -Infinity, step}) {

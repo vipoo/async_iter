@@ -6,6 +6,10 @@ export async function flagAsStop(storeDirectory) {
   await fs.writeFile(join(storeDirectory, 'stopped'), '')
 }
 
+export async function unflagAsStop(storeDirectory) {
+  await fs.unlink(join(storeDirectory, 'stopped'))
+}
+
 export async function hasStoppedFlag(storeDirectory) {
   return await fs
     .access(join(storeDirectory, 'stopped'), _fs.constants.F_OK)
