@@ -1,11 +1,9 @@
-import {expect, sinon, eventually, subjectEach} from './test_helper'
+import {delay, expect, sinon, eventually, subjectEach} from './test_helper'
 import {persisted, map} from '../src'
 import * as uuidModule from '../src/lib/uuid'
 import rmfr from 'rmfr'
 import fs from 'fs'
 import path from 'path'
-
-const delay = period => new Promise(res => setTimeout(res, period))
 
 /***************************************************************/
 /* Create a persisted source in a specific directory */
@@ -27,14 +25,25 @@ const exists = p => fs.existsSync(path.join(dir, p), 'utf-8')
 /***************************************************************/
 /* Create a stub source iteration, that can end of be unending */
 let sourceHasStopped
+let sourceReachStage1
 async function* source(neverEnd) {
   try {
+    sourceReachStage1 = false
     sourceHasStopped = false
     yield await 1
     yield await 2
 
-    while (neverEnd)
-      yield await delay(100)
+    sourceReachStage1 = true
+    if (neverEnd) {
+      yield await 3
+      yield await 4
+      yield await 5
+    }
+
+    while (neverEnd) {
+      await delay(100)
+      yield 'neverEnd'
+    }
   } finally {
     sourceHasStopped = true
   }
@@ -43,24 +52,26 @@ async function* source(neverEnd) {
 describe('#persisted', () => {
   beforeEach(async () => {
     sinon.stub(process.hrtime, 'bigint')
-    for (let i = 0; i < 10; i++)
+    for (let i = 0; i < 50; i++)
       process.hrtime.bigint.onCall(i).returns(i + 1)
 
     sinon.stub(uuidModule, 'uuidv4').returns('a')
   })
+
+  afterEach(() => sinon.restore())
 
   let items
   describe('single iterations', () => {
     subjectEach(async () => items = await persistedSource())
 
     it('has stored the first item', () =>
-      eventually(() => expect(readFile('reading/1-a')).to.eq('1')))
+      eventually(() => expect(readFile('reading/00000000000001-a')).to.eq('1')))
 
     it('has stored the second item', () =>
-      eventually(() => expect(readFile('reading/2-a')).to.eq('2')))
+      eventually(() => expect(readFile('reading/00000000000002-a')).to.eq('2')))
 
     it('has stored the stop signal file', () =>
-      eventually(() => expect(readFile('reading/3-a')).to.eq('')))
+      eventually(() => expect(readFile('reading/00000000000003-a')).to.eq('')))
 
     it('has marked the iteration as stopped', () =>
       eventually(() => expect(readFile('stopped')).to.eq('')))
@@ -76,17 +87,17 @@ describe('#persisted', () => {
     })
 
     it('moves the file after retrieval', async () => {
-      await eventually(() => expect(exists('reading/1-a')).to.be.true)
+      await eventually(() => expect(exists('reading/00000000000001-a')).to.be.true)
       await items.next()
-      expect(exists('reading/1-a')).to.be.false
-      expect(exists('processing/1-a')).to.be.true
+      expect(exists('reading/00000000000001-a')).to.be.false
+      expect(exists('processing/00000000000001-a')).to.be.true
     })
 
     it('deletes the file after completing', async () => {
       const item = await items.next()
-      expect(exists('processing/1-a')).to.be.true
+      expect(exists('processing/00000000000001-a')).to.be.true
       await item.value.completed()
-      expect(exists('processing/1-a')).to.be.false
+      expect(exists('processing/00000000000001-a')).to.be.false
     })
   })
 
@@ -105,14 +116,18 @@ describe('#persisted', () => {
     })
 
     it('can resume from an aborted iteration', async () => {
+      sourceReachStage1 = false
+      sourceHasStopped = false
       await rmfr('/tmp/test-store-resume')
       const itemSet1 = await persistedSource('/tmp/test-store-resume', {neverEnd: true})
+      await eventually(() => expect(sourceReachStage1).to.be.true)
       try {
         const firstItem = await itemSet1.next()
         await firstItem.value.completed()
+        await itemSet1.return()
         const itemSet2 = await persistedSource('/tmp/test-store-resume', {neverEnd: false})
 
-        return expect(itemSet2 |> map(?, i => i.value.toString())).to.iterateTo(['2', '1', '2'])
+        return expect(itemSet2 |> map(?, i => i.value.toString())).to.iterateTo(['2', '3', '4', '5', '1', '2'])
       } finally {
         itemSet1.return()
       }

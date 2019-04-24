@@ -1,7 +1,7 @@
 import {createLatch} from './latch'
 
 function defaultMarker() {
-  return (typeof process !== 'undefined') ? process.hrtime.bigint() : Date.now()
+  return process.hrtime.bigint()
 }
 
 export async function interval(period, fn = defaultMarker) {

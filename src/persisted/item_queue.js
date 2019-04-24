@@ -6,7 +6,8 @@ const fs = _fs.promises
 const delay = period => new Promise(res => setTimeout(res, period))
 
 export async function pushItem(readDirectory, writingDirectory, data) {
-  const name = `${process.hrtime.bigint()}-${uuidv4()}`
+  const id = process.hrtime.bigint().toString().padStart(14, '0')
+  const name = `${id}-${uuidv4()}`
   const filename = join(writingDirectory, name)
   await fs.writeFile(filename, data)
   await fs.rename(filename, join(readDirectory, name))
