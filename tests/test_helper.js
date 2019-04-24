@@ -12,7 +12,8 @@ export const subjectEach = beforeEach
 
 afterEach(() => sinon.restore())
 
-const _setTimeout = setTimeout
+const _setTimeout = setTimeout //capture non fake timer
+const _clearTimeout = clearTimeout
 export const delay = period => new Promise(res => _setTimeout(res, period))
 
 chai.Assertion.addMethod('iterateTo', async function(expectedValues) {
@@ -41,7 +42,7 @@ chai.Assertion.addProperty('pending', async function() {
 export async function eventually(fn, timeout = 1900) {
   let lastError = null
   let timedOut = false
-  const timer = setTimeout(() => timedOut = true, timeout)
+  const timer = _setTimeout(() => timedOut = true, timeout)
 
   while (!timedOut)
     try {
@@ -51,6 +52,6 @@ export async function eventually(fn, timeout = 1900) {
       await delay(10)
     }
 
-  clearTimeout(timer)
+  _clearTimeout(timer)
   throw lastError
 }

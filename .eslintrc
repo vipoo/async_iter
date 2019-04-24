@@ -1,5 +1,8 @@
 {
   "root": true,
+  "globals": {
+    "BigInt": false
+  },
   "rules": {
     "complexity": ['error', 4]
   },

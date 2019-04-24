@@ -28,6 +28,8 @@ with node 10 and above.
 #### Itertor generators
 
 * [createLatch](#createlatch)
+* [interval](#interval)
+* [intervalNonQueuing](#intervalnonqueuing)
 * [range](#range)
 
 ### Map
@@ -182,6 +184,30 @@ Example:
   await abort(new Error('My error'))
 
 ```
+
+### Interval
+#### `items = await interval(period)`
+
+Returns an async iterator the will emit every 'period' milliseconds
+
+**period** the time in milliseconds the iterator emits
+
+> The iterator will emit at it rate, regardless of the rate of consumption by the consumer
+
+> The iteration stops, when the consumer breaks or stop the iteration
+
+### IntervalNonQueuing
+#### `items = await intervalNonQueuing(period)`
+
+Returns an async iterator the will emit every 'period' milliseconds
+
+**period** the time in milliseconds the iterator emits
+
+> The iterator will block its emitted values, until the consumer has consumed each item.
+> Therefore there is no racing of producer to consumer.
+
+> The iteration stops, when the consumer breaks or stop the iteration
+
 
 
 ### Range

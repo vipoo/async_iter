@@ -13,7 +13,7 @@ export async function interval(period, fn = defaultMarker) {
       clearInterval(intervalHandle)
       return
     }
-    push(await fn())
+    push(fn())
   }
 
   intervalHandle = setInterval(intervalFunction, period)
@@ -23,7 +23,6 @@ export async function interval(period, fn = defaultMarker) {
 
 export async function intervalNonQueuing(period, fn = defaultMarker) {
   const {push, items, hasStoppedConsuming} = await createLatch()
-
   let intervalHandle = undefined
   let currentPromise = undefined
   const intervalFunction = async () => {
