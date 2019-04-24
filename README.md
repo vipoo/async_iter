@@ -9,15 +9,15 @@ A set of async generators and iterator functions
 
 #### Async Iterator functions
 
-* [map](#Map)
-* [persisted](#Persisted)
-* [rateLimit](#rateLimit)
-* [take](#Take)
+* [map](#map)
+* [persisted](#persisted)
+* [rateLimit](#ratelimit)
+* [take](#take)
 
 #### Itertor generators
 
-* [createLatch](#CreateLatch)
-* [range](#Range)
+* [createLatch](#createlatch)
+* [range](#range)
 
 ### Map
 #### `items = map(source, fn)`
