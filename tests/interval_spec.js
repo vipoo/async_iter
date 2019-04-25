@@ -1,5 +1,5 @@
 import {fakeTimer, expect, subjectEach, sinon, eventually, delay} from './test_helper'
-import {interval, intervalNonQueuing} from '../src'
+import {interval} from '../src'
 import * as latchModule from '../src/latch'
 
 describe('interval', () => {
@@ -40,7 +40,7 @@ describe('interval', () => {
         stubLatch.push = sinon.stub().returns(p)
       })
 
-      subjectEach(async () => items = await intervalNonQueuing(1000))
+      subjectEach(async () => items = await interval(1000))
 
       it('returns the latch items', () =>
         expect(items).to.eq(stubItems))

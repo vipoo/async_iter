@@ -1,4 +1,4 @@
-import {interval, intervalNonQueuing, take} from '../..'
+import {interval, take} from '../..'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 
@@ -25,25 +25,11 @@ async function simpleInterval() {
   console.log('done....\n\n')
 }
 
-async function racingInterval() {
-  lastTime = undefined
-  startTime = process.hrtime.bigint()
-  console.log('Racing Interval')
-  const items = await interval(500) |> take(?, 10)
-
-  for await (const item of items) {
-    logTimeDiff(item) //All 10 intervals will still be processed.
-    await delay(1000) //processing is longer than interval rate
-  }
-
-  console.log('done....\n\n')
-}
-
 async function nonQueingInterval() {
   lastTime = undefined
   startTime = process.hrtime.bigint()
   console.log('Non QueingInterval')
-  const items = await intervalNonQueuing(500) |> take(?, 10)
+  const items = await interval(500) |> take(?, 10)
 
   for await (const item of items) {
     logTimeDiff(item) //Some interval will be dropped
@@ -55,7 +41,6 @@ async function nonQueingInterval() {
 
 async function main() {
   await simpleInterval()
-  await racingInterval()
   await nonQueingInterval()
 }
 
