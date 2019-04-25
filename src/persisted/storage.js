@@ -25,7 +25,7 @@ async function push(readDirectory, writingDirectory, opts, data) {
 }
 
 async function* getItems(readDirectory, processingDirectory, consumerStopped, opts) {
-  await restoreUnprocessedItems(readDirectory, processingDirectory)
+  await restoreUnprocessedItems(readDirectory, processingDirectory, opts)
   try {
     while (true) {
       const {filename, item} = await popItem(readDirectory, processingDirectory, opts)

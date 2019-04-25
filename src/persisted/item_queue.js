@@ -66,10 +66,13 @@ export async function removeLast(readDirectory) {
     await fs.unlink(filename)
 }
 
-export async function restoreUnprocessedItems(readDirectory, processingDirectory) {
+export async function restoreUnprocessedItems(readDirectory, processingDirectory, state) {
   const x = await fs.readdir(processingDirectory)
-  for (const f of x)
-    await fs.rename(join(processingDirectory, f), join(readDirectory, f))
+  await Promise.all(x.map(f => fs.rename(join(processingDirectory, f), join(readDirectory, f))))
+  const total = (await Promise.all(x.map(f => fs.stat(join(readDirectory, f)).then(s => s.size))))
+    .reduce((a, v) => a + v, 0)
+
+  state.currentByteCount = total
 }
 
 export async function isEmpty(readDirectory) {

@@ -160,11 +160,14 @@ describe('persisted/item_queue', () => {
 
   describe('#restoreUnprocessedItems', () => {
     describe('given 2 files in processing', () => {
+      let state
+      beforeEach(() => state = {})
+
       subjectEach(async () => {
         fs.writeFileSync('/tmp/processing/00000000000001-a', 'data-1')
         fs.writeFileSync('/tmp/processing/00000000000002-a', 'data-2')
 
-        await restoreUnprocessedItems(readDirectory, processingDirectory)
+        await restoreUnprocessedItems(readDirectory, processingDirectory, state)
       })
 
       it('has removed 1st file from processing', () =>
@@ -178,6 +181,9 @@ describe('persisted/item_queue', () => {
 
       it('has written the 2nd file into reading', () =>
         expect(fs.readFileSync('/tmp/reading/00000000000002-a', 'utf-8')).to.eq('data-2'))
+
+      it('has updated the byte count', () =>
+        expect(state.currentByteCount).to.eq(6 + 6))
     })
   })
 
