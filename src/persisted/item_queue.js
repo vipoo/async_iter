@@ -48,7 +48,6 @@ export async function popItem(readDirectory, processingDirectory, state) {
   await fs.rename(join(readDirectory, name), filename)
   const data = await fs.readFile(filename)
   state.currentByteCount -= data.length
-
   state.overflow = false
 
   return {filename, item: data}
@@ -69,7 +68,10 @@ export async function removeLast(readDirectory) {
 export async function restoreUnprocessedItems(readDirectory, processingDirectory, state) {
   const x = await fs.readdir(processingDirectory)
   await Promise.all(x.map(f => fs.rename(join(processingDirectory, f), join(readDirectory, f))))
-  const total = (await Promise.all(x.map(f => fs.stat(join(readDirectory, f)).then(s => s.size))))
+
+  const readFiles = await fs.readdir(readDirectory)
+
+  const total = (await Promise.all(readFiles.map(f => fs.stat(join(readDirectory, f)).then(s => s.size))))
     .reduce((a, v) => a + v, 0)
 
   state.currentByteCount = total

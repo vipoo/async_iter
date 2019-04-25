@@ -7,7 +7,6 @@ export async function persisted(source, path, opts = {}) {
     overFlowEvent: () => undefined,
     ...opts,
 
-    currentByteCount: 0,
     overflow: false
   }
 
