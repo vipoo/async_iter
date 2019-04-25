@@ -4,9 +4,11 @@ export async function persisted(source, path, opts = {}) {
   opts = {
     allowRestart: false,
     maxBytes: 0,
+    overFlowEvent: () => undefined,
     ...opts,
 
-    currentByteCount: 0
+    currentByteCount: 0,
+    overflow: false
   }
 
   const {push, stop, items, consumerHasStopped} = await open(path, opts)

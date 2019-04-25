@@ -49,7 +49,11 @@ describe('persisted/item_queue', () => {
 
     describe('when maxBytes reached', () => {
       let state
-      beforeEach(() => state = {maxBytes: 10, currentByteCount: 20})
+      let overFlowEvent
+      beforeEach(() => {
+        overFlowEvent = sinon.stub()
+        state = {maxBytes: 10, currentByteCount: 20, overFlowEvent}
+      })
       subjectEach(() => pushItem(readDirectory, writingDirectory, data, state))
 
       it('does not write a new file', () =>
@@ -57,6 +61,9 @@ describe('persisted/item_queue', () => {
 
       it('does not update the byte count', () =>
         expect(state.currentByteCount).to.eq(20))
+
+      it('calls the overFlowEvent callback', () =>
+        expect(overFlowEvent).to.have.been.called)
     })
   })
 

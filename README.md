@@ -59,7 +59,10 @@ Persist items of an async iterator to files for later retrieval
 
 **allowRestart**: (default false) - allows a restart of a previously completed iteration
 
-**maxBytes**: (default 0) - limits the number of bytes that can be stored.
+**maxBytes**: (default 0) - limits the number of bytes that can be stored. Zero indicates no limit.
+
+**overFlowEvent**: (optional) - callback function invoked when `maxBytes` exceeded.  The value
+returned from this callback will be emitted into the iteration, unless `underfined` is returned.
 
 Returns
 

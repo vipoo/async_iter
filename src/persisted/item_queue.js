@@ -5,9 +5,24 @@ const fs = _fs.promises
 
 const delay = period => new Promise(res => setTimeout(res, period))
 
+function hasOverflowed(state) {
+  return (state.maxBytes !== 0 && state.maxBytes <= state.currentByteCount)
+}
+
+async function getOverflowItem(state) {
+  if (state.overflow)
+    return undefined
+
+  state.overflow = true
+  return await state.overFlowEvent()
+}
+
 export async function pushItem(readDirectory, writingDirectory, data, state) {
-  if (state.maxBytes !== 0 && state.maxBytes <= state.currentByteCount)
-    return // to much data - drop the packet
+  if (hasOverflowed(state)) {
+    data = await getOverflowItem(state)
+    if (!data)
+      return
+  }
 
   const id = process.hrtime.bigint().toString().padStart(14, '0')
   const name = `${id}-${uuidv4()}`
@@ -15,7 +30,6 @@ export async function pushItem(readDirectory, writingDirectory, data, state) {
   data = data.toString()
   state.currentByteCount = state.currentByteCount || 0
   state.currentByteCount += data.length
-
   await fs.writeFile(filename, data)
   await fs.rename(filename, join(readDirectory, name))
 }
@@ -34,6 +48,9 @@ export async function popItem(readDirectory, processingDirectory, state) {
   await fs.rename(join(readDirectory, name), filename)
   const data = await fs.readFile(filename)
   state.currentByteCount -= data.length
+
+  state.overflow = false
+
   return {filename, item: data}
 }
 
