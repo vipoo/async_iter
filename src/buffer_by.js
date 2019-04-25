@@ -1,4 +1,5 @@
 import {deferredPromise} from './promise_helpers'
+import {getIterator} from './lib/get_iterator'
 
 const True = true
 
@@ -39,6 +40,8 @@ export function bufferBy(source, trigger, maxWaitTime) {
     donedone: false,
     timeout: undefined
   }
+
+  source = getIterator(source)
 
   /* eslint complexity: ['error', 9] */
   return {
