@@ -15,22 +15,21 @@ function dirs(storeDirectory) {
   return {readDirectory, processingDirectory, writingDirectory}
 }
 
-async function writeStopMarker(storeDirectory, readDirectory, writingDirectory) {
-  await pushItem(readDirectory, writingDirectory, '')
+async function writeStopMarker(storeDirectory, readDirectory, writingDirectory, opts) {
+  await pushItem(readDirectory, writingDirectory, '', {...opts, maxBytes: 0})
   await flagAsStop(storeDirectory)
 }
 
-async function push(readDirectory, writingDirectory, data) {
-  return pushItem(readDirectory, writingDirectory, data)
+async function push(readDirectory, writingDirectory, opts, data) {
+  return pushItem(readDirectory, writingDirectory, data, opts)
 }
 
-async function* getItems(readDirectory, processingDirectory, consumerStopped) {
+async function* getItems(readDirectory, processingDirectory, consumerStopped, opts) {
   await restoreUnprocessedItems(readDirectory, processingDirectory)
   try {
     while (true) {
-      const filename = await popItem(readDirectory, processingDirectory)
+      const {filename, item} = await popItem(readDirectory, processingDirectory, opts)
 
-      const item = await fs.readFile(filename)
       if (item.length === 0) {
         fs.unlink(filename)
         break
@@ -44,18 +43,17 @@ async function* getItems(readDirectory, processingDirectory, consumerStopped) {
 }
 
 export async function open(storeDirectory, opts) {
-  const {allowRestart} = opts
   const {readDirectory, processingDirectory, writingDirectory} = dirs(storeDirectory)
 
   let _consumerHasStopped = false
   const consumerHasStopped = () => _consumerHasStopped
   const consumerStopped = () => { _consumerHasStopped = true }
 
-  const items = getItems(readDirectory, processingDirectory, consumerStopped)
+  const items = getItems(readDirectory, processingDirectory, consumerStopped, opts)
 
   if (await hasStoppedFlag(storeDirectory))
     if (!await isEmpty(readDirectory)) {
-      if (!allowRestart)
+      if (!opts.allowRestart)
         throw new Error('Attempt to restart when a previous stopped non-empty iteration exists')
 
       await unflagAsStop(storeDirectory)
@@ -69,8 +67,8 @@ export async function open(storeDirectory, opts) {
   ])
 
   return {
-    push: push(readDirectory, writingDirectory, ?),
-    stop: writeStopMarker(storeDirectory, readDirectory, writingDirectory, ?),
+    push: data => push(readDirectory, writingDirectory, opts, data),
+    stop: () => writeStopMarker(storeDirectory, readDirectory, writingDirectory, opts),
     consumerHasStopped,
     items
   }

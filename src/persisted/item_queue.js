@@ -5,15 +5,22 @@ const fs = _fs.promises
 
 const delay = period => new Promise(res => setTimeout(res, period))
 
-export async function pushItem(readDirectory, writingDirectory, data) {
+export async function pushItem(readDirectory, writingDirectory, data, state) {
+  if (state.maxBytes !== 0 && state.maxBytes <= state.currentByteCount)
+    return // to much data - drop the packet
+
   const id = process.hrtime.bigint().toString().padStart(14, '0')
   const name = `${id}-${uuidv4()}`
   const filename = join(writingDirectory, name)
+  data = data.toString()
+  state.currentByteCount = state.currentByteCount || 0
+  state.currentByteCount += data.length
+
   await fs.writeFile(filename, data)
   await fs.rename(filename, join(readDirectory, name))
 }
 
-export async function popItem(readDirectory, processingDirectory) {
+export async function popItem(readDirectory, processingDirectory, state) {
   let x
   do {
     x = await fs.readdir(readDirectory)
@@ -25,17 +32,15 @@ export async function popItem(readDirectory, processingDirectory) {
   const name = x.sort()[0]
   const filename = join(processingDirectory, name)
   await fs.rename(join(readDirectory, name), filename)
-  return filename
+  const data = await fs.readFile(filename)
+  state.currentByteCount -= data.length
+  return {filename, item: data}
 }
 
 export async function removeLast(readDirectory) {
-  let x
-  do {
-    x = await fs.readdir(readDirectory)
-    if ( x.length === 0)
-      delay(100)
-
-  } while (x.length === 0)
+  const x = await fs.readdir(readDirectory)
+  if (x.length === 0)
+    return
 
   const name = x.sort()[x.length - 1]
   const filename = join(readDirectory, name)

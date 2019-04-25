@@ -1,5 +1,5 @@
 import {delay, expect, sinon, eventually, subjectEach} from './test_helper'
-import {persisted, map} from '../src'
+import {createLatch, persisted, map} from '../src'
 import * as uuidModule from '../src/lib/uuid'
 import rmfr from 'rmfr'
 import fs from 'fs'
@@ -10,10 +10,15 @@ import path from 'path'
 /* Clean directory unless a specific directory given */
 let dir
 let count = 1
+
+function getNextDir() {
+  return `/tmp/test-store-${count++}`
+}
+
 function persistedSource(_dir = undefined, opts = {}) {
   opts = {neverEnd: false, allowRestart: false, ...opts}
   const {neverEnd} = opts
-  dir = _dir || `/tmp/test-store-${count++}`
+  dir = _dir || getNextDir()
   const clean = _dir ? Promise.resolve() : rmfr(dir)
 
   return clean.then(() => persisted(source(neverEnd), dir, opts))
@@ -160,6 +165,89 @@ describe('#persisted', () => {
 
       const items = await persistedSource('/tmp/test-store-repeat', {neverEnd: false, allowRestart: true})
       return expect(items |> map(?, i => i.value.toString())).to.iterateTo(['1', '2', '1', '2'])
+    })
+  })
+
+  describe('data types', () => {
+    let source
+    beforeEach(async () => {
+      source = await createLatch()
+      source.push('a string')
+      source.push(123)
+      source.push(Buffer.from('a buffer'))
+      source.push({a: 'not - supported - object'})
+    })
+
+    let mappedItems
+    subjectEach(async () => {
+      const dir = getNextDir()
+      await rmfr(dir)
+
+      const items = await persisted(source.items(), dir)
+      mappedItems = items |> map(?, i => i.value)
+    })
+
+    afterEach(() => source.stop())
+
+    it('emits correct typed data', async () => {
+      await expect(mappedItems.next()).to.eventually.deep.eq({value: Buffer.from('a string'), done: false})
+      await expect(mappedItems.next()).to.eventually.deep.eq({value: Buffer.from('123'), done: false})
+      await expect(mappedItems.next()).to.eventually.deep.eq({value: Buffer.from('a buffer'), done: false})
+      await expect(mappedItems.next()).to.eventually.deep.eq({value: Buffer.from('[object Object]'), done: false})
+    })
+
+  })
+
+  describe('shutting/stopping iteration', () => {
+    let source
+
+    it('terminates an empty iterations', async () => {
+      source = await createLatch()
+
+      const dir = getNextDir()
+      await rmfr(dir)
+      const items = await persisted(source.items(), dir)
+      const nextValue = items.next()
+
+      source.stop()
+
+      await expect(nextValue).to.eventually.deep.eq({value: undefined, done: true})
+    })
+
+  })
+
+  describe('maxBytes of 6', () => {
+    let source
+    beforeEach(async () => {
+      source = await createLatch()
+      source.push('aaa')
+      source.push('bbb')
+      source.push('ccc')
+      source.push('ddd')
+    })
+
+    let mappedItems
+    subjectEach(async () => {
+      const dir = getNextDir()
+      await rmfr(dir)
+
+      const items = await persisted(source.items(), dir, {maxBytes: 6})
+      mappedItems = items |> map(?, i => i.value.toString())
+    })
+
+    afterEach(() => source.stop())
+
+    it('emits uptop maxBytes', async () => {
+      await expect(mappedItems.next()).to.eventually.deep.eq({value: 'aaa', done: false})
+      await expect(mappedItems.next()).to.eventually.deep.eq({value: 'bbb', done: false})
+    })
+
+    it('drops items beyond maxBytes', async () => {
+      await mappedItems.next()
+      await mappedItems.next()
+
+      source.push('eee')
+      await expect(mappedItems.next()).to.eventually.deep.eq({value: 'eee', done: false})
     })
   })
 })

@@ -1,4 +1,4 @@
-import {expect, subjectEach, sinon, eventually, delay} from './test_helper'
+import {fakeTimer, expect, subjectEach, sinon, eventually, delay} from './test_helper'
 import {interval, intervalNonQueuing} from '../src'
 import * as latchModule from '../src/latch'
 
@@ -13,12 +13,15 @@ describe('interval', () => {
     stubHrTime.bigint = sinon.stub().returns(1)
     sinon.stub(process, 'hrtime').value(stubHrTime)
 
-    clock = sinon.useFakeTimers()
+    clock = fakeTimer()
     stubLatch.items = sinon.stub().returns(stubItems)
     sinon.stub(latchModule, 'createLatch').resolves(stubLatch)
   })
 
-  afterEach(() => clock.restore())
+  afterEach(() => {
+    clock.restore()
+    sinon.restore()
+  })
 
   describe('When stops consuming after 3 items', () => {
     beforeEach(() => {

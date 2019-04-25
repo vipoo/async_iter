@@ -59,6 +59,8 @@ Persist items of an async iterator to files for later retrieval
 
 **allowRestart**: (default false) - allows a restart of a previously completed iteration
 
+**maxBytes**: (default 0) - limits the number of bytes that can be stored.
+
 Returns
 
 A promise that resolves to an object containing:

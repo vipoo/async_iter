@@ -1,4 +1,4 @@
-import {expect, sinon, subjectEach} from './test_helper'
+import {fakeTimer, expect, subjectEach} from './test_helper'
 import {rateLimit} from '../src'
 
 /***************************************************************/
@@ -19,7 +19,7 @@ describe('#rateLimit', () => {
   let clock
   let items
 
-  beforeEach(() => clock = sinon.useFakeTimers())
+  beforeEach(() => { clock = fakeTimer() })
   afterEach(() => clock.restore())
 
   subjectEach(() => { items = source() |> rateLimit(?, 5, 1000, v => v.toString().length) })
