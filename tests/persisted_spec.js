@@ -218,12 +218,13 @@ describe('#persisted', () => {
 
   describe('maxBytes of 6', () => {
     let source
+    let sourceConsumed
     beforeEach(async () => {
       source = await createLatch()
       source.push('aaa')
       source.push('bbb')
       source.push('ccc')
-      source.push('ddd')
+      sourceConsumed = source.push('ddd')
     })
 
     let mappedItems
@@ -243,6 +244,7 @@ describe('#persisted', () => {
     })
 
     it('drops items beyond maxBytes', async () => {
+      await expect(sourceConsumed).to.eventually.eq(1)
       await mappedItems.next()
       await mappedItems.next()
 

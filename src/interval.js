@@ -5,15 +5,10 @@ function defaultMarker() {
 }
 
 export async function interval(period, fn = defaultMarker) {
-  const {push, items, hasStoppedConsuming} = await createLatch()
+  const {push, items, hasStopped} = await createLatch()
   let intervalHandle = undefined
   let currentPromise = undefined
   const intervalFunction = async () => {
-    if (hasStoppedConsuming()) {
-      clearInterval(intervalHandle)
-      return
-    }
-
     if (currentPromise)
       return
 
@@ -21,6 +16,8 @@ export async function interval(period, fn = defaultMarker) {
     await currentPromise
     currentPromise = null
   }
+
+  hasStopped.then(() => clearInterval(intervalHandle))
 
   intervalHandle = setInterval(intervalFunction, period)
 

@@ -1,12 +1,14 @@
 import {fakeTimer, expect, subjectEach, sinon, eventually, delay} from './test_helper'
 import {interval} from '../src'
 import * as latchModule from '../src/latch'
+import {deferredPromise} from '../src/promise_helpers'
 
 describe('interval', () => {
   let items
   let clock
   const stubLatch = {}
   const stubItems = 'stubItems'
+  let hasStoppedSignal
 
   beforeEach(() => {
     const stubHrTime = {}
@@ -15,6 +17,9 @@ describe('interval', () => {
 
     clock = fakeTimer()
     stubLatch.items = sinon.stub().returns(stubItems)
+
+    hasStoppedSignal = deferredPromise()
+    stubLatch.hasStopped = hasStoppedSignal.promise
     sinon.stub(latchModule, 'createLatch').resolves(stubLatch)
   })
 
@@ -23,94 +28,89 @@ describe('interval', () => {
     sinon.restore()
   })
 
-  describe('When stops consuming after 3 items', () => {
+  describe('#intervalNonQueuing', () => {
+    let res
+
     beforeEach(() => {
-      stubLatch.hasStoppedConsuming = sinon.stub()
-        .onCall(0).returns(false)
-        .onCall(1).returns(false)
-        .onCall(2).returns(false)
-        .onCall(3).returns(true)
+      const p = new Promise((_res) => res = _res)
+      stubLatch.push = sinon.stub().returns(p)
     })
 
-    describe('#intervalNonQueuing', () => {
-      let res
+    subjectEach(async () => items = await interval(1000))
 
-      beforeEach(() => {
-        const p = new Promise((_res) => res = _res)
-        stubLatch.push = sinon.stub().returns(p)
-      })
+    it('returns the latch items', () =>
+      expect(items).to.eq(stubItems))
 
-      subjectEach(async () => items = await interval(1000))
+    it('has initially pushed no items', async () => {
+      await delay(0)
+      expect(stubLatch.push).to.not.have.been.called
+    })
 
-      it('returns the latch items', () =>
-        expect(items).to.eq(stubItems))
+    describe('after 1 interval has elapsed', () => {
+      beforeEach(() => clock.tick(1000))
 
-      it('has initially pushed no items', async () => {
-        await delay(0)
-        expect(stubLatch.push).to.not.have.been.called
-      })
+      it('pushes an hrtime value', () =>
+        eventually(() => expect(stubLatch.push).to.have.been.calledWith(1)))
 
-      describe('after 1 interval has elapsed', () => {
+      describe('after 1 more intervals', () => {
         beforeEach(() => clock.tick(1000))
 
-        it('pushes an hrtime value', () =>
-          eventually(() => expect(stubLatch.push).to.have.been.calledWith(1)))
+        it('does not push next value', async () => {
+          await delay(0)
+          expect(stubLatch.push).to.have.been.calledOnce
+        })
 
-        describe('after 1 more intervals', () => {
-          beforeEach(() => clock.tick(1000))
+        describe('after consumer consumes the item', () => {
+          beforeEach(() => res())
 
           it('does not push next value', async () => {
             await delay(0)
             expect(stubLatch.push).to.have.been.calledOnce
           })
 
-          describe('after consumer consumes the item', () => {
-            beforeEach(() => res())
+          describe('after another interval', () => {
+            beforeEach(() => clock.tick(1000))
 
-            it('does not push next value', async () => {
+            it('next value is emitted', async () => {
               await delay(0)
-              expect(stubLatch.push).to.have.been.calledOnce
-            })
-
-            describe('after another interval', () => {
-              beforeEach(() => clock.tick(1000))
-
-              it('next value is emitted', async () => {
-                await delay(0)
-                expect(stubLatch.push).to.have.been.calledTwice
-              })
+              expect(stubLatch.push).to.have.been.calledTwice
             })
           })
         })
       })
     })
+  })
 
-    describe('#interval', () => {
-      beforeEach(() => stubLatch.push = sinon.stub())
+  describe('#interval', () => {
+    beforeEach(() => stubLatch.push = sinon.stub())
 
-      subjectEach(async () => items = await interval(1000))
+    subjectEach(async () => items = await interval(1000))
 
-      it('returns the latch items', () =>
-        expect(items).to.eq(stubItems))
+    it('returns the latch items', () =>
+      expect(items).to.eq(stubItems))
 
-      it('has initially pushed no items', async () => {
-        await delay(0)
-        expect(stubLatch.push).to.not.have.been.called
-      })
+    it('has initially pushed no items', async () => {
+      await delay(0)
+      expect(stubLatch.push).to.not.have.been.called
+    })
 
-      describe('after 1 interval has elapsed', () => {
-        beforeEach(() => clock.tick(1000))
+    describe('after 1 interval has elapsed', () => {
+      beforeEach(() => clock.tick(1000))
 
-        it('pushes an hrtime value', () =>
-          eventually(() => expect(stubLatch.push).to.have.been.calledWith(1)))
+      it('pushes an hrtime value', () =>
+        eventually(() => expect(stubLatch.push).to.have.been.calledWith(1)))
 
-        describe('after 4 more intervals', () => {
-          beforeEach(() => clock.tick(4000))
+      describe('stops after 2 intervals', () => {
+        beforeEach(async () => {
+          clock.tick(2000)
+          hasStoppedSignal.res()
+          await delay(0)
+          clock.tick(2000)
+        })
 
-          it('pushes another value', async () => {
-            await delay(0)
-            expect(stubLatch.push).to.have.been.calledThrice
-          })
+        it('pushes another value', async () => {
+          await delay(0)
+          expect(stubLatch.push).to.have.been.calledThrice
         })
       })
     })

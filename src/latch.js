@@ -5,8 +5,8 @@ export async function createLatch() {
   let keepAlive
   let latch = deferredPromise()
   const unlatch = []
-  let hasStopped = false
   const keepAliveTimer = () => keepAlive = setTimeout(keepAliveTimer, 250)
+  const hasStoppedSignal = deferredPromise()
 
   async function push(item, options = {}) {
     options = {done: false, ...options}
@@ -69,15 +69,11 @@ export async function createLatch() {
         unLatchNextValue()
       }
     } finally {
-      hasStopped = true
+      hasStoppedSignal.res({done: true})
       unlatchAll()
       clearTimeout(keepAlive)
     }
   }
 
-  function hasStoppedConsuming() {
-    return hasStopped
-  }
-
-  return {push, abort, stop, completed: stop, return: stop, error: abort, items, hasStoppedConsuming}
+  return {hasStopped: hasStoppedSignal.promise, push, abort, stop, completed: stop, return: stop, error: abort, items}
 }

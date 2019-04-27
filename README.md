@@ -148,7 +148,7 @@ Example:
 ```
 
 ## CreateLatch
-#### {push, abort, stop, items, hasStoppedConsuming} = await createLatch()
+#### {push, abort, stop, items, hasStopped} = await createLatch()
 
 createLatch allows for the async 'pushing' of values to an async iteration
 
