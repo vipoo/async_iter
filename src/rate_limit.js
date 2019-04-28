@@ -1,8 +1,9 @@
-import {getIterator} from './lib/get_iterator'
 import {deferredPromise} from './promise_helpers'
 
 /* eslint complexity: ['error', 4] */
 export async function* rateLimit(source, maxAmount, perPeriod, counter = () => 1) {
+  source = await source
+
   let forBucketAboveZero = deferredPromise()
   forBucketAboveZero.res()
 
@@ -15,11 +16,9 @@ export async function* rateLimit(source, maxAmount, perPeriod, counter = () => 1
 
   }, intervalPeriod)
 
-  const sourceItems = getIterator(source)
-
   try {
     while (true) {
-      const item = await sourceItems.next()
+      const item = await source.next()
       if (item.done)
         return
       bucket = bucket - counter(item.value)

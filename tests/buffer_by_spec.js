@@ -20,21 +20,20 @@ async function* source(neverEnd = false) {
 }
 
 describe('#buffer_by', () => {
-  it('buffer by single', () => {
-    const items = bufferBy(source(), () => true, 0)
+  it('buffer by single', async () => {
+    const items = await bufferBy(source(), () => true, 0)
 
     return expect(items).to.iterateTo([[1], [2], [3], [4], [5]])
   })
 
-  it('buffer by twos', () => {
-    const items = bufferBy(source(), (i, b) => b.length === 2, 1000)
+  it('buffer by twos', async () => {
+    const items = await bufferBy(source(), (i, b) => b.length === 3, 1000)
 
     return expect(take(items, 2)).to.iterateTo([[1, 2], [3, 4]])
   })
 
   it('buffer by timeout', async () => {
-    const _items = bufferBy(source(true), (i, b) => b.length === 2, 1500)
-    const items = _items[Symbol.asyncIterator]()
+    const items = await bufferBy(source(true), (i, b) => b.length === 3, 1000)
 
     await expect(items.next()).to.eventually.deep.eq({value: [1, 2], done: false})
     await expect(items.next()).to.eventually.deep.eq({value: [3, 4], done: false})

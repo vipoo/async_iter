@@ -1,17 +1,20 @@
-import {createLatch} from '../..'
+import {pump} from '../..'
 
 async function main() {
-  const latch = await createLatch()
+  const items = await pump(async (target, hasStopped) => {
+    hasStopped.then(() => console.log('Received has stopped signal'))
+    console.log('starting pushing values.')
+    await target.next(1)
+    await target.next(2)
+    await target.next(3)
+    await target.return()
+    console.log('all values pushed.')
+  })
 
-  setTimeout(async () => {
-    for await (const item of latch.items())
-      console.log(item)
-  }, 10)
-
-  await latch.push(1)
-  await latch.push(2)
-  await latch.push(3)
-  await latch.return()
+  console.log('starting consumption of values.')
+  for await (const item of items)
+    console.log(item)
+  console.log('consumed all values.')
 }
 
 main()

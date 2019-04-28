@@ -1,5 +1,5 @@
 import {deferredPromise} from './promise_helpers'
-import {getIterator} from './lib/get_iterator'
+import {asIterator} from './lib/get_iterator'
 
 const True = true
 
@@ -33,7 +33,9 @@ function packageNextEmit(state, period) {
     return {value: emittedValue, done: false}
 }
 
-export function bufferBy(source, trigger, maxWaitTime) {
+export async function bufferBy(source, trigger, maxWaitTime) {
+  source = await source
+
   const state = {
     buffer: [],
     nextValue: undefined,
@@ -41,10 +43,8 @@ export function bufferBy(source, trigger, maxWaitTime) {
     timeout: undefined
   }
 
-  source = getIterator(source)
-
   /* eslint complexity: ['error', 9] */
-  return {
+  return asIterator({
     [Symbol.asyncIterator]() {
       return {
         async next() {
@@ -59,13 +59,13 @@ export function bufferBy(source, trigger, maxWaitTime) {
             if (done)
               return returnLastValue(state)
 
-            if (!timed)
-              pushValue(state, value)
-
             let emittedValue = undefined
-            if (timed || trigger(value, state.buffer))
+            if (timed || trigger(value, [...state.buffer, value]))
               if (emittedValue = packageNextEmit(state, maxWaitTime))
                 return emittedValue
+
+            if (!timed)
+              pushValue(state, value)
           }
         },
         async return() {
@@ -74,5 +74,5 @@ export function bufferBy(source, trigger, maxWaitTime) {
         }
       }
     }
-  }
+  })
 }

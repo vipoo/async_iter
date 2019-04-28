@@ -1,5 +1,5 @@
 import {delay, expect, sinon, eventually, subjectEach} from './test_helper'
-import {createLatch, persisted, map} from '../src'
+import {pump, persisted, map} from '../src'
 import * as uuidModule from '../src/lib/uuid'
 import rmfr from 'rmfr'
 import fs from 'fs'
@@ -170,12 +170,15 @@ describe('#persisted', () => {
 
   describe('data types', () => {
     let source
+    let target
     beforeEach(async () => {
-      source = await createLatch()
-      source.push('a string')
-      source.push(123)
-      source.push(Buffer.from('a buffer'))
-      source.push({a: 'not - supported - object'})
+      source = await pump(_target => {
+        target = _target
+        target.next('a string')
+        target.next(123)
+        target.next(Buffer.from('a buffer'))
+        target.next({a: 'not - supported - object'})
+      })
     })
 
     let mappedItems
@@ -183,11 +186,11 @@ describe('#persisted', () => {
       const dir = getNextDir()
       await rmfr(dir)
 
-      const items = await persisted(source.items(), dir)
+      const items = await persisted(source, dir)
       mappedItems = items |> map(?, i => i.value)
     })
 
-    afterEach(() => source.stop())
+    afterEach(() => target.return())
 
     it('emits correct typed data', async () => {
       await expect(mappedItems.next()).to.eventually.deep.eq({value: Buffer.from('a string'), done: false})
@@ -201,30 +204,30 @@ describe('#persisted', () => {
   describe('shutting/stopping iteration', () => {
     let source
 
-    it('terminates an empty iterations', async () => {
-      source = await createLatch()
+    beforeEach(async () => source = await pump(target => target.return()))
 
+    it('terminates an empty iterations', async () => {
       const dir = getNextDir()
       await rmfr(dir)
-      const items = await persisted(source.items(), dir)
+      const items = await persisted(source, dir)
       const nextValue = items.next()
-
-      source.stop()
-
       await expect(nextValue).to.eventually.deep.eq({value: undefined, done: true})
     })
-
   })
 
   describe('maxBytes of 6', () => {
     let source
     let sourceConsumed
+    let target
     beforeEach(async () => {
-      source = await createLatch()
-      source.push('aaa')
-      source.push('bbb')
-      source.push('ccc')
-      sourceConsumed = source.push('ddd')
+      source = await pump(_target => {
+        target = _target
+        target.next('aaa')
+        target.next('bbb')
+        target.next('ccc')
+        sourceConsumed = target.next('ddd')
+      })
+
     })
 
     let mappedItems
@@ -232,11 +235,11 @@ describe('#persisted', () => {
       const dir = getNextDir()
       await rmfr(dir)
 
-      const items = await persisted(source.items(), dir, {maxBytes: 6})
+      const items = await persisted(source, dir, {maxBytes: 6})
       mappedItems = items |> map(?, i => i.value.toString())
     })
 
-    afterEach(() => source.stop())
+    afterEach(() => target.return())
 
     it('emits uptop maxBytes', async () => {
       await expect(mappedItems.next()).to.eventually.deep.eq({value: 'aaa', done: false})
@@ -244,11 +247,11 @@ describe('#persisted', () => {
     })
 
     it('drops items beyond maxBytes', async () => {
-      await expect(sourceConsumed).to.eventually.eq(1)
       await mappedItems.next()
       await mappedItems.next()
+      await expect(sourceConsumed).to.eventually.be.fulfilled
 
-      source.push('eee')
+      target.next('eee')
       await expect(mappedItems.next()).to.eventually.deep.eq({value: 'eee', done: false})
     })
   })

@@ -1,12 +1,14 @@
-import {createLatch} from '../..'
+import {pump} from '../..'
 
 async function main() {
-  const {push} = await createLatch()
+  await pump(async target => {
+    console.log('never get here, as no consumer is started')
+    await target.next(1)
+    await target.next(2)
+    await target.next(3)
+  })
 
-  // if items are not consumed, nothing really happens
-  await push(1)
-  await push(2)
-  await push(3)
+  console.log('if items are not consumed, nothing really happens')
 }
 
 main()

@@ -1,102 +1,125 @@
 import {expect} from './test_helper'
-import {createLatch} from '../src'
+import {pump} from '../src'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 
-describe('#createLatch', () => {
+describe('#pump', () => {
   it('push items are blocked, until consumed', async () => {
-    const {push, items, hasStopped} = await createLatch()
+    let p1, p2, p3, hasStopped
+    const items = await pump(async (t, s) => {
+      hasStopped = s
+      p1 = await t.next(1)
+      p2 = await t.next(2)
+      p3 = await t.next(3)
+    })
 
-    const p1 = push(1)
-    const p2 = push(2)
-    const p3 = push(3)
+    //start
+    items.next()
 
     await delay(100)
-    await expect(p1).to.eventually.be.eq(3)
-    await expect(p2).to.be.pending
-    await expect(p3).to.be.pending
+    expect(p1).to.be.deep.eq({value: 1, done: false})
+    expect(p2).to.be.undefined
+    expect(p3).to.be.undefined
 
-    const item = items()
-    await item.next()
-    await item.next()
+    await items.next()
     await delay(100)
 
-    await expect(p1).to.eventually.be.eq(3)
-    await expect(p2).to.eventually.be.eq(2)
-    await expect(p3).to.be.pending
+    expect(p1).to.deep.eq({value: 1, done: false})
+    expect(p2).to.deep.eq({value: 2, done: false})
+    expect(p3).to.be.undefined
 
     expect(hasStopped).to.be.pending
-    await item.return()
-    await expect(hasStopped).to.eventually.be.deep.eq({done: true})
+    await items.return()
+    await expect(hasStopped).to.eventually.be.fulfilled
+    expect(p3).to.be.undefined
   })
 
   it('push items, then iterate', async () => {
-    const {push, stop, items} = await createLatch()
-    push(1).then(() => push(2)).then(() => stop())
+    const items = await pump((async t => {
+      await t.next(1)
+      await t.next(2)
+      await t.return()
+    }))
 
-    await expect(items()).to.iterateTo([1, 2])
+    await delay(100)
+    await expect(items).to.iterateTo([1, 2])
   })
 
   it('push items, then iterate async', async () => {
-    const {push, stop, items} = await createLatch()
+    const items = await pump(async t => {
+      await delay(100)
+      await t.next(1)
+      await t.next(2)
+      await t.return()
+    })
 
-    const p = expect(items()).to.iterateTo([1, 2])
-    await push(1)
-    await push(2)
-    await stop()
-    await p
+    await expect(items).to.iterateTo([1, 2])
   })
 
   it('push error, then iterate throws', async () => {
-    const {push, abort, items, hasStopped} = await createLatch()
+    let hasStopped
+    const items = await pump(async (t, s) => {
+      hasStopped = s
+      await t.next(1)
+      await t.next(2)
+      await t.throw(new Error('blah'))
+    })
 
-    push(1).then(() => push(2)).then(() => abort(new Error('blah')))
+    await expect(items.next()).to.eventually.deep.eq({value: 1, done: false})
+    await expect(items.next()).to.eventually.deep.eq({value: 2, done: false})
+    await expect(items.next()).to.eventually.be.rejectedWith('blah')
 
-    const item = items()
+    expect(hasStopped.now()).to.be.true
 
-    await expect(item.next()).to.eventually.deep.eq({value: 1, done: false})
-    await expect(item.next()).to.eventually.deep.eq({value: 2, done: false})
-    await expect(item.next()).to.eventually.be.rejectedWith('blah')
-
-    await expect(hasStopped).to.eventually.be.deep.eq({done: true})
+    await expect(hasStopped).to.eventually.be.fulfilled
   })
 
   it('push items concurrently, then iterate async', async () => {
-    const {push, stop, items} = await createLatch()
+    const items = await pump(async t => {
+      await Promise.all([t.next(1), t.next(2)])
+      await t.return()
+    })
 
-    Promise.all([push(1), push(2)]).then(() => stop())
-
-    return expect(items()).to.iterateTo([1, 2])
+    return expect(items).to.iterateTo([1, 2])
   })
 
   it('push items slowly, then iterate async', async () => {
-    const {push, stop, items, hasStopped} = await createLatch()
+    let hasStopped
+    const items = await pump(async (t, s) => {
+      hasStopped = s
+      await t.next(1)
+      await delay(100)
+      await t.next(2)
+      await delay(100)
+      await t.next(3)
+      await delay(100)
+      await t.return()
+    })
 
-    const p = expect(items()).to.iterateTo([1, 2, 3])
-    await push(1)
-    await delay(100)
-    await push(2)
-    await delay(100)
-    await push(3)
-    await delay(100)
-    expect(hasStopped).to.be.pending
-    await stop()
-    await p
-    await expect(hasStopped).to.eventually.be.deep.eq({done: true})
+    await expect(items).to.iterateTo([1, 2, 3])
+    await expect(hasStopped).to.eventually.be.fulfilled
   })
 
   it('push items, then iterate slowly', async () => {
-    const {push, stop, items, hasStopped} = await createLatch()
-    Promise.all([push(1), push(2), push(3)]).then(() => stop())
+    let hasStopped
+    const items = await pump(async (t, s) => {
+      hasStopped = s
+      await Promise.all([
+        t.next(1),
+        t.next(2),
+        t.next(3)
+      ])
+      await t.return()
+    })
 
     const result = []
-    for await (const r of items()) {
+    for await (const r of items) {
       await delay(100)
       result.push(r)
       await delay(0)
       expect(hasStopped).to.be.pending
     }
-    await expect(hasStopped).to.eventually.be.deep.eq({done: true})
+    expect(hasStopped).to.be.fulfilled
     await expect(result).to.iterateTo([1, 2, 3])
   })
 })

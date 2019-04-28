@@ -1,25 +1,27 @@
-import {createLatch} from './latch'
+import {pump} from './latch'
 
 function defaultMarker() {
   return process.hrtime.bigint()
 }
 
 export async function interval(period, fn = defaultMarker) {
-  const {push, items, hasStopped} = await createLatch()
-  let intervalHandle = undefined
-  let currentPromise = undefined
-  const intervalFunction = async () => {
-    if (currentPromise)
-      return
+  return pump(target => {
+    let intervalHandle = undefined
+    let currentPromise = undefined
+    const intervalFunction = async () => {
+      if (currentPromise)
+        return
 
-    currentPromise = push(await fn())
-    await currentPromise
-    currentPromise = null
-  }
+      const v = await fn()
+      currentPromise = await target.next(v)
+      if (currentPromise.done) {
+        currentPromise = null
+        clearInterval(intervalHandle)
+        await target.return()
+      }
+      currentPromise = null
+    }
 
-  hasStopped.then(() => clearInterval(intervalHandle))
-
-  intervalHandle = setInterval(intervalFunction, period)
-
-  return items()
+    intervalHandle = setInterval(intervalFunction, period)
+  })
 }

@@ -1,14 +1,15 @@
 import {deferredPromise} from './promise_helpers'
 
-export async function createLatch() {
+export async function* pump(fn) {
   let values = undefined
   let keepAlive
   let latch = deferredPromise()
   const unlatch = []
   const keepAliveTimer = () => keepAlive = setTimeout(keepAliveTimer, 250)
+  let hasStopped = false
   const hasStoppedSignal = deferredPromise()
 
-  async function push(item, options = {}) {
+  async function _next(item, options = {}) {
     options = {done: false, ...options}
     const p = unlatch.length === 0 ? {marker: 'none'} : unlatch[unlatch.length - 1]
     const newP = deferredPromise()
@@ -17,16 +18,14 @@ export async function createLatch() {
 
     values = {...options, item}
     latch.res()
-
-    return unlatch.length
   }
 
-  async function stop() {
-    push(undefined, {done: true})
+  function _return() {
+    return _next(undefined, {done: true})
   }
 
-  async function abort(error) {
-    push(undefined, {error})
+  function _throw(error) {
+    return _next(undefined, {error})
   }
 
   async function untilNextValueAvailable() {
@@ -52,28 +51,50 @@ export async function createLatch() {
     return v
   }
 
-  async function* items() {
-    keepAliveTimer()
-
-    try {
-      while (true) {
-        await untilNextValueAvailable()
-
-        const {item, done, error} = extractNextValue()
-        if (error)
-          throw error
-        if (done)
-          break
-        yield item
-
-        unLatchNextValue()
+  setTimeout(() => {
+    async function* _target() {
+      let count = 0
+      try {
+        while (!hasStopped) {
+          const x = await (yield count++)
+          await _next(x)
+        }
+      } catch (err) {
+        _throw(err)
+      } finally {
+        await _return()
       }
-    } finally {
-      hasStoppedSignal.res({done: true})
-      unlatchAll()
-      clearTimeout(keepAlive)
     }
-  }
 
-  return {hasStopped: hasStoppedSignal.promise, push, abort, stop, completed: stop, return: stop, error: abort, items}
+    const target = _target()
+    hasStoppedSignal.promise.now = () => hasStopped
+
+    target
+      .next()
+      .then(() => fn(target, hasStoppedSignal.promise))
+      .catch(err => _throw(err))
+  }, 0)
+
+  keepAliveTimer()
+
+  try {
+    while (true) {
+      await untilNextValueAvailable()
+
+      const {item, done, error} = extractNextValue()
+
+      if (error)
+        throw error
+      if (done)
+        break
+      yield item
+
+      unLatchNextValue()
+    }
+  } finally {
+    hasStopped = true
+    hasStoppedSignal.res()
+    unlatchAll()
+    clearTimeout(keepAlive)
+  }
 }

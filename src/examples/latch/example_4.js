@@ -1,20 +1,19 @@
-import {createLatch} from '../..'
+import {pump} from '../..'
 
 async function main() {
-  const {push, abort, items} = await createLatch()
+  const items = await pump(async target => {
+    await target.next(1)
+    await target.next(2)
+    await target.throw(new Error('This is an error'))
+  })
 
-  setTimeout(async () => {
-    try {
-      for await (const item of items())
-        console.log(item)
-    } catch (e) {
-      console.log(e.stack)
-    }
-  }, 10)
+  try {
+    for await (const item of items)
+      console.log(item)
+  } catch (e) {
+    console.log(e.stack)
+  }
 
-  await push(1)
-  await push(2)
-  await abort(new Error('This is an error'))
 }
 
 main()

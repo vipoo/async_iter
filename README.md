@@ -5,6 +5,10 @@
 
 A set of async generators and iterator functions
 
+This project is me just experimenting and learning about async generators in javascript.
+
+Its not supported or stable.
+
 ### Installing
 
 `npm install async_iter`
@@ -27,7 +31,7 @@ with node 10 and above.
 
 #### Itertor generators
 
-* [createLatch](#createlatch)
+* [pump](#pump)
 * [interval](#interval)
 * [range](#range)
 
@@ -147,45 +151,66 @@ Example:
 
 ```
 
-## CreateLatch
-#### {push, abort, stop, items, hasStopped} = await createLatch()
+## Pump
+#### items = await pump(callBack)
 
-createLatch allows for the async 'pushing' of values to an async iteration
+pump allows for the 'pushing' of values into an async iterator consumer
 
-The `push` operation returns a promise, that resolves when the iteration has consumed the item
+The `push` operation returns a promise, that resolves when the consuming iteration has consumed the item
 
-This iterator is similiar to Observable (rxjs), in that it supports a kind
-of push value to consumer, as events happen in your application.
-
-But it only supports one consumer per one producer.
-And the 'pushing' of values can be blocked, until the consumer has consumed the value
+This function follows the convention of a pushed iterator interface (next, throw, return).
 
 If the code pushing values, does not await the return promise, the values are then queued
-for processing by the consumer.
+for processing by the consumer as it pulls in the values
+
+**callBack** - this is a function that will pump values into the interator.
+
+> See below for the callback signature and parameters description.
+> The callback is not invoked, until the first item is pulled from the iteration.
+
+**Returns** - A standard async iterator that can consume the generated values
+
+The callback takes 2 arguments: (`target` and `hasStopped`):
+
+**callBack: target** - this is a async generator prototype with the 3 functions:
+
+**target.next** - call this function to push a value into the iteration - returns a promise when the consumer
+has consumed this item.  Returns a promise that resolves to `{value, done}`
+
+`done` will be true when the consumer has stopped
+`value` will be an incrementing integer
+
+**target.return** - call this function when there are no more items to be pushed.  Signal to consumer that
+the iteration has completed.
+
+**target.abort** - call this function when an error has been generated - raises the error within the consuming
+iteration.
+
+**callback: hasStopped** - a promise that resolves, when the consumer has stopped iterating.  This is an alternative
+mechanism to identify a stopped iteration.
+
+**hasStopped.now()** - function that returns true, when the consumer has stopped iterating.  This is an alternative
+mechanism to identify a stopped iteration.
 
 Example:
 
 ```javascript
 
-  import {createLatch} from 'async_iter'
+  import {pump} from 'async_iter'
 
   // Create a push based iteration set
-  const {push, abort, stop, items} = await createLatch()
+  const items = await pump(target => {
+    //Values can be push to the iteration
+    await target.next(1) // if you dont 'await' the values will be queued.
+    await target.next(2)
+    await target.next(3)
+    // If you want to push an 'error' to the consumer
+    // await target.throw(new Error('This is an error'))
+    await target.return()
+  })
 
-  //Set up a background task to consume the items
-  setTimeout(async () => {
-    for await (const item of items())
-      console.log(item)
-  }, 0)
-
-  //Values can be push to the iteration
-  await push(1) // if you dont 'await' the values will be queued.
-  await push(2)
-  await push(3)
-  await stop()
-
-  // If you want to push an 'error' to the consumer
-  await abort(new Error('My error'))
+  for await (const item of items)
+    console.log(item)
 
 ```
 

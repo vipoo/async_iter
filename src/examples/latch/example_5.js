@@ -1,19 +1,39 @@
-import {createLatch} from '../..'
+import {pump} from '../..'
 
+const delay = period => new Promise(res => setTimeout(res, period))
+
+const letters = ['a', 'b', 'c', 'd']
+
+async function getNextValue() {
+  await delay(1000) // simulate effort to get value
+
+  return letters.length === 0 ? undefined : letters.shift()
+}
+
+const True = true
 async function main() {
-  const {push, items} = await createLatch()
+  const items = await pump(async (target, hasStopped) => {
 
-  setTimeout(async () => {
-    for await (const item of items()) {
-      console.log(item)
-      break
+    while (True) {
+      const letter = await Promise.race([getNextValue(), hasStopped])
+      if (!letter)
+        break
+
+      console.log('pushing ', letter)
+      if ((await target.next(letter)).done)
+        break
     }
-    console.log('Only consumed one item, rest were thrown away')
-  }, 10)
 
-  await push('a')
-  await push('b')
-  await push('c')
+    console.log('return')
+    await target.return()
+  })
+
+  for await (const item of items) {
+    console.log(item)
+    await delay(500) //simulate effort to save value
+    break
+  }
+  console.log('Only consumed one item, rest were thrown away')
 }
 
 main()
