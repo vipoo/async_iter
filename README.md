@@ -47,7 +47,7 @@ Returns
 The transformed iteration
 
 ### Persisted
-#### `{value, completed} = await persisted(source, localPath, opts)`
+#### `items = await persisted(source, localPath, opts)`
 
 Persist items of an async iterator to files for later retrieval
 
@@ -69,7 +69,7 @@ returned from this callback will be emitted into the iteration, unless `underfin
 
 Returns
 
-A promise that resolves to an object containing:
+An async iteration, where each item resolves to an object containing:
 
 **Value**: the emitted value from the persisted store -
   as a buffer (ie: you need to apply, toString())
