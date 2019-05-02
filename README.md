@@ -24,6 +24,7 @@ with node 10 and above.
 
 #### Async Iterator functions
 
+* [bufferBy](#bufferby)
 * [map](#map)
 * [persisted](#persisted)
 * [rateLimit](#ratelimit)
@@ -35,8 +36,27 @@ with node 10 and above.
 * [interval](#interval)
 * [range](#range)
 
+### BufferBy
+#### `items = bufferBy(source, triggerFn, maxWaitTime)`
+
+Collect a set of items from source.  Emit as an array of those items.
+
+The batch is produced, when the `triggerFn` returns true, or the `maxWaitTime` has elasped since the last emitted value
+
+**source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)
+
+**triggerFn(value, currentBatch)**: called for each item in the source iteration.  Return true to trigger a batch
+
+**value** - the value of the current source item
+**currentBatch** - the current array of collected items - the last item will be `value`
+
+**maxWaitTime** - period is milliseconds to trigger a batch, if no batch has been emitted and there are pending values
+
+
 ### Map
 #### `items = map(source, fn)`
+
+Transforms each item in the supplied iteration using the supplied function
 
 **source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)
 
