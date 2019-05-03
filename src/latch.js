@@ -51,7 +51,7 @@ export async function* pump(fn) {
     return v
   }
 
-  setTimeout(() => {
+  process.nextTick(() => {
     async function* _target() {
       let count = 0
       try {
@@ -73,7 +73,7 @@ export async function* pump(fn) {
       .next()
       .then(() => fn(target, hasStoppedSignal.promise))
       .catch(err => _throw(err))
-  }, 0)
+  })
 
   keepAliveTimer()
 

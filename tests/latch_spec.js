@@ -1,4 +1,4 @@
-import {expect} from './test_helper'
+import {expect, eventually} from './test_helper'
 import {pump} from '../src'
 
 const delay = period => new Promise(res => setTimeout(res, period))
@@ -31,7 +31,7 @@ describe('#pump', () => {
     expect(hasStopped).to.be.pending
     await items.return()
     await expect(hasStopped).to.eventually.be.fulfilled
-    expect(p3).to.be.undefined
+    await eventually(() => expect(p3).to.deep.eq({value: undefined, done: true}))
   })
 
   it('push items, then iterate', async () => {
