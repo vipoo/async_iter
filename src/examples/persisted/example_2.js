@@ -1,5 +1,7 @@
+import 'source-map-support/register'
 import {persisted} from '../../persisted'
 import rmfr from 'rmfr'
+import {deferredPromise} from '../../promise_helpers'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 
@@ -12,7 +14,7 @@ async function* source(code, neverEnd = true) {
   yield await `${code}-${c++}`
 
   while (neverEnd)
-    yield await delay(100)
+    yield await delay(100).then(() => 'waiting...')
 }
 
 // Part process, then simulate 'crash' or abort
@@ -20,15 +22,22 @@ async function persistHalfIteration() {
   const items = await persisted(source('a', true), './tmp/buffering_example')
   let count = 0
 
-  for await (const item of items) {
-    console.log('a', item.value.toString())
-    item.completed()
+  const p = deferredPromise()
+  process.nextTick(async () => {
+    for await (const item of items) {
+      console.log('a', item.value.toString())
+      item.completed()
 
-    if (count++ >= 1) {
-      console.log('------')
-      break
+      if (count++ >= 1) {
+        console.log('------')
+        p.res()
+        await delay(2000)
+        break
+      }
     }
-  }
+  })
+
+  await p.promise
 }
 
 async function resumeIteration() {

@@ -17,7 +17,13 @@ async function getOverflowItem(state) {
   return await state.overFlowEvent()
 }
 
+function verifyDataType(data) {
+  if (typeof data !== 'string' && !Buffer.isBuffer(data))
+    throw new Error(`Can only persist strings and buffers: ${typeof (data)}`)
+}
 export async function pushItem(readDirectory, writingDirectory, data, state) {
+  verifyDataType(data)
+
   if (hasOverflowed(state)) {
     data = await getOverflowItem(state)
     if (!data)
@@ -27,7 +33,6 @@ export async function pushItem(readDirectory, writingDirectory, data, state) {
   const id = process.hrtime.bigint().toString().padStart(14, '0')
   const name = `${id}-${uuidv4()}`
   const filename = join(writingDirectory, name)
-  data = data.toString()
   state.currentByteCount = state.currentByteCount || 0
   state.currentByteCount += data.length
   await fs.writeFile(filename, data)
@@ -38,7 +43,7 @@ export async function popItem(readDirectory, processingDirectory, state) {
   let x
   do {
     x = await fs.readdir(readDirectory)
-    if ( x.length === 0)
+    if (x.length === 0)
       delay(100)
 
   } while (x.length === 0)

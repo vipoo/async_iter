@@ -12,15 +12,24 @@ export async function persisted(source, path, opts = {}) {
 
   const {push, stop, items, consumerHasStopped} = await open(path, opts)
 
-  setTimeout(async () => {
-    for await (const item of source) {
-      if (consumerHasStopped())
-        break
+  process.nextTick(async () => {
+    let item = await source.next()
+    try {
+      while (!item.done) {
+        if (consumerHasStopped())
+          break
 
-      await push(item)
+        await push(item.value)
+
+        item = await source.next()
+      }
+    } catch (err) {
+      source.throw(err)
+    } finally {
+      source.return()
+      await stop()
     }
-    await stop()
-  }, 0)
+  })
 
   return items
 }

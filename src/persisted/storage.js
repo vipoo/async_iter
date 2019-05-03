@@ -25,7 +25,6 @@ async function push(readDirectory, writingDirectory, opts, data) {
 }
 
 async function* getItems(readDirectory, processingDirectory, consumerStopped, opts) {
-  await restoreUnprocessedItems(readDirectory, processingDirectory, opts)
   try {
     while (true) {
       const {filename, item} = await popItem(readDirectory, processingDirectory, opts)
@@ -49,6 +48,13 @@ export async function open(storeDirectory, opts) {
   const consumerHasStopped = () => _consumerHasStopped
   const consumerStopped = () => { _consumerHasStopped = true }
 
+  await Promise.all([
+    mkdirp(readDirectory),
+    mkdirp(processingDirectory),
+    mkdirp(writingDirectory)
+  ])
+
+  await restoreUnprocessedItems(readDirectory, processingDirectory, opts)
   const items = getItems(readDirectory, processingDirectory, consumerStopped, opts)
 
   if (await hasStoppedFlag(storeDirectory))
@@ -59,12 +65,6 @@ export async function open(storeDirectory, opts) {
       await unflagAsStop(storeDirectory)
       await removeLast(readDirectory)
     }
-
-  await Promise.all([
-    mkdirp(readDirectory),
-    mkdirp(processingDirectory),
-    mkdirp(writingDirectory)
-  ])
 
   return {
     push: data => push(readDirectory, writingDirectory, opts, data),

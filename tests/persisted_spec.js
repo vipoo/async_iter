@@ -35,14 +35,14 @@ async function* source(neverEnd) {
   try {
     sourceReachStage1 = false
     sourceHasStopped = false
-    yield await 1
-    yield await 2
+    yield await '1'
+    yield await '2'
 
     sourceReachStage1 = true
     if (neverEnd) {
-      yield await 3
-      yield await 4
-      yield await 5
+      yield await '3'
+      yield await '4'
+      yield await '5'
     }
 
     while (neverEnd) {
@@ -175,9 +175,7 @@ describe('#persisted', () => {
       source = await pump(_target => {
         target = _target
         target.next('a string')
-        target.next(123)
         target.next(Buffer.from('a buffer'))
-        target.next({a: 'not - supported - object'})
       })
     })
 
@@ -194,11 +192,8 @@ describe('#persisted', () => {
 
     it('emits correct typed data', async () => {
       await expect(mappedItems.next()).to.eventually.deep.eq({value: Buffer.from('a string'), done: false})
-      await expect(mappedItems.next()).to.eventually.deep.eq({value: Buffer.from('123'), done: false})
       await expect(mappedItems.next()).to.eventually.deep.eq({value: Buffer.from('a buffer'), done: false})
-      await expect(mappedItems.next()).to.eventually.deep.eq({value: Buffer.from('[object Object]'), done: false})
     })
-
   })
 
   describe('shutting/stopping iteration', () => {
@@ -239,7 +234,7 @@ describe('#persisted', () => {
       mappedItems = items |> map(?, i => i.value.toString())
     })
 
-    afterEach(() => target.return())
+    afterEach(() => target ? target.return() : null)
 
     it('emits uptop maxBytes', async () => {
       await expect(mappedItems.next()).to.eventually.deep.eq({value: 'aaa', done: false})
