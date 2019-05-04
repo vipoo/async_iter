@@ -33,7 +33,7 @@ async function main() {
     await delay(500) //simulate effort to save value
     break
   }
-  console.log('Only consumed one item, rest were thrown away')
+  console.log('Only consumed one item, rest were not generated')
 }
 
 main()

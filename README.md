@@ -32,6 +32,7 @@ with node 10 and above.
 
 #### Itertor generators
 
+* [broadcast](#broadcast)
 * [pump](#pump)
 * [interval](#interval)
 * [range](#range)
@@ -170,6 +171,22 @@ Example:
     console.log(item)
 
 ```
+### Broadcast
+#### itemsGeneratorFunction = await broadcast(source)
+
+Returns a generator function that will subscribe to the source iteration.
+
+Each generator function, will iterate over the same source values.
+
+> No queing of values, so each consumer will be made to wait for all other consumers.
+
+> The source iteration is not started, until at least one subscription has started consuming.
+
+> The source iteration is paused, if all consumers are stopped.  Any new subscriptions will continue from where the source iteraion was iterated to.
+
+**Returns** - a generator function to create an iterable of the source items.
+
+**Returns.return** - Close all consumer iterators and close the source iteration.
 
 ## Pump
 #### items = await pump(callBack)
