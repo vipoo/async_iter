@@ -71,7 +71,7 @@ describe('#pump', () => {
 
     expect(hasStopped.now()).to.be.true
 
-    await expect(hasStopped).to.eventually.be.fulfilled
+    await expect(hasStopped).to.eventually.be.rejectedWith('blah')
   })
 
   it('push items concurrently, then iterate async', async () => {

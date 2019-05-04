@@ -48,6 +48,8 @@ export async function* pump(fn) {
   function extractNextValue() {
     const v = values
     values = undefined
+    if (v.error)
+      throw v.error
     return v
   }
 
@@ -77,24 +79,33 @@ export async function* pump(fn) {
 
   keepAliveTimer()
 
+  function terminateIteration(err) {
+    hasStopped = true
+    if (err)
+      hasStoppedSignal.rej(err)
+    else
+      hasStoppedSignal.res()
+    unlatchAll()
+    clearTimeout(keepAlive)
+    if (err)
+      throw err
+  }
+
   try {
     while (true) {
       await untilNextValueAvailable()
 
-      const {item, done, error} = extractNextValue()
+      const {item, done} = extractNextValue()
 
-      if (error)
-        throw error
       if (done)
         break
       yield item
 
       unLatchNextValue()
     }
+  } catch (err) {
+    terminateIteration(err)
   } finally {
-    hasStopped = true
-    hasStoppedSignal.res()
-    unlatchAll()
-    clearTimeout(keepAlive)
+    terminateIteration()
   }
 }
