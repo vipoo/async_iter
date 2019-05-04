@@ -1,29 +1,30 @@
 import {pump} from '../..'
 
 async function main() {
-  const pump1 = await pump(async (target, hasStopped) => {
-    const letters = ['a', 'b', 'c', 'd']
+  console.log('\n\n')
+  const pump1 = await pump(async (target) => {
+    const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 
     while (letters.length > 0) {
       const letter = letters.shift()
-
-      console.log('pump1:', letter)
       if ((await target.next(letter)).done)
         break
     }
 
-    console.log('pump1: return')
+    console.log(`pump1 stopped with remaining letters of ${letters}`)
     await target.return()
   })
 
-  const pump2 = await pump(async (target, hasStopped) => {
+  const pump2 = await pump(async (target) => {
     console.log('starting consumption of pump1')
+
     for await (const item of pump1) {
-      console.log('pump2:', item)
-      if ((await target.next(item)).done) break
+      const r = (await target.next(item))
+      if (r.done)
+        break
     }
 
-    console.log('pump2: return')
+    console.log('pump2 stopped')
     await target.return()
   })
 
@@ -34,7 +35,9 @@ async function main() {
     break
   }
 
-  console.log('Only consumed one item, rest where thrown away')
+  setTimeout(() =>
+    console.log('\nOnly consumed one item, b, c were lost, rest were not generated'),
+  250)
 }
 
 main()

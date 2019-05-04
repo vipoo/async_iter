@@ -1,15 +1,30 @@
 import {deferredPromise} from './promise_helpers'
 
-export async function* pump(fn) {
+export async function* pump(fn, marker) {
   let values = undefined
   let keepAlive
   let latch = deferredPromise()
   const unlatch = []
   const keepAliveTimer = () => keepAlive = setTimeout(keepAliveTimer, 250)
   let hasStopped = false
-  const hasStoppedSignal = deferredPromise()
+  const hasStoppedSignal = createStopSignal(fn.length >= 2)
+
+  function createStopSignal(callbackRequestsStopSignal) {
+    if (!callbackRequestsStopSignal)
+      return
+    const hasStoppedSignal = deferredPromise()
+    hasStoppedSignal.promise.now = () => {
+      hasStoppedSignal.promise.catch(err => { /*consume error*/ })
+      return hasStopped
+    }
+
+    return hasStoppedSignal
+  }
 
   async function _next(item, options = {}) {
+    if (hasStopped)
+      return {value: undefined, done: true}
+
     options = {done: false, ...options}
     const p = unlatch.length === 0 ? {marker: 'none'} : unlatch[unlatch.length - 1]
     const newP = deferredPromise()
@@ -69,11 +84,10 @@ export async function* pump(fn) {
     }
 
     const target = _target()
-    hasStoppedSignal.promise.now = () => hasStopped
 
     target
       .next()
-      .then(() => fn(target, hasStoppedSignal.promise))
+      .then(() => hasStoppedSignal ? fn(target, hasStoppedSignal.promise) : fn(target))
       .catch(err => _throw(err))
   })
 
@@ -81,10 +95,12 @@ export async function* pump(fn) {
 
   function terminateIteration(err) {
     hasStopped = true
-    if (err)
-      hasStoppedSignal.rej(err)
-    else
-      hasStoppedSignal.res()
+    if (hasStoppedSignal)
+      if (err)
+        hasStoppedSignal.rej(err)
+      else
+        hasStoppedSignal.res()
+
     unlatchAll()
     clearTimeout(keepAlive)
     if (err)
@@ -99,6 +115,7 @@ export async function* pump(fn) {
 
       if (done)
         break
+
       yield item
 
       unLatchNextValue()
