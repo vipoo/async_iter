@@ -11,7 +11,8 @@ async function main() {
     for await (const item of items)
       console.log(item)
   } catch (e) {
-    console.log(e.stack)
+    console.log(e.message)
+    console.error(e.stack)
   }
 
 }

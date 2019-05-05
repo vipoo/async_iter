@@ -1,31 +1,38 @@
 import {pump} from '../..'
 
 const delay = period => new Promise(res => setTimeout(res, period))
+const forTicks = () => new Promise(res => process.nextTick(res))
 
 async function main() {
   const items = await pump((target, hasStopped) => {
-    setTimeout(async () => {
-      for (let i = 1; i < 200; i++)
+    process.nextTick(async () => {
+      for (let i = 1; i < 200; i++) {
+        await forTicks()
         await target.next({y: i})
-    }, 100)
+      }
+    })
 
-    setTimeout(async () => {
-      for (let i = 1; i < 200; i++)
+    process.nextTick(async () => {
+      for (let i = 1; i < 200; i++) {
+        await forTicks()
         await target.next({x: i})
-    }, 100)
+      }
+    })
 
-    setTimeout(async () => {
-      for (let i = 1; i < 200; i++)
+    process.nextTick(async () => {
+      for (let i = 1; i < 200; i++) {
+        await forTicks()
         await target.next({z: i})
-    }, 100)
+      }
+    })
 
-    setTimeout(async () => {
+    process.nextTick(async () => {
       for (let i = 1; !hasStopped.now(); i++) {
         await delay(50)
         if ((await target.next({a: i})).done)
           break
       }
-    }, 100)
+    })
 
     setTimeout(() => target.return(), 2000)
   })

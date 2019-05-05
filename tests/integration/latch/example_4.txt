@@ -1,13 +1,3 @@
 1
 2
-Error: This is an error
-    at /home/dean/personal/async_iter/src/examples/latch/example_4.js:7:24
-    at processTicksAndRejections (internal/process/task_queues.js:88:5)
-    at process.runNextTicks [as _tickCallback] (internal/process/task_queues.js:58:3)
-    at Function.Module.runMain (internal/modules/cjs/loader.js:828:11)
-    at Object.<anonymous> (/home/dean/personal/async_iter/node_modules/@babel/node/lib/_babel-node.js:234:23)
-    at Module._compile (internal/modules/cjs/loader.js:759:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:770:10)
-    at Module.load (internal/modules/cjs/loader.js:628:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:555:12)
-    at Function.Module.runMain (internal/modules/cjs/loader.js:826:10)
+This is an error

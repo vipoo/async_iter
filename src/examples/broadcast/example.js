@@ -16,7 +16,8 @@ async function main() {
       for await (const item of items())
         console.log('consumer A:', item)
     } catch (err) {
-      console.log('consumer A errored', err.stack)
+      console.log('consumer A errored', err.message)
+      console.error(err.stack)
     }
   })
 
@@ -29,6 +30,7 @@ async function main() {
       }
     } catch (err) {
       console.log('consumer B errored', err.message)
+      console.error(err.stack)
     }
   })
 
