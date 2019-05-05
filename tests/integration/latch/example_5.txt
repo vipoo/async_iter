@@ -1,0 +1,4 @@
+pushing  a
+a
+Only consumed one item, rest were not generated
+return

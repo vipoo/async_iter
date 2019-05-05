@@ -1,0 +1,20 @@
+done....
+consumer A: 1
+consumer B: 1
+consumer A: 2
+consumer B: 2
+consumer A: 3
+consumer B: 3
+consumer A: 4
+consumer A: 5
+consumer A errored Error: blah
+    at _param (/home/dean/personal/async_iter/src/examples/broadcast/example.js:9:15)
+    at fn (/home/dean/personal/async_iter/src/map.js:5:11)
+    at processTicksAndRejections (internal/process/task_queues.js:88:5)
+    at process.runNextTicks [as _tickCallback] (internal/process/task_queues.js:58:3)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:828:11)
+    at Object.<anonymous> (/home/dean/personal/async_iter/node_modules/@babel/node/lib/_babel-node.js:234:23)
+    at Module._compile (internal/modules/cjs/loader.js:759:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:770:10)
+    at Module.load (internal/modules/cjs/loader.js:628:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:555:12)

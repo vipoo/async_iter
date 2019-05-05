@@ -1,5 +1,5 @@
 import {deferredPromise} from './promise_helpers'
-import {asIterator} from './lib/get_iterator'
+import {asAsyncIterator} from './lib/get_iterator'
 
 const True = true
 
@@ -44,7 +44,7 @@ export async function bufferBy(source, trigger, maxWaitTime) {
   }
 
   /* eslint complexity: ['error', 9] */
-  return asIterator({
+  return asAsyncIterator({
     [Symbol.asyncIterator]() {
       return {
         async next() {

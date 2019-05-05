@@ -2,8 +2,8 @@ import {persisted} from '../../persisted'
 import rmfr from 'rmfr'
 
 async function* source() {
-  yield await Buffer.from('Some data')
-  yield await process.hrtime.bigint().toString()
+  yield await Buffer.from('A buffer')
+  yield await 'a string'
 }
 
 async function main() {

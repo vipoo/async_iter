@@ -1,0 +1,11 @@
+
+
+
+Starting consumption of pump2
+starting consumption of pump1
+Retrieved Item: a
+Breaking iteration now.
+pump2 stopped
+pump1 stopped with remaining letters of d,e,f,g
+
+Only consumed one item, b, c were lost, rest were not generated

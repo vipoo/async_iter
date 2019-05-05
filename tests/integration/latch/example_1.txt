@@ -1,0 +1,8 @@
+starting consumption of values.
+starting pushing values.
+1
+2
+3
+all values pushed.
+Received has stopped signal
+consumed all values.

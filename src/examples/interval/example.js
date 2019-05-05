@@ -4,20 +4,22 @@ const delay = period => new Promise(res => setTimeout(res, period))
 
 let lastTime
 let startTime
+let count = 1
 function logTimeDiff(time) {
   const t = lastTime || startTime
   lastTime = time
   const diff = (time - t) / BigInt(1000000)
   const diffSinceStart =  (process.hrtime.bigint() - startTime) / BigInt(1000000)
 
-  console.log(`Recevied interval of ${diff} at ${diffSinceStart}`)
+  console.log(`Received interval count: ${count++}`)
+  console.error(`Diff: ${diff} at ${diffSinceStart}`)
 }
 
 async function simpleInterval() {
   lastTime = undefined
   startTime = process.hrtime.bigint()
-  console.log('Simple Interval - 500ms')
-  const items = await interval(500) |> take(?, 10)
+  console.log('Simple Interval - 50ms')
+  const items = await interval(50) |> take(?, 10)
 
   for await (const item of items)
     logTimeDiff(item)
@@ -29,11 +31,11 @@ async function nonQueingInterval() {
   lastTime = undefined
   startTime = process.hrtime.bigint()
   console.log('Non QueingInterval')
-  const items = await interval(500) |> take(?, 10)
+  const items = await interval(50) |> take(?, 10)
 
   for await (const item of items) {
     logTimeDiff(item) //Some interval will be dropped
-    await delay(1000) //processing is longer than interval rate
+    await delay(100) //processing is longer than interval rate
   }
 
   console.log('done....\n\n')

@@ -2,10 +2,10 @@ import {persisted} from '../../persisted'
 import rmfr from 'rmfr'
 
 async function* source() {
-  yield await process.hrtime.bigint().toString()
-  yield await process.hrtime.bigint().toString()
-  yield await process.hrtime.bigint().toString()
-  yield await process.hrtime.bigint().toString()
+  yield await '11'
+  yield await '22'
+  yield await '33'
+  yield await '44'
 }
 
 async function main() {

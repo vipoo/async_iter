@@ -4,10 +4,10 @@ import rmfr from 'rmfr'
 const delay = period => new Promise(res => setTimeout(res, period))
 
 async function* source() {
-  yield await process.hrtime.bigint().toString()
-  yield await process.hrtime.bigint().toString()
-  yield await process.hrtime.bigint().toString()
-  yield await process.hrtime.bigint().toString()
+  yield await 'aa'
+  yield await 'bb'
+  yield await 'cc'
+  yield await 'dd'
 
   while (true)
     yield await delay(100)

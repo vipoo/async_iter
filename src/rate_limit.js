@@ -1,8 +1,9 @@
 import {deferredPromise} from './promise_helpers'
+import {asAsyncIterator} from './lib/get_iterator'
 
 /* eslint complexity: ['error', 4] */
 export async function* rateLimit(source, maxAmount, perPeriod, counter = () => 1) {
-  source = await source
+  source = await asAsyncIterator(source)
 
   let forBucketAboveZero = deferredPromise()
   forBucketAboveZero.res()
