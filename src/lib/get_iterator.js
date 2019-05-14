@@ -7,4 +7,3 @@ export async function* asAsyncIterator(source) {
   for await (const item of source)
     yield item
 }
-
