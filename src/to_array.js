@@ -1,6 +1,16 @@
-import {asAsyncIterator} from './lib/get_iterator'
+import {asAsyncIterator, syncType} from './lib/get_iterator'
 
-export async function toArray(source) {
+export const toArray = syncType(syncToArray, asyncToArray)
+
+function syncToArray(source) {
+  const result = []
+  for (const item of source)
+    result.push(item)
+
+  return result
+}
+
+async function asyncToArray(source) {
   source = await asAsyncIterator(source)
 
   const result = []

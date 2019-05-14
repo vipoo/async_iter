@@ -1,6 +1,6 @@
 import {take} from '../..'
 
-async function main() {
+function main() {
   const items = take([1, 2, 3, 4, 5], 3)
 
   for (const item of items)
