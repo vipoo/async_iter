@@ -1,11 +1,6 @@
-import {asAsyncIterator} from './lib/get_iterator'
+import {asAsyncIterator, syncType} from './lib/get_iterator'
 
-export function map(source, count) {
-  if (!source.then && source[Symbol.iterator])
-    return syncMap(source, count)
-
-  return asyncMap(source, count)
-}
+export const map = syncType(syncMap, asyncMap)
 
 function* syncMap(source, fn) {
   let count = 0

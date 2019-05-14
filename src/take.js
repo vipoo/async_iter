@@ -1,11 +1,6 @@
-import {asAsyncIterator} from './lib/get_iterator'
+import {syncType, asAsyncIterator} from './lib/get_iterator'
 
-export function take(source, count) {
-  if (!source.then && source[Symbol.iterator])
-    return syncTake(source, count)
-
-  return asyncTake(source, count)
-}
+export const take = syncType(syncTake, asyncTake)
 
 function* syncTake(source, count) {
   for (const x of source) {
