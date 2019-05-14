@@ -1,6 +1,14 @@
-import {asAsyncIterator} from './lib/get_iterator'
+import {asAsyncIterator, syncType} from './lib/get_iterator'
 
-export async function* filter(source, fn) {
+export const filter = syncType(syncFilter, asyncFilter)
+
+function* syncFilter(source, fn) {
+  for (const x of source)
+    if (fn(x))
+      yield x
+}
+
+async function* asyncFilter(source, fn) {
   source = await asAsyncIterator(source)
 
   for await (const x of source)
