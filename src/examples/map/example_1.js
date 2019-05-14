@@ -1,7 +1,7 @@
-import {take} from '../..'
+import {map} from '../..'
 
 async function main() {
-  const items = take([1, 2, 3, 4, 5], 3)
+  const items = map([1, 2, 3, 4, 5], x => x * 2)
 
   for (const item of items)
     console.log(item)
