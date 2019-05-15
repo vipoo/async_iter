@@ -3,6 +3,7 @@ import {pump} from '../..'
 async function main() {
   await pump(async target => {
     console.log('never get here, as no consumer is started')
+    await target.next()
     await target.next(1)
     await target.next(2)
     await target.next(3)

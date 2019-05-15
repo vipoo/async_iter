@@ -4,7 +4,7 @@ async function main() {
   console.log('\n\n')
   const pump1 = await pump(async (target) => {
     const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-
+    await target.next()
     while (letters.length > 0) {
       const letter = letters.shift()
       if ((await target.next(letter)).done)
@@ -17,6 +17,7 @@ async function main() {
 
   const pump2 = await pump(async (target) => {
     console.log('starting consumption of pump1')
+    await target.next()
 
     for await (const item of pump1) {
       const r = (await target.next(item))

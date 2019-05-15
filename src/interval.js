@@ -1,4 +1,4 @@
-import {pump} from './latch'
+import {pump} from './pump'
 
 function defaultMarker() {
   return process.hrtime.bigint()

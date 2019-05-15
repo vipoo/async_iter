@@ -4,10 +4,17 @@ import {pump} from '../src'
 const delay = period => new Promise(res => setTimeout(res, period))
 
 describe('#pump', () => {
+  it('raises error is not passed an async function', async () => {
+    const items = await pump((t, s) => {})
+
+    return expect(items.next()).to.be.rejectedWith('pump callback function has not returned a promise')
+  })
+
   it('push items are blocked, until consumed', async () => {
     let p1, p2, p3, hasStopped
     const items = await pump(async (t, s) => {
       hasStopped = s
+      await t.next()
       p1 = await t.next(1)
       p2 = await t.next(2)
       p3 = await t.next(3)
@@ -36,6 +43,7 @@ describe('#pump', () => {
 
   it('push items, then iterate', async () => {
     const items = await pump((async t => {
+      await t.next()
       await t.next(1)
       await t.next(2)
       await t.return()
@@ -48,6 +56,7 @@ describe('#pump', () => {
   it('push items, then iterate async', async () => {
     const items = await pump(async t => {
       await delay(100)
+      await t.next()
       await t.next(1)
       await t.next(2)
       await t.return()
@@ -58,11 +67,13 @@ describe('#pump', () => {
 
   it('push error, then iterate throws', async () => {
     let hasStopped
+    const error = new Error('blah')
     const items = await pump(async (t, s) => {
       hasStopped = s
+      await t.next()
       await t.next(1)
       await t.next(2)
-      await t.throw(new Error('blah'))
+      await t.throw(error)
     })
 
     await expect(items.next()).to.eventually.deep.eq({value: 1, done: false})
@@ -71,12 +82,12 @@ describe('#pump', () => {
 
     expect(hasStopped.now()).to.be.true
 
-    await expect(hasStopped).to.eventually.be.rejectedWith('blah')
+    await expect(hasStopped).to.eventually.be.eq(error)
   })
 
   it('push items concurrently, then iterate async', async () => {
     const items = await pump(async t => {
-      await Promise.all([t.next(1), t.next(2)])
+      await Promise.all([t.next(), t.next(1), t.next(2)])
       await t.return()
     })
 
@@ -87,6 +98,7 @@ describe('#pump', () => {
     let hasStopped
     const items = await pump(async (t, s) => {
       hasStopped = s
+      await t.next()
       await t.next(1)
       await delay(100)
       await t.next(2)
@@ -105,6 +117,7 @@ describe('#pump', () => {
     const items = await pump(async (t, s) => {
       hasStopped = s
       await Promise.all([
+        t.next(),
         t.next(1),
         t.next(2),
         t.next(3)

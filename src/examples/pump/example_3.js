@@ -4,7 +4,8 @@ const delay = period => new Promise(res => setTimeout(res, period))
 const forTicks = () => new Promise(res => process.nextTick(res))
 
 async function main() {
-  const items = await pump((target, hasStopped) => {
+  const items = await pump(async (target, hasStopped) => {
+    await target.next()
     process.nextTick(async () => {
       for (let i = 1; i < 200; i++) {
         await forTicks()

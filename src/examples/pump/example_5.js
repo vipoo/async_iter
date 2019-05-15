@@ -13,7 +13,7 @@ async function getNextValue() {
 const True = true
 async function main() {
   const items = await pump(async (target, hasStopped) => {
-
+    await target.next()
     while (True) {
       const letter = await Promise.race([getNextValue(), hasStopped])
       if (!letter)

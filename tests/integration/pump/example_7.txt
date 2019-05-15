@@ -1,0 +1,3 @@
+attempt to iterator over non async pump, errors
+pump callback function has not returned a promise
+consumed all values.

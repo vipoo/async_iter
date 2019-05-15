@@ -1,9 +1,23 @@
-import {deferredPromise} from './promise_helpers'
+import {promiseSignal} from './lib/promise_helpers'
 
-export async function* pump(fn, marker) {
+class ArgumentError extends Error {
+  constructor() {
+    super('pump callback function has not returned a promise')
+    this.name = this.constructor.name
+
+    Error.captureStackTrace(this, this.constructor.name)
+  }
+}
+
+export function pump(fn, marker) {
+  const myObject = new ArgumentError()
+  return _pump(fn, marker, myObject)
+}
+
+async function* _pump(fn, marker, myObject) {
   let values = undefined
   let keepAlive
-  let latch = deferredPromise()
+  let latch = promiseSignal()
   const unlatch = []
   const keepAliveTimer = () => keepAlive = setTimeout(keepAliveTimer, 250)
   let hasStopped = false
@@ -12,9 +26,8 @@ export async function* pump(fn, marker) {
   function createStopSignal(callbackRequestsStopSignal) {
     if (!callbackRequestsStopSignal)
       return
-    const hasStoppedSignal = deferredPromise()
+    const hasStoppedSignal = promiseSignal()
     hasStoppedSignal.promise.now = () => {
-      hasStoppedSignal.promise.catch(err => { /*consume error*/ })
       return hasStopped
     }
 
@@ -27,7 +40,7 @@ export async function* pump(fn, marker) {
 
     options = {done: false, ...options}
     const p = unlatch.length === 0 ? {marker: 'none'} : unlatch[unlatch.length - 1]
-    const newP = deferredPromise()
+    const newP = promiseSignal()
     unlatch.push(newP)
     await p.promise
 
@@ -45,7 +58,7 @@ export async function* pump(fn, marker) {
 
   async function untilNextValueAvailable() {
     await latch.promise
-    latch = deferredPromise({})
+    latch = promiseSignal({})
   }
 
   function unLatchNextValue() {
@@ -85,10 +98,16 @@ export async function* pump(fn, marker) {
 
     const target = _target()
 
-    target
-      .next()
-      .then(() => hasStoppedSignal ? fn(target, hasStoppedSignal.promise) : fn(target))
-      .catch(err => _throw(err))
+    let operation
+    if (hasStoppedSignal)
+      operation = fn(target, hasStoppedSignal.promise)
+    else
+      operation = fn(target)
+
+    if (operation && operation.catch)
+      operation.catch(err => _throw(err))
+    else
+      return _throw(myObject)
   })
 
   keepAliveTimer()
@@ -96,8 +115,9 @@ export async function* pump(fn, marker) {
   function terminateIteration(err) {
     hasStopped = true
     if (hasStoppedSignal)
-      if (err)
-        hasStoppedSignal.rej(err)
+      if (err) {
+        hasStoppedSignal.res(err)
+      }
       else
         hasStoppedSignal.res()
 
@@ -110,7 +130,6 @@ export async function* pump(fn, marker) {
   try {
     while (true) {
       await untilNextValueAvailable()
-
       const {item, done} = extractNextValue()
 
       if (done)
