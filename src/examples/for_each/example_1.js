@@ -1,6 +1,6 @@
 import {range, forEach} from '../..'
 
-async function main() {
+function main() {
   range({start: 1, end: 20})
     |> forEach(?, x => console.log(x))
 
