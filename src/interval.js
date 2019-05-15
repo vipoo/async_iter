@@ -1,27 +1,36 @@
 import {pump} from './pump'
 
-function defaultMarker() {
-  return process.hrtime.bigint()
-}
+export function interval(period, cancel = new Promise(() => {})) {
+  return pump(async target => {
+    const result = await Promise.race([target.next(), cancel.then(() => ({done: true}))])
+    if (result.done)
+      return target.return()
 
-export async function interval(period, fn = defaultMarker) {
-  return pump(target => {
-    let intervalHandle = undefined
-    let currentPromise = undefined
-    const intervalFunction = async () => {
-      if (currentPromise)
-        return
-
-      const v = await fn()
-      currentPromise = await target.next(v)
-      if (currentPromise.done) {
+    return new Promise(res => {
+      cancel.then(() => {
         currentPromise = null
         clearInterval(intervalHandle)
-        await target.return()
-      }
-      currentPromise = null
-    }
+        target.return()
+        res()
+      })
+      let intervalHandle = undefined
+      let currentPromise = undefined
+      const intervalFunction = async () => {
+        if (currentPromise)
+          return
 
-    intervalHandle = setInterval(intervalFunction, period)
+        const v = process.hrtime.bigint()
+        currentPromise = await Promise.race([target.next(v), cancel.then(() => ({done: true}))])
+        if (currentPromise.done) {
+          currentPromise = null
+          clearInterval(intervalHandle)
+          await target.return()
+          res()
+        }
+        currentPromise = null
+      }
+
+      intervalHandle = setInterval(intervalFunction, period)
+    })
   })
 }

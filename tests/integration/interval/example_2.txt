@@ -1,0 +1,2 @@
+Can abort an interval iteration
+done

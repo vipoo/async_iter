@@ -172,8 +172,9 @@ describe('#persisted', () => {
     let source
     let target
     beforeEach(async () => {
-      source = await pump(_target => {
+      source = await pump(async _target => {
         target = _target
+        target.next()
         target.next('a string')
         target.next(Buffer.from('a buffer'))
       })
@@ -199,7 +200,10 @@ describe('#persisted', () => {
   describe('shutting/stopping iteration', () => {
     let source
 
-    beforeEach(async () => source = await pump(target => target.return()))
+    beforeEach(async () => source = await pump(async target => {
+      target.next()
+      target.return()
+    }))
 
     it('terminates an empty iterations', async () => {
       const dir = getNextDir()
@@ -215,8 +219,9 @@ describe('#persisted', () => {
     let sourceConsumed
     let target
     beforeEach(async () => {
-      source = await pump(_target => {
+      source = await pump(async _target => {
         target = _target
+        target.next()
         target.next('aaa')
         target.next('bbb')
         target.next('ccc')

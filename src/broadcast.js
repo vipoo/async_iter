@@ -76,6 +76,7 @@ export function broadcast(source) {
       })
       if (sourceHasStopped)
         throw new Error('Source iteration has already completed')
+      await target.next()
       subscribers[key] = target
       firstSubscription.res()
       if (inclusiveOfPreviousValue && lastEmittedValue)
