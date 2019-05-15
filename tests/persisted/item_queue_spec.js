@@ -1,4 +1,4 @@
-import {delay, expect, sinon, subjectEach} from './../test_helper'
+import {delay, expect, sinon, subjectEach} from '../test_helper'
 import rmfr from 'rmfr'
 import fs from 'fs'
 import path from 'path'

@@ -1,4 +1,4 @@
-import {take} from '../../take'
+import {take} from '../..'
 
 async function main() {
   const items = take([1, 2, 3, 4, 5], 3)

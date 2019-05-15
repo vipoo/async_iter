@@ -17,7 +17,6 @@ async function main() {
         console.log('consumer A:', item)
     } catch (err) {
       console.log('consumer A errored', err.message)
-      console.error(err.stack)
     }
   })
 
@@ -30,7 +29,6 @@ async function main() {
       }
     } catch (err) {
       console.log('consumer B errored', err.message)
-      console.error(err.stack)
     }
   })
 

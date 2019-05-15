@@ -34,7 +34,7 @@ function packageNextEmit(state, period) {
 }
 
 export async function bufferBy(source, trigger, maxWaitTime) {
-  source = await source
+  source = await asAsyncIterator(source)
 
   const state = {
     buffer: [],

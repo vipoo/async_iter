@@ -1,6 +1,8 @@
+import {asAsyncIterator} from './lib/get_iterator'
 
 export async function* map(source, fn) {
-  source = source.then ? (await source) : source
+  source = await asAsyncIterator(source)
+  let count = 0
   for await (const item of source)
     yield fn(item)
 }

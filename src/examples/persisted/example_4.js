@@ -1,4 +1,4 @@
-import {persisted} from '../../persisted'
+import {persisted} from '../..'
 import rmfr from 'rmfr'
 
 async function* source(code) {

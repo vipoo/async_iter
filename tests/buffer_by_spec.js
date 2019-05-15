@@ -1,6 +1,5 @@
 import {expect} from './test_helper'
-import {bufferBy} from '../src/buffer_by'
-import {take} from '../src/take'
+import {take, bufferBy} from '../src'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 

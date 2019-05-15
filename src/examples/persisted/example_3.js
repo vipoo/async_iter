@@ -1,4 +1,4 @@
-import {persisted} from '../../persisted'
+import {persisted} from '../..'
 import rmfr from 'rmfr'
 
 const delay = period => new Promise(res => setTimeout(res, period))
