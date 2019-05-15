@@ -1,7 +1,7 @@
 import 'source-map-support/register'
-import {persisted} from '../../persisted'
+import {persisted} from '../..'
 import rmfr from 'rmfr'
-import {deferredPromise} from '../../promise_helpers'
+import {promiseSignal} from '../../lib/promise_helpers'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 
@@ -22,7 +22,7 @@ async function persistHalfIteration() {
   const items = await persisted(source('a', true), './tmp/buffering_example')
   let count = 0
 
-  const p = deferredPromise()
+  const p = promiseSignal()
   process.nextTick(async () => {
     for await (const item of items) {
       console.log('a', item.value.toString())

@@ -1,11 +1,11 @@
-import {deferredPromise} from './promise_helpers'
+import {promiseSignal} from './lib/promise_helpers'
 import {asAsyncIterator} from './lib/get_iterator'
 
 const True = true
 
 function timeoutTrigger(state, period) {
   clearTimeout(state.timerHandle)
-  const timeout = deferredPromise()
+  const timeout = promiseSignal()
   state.timerHandle = setTimeout(() => timeout.res(), period)
   state.promise = timeout.promise.then(() => ({timed: true}))
 }

@@ -1,11 +1,11 @@
 import {expect, subjectEach} from './test_helper'
-import {deferredPromise} from '../src/promise_helpers'
+import {promiseSignal} from '../src/lib/promise_helpers'
 
 describe('promise_helpers', () => {
-  describe('#deferredPromise', () => {
+  describe('#promiseSignal', () => {
     let deferredP
 
-    subjectEach(() => deferredP = deferredPromise())
+    subjectEach(() => deferredP = promiseSignal())
 
     it('promise is initially pending', () => {
       return expect(deferredP.promise).to.be.pending

@@ -1,5 +1,4 @@
-import {bufferBy} from '../../buffer_by'
-import {range} from '../../range'
+import {range, bufferBy} from '../..'
 
 async function main() {
   const items = await (

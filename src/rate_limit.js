@@ -1,11 +1,11 @@
-import {deferredPromise} from './promise_helpers'
+import {promiseSignal} from './lib/promise_helpers'
 import {asAsyncIterator} from './lib/get_iterator'
 
 /* eslint complexity: ['error', 4] */
 export async function* rateLimit(source, maxAmount, perPeriod, counter = () => 1) {
   source = await asAsyncIterator(source)
 
-  let forBucketAboveZero = deferredPromise()
+  let forBucketAboveZero = promiseSignal()
   forBucketAboveZero.res()
 
   let bucket = maxAmount
@@ -24,7 +24,7 @@ export async function* rateLimit(source, maxAmount, perPeriod, counter = () => 1
         return
       bucket = bucket - counter(item.value)
       if (bucket < 0) {
-        forBucketAboveZero = deferredPromise()
+        forBucketAboveZero = promiseSignal()
         await forBucketAboveZero.promise
       }
       yield item.value

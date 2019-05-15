@@ -1,11 +1,11 @@
-import {pump} from './latch'
-import {deferredPromise} from './promise_helpers'
+import {pump} from './pump'
+import {promiseSignal} from './lib/promise_helpers'
 
 export function broadcast(source) {
   let count = 1
   const subscribers = {}
   const pumps = {}
-  let firstSubscription = deferredPromise()
+  let firstSubscription = promiseSignal()
   let sourceHasStopped = false
   let lastEmittedValue = undefined
   let broadcastHasStopped = false
@@ -48,7 +48,7 @@ export function broadcast(source) {
           break
 
         if (Object.entries(subscribers).length === 0) {
-          firstSubscription = deferredPromise()
+          firstSubscription = promiseSignal()
           await firstSubscription.promise
         }
       }
