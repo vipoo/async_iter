@@ -39,13 +39,20 @@ export async function pushItem(readDirectory, writingDirectory, data, state) {
   await fs.rename(filename, join(readDirectory, name))
 }
 
+function fsWatch(dir) {
+  let watcher
+  return new Promise((res, rej) => watcher = _fs.watch(dir, {}, (...args) => {
+    watcher.close()
+    res(args)
+  }))
+}
+
 export async function popItem(readDirectory, processingDirectory, state) {
   let x
   do {
     x = await fs.readdir(readDirectory)
     if (x.length === 0)
-      delay(100)
-
+      await Promise.race([delay(1000), fsWatch(readDirectory)])
   } while (x.length === 0)
 
   const name = x.sort()[0]
