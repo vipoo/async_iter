@@ -1,25 +1,8 @@
 import {expect} from '../test_helper'
-import {pump, map, toArray} from '../../src'
-import childProcess from 'child_process'
+import {filter, map, toArray, spawn} from '../../src'
 import path from 'path'
 import _fs from 'fs'
 const fs = _fs.promises
-
-export async function spawn(...args) {
-  const output = await (pump(async (target, hasStopped) => {
-    target.next()
-    const p = childProcess.spawn(...args)
-
-    p.stdout.on('data', stdout => target.next(stdout))
-    p.on('close', code => code === 0 ? target.return() : target.throw(new Error('Non zero exit')))
-
-    hasStopped.then(() => p.kill())
-  })
-    |> map(?, x => x.toString('utf-8'))
-    |> toArray(?))
-
-  return output.join('')
-}
 
 function getExamples() {
   const examples = []
@@ -28,6 +11,7 @@ function getExamples() {
     .filter(r => r.isDirectory())
     .map(r => r.name)
     .forEach(r => _fs.readdirSync(path.join('src/examples', r))
+      .filter(r => r.startsWith('example'))
       .forEach(f => examples.push(path.join(r, path.basename(f, '.js')))))
 
   return examples
@@ -41,9 +25,13 @@ function buildExamples(examples) {
 
       it(`${i} - ${e}.js`, async function() {
         this.timeout(10000)
-        const items = await spawn('babel-node', [`./src/examples/${e}.js`])
+        const items = (await (spawn('babel-node', [`./src/examples/${e}.js`])
+                        |> filter(?, x => x.stdout)
+                        |> map(?, x => x.stdout.toString('utf-8'))
+                        |> toArray(?))).join('').split('\n')
+
         const expeted = await fs.readFile(`./tests/integration/${e}.txt`, 'utf-8')
-        expect(items.split('\n')).to.deep.eq(expeted.split('\n'))
+        expect(items).to.deep.eq(expeted.split('\n'))
       })
     })
   })
