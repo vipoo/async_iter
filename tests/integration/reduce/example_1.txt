@@ -1,0 +1,7 @@
+total: 5, currentValue: 1, currentIndex: 0
+total: 6, currentValue: 2, currentIndex: 1
+total: 8, currentValue: 3, currentIndex: 2
+total: 11, currentValue: 4, currentIndex: 3
+total: 15, currentValue: 5, currentIndex: 4
+reduction:  20
+done....
