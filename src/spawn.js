@@ -17,7 +17,6 @@ export async function spawn(...args) {
   return await pump(async (target, hasStopped) => {
     await target.next()
     const p = childProcess.spawn(...args)
-
     p.stdout.on('data', stdout => {
       target.next({stdout}).then(() => p.kill('SIGCONT'))
       p.kill('SIGSTOP')

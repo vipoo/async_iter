@@ -33,9 +33,14 @@ function packageNextEmit(state, period) {
     return {value: emittedValue, done: false}
 }
 
-export async function bufferBy(source, trigger, maxWaitTime) {
-  source = await asAsyncIterator(source)
+export function bufferBy(source, trigger, maxWaitTime) {
+  if (source.then)
+    return source.then(asAsyncIterator).then(s => __bufferBy(s, trigger, maxWaitTime))
 
+  return __bufferBy(asAsyncIterator(source), trigger, maxWaitTime)
+}
+
+function __bufferBy(source, trigger, maxWaitTime) {
   const state = {
     buffer: [],
     nextValue: undefined,
