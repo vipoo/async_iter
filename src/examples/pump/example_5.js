@@ -5,7 +5,7 @@ const delay = period => new Promise(res => setTimeout(res, period))
 const letters = ['a', 'b', 'c', 'd']
 
 async function getNextValue() {
-  await delay(1000) // simulate effort to get value
+  await delay(100) // simulate effort to get value
 
   return letters.length === 0 ? undefined : letters.shift()
 }
@@ -30,7 +30,7 @@ async function main() {
 
   for await (const item of items) {
     console.log(item)
-    await delay(500) //simulate effort to save value
+    await delay(50) //simulate effort to save value
     break
   }
   console.log('Only consumed one item, rest were not generated')

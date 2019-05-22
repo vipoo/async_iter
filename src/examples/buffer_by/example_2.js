@@ -8,7 +8,7 @@ async function myForEach(source) {
 async function main() {
   await (
     range({start: 1, end: 20})
-    |> bufferBy(?, (item, buffer) => buffer.length === 5, 1000)
+    |> bufferBy(?, (item, buffer) => buffer.length === 5, 100)
     |> myForEach(?, console.log))
 
   console.log('done....')

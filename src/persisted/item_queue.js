@@ -52,7 +52,7 @@ export async function popItem(readDirectory, processingDirectory, state) {
   do {
     x = await fs.readdir(readDirectory)
     if (x.length === 0)
-      await Promise.race([delay(1000), fsWatch(readDirectory)])
+      await Promise.race([delay(200), fsWatch(readDirectory)])
   } while (x.length === 0)
 
   const name = x.sort()[0]

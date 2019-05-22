@@ -1,3 +1,4 @@
+import childProcess from 'child_process'
 import {expect} from '../test_helper'
 import {filter, map, toArray, spawn} from '../../src'
 import path from 'path'
@@ -24,8 +25,8 @@ function buildExamples(examples) {
         return it(`${e}.js`)
 
       it(`${i} - ${e}.js`, async function() {
-        this.timeout(10000)
-        const items = (await (spawn('babel-node', [`./src/examples/${e}.js`])
+        this.timeout(3000)
+        const items = (await (spawn('node', [`./examples/${e}.js`])
                         |> filter(?, x => x.stdout)
                         |> map(?, x => x.stdout.toString('utf-8'))
                         |> toArray(?))).join('').split('\n')
@@ -38,5 +39,6 @@ function buildExamples(examples) {
 }
 
 describe('integration suite', () => {
+  childProcess.execFileSync('npm', ['run', 'build'])
   buildExamples(getExamples())
 })

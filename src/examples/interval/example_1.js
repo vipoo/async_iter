@@ -19,7 +19,7 @@ async function simpleInterval() {
   lastTime = undefined
   startTime = process.hrtime.bigint()
   console.log('Simple Interval - 50ms')
-  const items = await interval(50) |> take(?, 10)
+  const items = await interval(5) |> take(?, 10)
 
   for await (const item of items)
     logTimeDiff(item)
@@ -31,11 +31,11 @@ async function nonQueingInterval() {
   lastTime = undefined
   startTime = process.hrtime.bigint()
   console.log('Non QueingInterval')
-  const items = await interval(50) |> take(?, 10)
+  const items = await interval(5) |> take(?, 10)
 
   for await (const item of items) {
     logTimeDiff(item) //Some interval will be dropped
-    await delay(100) //processing is longer than interval rate
+    await delay(10) //processing is longer than interval rate
   }
 
   console.log('done....\n\n')

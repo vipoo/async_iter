@@ -35,7 +35,7 @@ async function main() {
       }
     })
 
-    setTimeout(() => target.return(), 2000)
+    setTimeout(() => target.return(), 200)
   })
 
   for await (const item of items)

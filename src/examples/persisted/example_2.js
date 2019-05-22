@@ -31,7 +31,7 @@ async function persistHalfIteration() {
       if (count++ >= 1) {
         console.log('------')
         p.res()
-        await delay(2000)
+        await delay(20)
         break
       }
     }
