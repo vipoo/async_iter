@@ -9,12 +9,13 @@ class SpawnError extends Error {
     this.stack = stack
   }
 }
-export async function spawn(...args) {
+
+export function spawn(...args) {
 
   const stackTrace = {}
   Error.captureStackTrace(stackTrace)
 
-  return await pump(async (target, hasStopped) => {
+  return pump(async (target, hasStopped) => {
     await target.next()
     const p = childProcess.spawn(...args)
     p.stdout.on('data', stdout => {

@@ -1,6 +1,5 @@
 
 export async function* asAsyncIterator(source) {
-  source = source.then ? await source : source
   if (source.next)
     return yield* source
 
@@ -10,7 +9,7 @@ export async function* asAsyncIterator(source) {
 
 export function syncType(sync, async) {
   return (source, ...args) => {
-    if (!source.then && source[Symbol.iterator])
+    if (source[Symbol.iterator])
       return sync(source, ...args)
 
     return async(source, ...args)
