@@ -9,13 +9,13 @@ export async function* rateLimit(source, maxAmount, perPeriod, counter = () => 1
   forBucketAboveZero.res()
 
   let bucket = maxAmount
-  const intervalPeriod = (perPeriod / maxAmount)
+  const inc = (100 / perPeriod) * maxAmount
   const interval = setInterval(() => {
-    bucket = Math.min(maxAmount, bucket + 1)
+    bucket = Math.min(maxAmount, bucket + inc)
     if (bucket >= 0)
       forBucketAboveZero.res()
 
-  }, intervalPeriod)
+  }, 100)
 
   try {
     while (true) {
