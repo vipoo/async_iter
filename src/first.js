@@ -7,7 +7,7 @@ function syncFirst(source) {
     return item
 }
 
-async function asyncFirst(source, fn, total) {
+async function asyncFirst(source) {
   source = await asAsyncIterator(source)
 
   for await (const item of source)
