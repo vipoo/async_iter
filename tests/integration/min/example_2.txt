@@ -1,0 +1,4 @@
+example 1 min:  1
+example 2 min:  a
+example 3 min:  { a: 1 }
+example 4 min:  { a: 1 }
