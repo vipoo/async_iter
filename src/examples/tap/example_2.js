@@ -1,4 +1,4 @@
-import {tap} from '../..'
+import {tap} from '../../pipeline'
 
 async function* source() {
   yield await 1
@@ -9,7 +9,7 @@ async function* source() {
 }
 
 async function main() {
-  const items = tap(source(), x => process.stdout.write(`tap: ${x}`))
+  const items = source() |> tap(x => process.stdout.write(`tap: ${x}`))
 
   for await (const _ of items) // eslint-disable-line no-unused-vars
     console.log('!')

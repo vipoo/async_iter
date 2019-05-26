@@ -1,4 +1,4 @@
-import {forEach} from '../..'
+import {forEach} from '../../pipeline'
 
 async function* source() {
   yield await 1
@@ -9,7 +9,7 @@ async function* source() {
 }
 
 async function main() {
-  await forEach(source(), x => console.log(x))
+  await (source() |> forEach(x => console.log(x)))
 
   console.log('done....')
 }
