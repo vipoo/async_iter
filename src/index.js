@@ -1,5 +1,6 @@
 export * from './take'
 export * from './buffer_by'
+export * from './buffer_group_by'
 export * from './persisted'
 export * from './range'
 export * from './map'
