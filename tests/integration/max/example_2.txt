@@ -1,0 +1,4 @@
+example 1 max:  5
+example 2 max:  r
+example 3 max:  { a: 5 }
+example 4 max:  { a: 5 }
