@@ -1,4 +1,4 @@
-import {filter} from '../..'
+import {filter} from '../../pipeline'
 
 function* source() {
   yield 1
@@ -9,7 +9,7 @@ function* source() {
 }
 
 function main() {
-  const items = filter(source(), x => x % 2 === 0)
+  const items = source() |> filter(x => x % 2 === 0)
 
   for (const item of items)
     console.log(item)

@@ -1,4 +1,4 @@
-import {filter} from '../..'
+import {filter} from '../../pipeline'
 
 async function* source() {
   yield await 1
@@ -9,7 +9,7 @@ async function* source() {
 }
 
 async function main() {
-  const items = filter(source(), x => x % 2 === 0)
+  const items = source() |> filter(x => x % 2 === 0)
 
   for await (const item of items)
     console.log(item)
