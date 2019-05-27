@@ -1,4 +1,4 @@
-import {reduce} from '../..'
+import {reduce} from '../../pipeline'
 
 async function* source() {
   yield await 1
@@ -9,10 +9,10 @@ async function* source() {
 }
 
 async function main() {
-  const reduction = await reduce(source(), async (total, currentValue, currentIndex, array) => {
+  const reduction = await (source() |> reduce(async (total, currentValue, currentIndex, array) => {
     console.log(`total: ${total}, currentValue: ${currentValue}, currentIndex: ${currentIndex}`)
     return total + currentValue
-  }, 5)
+  }, 5))
 
   console.log('reduction: ', reduction)
   console.log('done....')

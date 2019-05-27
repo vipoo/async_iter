@@ -1,4 +1,4 @@
-import {takeWhile} from '../..'
+import {takeWhile} from '../../pipeline'
 
 async function* source() {
   yield await 1
@@ -9,7 +9,7 @@ async function* source() {
 }
 
 async function main() {
-  const items = takeWhile(source(), x => x <= 3)
+  const items = source() |> takeWhile(x => x <= 3)
 
   for await (const item of items)
     console.log(item)

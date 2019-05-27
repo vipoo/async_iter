@@ -1,4 +1,4 @@
-import {byLines} from '../..'
+import {byLines} from '../../pipeline'
 
 async function* source() {
   yield await 'abc\n'
@@ -13,7 +13,7 @@ async function* source() {
 }
 
 async function main() {
-  const items = await byLines(source())
+  const items = await (source() |> byLines())
 
   for await (const item of items)
     console.log(item)

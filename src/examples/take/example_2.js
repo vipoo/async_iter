@@ -1,4 +1,4 @@
-import {take} from '../..'
+import {take} from '../../pipeline'
 
 async function* source() {
   yield await 1
@@ -9,7 +9,7 @@ async function* source() {
 }
 
 async function main() {
-  const items = take(source(), 3)
+  const items = source() |> take(3)
 
   for await (const item of items)
     console.log(item)

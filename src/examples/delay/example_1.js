@@ -1,9 +1,9 @@
-import {delay, forEach} from '../..'
+import {delay, forEach} from '../../pipeline'
 
 async function main() {
   await ([1, 2, 3, 4, 5]
-    |> delay(?, 50)
-    |> forEach(?, console.log))
+    |> delay(50)
+    |> forEach(console.log))
 
   console.log('done....')
 }

@@ -1,4 +1,4 @@
-import {forEach, bufferGroupBy} from '../..'
+import {forEach, bufferGroupBy} from '../../pipeline'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 
@@ -14,8 +14,8 @@ async function* source() {
 
 async function main() {
   await (source()
-    |> bufferGroupBy(?, item => item.a, (item, buffer) => buffer.length === 2, 10))
-    |> forEach(?, console.log)
+    |> bufferGroupBy(item => item.a, (item, buffer) => buffer.length === 2, 10))
+    |> forEach(console.log)
 
   console.log('done....')
 }

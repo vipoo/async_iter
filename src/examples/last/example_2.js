@@ -1,4 +1,4 @@
-import {last} from '../..'
+import {last} from '../../pipeline'
 
 async function* source() {
   yield 1
@@ -9,7 +9,7 @@ async function* source() {
 }
 
 async function main() {
-  const item = await (source() |> last(?))
+  const item = await (source() |> last())
 
   console.log('last: ', item)
   console.log('done....')

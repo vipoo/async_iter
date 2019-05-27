@@ -1,9 +1,9 @@
-import {rateLimit} from '../..'
+import {rateLimit} from '../../pipeline'
 
 async function main() {
   let startTime = new Date().getTime()
   const items = ['first', 'second', 'third', 'fourth', 'fifth']
-    |> rateLimit(?, 5, 200, v => v.toString().length)
+    |> rateLimit(5, 200, v => v.toString().length)
 
   for await (const t of items) {
     const now = new Date().getTime()

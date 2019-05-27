@@ -1,4 +1,4 @@
-import {persisted} from '../..'
+import {persisted} from '../../pipeline'
 import rmfr from 'rmfr'
 
 async function* source() {
@@ -9,7 +9,7 @@ async function* source() {
 }
 
 async function main() {
-  const items = await persisted(source(), './tmp/buffering_example')
+  const items = await (source() |> persisted('./tmp/buffering_example'))
 
   for await (const item of items) {
     console.log(item.value.toString())

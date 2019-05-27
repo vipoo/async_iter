@@ -1,7 +1,7 @@
-import {takeWhile} from '../..'
+import {takeWhile} from '../../pipeline'
 
 function main() {
-  const items = takeWhile([1, 2, 3, 4, 5], x => x <= 3)
+  const items = [1, 2, 3, 4, 5] |> takeWhile(x => x <= 3)
 
   for (const item of items)
     console.log(item)

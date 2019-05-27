@@ -1,4 +1,4 @@
-import {forEach, combineWhen} from '../..'
+import {forEach, combineWhen} from '../../pipeline'
 
 function* source() {
   yield '  this is not part of anything'
@@ -13,8 +13,8 @@ function* source() {
 const pattern = /\d*-\d*-\d*T\d*:\d*:\d*\.\d*\+\d*\s/
 function main() {
   source()
-    |> combineWhen(?, item => pattern.test(item), (i, c) => `${c}\n${i}`)
-    |> forEach(?, console.log)
+    |> combineWhen(item => pattern.test(item), (i, c) => `${c}\n${i}`)
+    |> forEach(console.log)
 
   console.log('done....')
 }

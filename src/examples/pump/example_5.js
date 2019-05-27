@@ -1,4 +1,4 @@
-import {pump} from '../..'
+import {pump} from '../../pipeline'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 

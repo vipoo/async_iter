@@ -1,4 +1,4 @@
-import {toArray} from '../..'
+import {toArray} from '../../pipeline'
 
 async function* source() {
   yield await 1
@@ -9,7 +9,7 @@ async function* source() {
 }
 
 async function main() {
-  const items = await toArray(source())
+  const items = await (source() |> toArray())
 
   console.log(items.join(', '))
 

@@ -1,4 +1,4 @@
-import {pump} from '../..'
+import {pump} from '../../pipeline'
 
 async function main() {
   console.log('\n\n')

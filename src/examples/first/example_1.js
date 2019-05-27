@@ -1,7 +1,7 @@
-import {first} from '../..'
+import {first} from '../../pipeline'
 
 function main() {
-  const item = [1, 2, 3, 4, 5] |> first(?)
+  const item = [1, 2, 3, 4, 5] |> first()
 
   console.log('first: ', item)
   console.log('done....')

@@ -1,7 +1,7 @@
-import {byLines} from '../..'
+import {byLines} from '../../pipeline'
 
 function main() {
-  const items = byLines(['abc\n', 'def', 'ghi\n', '', '\n', '\n', 'jkl\nnmo', '\n', ''])
+  const items = ['abc\n', 'def', 'ghi\n', '', '\n', '\n', 'jkl\nnmo', '\n', ''] |> byLines()
 
   for (const item of items)
     console.log(item)

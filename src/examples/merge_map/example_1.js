@@ -1,4 +1,4 @@
-import {forEach, mergeMap, map} from '../..'
+import {forEach, mergeMap, map} from '../../pipeline'
 
 async function* source1() {
   yield await Promise.resolve(1)
@@ -18,8 +18,8 @@ async function* source2() {
 
 async function main() {
   await (source2()
-    |> mergeMap(?, x => source1() |> map(?, i => `${i} - ${x}`))
-    |> forEach(?, console.log))
+    |> mergeMap(x => source1() |> map(i => `${i} - ${x}`))
+    |> forEach(console.log))
 
   console.log('done....')
 }

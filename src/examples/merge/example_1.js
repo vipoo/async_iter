@@ -1,4 +1,4 @@
-import {merge} from '../..'
+import {merge} from '../../pipeline'
 
 async function* source1() {
   yield await Promise.resolve(1)

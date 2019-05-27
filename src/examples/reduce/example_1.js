@@ -1,7 +1,7 @@
-import {reduce} from '../..'
+import {reduce} from '../../pipeline'
 
 function main() {
-  const reduction = reduce([1, 2, 3, 4, 5], (total, currentValue, currentIndex, array) => {
+  const reduction = [1, 2, 3, 4, 5] |> reduce((total, currentValue, currentIndex, array) => {
     console.log(`total: ${total}, currentValue: ${currentValue}, currentIndex: ${currentIndex}`)
     return total + currentValue
   }, 5)

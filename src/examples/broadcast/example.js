@@ -1,15 +1,15 @@
 import 'source-map-support/register'
-import {range, broadcast, map} from '../..'
+import {range, broadcast, map} from '../../pipeline'
 
 async function main() {
 
   const items = range({start: 1, end: 10})
-    |> map(?, x => {
+    |> map(x => {
       if (x === 6)
         throw new Error('blah')
       return x
     })
-    |> broadcast(?)
+    |> broadcast()
 
   process.nextTick(async () => {
     try {

@@ -1,9 +1,9 @@
-import {spawn, map, take} from '../..'
+import {spawn, map, take} from '../../pipeline'
 
 async function main() {
   const items = await spawn('node', ['./src/examples/spawn/logger.js'])
-    |> map(?, x => x.stdout ? ({stdout: x.stdout.toString()}) : ({stderr: x.stderr.toString()}))
-    |> take(?, 20)
+    |> map(x => x.stdout ? ({stdout: x.stdout.toString()}) : ({stderr: x.stderr.toString()}))
+    |> take(20)
 
   for await (const item of items)
     if (item.stdout)

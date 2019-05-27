@@ -1,4 +1,4 @@
-import {takeUntil} from '../..'
+import {takeUntil} from '../../pipeline'
 
 async function* source() {
   yield await 1
@@ -9,7 +9,7 @@ async function* source() {
 }
 
 async function main() {
-  const items = takeUntil(source(), x => x === 3)
+  const items = source() |> takeUntil(x => x === 3)
 
   for await (const item of items)
     console.log(item)

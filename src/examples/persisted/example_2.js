@@ -1,5 +1,5 @@
 import 'source-map-support/register'
-import {persisted} from '../..'
+import {persisted} from '../../pipeline'
 import rmfr from 'rmfr'
 import {promiseSignal} from '../../lib/promise_helpers'
 
@@ -19,7 +19,7 @@ async function* source(code, neverEnd = true) {
 
 // Part process, then simulate 'crash' or abort
 async function persistHalfIteration() {
-  const items = await persisted(source('a', true), './tmp/buffering_example')
+  const items = await (source('a', true) |> persisted('./tmp/buffering_example'))
   let count = 0
 
   const p = promiseSignal()
@@ -41,7 +41,7 @@ async function persistHalfIteration() {
 }
 
 async function resumeIteration() {
-  const items = await persisted(source('b', false), './tmp/buffering_example')
+  const items = await (source('b', false) |> persisted('./tmp/buffering_example'))
 
   for await (const item of items) {
     console.log('b', item.value.toString())

@@ -1,4 +1,4 @@
-import {persisted} from '../..'
+import {persisted} from '../../pipeline'
 import rmfr from 'rmfr'
 
 const delay = period => new Promise(res => setTimeout(res, period))
@@ -14,7 +14,7 @@ async function* source() {
 }
 
 async function main() {
-  const items = await persisted(source(), './tmp/buffering_example')
+  const items = await (source() |> persisted('./tmp/buffering_example'))
 
   let count = 0
   for await (const item of items) {

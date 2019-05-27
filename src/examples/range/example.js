@@ -1,4 +1,4 @@
-import {range} from '../..'
+import {range} from '../../pipeline'
 
 async function example1() {
   console.log('range from 0 to 5')

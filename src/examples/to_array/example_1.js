@@ -1,4 +1,4 @@
-import {toArray} from '../..'
+import {toArray} from '../../pipeline'
 
 function* source() {
   yield 1
@@ -9,7 +9,7 @@ function* source() {
 }
 
 function main() {
-  const items = toArray(source())
+  const items = source() |> toArray()
 
   console.log(items.join(', '))
 
