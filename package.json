@@ -1,6 +1,6 @@
 {
   "name": "async_iter",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Dean Netherton",
   "license": "MIT",
   "description": "A set of async generators and iterator functions",
