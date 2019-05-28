@@ -1,4 +1,3 @@
-done....
 consumer A: 1
 consumer B: 1
 consumer A: 2
@@ -8,3 +7,4 @@ consumer B: 3
 consumer A: 4
 consumer A: 5
 consumer A errored blah
+done....

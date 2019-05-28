@@ -1,5 +1,6 @@
 import 'source-map-support/register'
 import {range, broadcast, map} from '../../pipeline'
+import {promiseSignal} from '../../lib/promise_helpers'
 
 async function main() {
 
@@ -11,15 +12,19 @@ async function main() {
     })
     |> broadcast()
 
+  const job1 = await promiseSignal()
   process.nextTick(async () => {
     try {
       for await (const item of items())
         console.log('consumer A:', item)
     } catch (err) {
       console.log('consumer A errored', err.message)
+    } finally {
+      job1.res()
     }
   })
 
+  const job2 = await promiseSignal()
   process.nextTick(async () => {
     try {
       for await (const item of items()) {
@@ -29,9 +34,12 @@ async function main() {
       }
     } catch (err) {
       console.log('consumer B errored', err.message)
+    } finally {
+      job2.res()
     }
   })
 
+  await Promise.all([job1.promise, job2.promise])
   console.log('done....')
 }
 
