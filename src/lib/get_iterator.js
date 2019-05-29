@@ -1,5 +1,8 @@
 
 export async function* asAsyncIterator(source) {
+  if (source.then)
+    return yield* asAsyncIterator(await source)
+
   if (source.next)
     return yield* source
 

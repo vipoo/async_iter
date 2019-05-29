@@ -33,13 +33,15 @@ function packageNextEmit(state, period) {
     return {value: emittedValue, done: false}
 }
 
-export function bufferBy(source, trigger, maxWaitTime) {
+export async function bufferBy(source, trigger, maxWaitTime) {
   const state = {
     buffer: [],
     nextValue: undefined,
     donedone: false,
     timeout: undefined
   }
+
+  source = await asAsyncIterator(source)
 
   /* eslint complexity: ['error', 9] */
   return asAsyncIterator({
