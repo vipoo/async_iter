@@ -1,4 +1,4 @@
-import {merge} from '../..'
+import {merge} from '../../pipeline'
 
 async function* source1() {
   yield await Promise.resolve(1)
@@ -17,7 +17,7 @@ async function* source2() {
 }
 
 async function main() {
-  const items = await merge(source1(), source2())
+  const items = await (source1() |> merge(source2()))
 
   for await (const item of items)
     console.log(item)
