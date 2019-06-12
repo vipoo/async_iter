@@ -6,16 +6,21 @@ export async function* merge(...sources) {
     .map(s => asAsyncIterator(s))
     .map((p, index) => p.next().then(d => ({...d, index})))
 
-  while (done > 0) {
-    const p = await Promise.race(items.filter(i => i))
+  try {
+    while (done > 0) {
+      const p = await Promise.race(items.filter(i => i))
 
-    if (p.done) {
-      done -= 1
-      delete items[p.index]
+      if (p.done) {
+        done -= 1
+        delete items[p.index]
+      }
+      else {
+        items[p.index] = sources[p.index].next().then(d => ({...d, index: p.index}))
+        yield p.value
+      }
     }
-    else {
-      items[p.index] = sources[p.index].next().then(d => ({...d, index: p.index}))
-      yield p.value
-    }
+  } finally {
+    for (const item of sources)
+      item.return()
   }
 }
