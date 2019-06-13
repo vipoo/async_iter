@@ -9,7 +9,7 @@ async function* source1() {
 }
 
 async function main() {
-  const item = await (source1() |> merge(timeout(1000)) |> first())
+  const item = await (source1() |> merge(timeout(10000)) |> first())
 
   console.log(item)
 
