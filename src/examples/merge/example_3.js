@@ -9,7 +9,9 @@ async function* source1() {
 }
 
 async function main() {
-  const item = await (source1() |> merge(timeout(10000)) |> first())
+  let cancel = undefined
+  const item = await (source1() |> merge(timeout(100000, 'Timeout', c => cancel = c)) |> first())
+  cancel()
 
   console.log(item)
 
