@@ -1,7 +1,7 @@
-import {timeout, forEach} from '../../pipeline'
+import {timeoutError, forEach} from '../../pipeline'
 
 async function main() {
-  await (timeout(50, new Error('Timeout exception'))
+  await (timeoutError(50)
     |> forEach(console.log))
 
   console.log('done....')

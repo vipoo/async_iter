@@ -1,4 +1,4 @@
-import {merge, first, timeout} from '../../pipeline'
+import {merge, first, timeout, TimeoutCancel} from '../../pipeline'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 
@@ -9,9 +9,9 @@ async function* source1() {
 }
 
 async function main() {
-  let cancel = undefined
-  const item = await (source1() |> merge(timeout(100000, 'Timeout', c => cancel = c)) |> first())
-  cancel()
+  const tc = new TimeoutCancel()
+  const item = await (source1() |> merge(timeout(100000, tc)) |> first())
+  tc()
 
   console.log(item)
 

@@ -1,13 +1,13 @@
-import {timeout, forEach} from '../../pipeline'
+import {timeoutError, forEach, TimeoutCancel} from '../../pipeline'
 
 async function main() {
 
-  let cancel = undefined
+  const tc = new TimeoutCancel()
 
-  const x = (timeout(5000, new Error('Timeout exception'), c => cancel = c)
+  const x = (timeoutError(5000, tc)
     |> forEach(console.log))
 
-  setTimeout(() => cancel(), 1000)
+  setTimeout(() => tc(), 1000)
 
   await x
 

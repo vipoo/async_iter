@@ -1,34 +1,47 @@
 import {pump} from './pump'
+import {promiseSignal} from './lib/promise_helpers'
 
-export function timeout(period, timeoutMarker = 'Timeout', cancelHook = undefined) {
+export function TimeoutCancel() {
+  const cancelHook = promiseSignal()
+  const result = () =>  cancelHook.res()
+  result.cancelHook = cancelHook
+  return result
+}
 
-  const interval = period >= 1000 ? 1000 : period
-  let periodCount = period >= 1000 ? period / 1000 : 1
+class TimeoutIterationError extends Error {
+  constructor() {
+    super('Timeout Iteration')
+  }
+}
 
-  let aborted = false
-  if (cancelHook)
-    cancelHook(() => aborted = true)
+export function timeoutError(period, cancelHook = undefined) {
+  return timeout(period, cancelHook, new TimeoutIterationError())
+}
+
+const TimeoutSymbol = Symbol('Timeout')
+
+export function timeout(period, cancelHook = undefined, timeoutMarker = TimeoutSymbol) {
 
   return pump(async (target, hasStopped) => {
     await target.next()
 
-    let timer = setTimeout(timerTest, interval)
+    const timer = setTimeout(timerTest, period)
     function timerTest() {
-      if (aborted)
-        return target.return()
+      abortIteration(true)
+    }
 
-      if (periodCount-- > 0) {
-        timer = setTimeout(timerTest, interval)
-        return
-      }
+    function abortIteration(abort) {
+      clearTimeout(timer)
+      if (abort)
+        if (timeoutMarker instanceof Error)
+          target.throw(timeoutMarker)
+        else
+          target.next(timeoutMarker)
 
-      if (timeoutMarker instanceof Error)
-        target.throw(timeoutMarker)
-      else
-        target.next(timeoutMarker)
       target.return()
     }
 
-    hasStopped.then(() => clearTimeout(timer))
+    const p = cancelHook ? [hasStopped, cancelHook] : [hasStopped]
+    Promise.race(p).then(() => abortIteration(false))
   })
 }
