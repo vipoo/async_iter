@@ -5,6 +5,7 @@ export function TimeoutCancel() {
   const cancelHook = promiseSignal()
   const result = () =>  cancelHook.res()
   result.cancelHook = cancelHook
+  result.then = (...args) => cancelHook.promise.then(...args)
   return result
 }
 
