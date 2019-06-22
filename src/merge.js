@@ -20,7 +20,7 @@ export async function* merge(...sources) {
       }
     }
   } finally {
-    for (const item of sources)
+    for (const item of sources.filter(i => i.return))
       item.return()
   }
 }

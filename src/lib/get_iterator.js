@@ -1,13 +1,23 @@
 
-export async function* asAsyncIterator(source) {
-  if (source.then)
-    return yield* asAsyncIterator(await source)
+export function asAsyncIterator(source) {
+  return _asAsyncIterator(source, new Error())
+}
 
-  if (source.next)
-    return yield* source
+/* eslint complexity: ['error', 5] */
+async function* _asAsyncIterator(source, sourceErr) {
+  try {
+    if (source.then)
+      return yield* asAsyncIterator(await source)
 
-  for await (const item of source)
-    yield item
+    if (source.next)
+      return yield* source
+
+    for await (const item of source)
+      yield item
+  } catch (err) {
+    err.stack = sourceErr.stack.slice(7)
+    throw err
+  }
 }
 
 export function syncType(sync, async) {
