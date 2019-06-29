@@ -23,12 +23,12 @@ describe('interval', () => {
     expect(firstItem).to.be.pending
 
     clock.tick(1000)
-    expect(firstItem).to.eventually.deep.eq({value: 1, done: false})
+    await expect(firstItem).to.eventually.deep.eq({value: 1, done: false})
 
     clock.tick(10000)
 
     expect(items.next()).to.be.pending
     items.return()
-    expect(items.next()).to.eventually.deep.eq({value: undefined, done: true})
+    await expect(items.next()).to.eventually.deep.eq({value: undefined, done: true})
   })
 })
