@@ -1,0 +1,3553 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/buffer_by.js",
+    "content": "import {promiseSignal} from './lib/promise_helpers'\nimport {asAsyncIterator} from './lib/get_iterator'\n\nconst True = true\n\nfunction timeoutTrigger(state, period) {\n  clearTimeout(state.timerHandle)\n  const timeout = promiseSignal()\n  state.timerHandle = setTimeout(() => timeout.res(), period)\n  state.promise = timeout.promise.then(() => ({timed: true}))\n}\n\nfunction returnLastValue(state) {\n  if (state.buffer.length > 0) {\n    state.donedone = true\n    const emittedValue = state.buffer\n    state.buffer = []\n    return {value: emittedValue, done: false}\n  }\n  return {done: true}\n}\n\nfunction pushValue(state, value) {\n  state.buffer.push(value)\n  state.nextValue = undefined\n}\n\nfunction packageNextEmit(state, period) {\n  const emittedValue = state.buffer\n  state.buffer = []\n  timeoutTrigger(state, period)\n  if (emittedValue.length > 0)\n    return {value: emittedValue, done: false}\n}\n\nexport async function bufferBy(source, trigger, maxWaitTime) {\n  const state = {\n    buffer: [],\n    nextValue: undefined,\n    donedone: false,\n    timeout: undefined\n  }\n\n  source = await asAsyncIterator(source)\n\n  /* eslint complexity: ['error', 9] */\n  return asAsyncIterator({\n    [Symbol.asyncIterator]() {\n      return {\n        async next() {\n          if (state.donedone)\n            return {done: true}\n\n          timeoutTrigger(state, maxWaitTime)\n\n          while (True) {\n            state.nextValue = state.nextValue || source.next()\n            const {value, done, timed} = await Promise.race([state.nextValue, state.promise])\n            if (done)\n              return returnLastValue(state)\n\n            let emittedValue = undefined\n            if (timed || trigger(value, [...state.buffer, value]))\n              if (emittedValue = packageNextEmit(state, maxWaitTime))\n                return emittedValue\n\n            if (!timed)\n              pushValue(state, value)\n          }\n        },\n        async return() {\n          source.return()\n          return {done: true}\n        }\n      }\n    }\n  })\n}\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/buffer_by.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "variable",
+    "name": "True",
+    "memberof": "src/buffer_by.js",
+    "static": true,
+    "longname": "src/buffer_by.js~True",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/buffer_by.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "boolean"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "function",
+    "name": "timeoutTrigger",
+    "memberof": "src/buffer_by.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/buffer_by.js~timeoutTrigger",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/buffer_by.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [
+      {
+        "name": "state",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "period",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "function",
+    "name": "returnLastValue",
+    "memberof": "src/buffer_by.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/buffer_by.js~returnLastValue",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/buffer_by.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [
+      {
+        "name": "state",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "{\"done\": boolean}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "function",
+    "name": "pushValue",
+    "memberof": "src/buffer_by.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/buffer_by.js~pushValue",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/buffer_by.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true,
+    "params": [
+      {
+        "name": "state",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "function",
+    "name": "packageNextEmit",
+    "memberof": "src/buffer_by.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/buffer_by.js~packageNextEmit",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/buffer_by.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "params": [
+      {
+        "name": "state",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "period",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "{\"value\": *, \"done\": *}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "function",
+    "name": "bufferBy",
+    "memberof": "src/buffer_by.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/buffer_by.js~bufferBy",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/buffer_by.js",
+    "importStyle": "{bufferBy}",
+    "description": null,
+    "lineNumber": 36,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "trigger",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "maxWaitTime",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "{\"done\": boolean}"
+      ]
+    }
+  },
+  {
+    "__docId__": 55,
+    "kind": "file",
+    "name": "src/buffer_group_by.js",
+    "content": "import {asAsyncIterator} from './lib/get_iterator'\n\nconst True = true\nconst delay = period => new Promise(res => setTimeout(res, period))\n\nexport function bufferGroupBy(source, fn, trigger, maxWaitTime) {\n  const state = {\n    buffers: {},\n    nextValue: undefined,\n  }\n\n  function emit(key) {\n    const value = state.buffers[key].data\n    delete state.buffers[key]\n    return {value}\n  }\n\n  /* eslint complexity: ['error', 29] */\n  return asAsyncIterator({\n    [Symbol.asyncIterator]() {\n      return {\n        async next() {\n          while (True) {\n            state.nextValue = state.nextValue || source.next()\n            const timers = Object.values(state.buffers).map(t => t.timer)\n            const {value, done, timed} = await Promise.race([state.nextValue, ...timers])\n\n            if (done) {\n              const keys = Object.keys(state.buffers)\n              if (keys.length === 0)\n                return {done: true}\n\n              return emit(keys[0])\n            }\n\n            if (timed)\n              return emit(timed)\n\n            const groupKey = fn(value)\n            if (!state.buffers[groupKey])\n              state.buffers[groupKey] = {\n                timer: delay(maxWaitTime).then(() => ({timed: groupKey})),\n                data: []\n              }\n            state.buffers[groupKey].data.push(value)\n            state.nextValue = undefined\n\n            if (trigger(value, state.buffers[groupKey].data))\n              return emit(groupKey)\n          }\n        },\n        async return() {\n          state.buffers = {}\n          state.nextValue = undefined\n          source.return()\n          return {done: true}\n        }\n      }\n    }\n  })\n}\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/buffer_group_by.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 56,
+    "kind": "variable",
+    "name": "True",
+    "memberof": "src/buffer_group_by.js",
+    "static": true,
+    "longname": "src/buffer_group_by.js~True",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/buffer_group_by.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "boolean"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "function",
+    "name": "delay",
+    "memberof": "src/buffer_group_by.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/buffer_group_by.js~delay",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/buffer_group_by.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "params": [
+      {
+        "name": "period",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "function",
+    "name": "bufferGroupBy",
+    "memberof": "src/buffer_group_by.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/buffer_group_by.js~bufferGroupBy",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/buffer_group_by.js",
+    "importStyle": "{bufferGroupBy}",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "trigger",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "maxWaitTime",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "{\"done\": boolean}"
+      ]
+    }
+  },
+  {
+    "__docId__": 59,
+    "kind": "file",
+    "name": "src/examples/pump/example_2.js",
+    "content": "import {pump} from '../../pipeline'\n\nasync function main() {\n  await pump(async target => {\n    console.log('never get here, as no consumer is started')\n    await target.next()\n    await target.next(1)\n    await target.next(2)\n    await target.next(3)\n  })\n\n  console.log('if items are not consumed, nothing really happens')\n}\n\nmain()\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/examples/pump/example_2.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 60,
+    "kind": "function",
+    "name": "main",
+    "memberof": "src/examples/pump/example_2.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/examples/pump/example_2.js~main",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/examples/pump/example_2.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "file",
+    "name": "src/examples/spawn/logger.js",
+    "content": "\nlet count = 1\nsetInterval(() => {\n  if (count % 5 === 0)\n    console.error(`This is a sample of error data: ${count++}`)\n  else\n    console.log(`This is a sample of data: ${count++}`)\n}, 0)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/examples/spawn/logger.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 62,
+    "kind": "variable",
+    "name": "count",
+    "memberof": "src/examples/spawn/logger.js",
+    "static": true,
+    "longname": "src/examples/spawn/logger.js~count",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/examples/spawn/logger.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "file",
+    "name": "src/from_stream.js",
+    "content": "import {pump} from './pump'\n\n/**\n * Returns an iterator, that emits as per the `dataEvent` of the `eventSource`\n * @param  {EventEmitter} eventSource   An object that supports the 'on' and 'removeListener' function\n * @param  {String}       dataEvent     The main dataEvent name to listen to\n * @param  {String}       closeEvent    When this event emits, the iteration is stopped\n * @return {iteration}                  An iterable source\n */\nexport function fromStream(eventSource, dataEvent = 'data', closeEvent = 'close') {\n  return pump(async (target, hasStopped) => {\n    await target.next()\n\n    async function listener(...args) {\n      if (eventSource.pause)\n        eventSource.pause()\n      await target.next(...args)\n      if (eventSource.resume)\n        eventSource.resume()\n    }\n\n    async function closeListener() {\n      target.return()\n    }\n\n    eventSource.on(dataEvent, listener)\n    eventSource.on(closeEvent, closeListener)\n    hasStopped.then(() => {\n      eventSource.removeListener(dataEvent, listener)\n      eventSource.removeListener(closeEvent, closeListener)\n    })\n  })\n}\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/from_stream.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 64,
+    "kind": "function",
+    "name": "fromStream",
+    "memberof": "src/from_stream.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/from_stream.js~fromStream",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/from_stream.js",
+    "importStyle": "{fromStream}",
+    "description": "Returns an iterator, that emits as per the `dataEvent` of the `eventSource`",
+    "lineNumber": 10,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "EventEmitter"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "eventSource",
+        "description": "An object that supports the 'on' and 'removeListener' function"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "dataEvent",
+        "description": "The main dataEvent name to listen to"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "closeEvent",
+        "description": "When this event emits, the iteration is stopped"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "iteration"
+      ],
+      "spread": false,
+      "description": "An iterable source"
+    }
+  },
+  {
+    "__docId__": 65,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "export * from './take'\nexport * from './buffer_by'\nexport * from './buffer_group_by'\nexport * from './persisted'\nexport * from './range'\nexport * from './map'\nexport * from './pump'\nexport * from './tap'\nexport * from './interval'\nexport * from './rate_limit'\nexport * from './filter'\nexport * from './filter_when'\nexport * from './for_each'\nexport * from './broadcast'\nexport * from './to_array'\nexport * from './reduce'\nexport * from './merge'\nexport * from './merge_map'\nexport * from './spawn'\nexport * from './by_lines'\nexport * from './from_stream'\nexport * from './take_while'\nexport * from './take_until'\nexport * from './delay'\nexport * from './delay_until'\nexport * from './first'\nexport * from './last'\nexport * from './min'\nexport * from './max'\nexport * from './combine_when'\nexport * from './concat'\nexport * from './chunk'\nexport * from './timeout'\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 66,
+    "kind": "file",
+    "name": "src/interval.js",
+    "content": "import {pump} from './pump'\n\nexport function interval(period, cancel = new Promise(() => {})) {\n  return pump(async target => {\n    const result = await Promise.race([target.next(), cancel.then(() => ({done: true}))])\n    if (result.done)\n      return target.return()\n\n    return new Promise(res => {\n      cancel.then(() => {\n        currentPromise = null\n        clearInterval(intervalHandle)\n        target.return()\n        res()\n      })\n      let intervalHandle = undefined\n      let currentPromise = undefined\n      const intervalFunction = async () => {\n        if (currentPromise)\n          return\n\n        const v = process.hrtime.bigint()\n        currentPromise = await Promise.race([target.next(v), cancel.then(() => ({done: true}))])\n        if (currentPromise.done) {\n          currentPromise = null\n          clearInterval(intervalHandle)\n          await target.return()\n          res()\n        }\n        currentPromise = null\n      }\n\n      intervalHandle = setInterval(intervalFunction, period)\n    })\n  })\n}\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/interval.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 67,
+    "kind": "function",
+    "name": "interval",
+    "memberof": "src/interval.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/interval.js~interval",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/interval.js",
+    "importStyle": "{interval}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "period",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "cancel",
+        "optional": true,
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 68,
+    "kind": "file",
+    "name": "src/lib/promise_helpers.js",
+    "content": "\nexport function promiseSignal(marker) {\n  let res\n  let rej\n  const promise = new Promise((_res, _rej) => { res = _res; rej = _rej })\n  return {promise, rej, res, marker}\n}\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/lib/promise_helpers.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 69,
+    "kind": "function",
+    "name": "promiseSignal",
+    "memberof": "src/lib/promise_helpers.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/lib/promise_helpers.js~promiseSignal",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/lib/promise_helpers.js",
+    "importStyle": "{promiseSignal}",
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "params": [
+      {
+        "name": "marker",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "{\"promise\": *, \"rej\": *, \"res\": *, \"marker\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 70,
+    "kind": "file",
+    "name": "src/lib/uuid.js",
+    "content": "import _uuidv4 from 'uuid/v4'\n\nexport const uuidv4 = _uuidv4\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/lib/uuid.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 71,
+    "kind": "variable",
+    "name": "uuidv4",
+    "memberof": "src/lib/uuid.js",
+    "static": true,
+    "longname": "src/lib/uuid.js~uuidv4",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/lib/uuid.js",
+    "importStyle": "{uuidv4}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 72,
+    "kind": "file",
+    "name": "src/max.js",
+    "content": "import {asAsyncIterator, syncType} from './lib/get_iterator'\nimport {syncBy, syncByComp, syncValue, asyncBy, asyncByComp, asyncValue} from './lib/min_max_support'\n\nexport const max = syncType(syncMax, asyncMax)\n\nconst syncMaxBy = (source, fn) => syncBy((a, b) => a < b, source, fn)\nconst syncMaxByComp = (source, fn) => syncByComp(a => a > 0, source, fn)\nconst syncMaxValue = source => syncValue((a, b) => a < b, source)\n\nconst asyncMaxBy = (source, fn) => asyncBy((a, b) => a < b, source, fn)\nconst asyncMaxByComp = (source, fn) => asyncByComp(a => a > 0, source, fn)\nconst asyncMaxValue = source => asyncValue((a, b) => a < b, source)\n\nfunction syncMax(source, fn) {\n  if (!fn)\n    return syncMaxValue(source)\n\n  if (fn.length >= 2)\n    return syncMaxByComp(source, fn)\n\n  return syncMaxBy(source, fn)\n}\n\nasync function asyncMax(source, fn) {\n  source = await asAsyncIterator(source)\n\n  if (!fn)\n    return asyncMaxValue(source)\n\n  if (fn.length >= 2)\n    return asyncMaxByComp(source, fn)\n\n  return asyncMaxBy(source, fn)\n}\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/max.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 73,
+    "kind": "variable",
+    "name": "max",
+    "memberof": "src/max.js",
+    "static": true,
+    "longname": "src/max.js~max",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/max.js",
+    "importStyle": "{max}",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 74,
+    "kind": "function",
+    "name": "syncMaxBy",
+    "memberof": "src/max.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/max.js~syncMaxBy",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/max.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "function",
+    "name": "syncMaxByComp",
+    "memberof": "src/max.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/max.js~syncMaxByComp",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/max.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "function",
+    "name": "syncMaxValue",
+    "memberof": "src/max.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/max.js~syncMaxValue",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/max.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "function",
+    "name": "asyncMaxBy",
+    "memberof": "src/max.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/max.js~asyncMaxBy",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/max.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "function",
+    "name": "asyncMaxByComp",
+    "memberof": "src/max.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/max.js~asyncMaxByComp",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/max.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "function",
+    "name": "asyncMaxValue",
+    "memberof": "src/max.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/max.js~asyncMaxValue",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/max.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "function",
+    "name": "syncMax",
+    "memberof": "src/max.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/max.js~syncMax",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/max.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 81,
+    "kind": "function",
+    "name": "asyncMax",
+    "memberof": "src/max.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/max.js~asyncMax",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/max.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "file",
+    "name": "src/min.js",
+    "content": "import {asAsyncIterator, syncType} from './lib/get_iterator'\nimport {syncBy, syncByComp, syncValue, asyncBy, asyncByComp, asyncValue} from './lib/min_max_support'\n\nexport const min = syncType(syncMin, asyncMin)\n\nconst syncMinBy = (source, fn) => syncBy((a, b) => a > b, source, fn)\nconst syncMinByComp = (source, fn) => syncByComp(a => a < 0, source, fn)\nconst syncMinValue = source => syncValue((a, b) => a > b, source)\n\nconst asyncMinBy = (source, fn) => asyncBy((a, b) => a > b, source, fn)\nconst asyncMinByComp = (source, fn) => asyncByComp(a => a < 0, source, fn)\nconst asyncMinValue = source => asyncValue((a, b) => a > b, source)\n\nfunction syncMin(source, fn) {\n  if (!fn)\n    return syncMinValue(source)\n\n  if (fn.length >= 2)\n    return syncMinByComp(source, fn)\n\n  return syncMinBy(source, fn)\n}\n\nasync function asyncMin(source, fn) {\n  source = await asAsyncIterator(source)\n\n  if (!fn)\n    return asyncMinValue(source)\n\n  if (fn.length >= 2)\n    return asyncMinByComp(source, fn)\n\n  return asyncMinBy(source, fn)\n}\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/min.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 83,
+    "kind": "variable",
+    "name": "min",
+    "memberof": "src/min.js",
+    "static": true,
+    "longname": "src/min.js~min",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/min.js",
+    "importStyle": "{min}",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 84,
+    "kind": "function",
+    "name": "syncMinBy",
+    "memberof": "src/min.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/min.js~syncMinBy",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/min.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "function",
+    "name": "syncMinByComp",
+    "memberof": "src/min.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/min.js~syncMinByComp",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/min.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "function",
+    "name": "syncMinValue",
+    "memberof": "src/min.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/min.js~syncMinValue",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/min.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 87,
+    "kind": "function",
+    "name": "asyncMinBy",
+    "memberof": "src/min.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/min.js~asyncMinBy",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/min.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 88,
+    "kind": "function",
+    "name": "asyncMinByComp",
+    "memberof": "src/min.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/min.js~asyncMinByComp",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/min.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 89,
+    "kind": "function",
+    "name": "asyncMinValue",
+    "memberof": "src/min.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/min.js~asyncMinValue",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/min.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 90,
+    "kind": "function",
+    "name": "syncMin",
+    "memberof": "src/min.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/min.js~syncMin",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/min.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 91,
+    "kind": "function",
+    "name": "asyncMin",
+    "memberof": "src/min.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/min.js~asyncMin",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/min.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "file",
+    "name": "src/persisted/item_queue.js",
+    "content": "import {uuidv4} from '../lib/uuid'\nimport {join} from 'path'\nimport _fs from 'fs'\nconst fs = _fs.promises\n\nconst delay = period => new Promise(res => setTimeout(res, period))\n\nfunction hasOverflowed(state) {\n  return (state.maxBytes !== 0 && state.maxBytes <= state.currentByteCount)\n}\n\nasync function getOverflowItem(state) {\n  if (state.overflow)\n    return undefined\n\n  state.overflow = true\n  return await state.overFlowEvent()\n}\n\nfunction verifyDataType(data) {\n  if (typeof data !== 'string' && !Buffer.isBuffer(data))\n    throw new Error(`Can only persist strings and buffers: ${typeof (data)}`)\n}\nexport async function pushItem(readDirectory, writingDirectory, data, state) {\n  verifyDataType(data)\n\n  if (hasOverflowed(state)) {\n    data = await getOverflowItem(state)\n    if (!data)\n      return\n  }\n\n  const id = process.hrtime.bigint().toString().padStart(14, '0')\n  const name = `${id}-${uuidv4()}`\n  const filename = join(writingDirectory, name)\n  state.currentByteCount = state.currentByteCount || 0\n  state.currentByteCount += data.length\n  await fs.writeFile(filename, data)\n  await fs.rename(filename, join(readDirectory, name))\n}\n\nfunction fsWatch(dir) {\n  let watcher\n  return new Promise((res, rej) => watcher = _fs.watch(dir, {}, (...args) => {\n    watcher.close()\n    res(args)\n  }))\n}\n\nexport async function popItem(readDirectory, processingDirectory, state) {\n  let x\n  do {\n    x = await fs.readdir(readDirectory)\n    if (x.length === 0)\n      await Promise.race([delay(200), fsWatch(readDirectory)])\n  } while (x.length === 0)\n\n  const name = x.sort()[0]\n  const filename = join(processingDirectory, name)\n  await fs.rename(join(readDirectory, name), filename)\n  const data = await fs.readFile(filename)\n  state.currentByteCount -= data.length\n  state.overflow = false\n\n  return {filename, item: data}\n}\n\nexport async function removeLast(readDirectory) {\n  const x = await fs.readdir(readDirectory)\n  if (x.length === 0)\n    return\n\n  const name = x.sort()[x.length - 1]\n  const filename = join(readDirectory, name)\n  const item = await fs.readFile(filename)\n  if (item.length === 0)\n    await fs.unlink(filename)\n}\n\nexport async function restoreUnprocessedItems(readDirectory, processingDirectory, state) {\n  const x = await fs.readdir(processingDirectory)\n  await Promise.all(x.map(f => fs.rename(join(processingDirectory, f), join(readDirectory, f))))\n\n  const readFiles = await fs.readdir(readDirectory)\n\n  const total = (await Promise.all(readFiles.map(f => fs.stat(join(readDirectory, f)).then(s => s.size))))\n    .reduce((a, v) => a + v, 0)\n\n  state.currentByteCount = total\n}\n\nexport async function isEmpty(readDirectory) {\n  return await fs.readdir(readDirectory)\n    .then(x => x.length === 0)\n    .catch(() => true)\n}\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/persisted/item_queue.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 93,
+    "kind": "variable",
+    "name": "fs",
+    "memberof": "src/persisted/item_queue.js",
+    "static": true,
+    "longname": "src/persisted/item_queue.js~fs",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/persisted/item_queue.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 94,
+    "kind": "function",
+    "name": "delay",
+    "memberof": "src/persisted/item_queue.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/persisted/item_queue.js~delay",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/persisted/item_queue.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [
+      {
+        "name": "period",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 95,
+    "kind": "function",
+    "name": "hasOverflowed",
+    "memberof": "src/persisted/item_queue.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/persisted/item_queue.js~hasOverflowed",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/persisted/item_queue.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "params": [
+      {
+        "name": "state",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 96,
+    "kind": "function",
+    "name": "getOverflowItem",
+    "memberof": "src/persisted/item_queue.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/persisted/item_queue.js~getOverflowItem",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/persisted/item_queue.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "state",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 97,
+    "kind": "function",
+    "name": "verifyDataType",
+    "memberof": "src/persisted/item_queue.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/persisted/item_queue.js~verifyDataType",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/persisted/item_queue.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "params": [
+      {
+        "name": "data",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 98,
+    "kind": "function",
+    "name": "pushItem",
+    "memberof": "src/persisted/item_queue.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/persisted/item_queue.js~pushItem",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/persisted/item_queue.js",
+    "importStyle": "{pushItem}",
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "params": [
+      {
+        "name": "readDirectory",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "writingDirectory",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "data",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "state",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 99,
+    "kind": "function",
+    "name": "fsWatch",
+    "memberof": "src/persisted/item_queue.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/persisted/item_queue.js~fsWatch",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/persisted/item_queue.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true,
+    "params": [
+      {
+        "name": "dir",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 100,
+    "kind": "function",
+    "name": "popItem",
+    "memberof": "src/persisted/item_queue.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/persisted/item_queue.js~popItem",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/persisted/item_queue.js",
+    "importStyle": "{popItem}",
+    "description": null,
+    "lineNumber": 50,
+    "undocument": true,
+    "params": [
+      {
+        "name": "readDirectory",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "processingDirectory",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "state",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "{\"filename\": *, \"item\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 101,
+    "kind": "function",
+    "name": "removeLast",
+    "memberof": "src/persisted/item_queue.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/persisted/item_queue.js~removeLast",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/persisted/item_queue.js",
+    "importStyle": "{removeLast}",
+    "description": null,
+    "lineNumber": 68,
+    "undocument": true,
+    "params": [
+      {
+        "name": "readDirectory",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 102,
+    "kind": "function",
+    "name": "restoreUnprocessedItems",
+    "memberof": "src/persisted/item_queue.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/persisted/item_queue.js~restoreUnprocessedItems",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/persisted/item_queue.js",
+    "importStyle": "{restoreUnprocessedItems}",
+    "description": null,
+    "lineNumber": 80,
+    "undocument": true,
+    "params": [
+      {
+        "name": "readDirectory",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "processingDirectory",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "state",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 103,
+    "kind": "function",
+    "name": "isEmpty",
+    "memberof": "src/persisted/item_queue.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/persisted/item_queue.js~isEmpty",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/persisted/item_queue.js",
+    "importStyle": "{isEmpty}",
+    "description": null,
+    "lineNumber": 92,
+    "undocument": true,
+    "params": [
+      {
+        "name": "readDirectory",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 104,
+    "kind": "file",
+    "name": "src/persisted/stop_flaging.js",
+    "content": "import {join} from 'path'\nimport _fs from 'fs'\nconst fs = _fs.promises\n\nexport async function flagAsStop(storeDirectory) {\n  await fs.writeFile(join(storeDirectory, 'stopped'), '')\n}\n\nexport async function unflagAsStop(storeDirectory) {\n  await fs.unlink(join(storeDirectory, 'stopped'))\n}\n\nexport async function hasStoppedFlag(storeDirectory) {\n  return await fs\n    .access(join(storeDirectory, 'stopped'), _fs.constants.F_OK)\n    .then(() => true)\n    .catch(() => false)\n}\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/persisted/stop_flaging.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 105,
+    "kind": "variable",
+    "name": "fs",
+    "memberof": "src/persisted/stop_flaging.js",
+    "static": true,
+    "longname": "src/persisted/stop_flaging.js~fs",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/persisted/stop_flaging.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 106,
+    "kind": "function",
+    "name": "flagAsStop",
+    "memberof": "src/persisted/stop_flaging.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/persisted/stop_flaging.js~flagAsStop",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/persisted/stop_flaging.js",
+    "importStyle": "{flagAsStop}",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "storeDirectory",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 107,
+    "kind": "function",
+    "name": "unflagAsStop",
+    "memberof": "src/persisted/stop_flaging.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/persisted/stop_flaging.js~unflagAsStop",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/persisted/stop_flaging.js",
+    "importStyle": "{unflagAsStop}",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "params": [
+      {
+        "name": "storeDirectory",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 108,
+    "kind": "function",
+    "name": "hasStoppedFlag",
+    "memberof": "src/persisted/stop_flaging.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/persisted/stop_flaging.js~hasStoppedFlag",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/persisted/stop_flaging.js",
+    "importStyle": "{hasStoppedFlag}",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [
+      {
+        "name": "storeDirectory",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 109,
+    "kind": "file",
+    "name": "src/pipeline/broadcast.js",
+    "content": "import {broadcast as _broadcast} from '../broadcast'\n\nexport const broadcast = (...args) => source => _broadcast(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/broadcast.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 110,
+    "kind": "function",
+    "name": "broadcast",
+    "memberof": "src/pipeline/broadcast.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/broadcast.js~broadcast",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/broadcast.js",
+    "importStyle": "{broadcast}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 111,
+    "kind": "file",
+    "name": "src/pipeline/buffer_by.js",
+    "content": "import {bufferBy as _bufferBy} from '../buffer_by'\n\nexport const bufferBy = (...args) => source => _bufferBy(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/buffer_by.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 112,
+    "kind": "function",
+    "name": "bufferBy",
+    "memberof": "src/pipeline/buffer_by.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/buffer_by.js~bufferBy",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/buffer_by.js",
+    "importStyle": "{bufferBy}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 113,
+    "kind": "file",
+    "name": "src/pipeline/buffer_group_by.js",
+    "content": "import {bufferGroupBy as _bufferGroupBy} from '../buffer_group_by'\n\nexport const bufferGroupBy = (...args) => source => _bufferGroupBy(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/buffer_group_by.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 114,
+    "kind": "function",
+    "name": "bufferGroupBy",
+    "memberof": "src/pipeline/buffer_group_by.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/buffer_group_by.js~bufferGroupBy",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/buffer_group_by.js",
+    "importStyle": "{bufferGroupBy}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 115,
+    "kind": "file",
+    "name": "src/pipeline/by_lines.js",
+    "content": "import {byLines as _byLines} from '../by_lines'\n\nexport const byLines = (...args) => source => _byLines(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/by_lines.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 116,
+    "kind": "function",
+    "name": "byLines",
+    "memberof": "src/pipeline/by_lines.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/by_lines.js~byLines",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/by_lines.js",
+    "importStyle": "{byLines}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 117,
+    "kind": "file",
+    "name": "src/pipeline/chunk.js",
+    "content": "import {chunk as _chunk} from '../chunk'\n\nexport const chunk = (...args) => source => _chunk(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/chunk.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 118,
+    "kind": "function",
+    "name": "chunk",
+    "memberof": "src/pipeline/chunk.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/chunk.js~chunk",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/chunk.js",
+    "importStyle": "{chunk}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 119,
+    "kind": "file",
+    "name": "src/pipeline/combine_when.js",
+    "content": "import {combineWhen as _combineWhen} from '../combine_when'\n\nexport const combineWhen = (...args) => source => _combineWhen(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/combine_when.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 120,
+    "kind": "function",
+    "name": "combineWhen",
+    "memberof": "src/pipeline/combine_when.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/combine_when.js~combineWhen",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/combine_when.js",
+    "importStyle": "{combineWhen}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 121,
+    "kind": "file",
+    "name": "src/pipeline/concat.js",
+    "content": "import {concat as _concat} from '../concat'\n\nexport const concat = (...args) => source => _concat(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/concat.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 122,
+    "kind": "function",
+    "name": "concat",
+    "memberof": "src/pipeline/concat.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/concat.js~concat",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/concat.js",
+    "importStyle": "{concat}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 123,
+    "kind": "file",
+    "name": "src/pipeline/delay.js",
+    "content": "import {delay as _delay} from '../delay'\n\nexport const delay = (...args) => source => _delay(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/delay.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 124,
+    "kind": "function",
+    "name": "delay",
+    "memberof": "src/pipeline/delay.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/delay.js~delay",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/delay.js",
+    "importStyle": "{delay}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 125,
+    "kind": "file",
+    "name": "src/pipeline/delay_until.js",
+    "content": "import {delayUntil as _delayUntil} from '../delay_until'\n\nexport const delayUntil = (...args) => source => _delayUntil(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/delay_until.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 126,
+    "kind": "function",
+    "name": "delayUntil",
+    "memberof": "src/pipeline/delay_until.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/delay_until.js~delayUntil",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/delay_until.js",
+    "importStyle": "{delayUntil}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 127,
+    "kind": "file",
+    "name": "src/pipeline/filter.js",
+    "content": "import {filter as _filter} from '../filter'\n\nexport const filter = (...args) => source => _filter(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/filter.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 128,
+    "kind": "function",
+    "name": "filter",
+    "memberof": "src/pipeline/filter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/filter.js~filter",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/filter.js",
+    "importStyle": "{filter}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 129,
+    "kind": "file",
+    "name": "src/pipeline/filter_when.js",
+    "content": "import {filterWhen as _filterWhen} from '../filter_when'\n\nexport const filterWhen = (...args) => source => _filterWhen(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/filter_when.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 130,
+    "kind": "function",
+    "name": "filterWhen",
+    "memberof": "src/pipeline/filter_when.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/filter_when.js~filterWhen",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/filter_when.js",
+    "importStyle": "{filterWhen}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 131,
+    "kind": "file",
+    "name": "src/pipeline/first.js",
+    "content": "import {first as _first} from '../first'\n\nexport const first = (...args) => source => _first(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/first.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 132,
+    "kind": "function",
+    "name": "first",
+    "memberof": "src/pipeline/first.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/first.js~first",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/first.js",
+    "importStyle": "{first}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 133,
+    "kind": "file",
+    "name": "src/pipeline/for_each.js",
+    "content": "import {forEach as _forEach} from '../for_each'\n\nexport const forEach = (...args) => source => _forEach(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/for_each.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 134,
+    "kind": "function",
+    "name": "forEach",
+    "memberof": "src/pipeline/for_each.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/for_each.js~forEach",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/for_each.js",
+    "importStyle": "{forEach}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 135,
+    "kind": "file",
+    "name": "src/pipeline/index.js",
+    "content": "export * from './broadcast'\nexport * from './buffer_by'\nexport * from './buffer_group_by'\nexport * from './by_lines'\nexport * from './combine_when'\nexport * from './delay'\nexport * from './delay_until'\nexport * from './filter'\nexport * from './filter_when'\nexport * from './first'\nexport * from './for_each'\nexport * from '../from_stream'\nexport * from '../interval'\nexport * from './last'\nexport * from './map'\nexport * from './max'\nexport * from './merge'\nexport * from './merge_map'\nexport * from './min'\nexport * from './persisted'\nexport * from '../pump'\nexport * from '../range'\nexport * from './rate_limit'\nexport * from './reduce'\nexport * from '../spawn'\nexport * from './take'\nexport * from './take_until'\nexport * from './take_while'\nexport * from './tap'\nexport * from './to_array'\nexport * from './concat'\nexport * from './chunk'\nexport * from '../timeout'\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 136,
+    "kind": "file",
+    "name": "src/pipeline/last.js",
+    "content": "import {last as _last} from '../last'\n\nexport const last = (...args) => source => _last(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/last.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 137,
+    "kind": "function",
+    "name": "last",
+    "memberof": "src/pipeline/last.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/last.js~last",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/last.js",
+    "importStyle": "{last}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 138,
+    "kind": "file",
+    "name": "src/pipeline/map.js",
+    "content": "import {map as _map} from '../map'\n\nexport const map = (...args) => source => _map(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/map.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 139,
+    "kind": "function",
+    "name": "map",
+    "memberof": "src/pipeline/map.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/map.js~map",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/map.js",
+    "importStyle": "{map}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 140,
+    "kind": "file",
+    "name": "src/pipeline/max.js",
+    "content": "import {max as _max} from '../max'\n\nexport const max = (...args) => source => _max(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/max.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 141,
+    "kind": "function",
+    "name": "max",
+    "memberof": "src/pipeline/max.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/max.js~max",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/max.js",
+    "importStyle": "{max}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 142,
+    "kind": "file",
+    "name": "src/pipeline/merge.js",
+    "content": "import {merge as _merge} from '../merge'\n\nexport const merge = (...args) => source => _merge(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/merge.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 143,
+    "kind": "function",
+    "name": "merge",
+    "memberof": "src/pipeline/merge.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/merge.js~merge",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/merge.js",
+    "importStyle": "{merge}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 144,
+    "kind": "file",
+    "name": "src/pipeline/merge_map.js",
+    "content": "import {mergeMap as _mergeMap} from '../merge_map'\n\nexport const mergeMap = (...args) => source => _mergeMap(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/merge_map.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 145,
+    "kind": "function",
+    "name": "mergeMap",
+    "memberof": "src/pipeline/merge_map.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/merge_map.js~mergeMap",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/merge_map.js",
+    "importStyle": "{mergeMap}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 146,
+    "kind": "file",
+    "name": "src/pipeline/min.js",
+    "content": "import {min as _min} from '../min'\n\nexport const min = (...args) => source => _min(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/min.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 147,
+    "kind": "function",
+    "name": "min",
+    "memberof": "src/pipeline/min.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/min.js~min",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/min.js",
+    "importStyle": "{min}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 148,
+    "kind": "file",
+    "name": "src/pipeline/persisted.js",
+    "content": "import {persisted as _persisted} from '../persisted'\n\nexport const persisted = (...args) => source => _persisted(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/persisted.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 149,
+    "kind": "function",
+    "name": "persisted",
+    "memberof": "src/pipeline/persisted.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/persisted.js~persisted",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/persisted.js",
+    "importStyle": "{persisted}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 150,
+    "kind": "file",
+    "name": "src/pipeline/rate_limit.js",
+    "content": "import {rateLimit as _rateLimit} from '../rate_limit'\n\nexport const rateLimit = (...args) => source => _rateLimit(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/rate_limit.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 151,
+    "kind": "function",
+    "name": "rateLimit",
+    "memberof": "src/pipeline/rate_limit.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/rate_limit.js~rateLimit",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/rate_limit.js",
+    "importStyle": "{rateLimit}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 152,
+    "kind": "file",
+    "name": "src/pipeline/reduce.js",
+    "content": "import {reduce as _reduce} from '../reduce'\n\nexport const reduce = (...args) => source => _reduce(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/reduce.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 153,
+    "kind": "function",
+    "name": "reduce",
+    "memberof": "src/pipeline/reduce.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/reduce.js~reduce",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/reduce.js",
+    "importStyle": "{reduce}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 154,
+    "kind": "file",
+    "name": "src/pipeline/take.js",
+    "content": "import {take as _take} from '../take'\n\nexport const take = (...args) => source => _take(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/take.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 155,
+    "kind": "function",
+    "name": "take",
+    "memberof": "src/pipeline/take.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/take.js~take",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/take.js",
+    "importStyle": "{take}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 156,
+    "kind": "file",
+    "name": "src/pipeline/take_until.js",
+    "content": "import {takeUntil as _takeUntil} from '../take_until'\n\nexport const takeUntil = (...args) => source => _takeUntil(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/take_until.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 157,
+    "kind": "function",
+    "name": "takeUntil",
+    "memberof": "src/pipeline/take_until.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/take_until.js~takeUntil",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/take_until.js",
+    "importStyle": "{takeUntil}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 158,
+    "kind": "file",
+    "name": "src/pipeline/take_while.js",
+    "content": "import {takeWhile as _takeWhile} from '../take_while'\n\nexport const takeWhile = (...args) => source => _takeWhile(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/take_while.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 159,
+    "kind": "function",
+    "name": "takeWhile",
+    "memberof": "src/pipeline/take_while.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/take_while.js~takeWhile",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/take_while.js",
+    "importStyle": "{takeWhile}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 160,
+    "kind": "file",
+    "name": "src/pipeline/tap.js",
+    "content": "import {tap as _tap} from '../tap'\n\nexport const tap = (...args) => source => _tap(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/tap.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 161,
+    "kind": "function",
+    "name": "tap",
+    "memberof": "src/pipeline/tap.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/tap.js~tap",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/tap.js",
+    "importStyle": "{tap}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 162,
+    "kind": "file",
+    "name": "src/pipeline/to_array.js",
+    "content": "import {toArray as _toArray} from '../to_array'\n\nexport const toArray = (...args) => source => _toArray(source, ...args)\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/pipeline/to_array.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 163,
+    "kind": "function",
+    "name": "toArray",
+    "memberof": "src/pipeline/to_array.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipeline/to_array.js~toArray",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/pipeline/to_array.js",
+    "importStyle": "{toArray}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 164,
+    "kind": "file",
+    "name": "src/spawn.js",
+    "content": "import {pump} from './pump'\nimport childProcess from 'child_process'\n\nclass SpawnError extends Error {\n  constructor(errorCode, stack) {\n    super(`Process exited with code ${errorCode}`)\n    this.name = this.constructor.name\n    this.message = `Process exited with code ${errorCode}`\n    this.stack = stack\n  }\n}\n\nexport function spawn(...args) {\n\n  const stackTrace = {}\n  Error.captureStackTrace(stackTrace)\n\n  return pump(async (target, hasStopped) => {\n    await target.next()\n    const p = childProcess.spawn(...args)\n    p.stdout.on('data', stdout => {\n      target.next({stdout}).then(() => p.kill('SIGCONT'))\n      p.kill('SIGSTOP')\n    })\n    p.stderr.on('data', stderr => {\n      target.next({stderr}).then(() => p.kill('SIGCONT'))\n      p.kill('SIGSTOP')\n    })\n    p.on('close', err => err ? target.throw(new SpawnError(err, stackTrace.stack)) : target.return())\n\n    hasStopped.then(() => p.kill())\n  })\n}\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/spawn.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 165,
+    "kind": "class",
+    "name": "SpawnError",
+    "memberof": "src/spawn.js",
+    "static": true,
+    "longname": "src/spawn.js~SpawnError",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/spawn.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "Error"
+    ],
+    "ignore": true
+  },
+  {
+    "__docId__": 166,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/spawn.js~SpawnError",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/spawn.js~SpawnError#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true
+  },
+  {
+    "__docId__": 167,
+    "kind": "member",
+    "name": "name",
+    "memberof": "src/spawn.js~SpawnError",
+    "static": false,
+    "longname": "src/spawn.js~SpawnError#name",
+    "access": "public",
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 168,
+    "kind": "member",
+    "name": "message",
+    "memberof": "src/spawn.js~SpawnError",
+    "static": false,
+    "longname": "src/spawn.js~SpawnError#message",
+    "access": "public",
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 169,
+    "kind": "member",
+    "name": "stack",
+    "memberof": "src/spawn.js~SpawnError",
+    "static": false,
+    "longname": "src/spawn.js~SpawnError#stack",
+    "access": "public",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 170,
+    "kind": "function",
+    "name": "spawn",
+    "memberof": "src/spawn.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/spawn.js~spawn",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/spawn.js",
+    "importStyle": "{spawn}",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 171,
+    "kind": "file",
+    "name": "src/timeout.js",
+    "content": "import {pump} from './pump'\nimport {promiseSignal} from './lib/promise_helpers'\n\nexport function TimeoutCancel() {\n  const cancelHook = promiseSignal()\n  const result = () =>  cancelHook.res()\n  result.cancelHook = cancelHook\n  result.then = (...args) => cancelHook.promise.then(...args)\n  return result\n}\n\nclass TimeoutIterationError extends Error {\n  constructor() {\n    super('Timeout Iteration')\n  }\n}\n\nexport function timeoutError(period, cancelHook = undefined) {\n  return timeout(period, cancelHook, new TimeoutIterationError())\n}\n\nconst TimeoutSymbol = Symbol('Timeout')\n\nexport function timeout(period, cancelHook = undefined, timeoutMarker = TimeoutSymbol) {\n\n  return pump(async (target, hasStopped) => {\n    await target.next()\n\n    const timer = setTimeout(timerTest, period)\n    function timerTest() {\n      abortIteration(true)\n    }\n\n    function abortIteration(abort) {\n      clearTimeout(timer)\n      if (abort)\n        if (timeoutMarker instanceof Error)\n          target.throw(timeoutMarker)\n        else\n          target.next(timeoutMarker)\n\n      target.return()\n    }\n\n    const p = cancelHook ? [hasStopped, cancelHook] : [hasStopped]\n    Promise.race(p).then(() => abortIteration(false))\n  })\n}\n",
+    "static": true,
+    "longname": "/home/dean/personal/async_iter/src/timeout.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 172,
+    "kind": "function",
+    "name": "TimeoutCancel",
+    "memberof": "src/timeout.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/timeout.js~TimeoutCancel",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/timeout.js",
+    "importStyle": "{TimeoutCancel}",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 173,
+    "kind": "class",
+    "name": "TimeoutIterationError",
+    "memberof": "src/timeout.js",
+    "static": true,
+    "longname": "src/timeout.js~TimeoutIterationError",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/timeout.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "Error"
+    ],
+    "ignore": true
+  },
+  {
+    "__docId__": 174,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/timeout.js~TimeoutIterationError",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/timeout.js~TimeoutIterationError#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true
+  },
+  {
+    "__docId__": 175,
+    "kind": "function",
+    "name": "timeoutError",
+    "memberof": "src/timeout.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/timeout.js~timeoutError",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/timeout.js",
+    "importStyle": "{timeoutError}",
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "params": [
+      {
+        "name": "period",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "cancelHook",
+        "optional": true,
+        "types": [
+          "*"
+        ],
+        "defaultRaw": "undefined",
+        "defaultValue": "undefined"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 176,
+    "kind": "variable",
+    "name": "TimeoutSymbol",
+    "memberof": "src/timeout.js",
+    "static": true,
+    "longname": "src/timeout.js~TimeoutSymbol",
+    "access": "public",
+    "export": false,
+    "importPath": "async_iter/src/timeout.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 177,
+    "kind": "function",
+    "name": "timeout",
+    "memberof": "src/timeout.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/timeout.js~timeout",
+    "access": "public",
+    "export": true,
+    "importPath": "async_iter/src/timeout.js",
+    "importStyle": "{timeout}",
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "params": [
+      {
+        "name": "period",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "cancelHook",
+        "optional": true,
+        "types": [
+          "*"
+        ],
+        "defaultRaw": "undefined",
+        "defaultValue": "undefined"
+      },
+      {
+        "name": "timeoutMarker",
+        "optional": true,
+        "types": [
+          "*"
+        ],
+        "defaultRaw": "TimeoutSymbol",
+        "defaultValue": "TimeoutSymbol"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "index",
+    "content": "# async_iter\n-----------------\n\n[![Build Status](https://travis-ci.com/vipoo/async_iter.svg?branch=master)](https://travis-ci.com/vipoo/async_iter_persited)\n\nA set of async generators and iterator functions\n\nThis project is me just experimenting and learning about async generators in javascript.\n\nIts not supported or stable.\n\n### Installing\n\n`npm install async_iter`\n\n## Overview\n\nBelow are the listed generators and functions implemented in this module.\n\nHave a look at the [examples directory](https://github.com/vipoo/async_iter/tree/master/src/examples) for working examples\n\nThe module uses babel to target nodejs version 10.15.3.  It should be compatibile\nwith node 10 and above.\n\n#### Async Iterator functions\n\n* [bufferBy](#bufferby)\n* [map](#map)\n* [persisted](#persisted)\n* [rateLimit](#ratelimit)\n* [take](#take)\n\n#### Itertor generators\n\n* [broadcast](#broadcast)\n* [pump](#pump)\n* [interval](#interval)\n* [range](#range)\n* [fromStream](#fromstream)\n\n### BufferBy\n#### `items = bufferBy(source, triggerFn, maxWaitTime)`\n\nCollect a set of items from source.  Emit as an array of those items.\n\nThe batch is produced, when the `triggerFn` returns true, or the `maxWaitTime` has elasped since the last emitted value\n\n**source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)\n\n**triggerFn(value, currentBatch)**: called for each item in the source iteration.  Return true to trigger a batch\n\n**value** - the value of the current source item\n**currentBatch** - the current array of collected items - the last item will be `value`\n\n**maxWaitTime** - period is milliseconds to trigger a batch, if no batch has been emitted and there are pending values\n\n\n### Map\n#### `items = map(source, fn)`\n\nTransforms each item in the supplied iteration using the supplied function\n\n**source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)\n\n**fn**: function invoked for each item in the source iteration\n\nReturns\n\nThe transformed iteration\n\n### Persisted\n#### `items = await persisted(source, localPath, opts)`\n\nPersist items of an async iterator to files for later retrieval\n\n> if a previously iteration was persisted and completed, you can not start a\n> new iteration unless you set the `allowRetart` to true\n\n**source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)\n\n**localPath**: is a directory for storage of items.\n\n**opts**: a set of optional flags:\n\n**allowRestart**: (default false) - allows a restart of a previously completed iteration\n\n**maxBytes**: (default 0) - limits the number of bytes that can be stored. Zero indicates no limit.\n\n**overFlowEvent**: (optional) - callback function invoked when `maxBytes` exceeded.  The value\nreturned from this callback will be emitted into the iteration, unless `underfined` is returned.\n\nReturns\n\nAn async iteration, where each item resolves to an object containing:\n\n**Value**: the emitted value from the persisted store -\n  as a buffer (ie: you need to apply, toString())\n\n**completed**: A function that must be called to removed the item.\n> If completed not called, and iteration is restarted, then the item will be re-emitted.\n\nExample:\n\n```javascript\n  import {persisted} from 'async_iter'\n\n  const items = await persisted(source, './tmp/buffering_example')\n\n  for await (const item of items) {\n    console.log(item.value.toString())\n    item.completed() // If not 'completed', item will be processed if items iterator restarted.\n  }\n\n```\n\n> `Persisted` will consume items as fast as the source will emit.\nThe consumer of the iteration will be 'decoupled' from the source\n\n### RateLimit\n#### `items = rateLimit(source, maxAmount, perPeriod, counterFn)`\n\nEmits the values from the source iteration at upto a limited rate\n\n\n**source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)\n\n**maxAmount** the maxmimum number of units to be emitted within the time of `perPeriod`\n> Units may be emitted elements or a customed defined concept\n\n**perPeriod** the period in milliseconds to be applied\n\n**counterFn(item)** an optional callback function, called for each item.  It needs to\nreturn the number of unit cost for the item\n\nDefaults to 1 per emitted item\n\n> The source iteration will be consumed only as required - there is no queing within rateLimit function\n\nExample:\n\n```javascript\n  import {rateLimit} from 'async_iter'\n\n  // Emit at no more than 5 characters per 2s\n  const items = ['first', 'second', 'third', 'fourth', 'fifth']\n    |> rateLimit(?, 5, 2000, v => v.toString().length)\n\n```\n\n\n### Take\n#### `items = take(source, count)`\n\nRe-emits the first n item of the source iteration\n\n**source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)\n\n**count**: the number of items to re-emit\n\nReturns\n\nAn async iterator the will have upto *count* items.  Finishes when count items reached.\n\nExample:\n\n```javascript\n  import {take} from 'async_iter'\n\n  const items = take([1, 2, 3, 4, 5], 3)\n\n  for await (const item of items)\n    console.log(item)\n\n```\n### Broadcast\n#### itemsGeneratorFunction = await broadcast(source)\n\nReturns a generator function that will subscribe to the source iteration.\n\nEach generator function, will iterate over the same source values.\n\n> No queing of values, so each consumer will be made to wait for all other consumers.\n\n> The source iteration is not started, until at least one subscription has started consuming.\n\n> The source iteration is paused, if all consumers are stopped.  Any new subscriptions will continue from where the source iteraion was iterated to.\n\n**Returns** - a generator function to create an iterable of the source items.\n\n**Returns.return** - Close all consumer iterators and close the source iteration.\n\n## Pump\n#### items = await pump(callBack)\n\npump allows for the 'pushing' of values into an async iterator consumer\n\nThe `push` operation returns a promise, that resolves when the consuming iteration has consumed the item\n\nThis function follows the convention of a pushed iterator interface (next, throw, return).\n\nIf the code pushing values, does not await the return promise, the values are then queued\nfor processing by the consumer as it pulls in the values\n\n**callBack** - this is a function that will pump values into the interator.\n\n> See below for the callback signature and parameters description.\n> The callback is not invoked, until the first item is pulled from the iteration.\n\n**Returns** - A standard async iterator that can consume the generated values\n\nThe callback takes 2 arguments: (`target` and `hasStopped`):\n\n**callBack: target** - this is a async generator prototype with the 3 functions:\n\n**target.next** - call this function to push a value into the iteration - returns a promise when the consumer\nhas consumed this item.  Returns a promise that resolves to `{value, done}`\n\n`done` will be true when the consumer has stopped\n`value` will be an incrementing integer\n\n**target.return** - call this function when there are no more items to be pushed.  Signal to consumer that\nthe iteration has completed.\n\n**target.abort** - call this function when an error has been generated - raises the error within the consuming\niteration.\n\n**callback: hasStopped** - a promise that resolves, when the consumer has stopped iterating.  This is an alternative\nmechanism to identify a stopped iteration.\n\n**hasStopped.now()** - function that returns true, when the consumer has stopped iterating.  This is an alternative\nmechanism to identify a stopped iteration.\n\nExample:\n\n```javascript\n\n  import {pump} from 'async_iter'\n\n  // Create a push based iteration set\n  const items = await pump(target => {\n    //Values can be push to the iteration\n    await target.next(1) // if you dont 'await' the values will be queued.\n    await target.next(2)\n    await target.next(3)\n    // If you want to push an 'error' to the consumer\n    // await target.throw(new Error('This is an error'))\n    await target.return()\n  })\n\n  for await (const item of items)\n    console.log(item)\n\n```\n\n### Interval\n#### `items = await interval(period)`\n\nReturns an async iterator the will emit every 'period' milliseconds\n\n**period** the time in milliseconds the iterator emits\n\n> The iterator will block its emitted values, until the consumer has consumed each item.\n> Therefore there is no racing of producer to consumer.\n\n> The iteration stops, when the consumer breaks or stop the iteration\n\n\n### Range\n#### `items = range({start, step, end})`\n\nReturns an iterator that iterate from start to end (inclusive) by step amounts\n\n**start** defaults to 0\n\n**end** defaults to infinite or -infinite\n\n**step** defaults to 1\n\n### FromStream\n#### `items = fromStream(eventSource, dataEvent = 'data', closeEvent = 'close')`\n\nReturns an iterator, that emits as per the `dataEvent` of the `eventSource`\n\n**eventSource** An object that supports the 'on' and 'removeListener' function\n\n**dataEvent** the main dataEvent name to listen to\n\n**closeEvent** when this event emits, the iteration is stopped\n\n",
+    "longname": "/home/dean/personal/async_iter/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"async_iter\",\n  \"version\": \"1.1.2\",\n  \"author\": \"Dean Netherton\",\n  \"license\": \"MIT\",\n  \"description\": \"A set of async generators and iterator functions\",\n  \"main\": \"index.js\",\n  \"engines\": {\n    \"node\": \"10.15.3\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/vipoo/async_iter.git\"\n  },\n  \"watch\": {\n    \"build\": {\n      \"patterns\": [\n        \"src\",\n        \"scripts\"\n      ],\n      \"extensions\": \"js\",\n      \"quiet\": true,\n      \"legacyWatch\": false,\n      \"delay\": 1000,\n      \"runOnChangeOnly\": false,\n      \"inherit\": true\n    },\n    \"test\": {\n      \"patterns\": [\n        \"src\",\n        \"tests\"\n      ],\n      \"extensions\": \"js\",\n      \"quiet\": true,\n      \"legacyWatch\": false,\n      \"delay\": 1000,\n      \"runOnChangeOnly\": false,\n      \"inherit\": true\n    }\n  },\n  \"scripts\": {\n    \"build\": \"./scripts/build.sh\",\n    \"lint\": \"eslint --fix src tests\",\n    \"clean\": \"./scripts/clean.sh\",\n    \"pretest\": \"./scripts/clean.sh\",\n    \"test\": \"NODE_ENV=test mocha --require \\\"@babel/register\\\" tests/**\",\n    \"tst\": \"NODE_ENV=test mocha --require \\\"@babel/register\\\" tests/**\",\n    \"posttest\": \"eslint --fix src tests\",\n    \"watch\": \"npm-watch\",\n    \"prepack\": \"./scripts/clean.sh && ./scripts/build.sh\"\n  },\n  \"dependencies\": {\n    \"core-js\": \"^3.1.4\",\n    \"mkdirp-promise\": \"^5.0.1\",\n    \"uuid\": \"^3.3.2\"\n  },\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.5.0\",\n    \"@babel/core\": \"^7.5.4\",\n    \"@babel/node\": \"^7.5.0\",\n    \"@babel/plugin-proposal-class-properties\": \"^7.5.0\",\n    \"@babel/plugin-proposal-do-expressions\": \"^7.5.0\",\n    \"@babel/plugin-proposal-nullish-coalescing-operator\": \"^7.4.4\",\n    \"@babel/plugin-proposal-optional-chaining\": \"^7.2.0\",\n    \"@babel/plugin-proposal-partial-application\": \"^7.4.4\",\n    \"@babel/plugin-proposal-pipeline-operator\": \"^7.5.0\",\n    \"@babel/plugin-proposal-throw-expressions\": \"^7.2.0\",\n    \"@babel/preset-env\": \"^7.5.4\",\n    \"@babel/register\": \"^7.4.4\",\n    \"babel-eslint\": \"^11.0.0-beta.0\",\n    \"chai\": \"^4.2.0\",\n    \"chai-as-promised\": \"^7.1.1\",\n    \"chai-http\": \"^4.3.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^5.16.0\",\n    \"eslint-config-google\": \"^0.12.0\",\n    \"eslint-config-stickler\": \"^1.0.5\",\n    \"eslint-plugin-filenames\": \"^1.3.2\",\n    \"eslint-plugin-import\": \"^2.18.0\",\n    \"eslint-plugin-no-only-tests\": \"^2.3.1\",\n    \"eslint-plugin-node\": \"^8.0.1\",\n    \"jsdoc-to-markdown\": \"^5.0.0\",\n    \"mocha\": \"^6.1.4\",\n    \"npm-watch\": \"^0.6.0\",\n    \"rmfr\": \"^2.0.0\",\n    \"sinon\": \"^7.3.2\",\n    \"sinon-chai\": \"^3.3.0\"\n  }\n}\n",
+    "longname": "/home/dean/personal/async_iter/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

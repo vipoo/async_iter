@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | async_iter</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A set of async generators and iterator functions"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="async_iter"><meta property="twitter:description" content="A set of async generators and iterator functions"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/vipoo/async_iter.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferBy">bufferBy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferGroupBy">bufferGroupBy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromStream">fromStream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-interval">interval</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-spawn">spawn</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TimeoutCancel">TimeoutCancel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timeout">timeout</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timeoutError">timeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-max">max</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-min">min</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#lib">lib</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-promiseSignal">promiseSignal</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-uuidv4">uuidv4</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#persisted">persisted</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isEmpty">isEmpty</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-popItem">popItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pushItem">pushItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeLast">removeLast</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-restoreUnprocessedItems">restoreUnprocessedItems</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-flagAsStop">flagAsStop</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasStoppedFlag">hasStoppedFlag</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unflagAsStop">unflagAsStop</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipeline">pipeline</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-broadcast">broadcast</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferBy">bufferBy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferGroupBy">bufferGroupBy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-byLines">byLines</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunk">chunk</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-combineWhen">combineWhen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-concat">concat</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-delay">delay</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-delayUntil">delayUntil</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filter">filter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-filterWhen">filterWhen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-first">first</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-forEach">forEach</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-last">last</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-map">map</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-max">max</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-merge">merge</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mergeMap">mergeMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-min">min</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-persisted">persisted</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rateLimit">rateLimit</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reduce">reduce</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-take">take</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-takeUntil">takeUntil</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-takeWhile">takeWhile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tap">tap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toArray">toArray</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="async-iter">async_iter</h1><hr>
+<p><a href="https://travis-ci.com/vipoo/async_iter_persited"><img src="https://travis-ci.com/vipoo/async_iter.svg?branch=master" alt="Build Status"></a></p>
+<p>A set of async generators and iterator functions</p>
+<p>This project is me just experimenting and learning about async generators in javascript.</p>
+<p>Its not supported or stable.</p>
+<h3 id="installing">Installing</h3><p><code>npm install async_iter</code></p>
+<h2 id="overview">Overview</h2><p>Below are the listed generators and functions implemented in this module.</p>
+<p>Have a look at the <a href="https://github.com/vipoo/async_iter/tree/master/src/examples">examples directory</a> for working examples</p>
+<p>The module uses babel to target nodejs version 10.15.3.  It should be compatibile
+with node 10 and above.</p>
+<h4 id="async-iterator-functions">Async Iterator functions</h4><ul>
+<li><a href="#bufferby">bufferBy</a></li>
+<li><a href="#map">map</a></li>
+<li><a href="#persisted">persisted</a></li>
+<li><a href="#ratelimit">rateLimit</a></li>
+<li><a href="#take">take</a></li>
+</ul>
+<h4 id="itertor-generators">Itertor generators</h4><ul>
+<li><a href="#broadcast">broadcast</a></li>
+<li><a href="#pump">pump</a></li>
+<li><a href="#interval">interval</a></li>
+<li><a href="#range">range</a></li>
+<li><a href="#fromstream">fromStream</a></li>
+</ul>
+<h3 id="bufferby">BufferBy</h3><h4 id="-code-items---bufferby-source--triggerfn--maxwaittime---code-"><code>items = bufferBy(source, triggerFn, maxWaitTime)</code></h4><p>Collect a set of items from source.  Emit as an array of those items.</p>
+<p>The batch is produced, when the <code>triggerFn</code> returns true, or the <code>maxWaitTime</code> has elasped since the last emitted value</p>
+<p><strong>source</strong>: is the source iteration (<code>Symbol.iterator</code> or <code>Symbol.asyncIterator</code>)</p>
+<p><strong>triggerFn(value, currentBatch)</strong>: called for each item in the source iteration.  Return true to trigger a batch</p>
+<p><strong>value</strong> - the value of the current source item
+<strong>currentBatch</strong> - the current array of collected items - the last item will be <code>value</code></p>
+<p><strong>maxWaitTime</strong> - period is milliseconds to trigger a batch, if no batch has been emitted and there are pending values</p>
+<h3 id="map">Map</h3><h4 id="-code-items---map-source--fn---code-"><code>items = map(source, fn)</code></h4><p>Transforms each item in the supplied iteration using the supplied function</p>
+<p><strong>source</strong>: is the source iteration (<code>Symbol.iterator</code> or <code>Symbol.asyncIterator</code>)</p>
+<p><strong>fn</strong>: function invoked for each item in the source iteration</p>
+<p>Returns</p>
+<p>The transformed iteration</p>
+<h3 id="persisted">Persisted</h3><h4 id="-code-items---await-persisted-source--localpath--opts---code-"><code>items = await persisted(source, localPath, opts)</code></h4><p>Persist items of an async iterator to files for later retrieval</p>
+<blockquote>
+<p>if a previously iteration was persisted and completed, you can not start a
+new iteration unless you set the <code>allowRetart</code> to true</p>
+</blockquote>
+<p><strong>source</strong>: is the source iteration (<code>Symbol.iterator</code> or <code>Symbol.asyncIterator</code>)</p>
+<p><strong>localPath</strong>: is a directory for storage of items.</p>
+<p><strong>opts</strong>: a set of optional flags:</p>
+<p><strong>allowRestart</strong>: (default false) - allows a restart of a previously completed iteration</p>
+<p><strong>maxBytes</strong>: (default 0) - limits the number of bytes that can be stored. Zero indicates no limit.</p>
+<p><strong>overFlowEvent</strong>: (optional) - callback function invoked when <code>maxBytes</code> exceeded.  The value
+returned from this callback will be emitted into the iteration, unless <code>underfined</code> is returned.</p>
+<p>Returns</p>
+<p>An async iteration, where each item resolves to an object containing:</p>
+<p><strong>Value</strong>: the emitted value from the persisted store -
+  as a buffer (ie: you need to apply, toString())</p>
+<p><strong>completed</strong>: A function that must be called to removed the item.</p>
+<blockquote>
+<p>If completed not called, and iteration is restarted, then the item will be re-emitted.</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  import {persisted} from &apos;async_iter&apos;
+
+  const items = await persisted(source, &apos;./tmp/buffering_example&apos;)
+
+  for await (const item of items) {
+    console.log(item.value.toString())
+    item.completed() // If not &apos;completed&apos;, item will be processed if items iterator restarted.
+  }
+</code>
+</code></pre>
+<blockquote>
+<p><code>Persisted</code> will consume items as fast as the source will emit.
+The consumer of the iteration will be &apos;decoupled&apos; from the source</p>
+</blockquote>
+<h3 id="ratelimit">RateLimit</h3><h4 id="-code-items---ratelimit-source--maxamount--perperiod--counterfn---code-"><code>items = rateLimit(source, maxAmount, perPeriod, counterFn)</code></h4><p>Emits the values from the source iteration at upto a limited rate</p>
+<p><strong>source</strong>: is the source iteration (<code>Symbol.iterator</code> or <code>Symbol.asyncIterator</code>)</p>
+<p><strong>maxAmount</strong> the maxmimum number of units to be emitted within the time of <code>perPeriod</code></p>
+<blockquote>
+<p>Units may be emitted elements or a customed defined concept</p>
+</blockquote>
+<p><strong>perPeriod</strong> the period in milliseconds to be applied</p>
+<p><strong>counterFn(item)</strong> an optional callback function, called for each item.  It needs to
+return the number of unit cost for the item</p>
+<p>Defaults to 1 per emitted item</p>
+<blockquote>
+<p>The source iteration will be consumed only as required - there is no queing within rateLimit function</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  import {rateLimit} from &apos;async_iter&apos;
+
+  // Emit at no more than 5 characters per 2s
+  const items = [&apos;first&apos;, &apos;second&apos;, &apos;third&apos;, &apos;fourth&apos;, &apos;fifth&apos;]
+    |&gt; rateLimit(?, 5, 2000, v =&gt; v.toString().length)
+</code>
+</code></pre>
+<h3 id="take">Take</h3><h4 id="-code-items---take-source--count---code-"><code>items = take(source, count)</code></h4><p>Re-emits the first n item of the source iteration</p>
+<p><strong>source</strong>: is the source iteration (<code>Symbol.iterator</code> or <code>Symbol.asyncIterator</code>)</p>
+<p><strong>count</strong>: the number of items to re-emit</p>
+<p>Returns</p>
+<p>An async iterator the will have upto <em>count</em> items.  Finishes when count items reached.</p>
+<p>Example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  import {take} from &apos;async_iter&apos;
+
+  const items = take([1, 2, 3, 4, 5], 3)
+
+  for await (const item of items)
+    console.log(item)
+</code>
+</code></pre>
+<h3 id="broadcast">Broadcast</h3><h4 id="itemsgeneratorfunction---await-broadcast-source-">itemsGeneratorFunction = await broadcast(source)</h4><p>Returns a generator function that will subscribe to the source iteration.</p>
+<p>Each generator function, will iterate over the same source values.</p>
+<blockquote>
+<p>No queing of values, so each consumer will be made to wait for all other consumers.</p>
+</blockquote>
+<blockquote>
+<p>The source iteration is not started, until at least one subscription has started consuming.</p>
+</blockquote>
+<blockquote>
+<p>The source iteration is paused, if all consumers are stopped.  Any new subscriptions will continue from where the source iteraion was iterated to.</p>
+</blockquote>
+<p><strong>Returns</strong> - a generator function to create an iterable of the source items.</p>
+<p><strong>Returns.return</strong> - Close all consumer iterators and close the source iteration.</p>
+<h2 id="pump">Pump</h2><h4 id="items---await-pump-callback-">items = await pump(callBack)</h4><p>pump allows for the &apos;pushing&apos; of values into an async iterator consumer</p>
+<p>The <code>push</code> operation returns a promise, that resolves when the consuming iteration has consumed the item</p>
+<p>This function follows the convention of a pushed iterator interface (next, throw, return).</p>
+<p>If the code pushing values, does not await the return promise, the values are then queued
+for processing by the consumer as it pulls in the values</p>
+<p><strong>callBack</strong> - this is a function that will pump values into the interator.</p>
+<blockquote>
+<p>See below for the callback signature and parameters description.
+The callback is not invoked, until the first item is pulled from the iteration.</p>
+</blockquote>
+<p><strong>Returns</strong> - A standard async iterator that can consume the generated values</p>
+<p>The callback takes 2 arguments: (<code>target</code> and <code>hasStopped</code>):</p>
+<p><strong>callBack: target</strong> - this is a async generator prototype with the 3 functions:</p>
+<p><strong>target.next</strong> - call this function to push a value into the iteration - returns a promise when the consumer
+has consumed this item.  Returns a promise that resolves to <code>{value, done}</code></p>
+<p><code>done</code> will be true when the consumer has stopped
+<code>value</code> will be an incrementing integer</p>
+<p><strong>target.return</strong> - call this function when there are no more items to be pushed.  Signal to consumer that
+the iteration has completed.</p>
+<p><strong>target.abort</strong> - call this function when an error has been generated - raises the error within the consuming
+iteration.</p>
+<p><strong>callback: hasStopped</strong> - a promise that resolves, when the consumer has stopped iterating.  This is an alternative
+mechanism to identify a stopped iteration.</p>
+<p><strong>hasStopped.now()</strong> - function that returns true, when the consumer has stopped iterating.  This is an alternative
+mechanism to identify a stopped iteration.</p>
+<p>Example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">
+  import {pump} from &apos;async_iter&apos;
+
+  // Create a push based iteration set
+  const items = await pump(target =&gt; {
+    //Values can be push to the iteration
+    await target.next(1) // if you dont &apos;await&apos; the values will be queued.
+    await target.next(2)
+    await target.next(3)
+    // If you want to push an &apos;error&apos; to the consumer
+    // await target.throw(new Error(&apos;This is an error&apos;))
+    await target.return()
+  })
+
+  for await (const item of items)
+    console.log(item)
+</code>
+</code></pre>
+<h3 id="interval">Interval</h3><h4 id="-code-items---await-interval-period---code-"><code>items = await interval(period)</code></h4><p>Returns an async iterator the will emit every &apos;period&apos; milliseconds</p>
+<p><strong>period</strong> the time in milliseconds the iterator emits</p>
+<blockquote>
+<p>The iterator will block its emitted values, until the consumer has consumed each item.
+Therefore there is no racing of producer to consumer.</p>
+</blockquote>
+<blockquote>
+<p>The iteration stops, when the consumer breaks or stop the iteration</p>
+</blockquote>
+<h3 id="range">Range</h3><h4 id="-code-items---range--start--step--end----code-"><code>items = range({start, step, end})</code></h4><p>Returns an iterator that iterate from start to end (inclusive) by step amounts</p>
+<p><strong>start</strong> defaults to 0</p>
+<p><strong>end</strong> defaults to infinite or -infinite</p>
+<p><strong>step</strong> defaults to 1</p>
+<h3 id="fromstream">FromStream</h3><h4 id="-code-items---fromstream-eventsource--dataevent-----39-data--39---closeevent-----39-close--39----code-"><code>items = fromStream(eventSource, dataEvent = &apos;data&apos;, closeEvent = &apos;close&apos;)</code></h4><p>Returns an iterator, that emits as per the <code>dataEvent</code> of the <code>eventSource</code></p>
+<p><strong>eventSource</strong> An object that supports the &apos;on&apos; and &apos;removeListener&apos; function</p>
+<p><strong>dataEvent</strong> the main dataEvent name to listen to</p>
+<p><strong>closeEvent</strong> when this event emits, the iteration is stopped</p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
