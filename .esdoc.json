@@ -1,0 +1,14 @@
+{
+  "source": "./src",
+  "destination": "./docs",
+  "excludes":[
+    "lib\/.*",
+    "pipeline\/.*",
+    "persisted\/.*",
+    "examples\/.*"
+  ],
+  "plugins": [
+    {"name": "esdoc-standard-plugin"},
+    {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}}
+  ]
+}

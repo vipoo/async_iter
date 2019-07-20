@@ -22,13 +22,14 @@ Have a look at the [examples directory](https://github.com/vipoo/async_iter/tree
 The module uses babel to target nodejs version 10.15.3.  It should be compatibile
 with node 10 and above.
 
+[API Docs](https://vipoo.github.io/async_iter/)
+
 #### Async Iterator functions
 
-* [bufferBy](#bufferby)
-* [map](#map)
+* [bufferBy](https://vipoo.github.io/async_iter/module-IteratorFunctions.html#.bufferBy)
 * [persisted](#persisted)
 * [rateLimit](#ratelimit)
-* [take](#take)
+* [take](https://vipoo.github.io/async_iter/module-IteratorFunctions.html#.take)
 
 #### Itertor generators
 
@@ -37,36 +38,6 @@ with node 10 and above.
 * [interval](#interval)
 * [range](#range)
 * [fromStream](#fromstream)
-
-### BufferBy
-#### `items = bufferBy(source, triggerFn, maxWaitTime)`
-
-Collect a set of items from source.  Emit as an array of those items.
-
-The batch is produced, when the `triggerFn` returns true, or the `maxWaitTime` has elasped since the last emitted value
-
-**source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)
-
-**triggerFn(value, currentBatch)**: called for each item in the source iteration.  Return true to trigger a batch
-
-**value** - the value of the current source item
-**currentBatch** - the current array of collected items - the last item will be `value`
-
-**maxWaitTime** - period is milliseconds to trigger a batch, if no batch has been emitted and there are pending values
-
-
-### Map
-#### `items = map(source, fn)`
-
-Transforms each item in the supplied iteration using the supplied function
-
-**source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)
-
-**fn**: function invoked for each item in the source iteration
-
-Returns
-
-The transformed iteration
 
 ### Persisted
 #### `items = await persisted(source, localPath, opts)`
@@ -138,7 +109,7 @@ Defaults to 1 per emitted item
 
 Example:
 
-```javascript
+```
   import {rateLimit} from 'async_iter'
 
   // Emit at no more than 5 characters per 2s
@@ -147,31 +118,6 @@ Example:
 
 ```
 
-
-### Take
-#### `items = take(source, count)`
-
-Re-emits the first n item of the source iteration
-
-**source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)
-
-**count**: the number of items to re-emit
-
-Returns
-
-An async iterator the will have upto *count* items.  Finishes when count items reached.
-
-Example:
-
-```javascript
-  import {take} from 'async_iter'
-
-  const items = take([1, 2, 3, 4, 5], 3)
-
-  for await (const item of items)
-    console.log(item)
-
-```
 ### Broadcast
 #### itemsGeneratorFunction = await broadcast(source)
 
