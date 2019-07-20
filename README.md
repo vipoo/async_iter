@@ -36,6 +36,7 @@ with node 10 and above.
 * [pump](#pump)
 * [interval](#interval)
 * [range](#range)
+* [fromStream](#fromstream)
 
 ### BufferBy
 #### `items = bufferBy(source, triggerFn, maxWaitTime)`
@@ -274,4 +275,15 @@ Returns an iterator that iterate from start to end (inclusive) by step amounts
 **end** defaults to infinite or -infinite
 
 **step** defaults to 1
+
+### FromStream
+#### `items = fromStream(eventSource, dataEvent = 'data', closeEvent = 'close')`
+
+Returns an iterator, that emits as per the `dataEvent` of the `eventSource`
+
+**eventSource** An object that supports the 'on' and 'removeListener' function
+
+**dataEvent** the main dataEvent name to listen to
+
+**closeEvent** when this event emits, the iteration is stopped
 
