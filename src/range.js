@@ -10,6 +10,19 @@ function* reverseRange({start, end = -Infinity, step}) {
 }
 
 /* eslint complexity: ['error', 7] */
+
+/**
+```
+import {range} from 'async_iter/range' # conventional version
+```
+Returns an iterator that iterates from start to end (inclusive) by step amounts
+ * @param  {Object} [opts] the optional start, end and step values for the generation
+ * @param  {Object} [opts.start=0] the starting number for the iteration
+ * @param  {Object} [opts.end=Number.POSITIVE_INFINITY] the end number for the iteration
+ * @param  {Object} [opts.step=1] the increment for the iteration
+ * @return {Iterable} An iteration for the specified range
+ * @function
+ */
 export function range(opts) {
   if (typeof opts === 'number')
     opts = {end: opts}

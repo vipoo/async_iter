@@ -1,5 +1,11 @@
 import {pump} from '../../pipeline'
 
+/**
+ * Example usage of the pump function
+ * @name example_4
+ * @memberof module:pump-examples
+ * @function
+ */
 async function main() {
   const items = await pump(async target => {
     await target.next()

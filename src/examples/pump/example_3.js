@@ -3,6 +3,12 @@ import {pump} from '../../pipeline'
 const delay = period => new Promise(res => setTimeout(res, period))
 const forTicks = () => new Promise(res => process.nextTick(res))
 
+/**
+ * Example usage of the pump function
+ * @name example_3
+ * @memberof module:pump-examples
+ * @function
+ */
 async function main() {
   const items = await pump(async (target, hasStopped) => {
     await target.next()

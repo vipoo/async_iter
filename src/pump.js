@@ -9,6 +9,43 @@ class ArgumentError extends Error {
   }
 }
 
+/**
+```
+import {pump} from 'async_iter/pump'
+```
+
+pump allows for the 'pushing' of values into an async iterator consumer
+
+The `push` operation returns a promise, that resolves when the consuming iteration has consumed the item
+
+This function follows the convention of a pushed iterator interface (next, throw, return).
+
+If the code pushing values, does not await the return promise, the values are then queued
+for processing by the consumer as it pulls in the values
+
+The callback is not invoked, until the first item is pulled from the iteration
+
+ * @param  {pumpCallback} fn        this is a function that will async pump values into the interator
+ * @param  {String}   [marker=]
+ * @return {Iteratable}         A standard async iterator that can consume the generated values
+
+@example
+import {pump} from 'async_iter'
+
+// Create a push based iteration set
+const items = await pump(target => {
+  //Values can be push to the iteration
+  await target.next(1) // if you dont 'await' the values will be queued.
+  await target.next(2)
+  await target.next(3)
+  // If you want to push an 'error' to the consumer
+  // await target.throw(new Error('This is an error'))
+  await target.return()
+})
+
+for await (const item of items)
+  console.log(item)
+ */
 export function pump(fn, marker) {
   const myObject = new ArgumentError()
   return _pump(fn, marker, myObject)

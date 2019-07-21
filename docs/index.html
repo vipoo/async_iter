@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#bufferBy">bufferBy</a></li><li><a href="global.html#fromStream">fromStream</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#persisted">persisted</a></li><li><a href="global.html#rateLimit">rateLimit</a></li><li><a href="global.html#take">take</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-broadcast-examples.html">broadcast-examples</a><ul class='methods'><li data-type='method'><a href="module-broadcast-examples.html#.example">example</a></li></ul></li><li><a href="module-bufferBy-examples.html">bufferBy-examples</a><ul class='methods'><li data-type='method'><a href="module-bufferBy-examples.html#.example_1">example_1</a></li><li data-type='method'><a href="module-bufferBy-examples.html#.example_2">example_2</a></li><li data-type='method'><a href="module-bufferBy-examples.html#.example_3">example_3</a></li></ul></li><li><a href="module-interval-examples.html">interval-examples</a><ul class='methods'><li data-type='method'><a href="module-interval-examples.html#.example_1">example_1</a></li><li data-type='method'><a href="module-interval-examples.html#.example_2">example_2</a></li></ul></li><li><a href="module-pump-examples.html">pump-examples</a><ul class='methods'><li data-type='method'><a href="module-pump-examples.html#.example_1">example_1</a></li><li data-type='method'><a href="module-pump-examples.html#.example_2">example_2</a></li><li data-type='method'><a href="module-pump-examples.html#.example_3">example_3</a></li><li data-type='method'><a href="module-pump-examples.html#.example_4">example_4</a></li><li data-type='method'><a href="module-pump-examples.html#.example_5">example_5</a></li><li data-type='method'><a href="module-pump-examples.html#.example_6">example_6</a></li><li data-type='method'><a href="module-pump-examples.html#.example_7">example_7</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#broadcast">broadcast</a></li><li><a href="global.html#bufferBy">bufferBy</a></li><li><a href="global.html#fromStream">fromStream</a></li><li><a href="global.html#interval">interval</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#persisted">persisted</a></li><li><a href="global.html#pump">pump</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#rateLimit">rateLimit</a></li><li><a href="global.html#take">take</a></li></ul>
 </nav>
 
 <div id="main">
@@ -73,99 +73,20 @@ with node 10 and above.</p>
 <p><a href="https://vipoo.github.io/async_iter/">API Docs</a></p>
 <h4>Async/Sync Iterator functions</h4>
 <ul>
+<li><a href="https://vipoo.github.io/async_iter/global.html#broadcast">broadcast</a></li>
 <li><a href="https://vipoo.github.io/async_iter/global.html#bufferBy">bufferBy</a></li>
 <li><a href="https://vipoo.github.io/async_iter/global.html#map">map</a></li>
 <li><a href="https://vipoo.github.io/async_iter/global.html#persisted">persisted</a></li>
+<li><a href="https://vipoo.github.io/async_iter/global.html#rateLimit">rateLimit</a></li>
 <li><a href="https://vipoo.github.io/async_iter/global.html#take">take</a></li>
 </ul>
 <h4>Itertor generators</h4>
 <ul>
 <li><a href="https://vipoo.github.io/async_iter/global.html#fromStream">fromStream</a></li>
-</ul>
-<h3>Broadcast</h3>
-<h4>itemsGeneratorFunction = await broadcast(source)</h4>
-<p>Returns a generator function that will subscribe to the source iteration.</p>
-<p>Each generator function, will iterate over the same source values.</p>
-<blockquote>
-<p>No queing of values, so each consumer will be made to wait for all other consumers.</p>
-</blockquote>
-<blockquote>
-<p>The source iteration is not started, until at least one subscription has started consuming.</p>
-</blockquote>
-<blockquote>
-<p>The source iteration is paused, if all consumers are stopped.  Any new subscriptions will continue from where the source iteraion was iterated to.</p>
-</blockquote>
-<p><strong>Returns</strong> - a generator function to create an iterable of the source items.</p>
-<p><strong>Returns.return</strong> - Close all consumer iterators and close the source iteration.</p>
-<h2>Pump</h2>
-<h4>items = await pump(callBack)</h4>
-<p>pump allows for the 'pushing' of values into an async iterator consumer</p>
-<p>The <code>push</code> operation returns a promise, that resolves when the consuming iteration has consumed the item</p>
-<p>This function follows the convention of a pushed iterator interface (next, throw, return).</p>
-<p>If the code pushing values, does not await the return promise, the values are then queued
-for processing by the consumer as it pulls in the values</p>
-<p><strong>callBack</strong> - this is a function that will pump values into the interator.</p>
-<blockquote>
-<p>See below for the callback signature and parameters description.
-The callback is not invoked, until the first item is pulled from the iteration.</p>
-</blockquote>
-<p><strong>Returns</strong> - A standard async iterator that can consume the generated values</p>
-<p>The callback takes 2 arguments: (<code>target</code> and <code>hasStopped</code>):</p>
-<p><strong>callBack: target</strong> - this is a async generator prototype with the 3 functions:</p>
-<p><strong>target.next</strong> - call this function to push a value into the iteration - returns a promise when the consumer
-has consumed this item.  Returns a promise that resolves to <code>{value, done}</code></p>
-<p><code>done</code> will be true when the consumer has stopped
-<code>value</code> will be an incrementing integer</p>
-<p><strong>target.return</strong> - call this function when there are no more items to be pushed.  Signal to consumer that
-the iteration has completed.</p>
-<p><strong>target.abort</strong> - call this function when an error has been generated - raises the error within the consuming
-iteration.</p>
-<p><strong>callback: hasStopped</strong> - a promise that resolves, when the consumer has stopped iterating.  This is an alternative
-mechanism to identify a stopped iteration.</p>
-<p><strong>hasStopped.now()</strong> - function that returns true, when the consumer has stopped iterating.  This is an alternative
-mechanism to identify a stopped iteration.</p>
-<p>Example:</p>
-<pre class="prettyprint source lang-javascript"><code>
-  import {pump} from 'async_iter'
-
-  // Create a push based iteration set
-  const items = await pump(target => {
-    //Values can be push to the iteration
-    await target.next(1) // if you dont 'await' the values will be queued.
-    await target.next(2)
-    await target.next(3)
-    // If you want to push an 'error' to the consumer
-    // await target.throw(new Error('This is an error'))
-    await target.return()
-  })
-
-  for await (const item of items)
-    console.log(item)
-
-</code></pre>
-<h3>Interval</h3>
-<h4><code>items = await interval(period)</code></h4>
-<p>Returns an async iterator the will emit every 'period' milliseconds</p>
-<p><strong>period</strong> the time in milliseconds the iterator emits</p>
-<blockquote>
-<p>The iterator will block its emitted values, until the consumer has consumed each item.
-Therefore there is no racing of producer to consumer.</p>
-</blockquote>
-<blockquote>
-<p>The iteration stops, when the consumer breaks or stop the iteration</p>
-</blockquote>
-<h3>Range</h3>
-<h4><code>items = range({start, step, end})</code></h4>
-<p>Returns an iterator that iterate from start to end (inclusive) by step amounts</p>
-<p><strong>start</strong> defaults to 0</p>
-<p><strong>end</strong> defaults to infinite or -infinite</p>
-<p><strong>step</strong> defaults to 1</p>
-<h3>FromStream</h3>
-<h4><code>items = fromStream(eventSource, dataEvent = 'data', closeEvent = 'close')</code></h4>
-<p>Returns an iterator, that emits as per the <code>dataEvent</code> of the <code>eventSource</code></p>
-<p><strong>eventSource</strong> An object that supports the 'on' and 'removeListener' function</p>
-<p><strong>dataEvent</strong> the main dataEvent name to listen to</p>
-<p><strong>closeEvent</strong> when this event emits, the iteration is stopped</p></article>
+<li><a href="https://vipoo.github.io/async_iter/global.html#interval">interval</a></li>
+<li><a href="https://vipoo.github.io/async_iter/global.html#pump">pump</a></li>
+<li><a href="https://vipoo.github.io/async_iter/global.html#range">range</a></li>
+</ul></article>
     </section>
 
 
@@ -180,7 +101,7 @@ Therefore there is no racing of producer to consumer.</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Sun Jul 21 2019 15:34:55 GMT+1000 (Australian Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

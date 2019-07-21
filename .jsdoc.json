@@ -1,7 +1,8 @@
 {
  "templates": {
     "default": {
-      "outputSourceFiles": false
+      "outputSourceFiles": true,
+      "includeDate": false
     }
   },
   "opts": {

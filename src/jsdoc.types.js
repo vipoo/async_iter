@@ -19,3 +19,18 @@
  * @property {Function} completed - A function that must be called to removed the item
  */
 
+/**
+ * The callback function invoked to generate an push based async iterator
+ *
+ * @callback pumpCallback
+ * @param {iterator} target - The target iterator object (supports next, return and throw)
+> * target.next - call this function to push a value into the iteration - returns a promise when the consumer
+has consumed this item.  Returns a promise that resolves to `{value, done}`
+> * target.return - call this function when there are no more items to be pushed.  Signal to consumer that
+the iteration has completed
+> * target.throw - call this function when an error has been generated - raises the error within the consuming
+iteration
+ * @param {promise} hasStopped - a promise that resolves, when the consumer has stopped iterating.  This is an alternative
+mechanism to identify a stopped iteration
+> * `hasStopped.now()` - promise additonally supports a now() that returns true, when the consumer has stopped iterating
+ */

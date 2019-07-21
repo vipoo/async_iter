@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-examples.html">examples</a></li></ul><h3>Global</h3><ul><li><a href="global.html#broadcast">broadcast</a></li><li><a href="global.html#bufferBy">bufferBy</a></li><li><a href="global.html#fromStream">fromStream</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#persisted">persisted</a></li><li><a href="global.html#rateLimit">rateLimit</a></li><li><a href="global.html#take">take</a></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+    <section class="package">
+        <h3>async_iter 1.1.2</h3>		
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    <section class="readme">
+        <article><h1>async_iter</h1>
+<hr>
+<p><a href="https://travis-ci.com/vipoo/async_iter_persited"><img src="https://travis-ci.com/vipoo/async_iter.svg?branch=master" alt="Build Status"></a></p>
+<p>A set of async generators and iterator functions</p>
+<p>This project is me just experimenting and learning about async generators in javascript.</p>
+<p>Its not supported or stable.</p>
+<h3>Installing</h3>
+<p><code>npm install async_iter</code></p>
+<h2>Overview</h2>
+<p>Below are the listed generators and functions implemented in this module.</p>
+<p>Have a look at the <a href="https://github.com/vipoo/async_iter/tree/master/src/examples">examples directory</a> for working examples</p>
+<p>The module uses babel to target nodejs version 10.15.3.  It should be compatibile
+with node 10 and above.</p>
+<p><a href="https://vipoo.github.io/async_iter/">API Docs</a></p>
+<h4>Async/Sync Iterator functions</h4>
+<ul>
+<li><a href="https://vipoo.github.io/async_iter/global.html#bufferBy">bufferBy</a></li>
+<li><a href="https://vipoo.github.io/async_iter/global.html#map">map</a></li>
+<li><a href="https://vipoo.github.io/async_iter/global.html#persisted">persisted</a></li>
+<li><a href="https://vipoo.github.io/async_iter/global.html#rateLimit">rateLimit</a></li>
+<li><a href="https://vipoo.github.io/async_iter/global.html#take">take</a></li>
+</ul>
+<h4>Itertor generators</h4>
+<ul>
+<li><a href="https://vipoo.github.io/async_iter/global.html#fromStream">fromStream</a></li>
+</ul>
+<h2>Pump</h2>
+<h4>items = await pump(callBack)</h4>
+<p>pump allows for the 'pushing' of values into an async iterator consumer</p>
+<p>The <code>push</code> operation returns a promise, that resolves when the consuming iteration has consumed the item</p>
+<p>This function follows the convention of a pushed iterator interface (next, throw, return).</p>
+<p>If the code pushing values, does not await the return promise, the values are then queued
+for processing by the consumer as it pulls in the values</p>
+<p><strong>callBack</strong> - this is a function that will pump values into the interator.</p>
+<blockquote>
+<p>See below for the callback signature and parameters description.
+The callback is not invoked, until the first item is pulled from the iteration.</p>
+</blockquote>
+<p><strong>Returns</strong> - A standard async iterator that can consume the generated values</p>
+<p>The callback takes 2 arguments: (<code>target</code> and <code>hasStopped</code>):</p>
+<p><strong>callBack: target</strong> - this is a async generator prototype with the 3 functions:</p>
+<p><strong>target.next</strong> - call this function to push a value into the iteration - returns a promise when the consumer
+has consumed this item.  Returns a promise that resolves to <code>{value, done}</code></p>
+<p><code>done</code> will be true when the consumer has stopped
+<code>value</code> will be an incrementing integer</p>
+<p><strong>target.return</strong> - call this function when there are no more items to be pushed.  Signal to consumer that
+the iteration has completed.</p>
+<p><strong>target.abort</strong> - call this function when an error has been generated - raises the error within the consuming
+iteration.</p>
+<p><strong>callback: hasStopped</strong> - a promise that resolves, when the consumer has stopped iterating.  This is an alternative
+mechanism to identify a stopped iteration.</p>
+<p><strong>hasStopped.now()</strong> - function that returns true, when the consumer has stopped iterating.  This is an alternative
+mechanism to identify a stopped iteration.</p>
+<p>Example:</p>
+<pre class="prettyprint source lang-javascript"><code>
+  import {pump} from 'async_iter'
+
+  // Create a push based iteration set
+  const items = await pump(target => {
+    //Values can be push to the iteration
+    await target.next(1) // if you dont 'await' the values will be queued.
+    await target.next(2)
+    await target.next(3)
+    // If you want to push an 'error' to the consumer
+    // await target.throw(new Error('This is an error'))
+    await target.return()
+  })
+
+  for await (const item of items)
+    console.log(item)
+
+</code></pre>
+<h3>Interval</h3>
+<h4><code>items = await interval(period)</code></h4>
+<p>Returns an async iterator the will emit every 'period' milliseconds</p>
+<p><strong>period</strong> the time in milliseconds the iterator emits</p>
+<blockquote>
+<p>The iterator will block its emitted values, until the consumer has consumed each item.
+Therefore there is no racing of producer to consumer.</p>
+</blockquote>
+<blockquote>
+<p>The iteration stops, when the consumer breaks or stop the iteration</p>
+</blockquote>
+<h3>Range</h3>
+<h4><code>items = range({start, step, end})</code></h4>
+<p>Returns an iterator that iterate from start to end (inclusive) by step amounts</p>
+<p><strong>start</strong> defaults to 0</p>
+<p><strong>end</strong> defaults to infinite or -infinite</p>
+<p><strong>step</strong> defaults to 1</p>
+<h3>FromStream</h3>
+<h4><code>items = fromStream(eventSource, dataEvent = 'data', closeEvent = 'close')</code></h4>
+<p>Returns an iterator, that emits as per the <code>dataEvent</code> of the <code>eventSource</code></p>
+<p><strong>eventSource</strong> An object that supports the 'on' and 'removeListener' function</p>
+<p><strong>dataEvent</strong> the main dataEvent name to listen to</p>
+<p><strong>closeEvent</strong> when this event emits, the iteration is stopped</p></article>
+    </section>
+
+
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

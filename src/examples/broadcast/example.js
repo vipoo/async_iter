@@ -2,7 +2,13 @@ import 'source-map-support/register'
 import {range, broadcast, map} from '../../pipeline'
 import {promiseSignal} from '../../lib/promise_helpers'
 
-async function main() {
+/**
+ * Example usage of the broadcast function
+ * @name example
+ * @memberof module:broadcast-examples
+ * @function
+ */
+export async function main() {
 
   const items = range({start: 1, end: 10})
     |> map(x => {

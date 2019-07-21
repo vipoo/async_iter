@@ -1,5 +1,21 @@
 import {pump} from './pump'
 
+/**
+```
+import {interval} from 'async_iter/interval'
+```
+Returns an async iterator the will emit every `period` milliseconds
+
+> * The iterator will block its emitted values, until the consumer has consumed the item,
+therefore there is no racing of producer to consumer.
+
+> * The iteration stops, when the consumer breaks, stop the iteration or the cancel promise is resolved
+
+ * @param  {Number}   period the time in milliseconds the iterator emits
+ * @param  {Promise} cancel A promise that when it resolves, causes the interval to stop generating values
+ * @return {Iterable} An iteration that emits as per the interval period
+ * @function
+ */
 export function interval(period, cancel = new Promise(() => {})) {
   return pump(async target => {
     const result = await Promise.race([target.next(), cancel.then(() => ({done: true}))])

@@ -1,6 +1,26 @@
 import {pump} from './pump'
 import {promiseSignal} from './lib/promise_helpers'
 
+/**
+```
+import {broadcast} from 'async_iter/pipeline/broadcast' # pipeline version
+import {broadcast} from 'async_iter/broadcast' # conventional version
+```
+Returns a generator function that will subscribe to the source iteration
+<br/>
+Each generator function, will iterate over the same source values
+<br/>
+> * No queing of values, so each consumer will be made to wait for all other consumers
+<br/>
+> * The source iteration is not started, until at least one subscription has started consuming
+<br/>
+> * The source iteration is paused, if all consumers are stopped.  Any new subscriptions will continue from where the source iteraion was iterated to
+
+ * @param  {Iterable}         source        The source iteration to broadcast to all subscribers
+ * @return {Function} a generator function to create an iterable of the source items
+ <br/>
+.return - A function to close all consumer iterators and close the source iteration.
+ */
 export function broadcast(source) {
   let count = 1
   const subscribers = {}

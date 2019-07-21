@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>interval.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-broadcast-examples.html">broadcast-examples</a><ul class='methods'><li data-type='method'><a href="module-broadcast-examples.html#.example">example</a></li></ul></li><li><a href="module-bufferBy-examples.html">bufferBy-examples</a><ul class='methods'><li data-type='method'><a href="module-bufferBy-examples.html#.example_1">example_1</a></li><li data-type='method'><a href="module-bufferBy-examples.html#.example_2">example_2</a></li><li data-type='method'><a href="module-bufferBy-examples.html#.example_3">example_3</a></li></ul></li><li><a href="module-interval-examples.html">interval-examples</a><ul class='methods'><li data-type='method'><a href="module-interval-examples.html#.example_1">example_1</a></li><li data-type='method'><a href="module-interval-examples.html#.example_2">example_2</a></li></ul></li><li><a href="module-pump-examples.html">pump-examples</a><ul class='methods'><li data-type='method'><a href="module-pump-examples.html#.example_1">example_1</a></li><li data-type='method'><a href="module-pump-examples.html#.example_2">example_2</a></li><li data-type='method'><a href="module-pump-examples.html#.example_3">example_3</a></li><li data-type='method'><a href="module-pump-examples.html#.example_4">example_4</a></li><li data-type='method'><a href="module-pump-examples.html#.example_5">example_5</a></li><li data-type='method'><a href="module-pump-examples.html#.example_6">example_6</a></li><li data-type='method'><a href="module-pump-examples.html#.example_7">example_7</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#broadcast">broadcast</a></li><li><a href="global.html#bufferBy">bufferBy</a></li><li><a href="global.html#fromStream">fromStream</a></li><li><a href="global.html#interval">interval</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#persisted">persisted</a></li><li><a href="global.html#pump">pump</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#rateLimit">rateLimit</a></li><li><a href="global.html#take">take</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">interval.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {pump} from './pump'
+
+/**
+```
+import {interval} from 'async_iter/interval'
+```
+Returns an async iterator the will emit every `period` milliseconds
+
+> * The iterator will block its emitted values, until the consumer has consumed the item,
+therefore there is no racing of producer to consumer.
+
+> * The iteration stops, when the consumer breaks, stop the iteration or the cancel promise is resolved
+
+ * @param  {Number}   period the time in milliseconds the iterator emits
+ * @param  {Promise} cancel A promise that when it resolves, causes the interval to stop generating values
+ * @return {Iterable} An iteration that emits as per the interval period
+ * @function
+ */
+export function interval(period, cancel = new Promise(() => {})) {
+  return pump(async target => {
+    const result = await Promise.race([target.next(), cancel.then(() => ({done: true}))])
+    if (result.done)
+      return target.return()
+
+    return new Promise(res => {
+      cancel.then(() => {
+        currentPromise = null
+        clearInterval(intervalHandle)
+        target.return()
+        res()
+      })
+      let intervalHandle = undefined
+      let currentPromise = undefined
+      const intervalFunction = async () => {
+        if (currentPromise)
+          return
+
+        const v = process.hrtime.bigint()
+        currentPromise = await Promise.race([target.next(v), cancel.then(() => ({done: true}))])
+        if (currentPromise.done) {
+          currentPromise = null
+          clearInterval(intervalHandle)
+          await target.return()
+          res()
+        }
+        currentPromise = null
+      }
+
+      intervalHandle = setInterval(intervalFunction, period)
+    })
+  })
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

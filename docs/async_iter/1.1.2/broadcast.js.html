@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>broadcast.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-examples.html">examples</a></li></ul><h3>Global</h3><ul><li><a href="global.html#broadcast">broadcast</a></li><li><a href="global.html#bufferBy">bufferBy</a></li><li><a href="global.html#fromStream">fromStream</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#persisted">persisted</a></li><li><a href="global.html#rateLimit">rateLimit</a></li><li><a href="global.html#take">take</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">broadcast.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {pump} from './pump'
+import {promiseSignal} from './lib/promise_helpers'
+
+/**
+```
+import {broadcast} from 'async_iter/pipeline/broadcast' # pipeline version
+import {broadcast} from 'async_iter/broadcast' # conventional version
+```
+blah
+blah
+Returns a generator function that will subscribe to the source iteration
+&lt;br/>
+Each generator function, will iterate over the same source values
+&lt;br/>
+> * No queing of values, so each consumer will be made to wait for all other consumers
+&lt;br/>
+> * The source iteration is not started, until at least one subscription has started consuming
+&lt;br/>
+> * The source iteration is paused, if all consumers are stopped.  Any new subscriptions will continue from where the source iteraion was iterated to
+
+ * @param  {Iterable}         source        The source iteration to broadcast to all subscribers
+ * @return {Function} a generator function to create an iterable of the source items
+ &lt;br/>
+.return - A function to close all consumer iterators and close the source iteration.
+ */
+export function broadcast(source) {
+  let count = 1
+  const subscribers = {}
+  const pumps = {}
+  let firstSubscription = promiseSignal()
+  let sourceHasStopped = false
+  let lastEmittedValue = undefined
+  let broadcastHasStopped = false
+
+  function removeAllSubscribers() {
+    for (const key of Object.keys(subscribers)) {
+      subscribers[key].return()
+      pumps[key].return()
+      delete subscribers[key]
+      delete pumps[key]
+    }
+  }
+
+  function pushToAllSubscribers(x) {
+    const pending = Object
+      .entries(subscribers)
+      .map(([key, value]) => value.next(x)
+        .then(r => ({...r, key})))
+
+    return Promise.all(pending)
+  }
+
+  function throwErrorToAllSubscribers(err) {
+    const pending = Object
+      .values(subscribers)
+      .map(value => value.throw(err))
+
+    return Promise.all(pending)
+  }
+
+  /* eslint complexity: ['error', 5] */
+  process.nextTick(async () => {
+    await firstSubscription.promise
+    try {
+      for await (const x of source) {
+        lastEmittedValue = x
+        await pushToAllSubscribers(x)
+
+        if (broadcastHasStopped)
+          break
+
+        if (Object.entries(subscribers).length === 0) {
+          firstSubscription = promiseSignal()
+          await firstSubscription.promise
+        }
+      }
+    } catch (err) {
+      await throwErrorToAllSubscribers(err)
+
+    } finally {
+      sourceHasStopped = true
+      removeAllSubscribers()
+    }
+  })
+
+  const result = (inclusiveOfPreviousValue = false) => {
+    if (sourceHasStopped)
+      throw new Error('Source iteration has already completed')
+
+    const key = count++
+    pumps[key] = pump(async (target, hasStopped) => {
+      hasStopped.then(() => {
+        delete subscribers[key]
+        delete pumps[key]
+      }).catch(err => {
+        delete subscribers[key]
+        delete pumps[key]
+      })
+      if (sourceHasStopped)
+        throw new Error('Source iteration has already completed')
+      await target.next()
+      subscribers[key] = target
+      firstSubscription.res()
+      if (inclusiveOfPreviousValue &amp;&amp; lastEmittedValue)
+        await target.next(lastEmittedValue)
+    })
+
+    return pumps[key]
+  }
+
+  result.return = async () => {
+    if (broadcastHasStopped)
+      return
+    removeAllSubscribers()
+    broadcastHasStopped = true
+  }
+
+  return result
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

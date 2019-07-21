@@ -1,5 +1,12 @@
 import {interval, take} from '../../pipeline'
 
+/**
+ * Example usage of the interval generator
+ * @name example_1
+ * @memberof module:interval-examples
+ * @function
+ */
+
 const delay = period => new Promise(res => setTimeout(res, period))
 
 let lastTime
