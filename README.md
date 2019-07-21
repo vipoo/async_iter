@@ -29,45 +29,13 @@ with node 10 and above.
 * [bufferBy](https://vipoo.github.io/async_iter/global.html#bufferBy)
 * [map](https://vipoo.github.io/async_iter/global.html#map)
 * [persisted](https://vipoo.github.io/async_iter/global.html#persisted)
+* [rateLimit](https://vipoo.github.io/async_iter/global.html#rateLimit)
 * [take](https://vipoo.github.io/async_iter/global.html#take)
 
 #### Itertor generators
 
 * [fromStream](https://vipoo.github.io/async_iter/global.html#fromStream)
 
-### Persisted
-#### `items = await persisted(source, localPath, opts)`
-
-### RateLimit
-#### `items = rateLimit(source, maxAmount, perPeriod, counterFn)`
-
-Emits the values from the source iteration at upto a limited rate
-
-
-**source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)
-
-**maxAmount** the maxmimum number of units to be emitted within the time of `perPeriod`
-> Units may be emitted elements or a customed defined concept
-
-**perPeriod** the period in milliseconds to be applied
-
-**counterFn(item)** an optional callback function, called for each item.  It needs to
-return the number of unit cost for the item
-
-Defaults to 1 per emitted item
-
-> The source iteration will be consumed only as required - there is no queing within rateLimit function
-
-Example:
-
-```
-  import {rateLimit} from 'async_iter'
-
-  // Emit at no more than 5 characters per 2s
-  const items = ['first', 'second', 'third', 'fourth', 'fifth']
-    |> rateLimit(?, 5, 2000, v => v.toString().length)
-
-```
 
 ### Broadcast
 #### itemsGeneratorFunction = await broadcast(source)

@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#bufferBy">bufferBy</a></li><li><a href="global.html#fromStream">fromStream</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#persisted">persisted</a></li><li><a href="global.html#take">take</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#bufferBy">bufferBy</a></li><li><a href="global.html#fromStream">fromStream</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#persisted">persisted</a></li><li><a href="global.html#rateLimit">rateLimit</a></li><li><a href="global.html#take">take</a></li></ul>
 </nav>
 
 <div id="main">
@@ -1122,6 +1122,283 @@ for await (const item of items) {
 
     
 
+    <h4 class="name" id="rateLimit"><span class="type-signature"></span>rateLimit<span class="signature">(source, maxAmount, perPeriod, counter=<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Iterable}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <pre class="prettyprint source"><code>import {rateLimit} from 'async_iter/pipeline/rateLimit' # pipeline version
+import {rateLimit} from 'async_iter/rateLimit' # conventional version
+</code></pre>
+<p>Emits the values from the source iteration at upto a limited rate</p>
+<blockquote>
+<p>Supports both <strong>sync</strong> and  <strong>async</strong> iterations.  Always returns an <strong>async</strong> iterator
+<br/>
+The source iteration will be consumed only as required - there is no queing within rateLimit function
+<br/>
+The definition of unit is defined by the optional function <code>counter</code>. The default will be 1 iteration equals 1 unit</p>
+</blockquote>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>import {rateLimit} from 'async_iter/pipeline'
+
+// Emit at no more than 5 characters per 2s
+const items = ['first', 'second', 'third', 'fourth', 'fifth']
+  |> rateLimit(5, 2000, v => v.toString().length)</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The source iteration to rate limit</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxAmount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>the maxmimum number of 'units' to be emitted within the time of <code>perPeriod</code></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>perPeriod</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>the period in milliseconds to be applied</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>counter=</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>an optional callback function, called for each item</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The iterable that will not emit at a rate greater than specified</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Iterable</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="take"><span class="type-signature"></span>take<span class="signature">(source, count)</span><span class="type-signature"> &rarr; {Iterable}</span></h4>
 
     
@@ -1730,7 +2007,7 @@ for await (const item of items)
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Sun Jul 21 2019 14:43:42 GMT+1000 (Australian Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Sun Jul 21 2019 15:34:55 GMT+1000 (Australian Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
