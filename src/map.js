@@ -1,12 +1,17 @@
 import {asAsyncIterator, syncType} from './lib/get_iterator'
 
 /**
- * Transforms each item in the supplied iteration using the supplied function
+```
+import {map} from 'async_iter/pipeline/map' # pipeline version
+import {map} from 'async_iter/map' # conventional version
+```
+Transforms each item in the supplied iteration using the supplied function
+> Supports both **sync** and **async** iterations
+
  * @param  {Iterable}         source        The source iteration to map
  * @param  {Function}         fn            The mapping function for each item
  * @return {Iterable} The transformed items
  * @function
- * @memberOf module:IteratorFunctions
  * @name map
  */
 export const map = syncType(syncMap, asyncMap)

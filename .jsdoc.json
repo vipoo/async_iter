@@ -1,6 +1,11 @@
 {
+ "templates": {
+    "default": {
+      "outputSourceFiles": false
+    }
+  },
   "opts": {
-    "template": "node_modules/docdash",
-    "plugins": ["plugins/markdown"]
-  }
+    "template": "node_modules/docdash"
+  },
+  "plugins": ["plugins/markdown"]
 }

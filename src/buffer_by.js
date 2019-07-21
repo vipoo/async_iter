@@ -34,14 +34,17 @@ function packageNextEmit(state, period) {
 }
 
 /**
+```
+import {bufferBy} from 'async_iter/pipeline/buffer_by' # pipeline version
+import {bufferBy} from 'async_iter/buffer_by' # conventional version
+```
  * Collect a set of items from source.  Emit as an array of those items.
  * <br/>
  * The batch is produced, when the <code>triggerFn</code> returns true, or the <code>maxWaitTime</code> has elasped since the last emitted value
  * @param  {Iterable}         source            The source iteration to buffer
- * @param  {module:IteratorFunctions.triggerCallback}  trigger           Called for each item in the source iteration.  Return true to trigger a batch
+ * @param  {triggerCallback}  trigger           Called for each item in the source iteration.  Return true to trigger a batch
  * @param  {Bumber}           maxWaitTime       period is milliseconds to trigger a batch, if no batch has been emitted and there are pending values
  * @return {Iterable} The buffered items
- * @memberOf module:IteratorFunctions
  * @name bufferBy
  * @function
  */

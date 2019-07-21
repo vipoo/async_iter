@@ -1,14 +1,17 @@
 import {syncType, asAsyncIterator} from './lib/get_iterator'
 
 /**
- * Takes a number of items from the source iteration
- * <br/>
- * Supports both sync and async iterations
- *
- * @param {Iterable} source   A source
+```
+import {take} from 'async_iter/pipeline/take' # pipeline version
+import {take} from 'async_iter/take' # conventional version
+```
+ Takes a number of items from the source iteration
+
+ > Supports both **sync** and **async** iterations
+
+ * @param {Iterable} source   The source iteration
  * @param {Number} count      The number to take from the source
  * @returns {Iterable}        A set containing upto the <code>count</code> of items
- * @memberOf module:IteratorFunctions
  * @name take
  * @function
  * @example

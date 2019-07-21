@@ -39,7 +39,7 @@
     }
   },
   "scripts": {
-    "generate:docs": "jsdoc --readme README.md -c .jsdoc.json -d ./docs ./src",
+    "generate:docs": "jsdoc -r --readme README.md -c .jsdoc.json -d ./docs ./src",
     "build": "./scripts/build.sh",
     "lint": "eslint --fix src tests",
     "clean": "./scripts/clean.sh",

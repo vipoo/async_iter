@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-GeneratorFunctions.html">GeneratorFunctions</a><ul class='methods'><li data-type='method'><a href="module-GeneratorFunctions.html#.fromStream">fromStream</a></li></ul></li><li><a href="module-IteratorFunctions.html">IteratorFunctions</a><ul class='methods'><li data-type='method'><a href="module-IteratorFunctions.html#.bufferBy">bufferBy</a></li><li data-type='method'><a href="module-IteratorFunctions.html#.map">map</a></li><li data-type='method'><a href="module-IteratorFunctions.html#.take">take</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-GeneratorFunctions.html">GeneratorFunctions</a><ul class='methods'><li data-type='method'><a href="module-GeneratorFunctions.html#.fromStream">fromStream</a></li></ul></li><li><a href="module-IteratorFunctions.html">IteratorFunctions</a><ul class='methods'><li data-type='method'><a href="module-IteratorFunctions.html#.bufferBy">bufferBy</a></li><li data-type='method'><a href="module-IteratorFunctions.html#.map">map</a></li><li data-type='method'><a href="module-IteratorFunctions.html#.persisted">persisted</a></li><li data-type='method'><a href="module-IteratorFunctions.html#.take">take</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -468,6 +468,355 @@ The batch is produced, when the <code>triggerFn</code> returns true, or the <cod
 
     
 
+    <h4 class="name" id=".persisted"><span class="type-signature">(static) </span>persisted<span class="signature">(source, path, opts)</span><span class="type-signature"> &rarr; {Iterable.&lt;<a href="module-IteratorFunctions.html#.PersistedItem">module:IteratorFunctions.PersistedItem</a>>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="persisted_index.js.html">persisted/index.js</a>, <a href="persisted_index.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Persist items of an async iterator to files for later resumption
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The source iteration</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">is a directory for storage of items</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>opts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">a set of optional flags
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>allowRestart</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>false</code>
+                
+                </td>
+            
+
+            <td class="description last">allows a restart of a previously completed iteration</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxBytes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>0</code>
+                
+                </td>
+            
+
+            <td class="description last">limits the number of bytes that can be stored. Zero indicates no limit</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>overFlowEvent=</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-IteratorFunctions.html#.overFlowEventCallback">module:IteratorFunctions.overFlowEventCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">callback function invoked when <code>maxBytes</code> exceeded</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    An async iteration, where each item resolves to an object containing
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Iterable.&lt;<a href="module-IteratorFunctions.html#.PersistedItem">module:IteratorFunctions.PersistedItem</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id=".take"><span class="type-signature">(static) </span>take<span class="signature">(source, count)</span><span class="type-signature"> &rarr; {Iterable}</span></h4>
 
     
@@ -586,7 +935,7 @@ for await (const item of items)
 
             
 
-            <td class="description last">A source</td>
+            <td class="description last">The source iteration</td>
         </tr>
 
     
@@ -667,6 +1016,282 @@ for await (const item of items)
 
     
 
+    <h4 class="name" id=".overFlowEventCallback"><span class="type-signature"></span>overFlowEventCallback<span class="signature">()</span><span class="type-signature"> &rarr; {*}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jsdoc.module.iterator_functions.js.html">jsdoc.module.iterator_functions.js</a>, <a href="jsdoc.module.iterator_functions.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Callback to get description of an overflow event.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The item to emit when we persistent buffer overflows.  If underfined no overflow event will be emitted
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+            
+                
+<h4 class="name" id=".PersistedItem">PersistedItem</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jsdoc.module.iterator_functions.js.html">jsdoc.module.iterator_functions.js</a>, <a href="jsdoc.module.iterator_functions.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">an ID.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">your name.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>age</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">your age.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+
+    
+
     <h4 class="name" id=".triggerCallback"><span class="type-signature"></span>triggerCallback<span class="signature">(value, currentBatch)</span><span class="type-signature"></span></h4>
 
     
@@ -719,7 +1344,7 @@ for await (const item of items)
 
 
 <div class="description">
-    Callback for adding two numbers.
+    Indicate if a batched buffer iteration should be emitted
 </div>
 
 
@@ -839,7 +1464,7 @@ for await (const item of items)
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Sun Jul 21 2019 13:06:08 GMT+1000 (Australian Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Sun Jul 21 2019 13:38:33 GMT+1000 (Australian Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

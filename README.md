@@ -24,68 +24,19 @@ with node 10 and above.
 
 [API Docs](https://vipoo.github.io/async_iter/)
 
-#### Async Iterator functions
+#### Async/Sync Iterator functions
 
-* [bufferBy](https://vipoo.github.io/async_iter/module-IteratorFunctions.html#.bufferBy)
-* [persisted](#persisted)
-* [rateLimit](#ratelimit)
-* [take](https://vipoo.github.io/async_iter/module-IteratorFunctions.html#.take)
+* [bufferBy](https://vipoo.github.io/async_iter/global.html#bufferBy)
+* [map](https://vipoo.github.io/async_iter/global.html#map)
+* [persisted](https://vipoo.github.io/async_iter/global.html#persisted)
+* [take](https://vipoo.github.io/async_iter/global.html#take)
 
 #### Itertor generators
 
-* [broadcast](#broadcast)
-* [pump](#pump)
-* [interval](#interval)
-* [range](#range)
-* [fromStream](#fromstream)
+* [fromStream](https://vipoo.github.io/async_iter/global.html#fromStream)
 
 ### Persisted
 #### `items = await persisted(source, localPath, opts)`
-
-Persist items of an async iterator to files for later retrieval
-
-> if a previously iteration was persisted and completed, you can not start a
-> new iteration unless you set the `allowRetart` to true
-
-**source**: is the source iteration (`Symbol.iterator` or `Symbol.asyncIterator`)
-
-**localPath**: is a directory for storage of items.
-
-**opts**: a set of optional flags:
-
-**allowRestart**: (default false) - allows a restart of a previously completed iteration
-
-**maxBytes**: (default 0) - limits the number of bytes that can be stored. Zero indicates no limit.
-
-**overFlowEvent**: (optional) - callback function invoked when `maxBytes` exceeded.  The value
-returned from this callback will be emitted into the iteration, unless `underfined` is returned.
-
-Returns
-
-An async iteration, where each item resolves to an object containing:
-
-**Value**: the emitted value from the persisted store -
-  as a buffer (ie: you need to apply, toString())
-
-**completed**: A function that must be called to removed the item.
-> If completed not called, and iteration is restarted, then the item will be re-emitted.
-
-Example:
-
-```javascript
-  import {persisted} from 'async_iter'
-
-  const items = await persisted(source, './tmp/buffering_example')
-
-  for await (const item of items) {
-    console.log(item.value.toString())
-    item.completed() // If not 'completed', item will be processed if items iterator restarted.
-  }
-
-```
-
-> `Persisted` will consume items as fast as the source will emit.
-The consumer of the iteration will be 'decoupled' from the source
 
 ### RateLimit
 #### `items = rateLimit(source, maxAmount, perPeriod, counterFn)`
