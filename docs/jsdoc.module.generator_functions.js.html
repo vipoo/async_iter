@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>take.js - Documentation</title>
+    <title>jsdoc.module.generator_functions.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">take.js</h1>
+    <h1 class="page-title">jsdoc.module.generator_functions.js</h1>
     
 
     
@@ -42,50 +42,10 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {syncType, asAsyncIterator} from './lib/get_iterator'
+            <pre class="prettyprint source linenums"><code>/** @module GeneratorFunctions
+* @description A set of functions that generate new iterables
+*/
 
-/**
- * Takes a number of items from the source iteration
- * &lt;br/>
- * Supports both sync and async iterations
- *
- * @param {Iterable} source   A source
- * @param {Number} count      The number to take from the source
- * @returns {Iterable}        A set containing upto the &lt;code>count&lt;/code> of items
- * @memberOf module:IteratorFunctions
- * @name take
- * @function
- * @example
-import {take} from 'async_iter'
-
-const items = take([1, 2, 3, 4, 5], 3)
-
-for await (const item of items)
-  console.log(item)
- */
-export const take = syncType(syncTake, asyncTake)
-
-function* syncTake(source, count) {
-  if (count === 0)
-    return
-  for (const x of source) {
-    yield x
-    if (count-- &lt;= 1)
-      break
-  }
-}
-
-async function* asyncTake(source, count) {
-  if (count === 0)
-    return
-  source = await asAsyncIterator(source)
-
-  for await (const x of source) {
-    yield x
-    if (count-- &lt;= 1)
-      break
-  }
-}
 </code></pre>
         </article>
     </section>
