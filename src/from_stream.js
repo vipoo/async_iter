@@ -1,5 +1,16 @@
 import {pump} from './pump'
 
+async function parcelArguments(target, args) {
+  if (args.length === 0)
+    await target.next()
+
+  else if (args.length === 1)
+    await target.next(args[0])
+
+  else
+    await target.next(args)
+}
+
 /**
 ```
 import {fromStream} from 'async_iter/pipeline/from_stream' # pipeline version
@@ -12,14 +23,18 @@ import {fromStream} from 'async_iter/from_stream' # conventional version
  * @return {iteration}                  An iterable source
  * @function
  */
+
 export function fromStream(eventSource, dataEvent = 'data', closeEvent = 'close') {
   return pump(async (target, hasStopped) => {
     await target.next()
 
     async function listener(...args) {
+
       if (eventSource.pause)
         eventSource.pause()
-      await target.next(...args)
+
+      await parcelArguments(target, args)
+
       if (eventSource.resume)
         eventSource.resume()
     }
