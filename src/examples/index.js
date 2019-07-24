@@ -5,6 +5,7 @@
 /** @module chunk-examples */
 /** @module combineWhen-examples */
 /** @module concat-examples */
+/** @module count-examples */
 /** @module delay-examples */
 /** @module delayUntil-examples */
 /** @module filter-examples */

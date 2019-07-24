@@ -1,7 +1,7 @@
 import {first} from '../../pipeline'
 
 /**
- * Example usage of the fiirst function
+ * Example usage of the first function
  * @name example_1
  * @memberof module:first-examples
  * @function
