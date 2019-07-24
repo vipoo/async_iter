@@ -1,5 +1,12 @@
 import {tap} from '../../pipeline'
 
+/**
+ * Example usage of the tap function
+ * @name example_2
+ * @memberof module:tap-examples
+ * @function
+ */
+
 async function* source() {
   yield await 1
   yield await 2

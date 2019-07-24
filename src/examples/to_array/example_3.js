@@ -1,5 +1,12 @@
 import {toArray} from '../../pipeline'
 
+/**
+ * Example usage of the toArray function
+ * @name example_3
+ * @memberof module:toArray-examples
+ * @function
+ */
+
 function* source() {
   yield 1
   yield 2

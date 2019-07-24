@@ -1,5 +1,12 @@
 import {filter} from '../../pipeline'
 
+/**
+ * Example usage of the filter function
+ * @name example_1
+ * @memberof module:filter-examples
+ * @function
+ */
+
 function* source() {
   yield 1
   yield 2

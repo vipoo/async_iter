@@ -1,5 +1,12 @@
 import {first} from '../../pipeline'
 
+/**
+ * Example usage of the fiirst function
+ * @name example_2
+ * @memberof module:first-examples
+ * @function
+ */
+
 async function* source() {
   yield 1
   yield 2

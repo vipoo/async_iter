@@ -1,5 +1,12 @@
 import {merge} from '../../pipeline'
 
+/**
+ * Example usage of the merge function
+ * @name example_4
+ * @memberof module:merge-examples
+ * @function
+ */
+
 async function* source1() {
   yield await Promise.resolve(1)
   yield await Promise.resolve(2)

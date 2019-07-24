@@ -1,5 +1,12 @@
 import {merge} from '../..'
 
+/**
+ * Example usage of the merge function
+ * @name example_1
+ * @memberof module:merge-examples
+ * @function
+ */
+
 async function* source1() {
   yield await Promise.resolve(1)
   yield await Promise.resolve(2)

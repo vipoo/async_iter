@@ -1,5 +1,12 @@
 import {take} from '../../pipeline'
 
+/**
+ * Example usage of the take function
+ * @name example_1
+ * @memberof module:take-examples
+ * @function
+ */
+
 function main() {
   const items = [1, 2, 3, 4, 5] |> take(3)
 

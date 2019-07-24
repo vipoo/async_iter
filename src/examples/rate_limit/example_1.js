@@ -1,5 +1,12 @@
 import {rateLimit} from '../../pipeline'
 
+/**
+ * Example usage of the rateLimit function
+ * @name example_1
+ * @memberof module:rateLimit-examples
+ * @function
+ */
+
 async function main() {
   let startTime = new Date().getTime()
   const items = ['first', 'second', 'third', 'fourth', 'fifth']

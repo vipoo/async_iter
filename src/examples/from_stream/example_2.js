@@ -1,6 +1,13 @@
 import {forEach, fromStream, map} from '../../pipeline'
 import EventEmitter from 'events'
 
+/**
+ * Example usage of the fromStream function
+ * @name example_2
+ * @memberof module:forStream-examples
+ * @function
+ */
+
 const emitter = new EventEmitter()
 
 async function sourceGenerator() {

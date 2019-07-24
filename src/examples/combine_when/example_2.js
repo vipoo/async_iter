@@ -1,5 +1,12 @@
 import {forEach, combineWhen} from '../../pipeline'
 
+/**
+ * Example usage of the combineWhen function
+ * @name example_2
+ * @memberof module:combineWhen-examples
+ * @function
+ */
+
 async function* source() {
   yield await '  this is not part of anything'
   yield await '2019-05-26T08:26:14.384548+0000 blah blah'

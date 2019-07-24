@@ -1,5 +1,12 @@
 import {max} from '../../pipeline'
 
+/**
+ * Example usage of the max function
+ * @name example_1
+ * @memberof module:max-examples
+ * @function
+ */
+
 function example1() {
   const item = [2, 5, 4, 1, 2, 3] |> max()
 

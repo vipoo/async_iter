@@ -1,5 +1,12 @@
 import {forEach, filterWhen} from '../../pipeline'
 
+/**
+ * Example usage of the filterWhen function
+ * @name example_4
+ * @memberof module:filterWhen-examples
+ * @function
+ */
+
 async function* source() {
   yield await 1
   yield await 2

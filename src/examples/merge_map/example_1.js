@@ -1,5 +1,12 @@
 import {forEach, mergeMap, map} from '../../pipeline'
 
+/**
+ * Example usage of the mergeMap function
+ * @name example_1
+ * @memberof module:mergeMap-examples
+ * @function
+ */
+
 async function* source1() {
   yield await Promise.resolve(1)
   yield await Promise.resolve(2)

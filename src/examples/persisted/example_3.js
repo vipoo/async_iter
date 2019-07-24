@@ -1,6 +1,13 @@
 import {persisted} from '../../pipeline'
 import rmfr from 'rmfr'
 
+/**
+ * Example usage of the persisted function
+ * @name example_3
+ * @memberof module:persisted-examples
+ * @function
+ */
+
 const delay = period => new Promise(res => setTimeout(res, period))
 
 async function* source() {

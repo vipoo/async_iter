@@ -1,6 +1,13 @@
 import {forEach, take, fromStream, map} from '../../pipeline'
 import childProcess from 'child_process'
 
+/**
+ * Example usage of the fromStream function
+ * @name example_1
+ * @memberof module:forStream-examples
+ * @function
+ */
+
 async function main() {
   const p = childProcess.spawn('node', ['./src/examples/spawn/logger.js'])
 
