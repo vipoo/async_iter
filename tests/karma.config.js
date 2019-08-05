@@ -2,8 +2,7 @@
 export default function(config) {
   config.set({
     preprocessors: {
-      './promise_helpers_spec.js': ['webpack'],
-      './rate_limit_spec.js': ['webpack']
+      './*.js': ['webpack'],
     },
     webpack: {
       mode: 'development',
@@ -18,7 +17,8 @@ export default function(config) {
     frameworks: ['mocha', 'chai'],
     files: [
       './promise_helpers_spec.js',
-      './rate_limit_spec.js'
+      './rate_limit_spec.js',
+      './pump_spec.js'
     ],
     reporters: ['spec'],
     port: 9876,

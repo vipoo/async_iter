@@ -1,5 +1,5 @@
 import {expect, eventually} from './test_helper'
-import {pump} from '../src'
+import {pump} from '../src/browsers'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 

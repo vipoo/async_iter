@@ -5,7 +5,8 @@ class ArgumentError extends Error {
     super('pump callback function has not returned a promise')
     this.name = this.constructor.name
 
-    Error.captureStackTrace(this, this.constructor.name)
+    if (Error.captureStackTrace)
+      Error.captureStackTrace(this, this.constructor.name)
   }
 }
 

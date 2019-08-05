@@ -4,3 +4,4 @@ if (!process.hrtime)
   process.hrtime = hrtime
 
 export * from './rate_limit'
+export * from './pump'
