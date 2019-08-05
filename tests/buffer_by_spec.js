@@ -1,5 +1,5 @@
 import {expect} from './test_helper'
-import {take, bufferBy} from '../src'
+import {take, bufferBy} from '../src/browsers'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 
