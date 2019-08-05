@@ -1,8 +1,9 @@
+import webpack from 'webpack'
 
 export default function(config) {
   config.set({
     preprocessors: {
-      './*.js': ['webpack'],
+      './**/*.js': ['webpack'],
     },
     webpack: {
       mode: 'development',
@@ -11,11 +12,19 @@ export default function(config) {
           test: /\.m?js$/,
           exclude: /(node_modules)/,
           use: {loader: 'babel-loader'}
+        },
+        {
+          test: /\.txt$/,
+          use: {loader: 'raw-loader'},
         }]
-      }
+      },
+      plugins: [
+        new webpack.EnvironmentPlugin(['NODE_ENV', 'BROWSER_TEST'])
+      ],
     },
     frameworks: ['mocha', 'chai'],
     files: [
+      './integration/browser_spec.js',
       './promise_helpers_spec.js',
       './rate_limit_spec.js',
       './pump_spec.js',

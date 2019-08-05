@@ -1,5 +1,4 @@
-import 'source-map-support/register'
-import {range, broadcast, map} from '../../pipeline'
+import {range, broadcast, map} from '../../pipeline/browsers'
 import {promiseSignal} from '../../lib/promise_helpers'
 
 /**
@@ -49,4 +48,4 @@ export async function main() {
   console.log('done....')
 }
 
-main()
+export default main()
