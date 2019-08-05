@@ -46,7 +46,7 @@
     "pretest": "./scripts/clean.sh",
     "test:browsers": "babel-node ./node_modules/.bin/karma start --single-run --browsers ChromeHeadless,FirefoxHeadless tests/karma.config.js",
     "test:units": "NODE_ENV=test mocha --require \"@babel/register\" tests/**",
-    "test": "npm run test:browsers",
+    "test": "npm run test:units && npm run test:browsers",
     "tst": "NODE_ENV=test mocha --require \"@babel/register\" tests/**",
     "posttest": "eslint --fix src tests",
     "watch": "npm-watch",
