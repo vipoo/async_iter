@@ -1,5 +1,5 @@
 import {fakeTimer, expect, sinon, delay} from './test_helper'
-import {interval} from '../src'
+import {interval} from '../src/browsers'
 
 describe('interval', () => {
   let clock
