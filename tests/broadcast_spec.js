@@ -1,5 +1,5 @@
 import {expect, delay, eventually} from './test_helper'
-import {broadcast, toArray} from '../src'
+import {broadcast, toArray} from '../src/browsers'
 
 const forTicks = () => new Promise(res => process.nextTick(res))
 
@@ -151,22 +151,32 @@ describe('#broadcast', () => {
   })
 
   describe('Given a source iteration of that raises an error', () => {
-    it('When source iteration error, error is passed to all consumers', async () => {
+    describe('When source iteration error, error is passed to all consumers', async () => {
       async function* source() {
         yield await 1
         throw new Error('blah')
       }
 
-      const items = broadcast(source())
+      let setA1, setA2, setB1, setB2
+      beforeEach(async () => {
+        const items = broadcast(source())
 
-      const setA = items()
-      const setB = items()
+        const setA = items()
+        const setB = items()
+        await Promise.all([setA.next(), setB.next()])
 
-      await Promise.all([setA.next(), setB.next()])
-      await expect(setA.next()).to.eventually.be.rejectedWith('blah')
-      await expect(setB.next()).to.eventually.be.rejectedWith('blah')
-      await expect(setA.next()).to.eventually.deep.eq({value: undefined, done: true})
-      await expect(setB.next()).to.eventually.deep.eq({value: undefined, done: true})
+        setA1 = setA.next()
+        setA2 = setA.next()
+        setB1 = setB.next()
+        setB2 = setB.next()
+      })
+
+      it('both sets are rejected then done', async () => {
+        await expect(setA1).to.eventually.be.rejectedWith('blah')
+        await expect(setB1).to.eventually.be.rejectedWith('blah')
+        await expect(setA2).to.eventually.deep.eq({value: undefined, done: true})
+        await expect(setB2).to.eventually.deep.eq({value: undefined, done: true})
+      })
     })
   })
 })

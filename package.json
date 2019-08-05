@@ -44,6 +44,8 @@
     "lint": "eslint --fix src tests",
     "clean": "./scripts/clean.sh",
     "pretest": "./scripts/clean.sh",
+    "test:chrome": "babel-node ./node_modules/.bin/karma start --single-run --browsers ChromeHeadless tests/karma.config.js",
+    "test:firefox": "babel-node ./node_modules/.bin/karma start --single-run --browsers FirefoxHeadless tests/karma.config.js",
     "test:browsers": "babel-node ./node_modules/.bin/karma start --single-run --browsers ChromeHeadless,FirefoxHeadless tests/karma.config.js",
     "test:units": "NODE_ENV=test mocha --require \"@babel/register\" tests/**",
     "test": "npm run test:units && npm run test:browsers",

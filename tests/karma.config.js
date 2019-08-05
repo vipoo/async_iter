@@ -20,7 +20,8 @@ export default function(config) {
       './rate_limit_spec.js',
       './pump_spec.js',
       './interval_spec.js',
-      './buffer_by_spec.js'
+      './buffer_by_spec.js',
+      './broadcast_spec.js'
     ],
     reporters: ['spec'],
     port: 9876,
