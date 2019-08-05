@@ -1,5 +1,5 @@
 import {fakeTimer, expect, subjectEach} from './test_helper'
-import {rateLimit} from '../src'
+import {rateLimit} from '../src/browsers'
 
 /***************************************************************/
 /* Create a stub source iteration, that can end of be unending */
