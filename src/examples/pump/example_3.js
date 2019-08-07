@@ -35,7 +35,7 @@ async function main() {
 
     process.nextTick(async () => {
       for (let i = 1; !hasStopped.now(); i++) {
-        await delay(50)
+        await delay(58)
         if ((await target.next({a: i})).done)
           break
       }
