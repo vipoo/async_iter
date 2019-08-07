@@ -2,7 +2,7 @@ import {sinon, expect, eventually} from '../test_helper'
 import util from 'util'
 
 if (process.env.BROWSER_TEST)
-  describe.only('integration suite', () => {
+  describe('integration suite', () => {
     let capture
     const logger = (...args) => {
       capture += args.map(a => (typeof a === 'string' || a instanceof String) ? a : util.inspect(a)).join(' ')
