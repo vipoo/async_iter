@@ -1,16 +1,11 @@
 import {sinon, expect} from '../test_helper'
-
-function formatLikeConsole(arg) {
-  if (arg instanceof Array)
-    return JSON.stringify(arg).replace(/,/g, ', ').replace(/\[/g, '[ ').replace(/]/g, ' ]')
-  return arg
-}
+import util from 'util'
 
 if (process.env.BROWSER_TEST)
   describe('integration suite', () => {
     let capture
     const logger = (...args) => {
-      capture += args.map(a => formatLikeConsole(a)).join(' ')
+      capture += args.map(a => (typeof a === 'string' || a instanceof String) ? a : util.inspect(a)).join(' ')
       capture += '\n'
     }
 

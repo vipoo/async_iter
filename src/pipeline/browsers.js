@@ -1,5 +1,7 @@
 export * from './broadcast'
 export * from './buffer_by'
+export * from './buffer_group_by'
 export * from './map'
 export * from './for_each'
 export * from '../range'
+export * from './tap'

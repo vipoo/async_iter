@@ -24,4 +24,4 @@ async function main() {
   console.log('done....')
 }
 
-main()
+export default main()

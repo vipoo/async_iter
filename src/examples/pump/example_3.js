@@ -48,4 +48,4 @@ async function main() {
     console.log(item)
 }
 
-main()
+export default main()

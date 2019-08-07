@@ -1,7 +1,6 @@
-import childProcess from 'child_process'
-import {expect} from '../test_helper'
-import {filter, map, toArray, spawn} from '../../src'
+import {sinon, expect, eventually} from '../test_helper'
 import path from 'path'
+import util from 'util'
 import _fs from 'fs'
 const fs = _fs.promises
 
@@ -18,27 +17,39 @@ function getExamples() {
   return examples
 }
 
-function buildExamples(examples) {
-  describe('iterators', () => {
-    examples.forEach((e, i) => {
-      if (!_fs.existsSync(`./tests/integration/${e}.txt`))
-        return it(`${e}.js`)
+function buildDirectExamples(examples) {
+  let capture
+  const logger = (...args) => {
+    capture += args.map(a => (typeof a === 'string' || a instanceof String) ? a : util.inspect(a)).join(' ')
+    capture += '\n'
+  }
 
-      it(`${i} - ${e}.js`, async function() {
-        this.timeout(3000)
-        const items = (await (spawn('node', [`./examples/${e}.js`])
-                        |> filter(?, x => x.stdout)
-                        |> map(?, x => x.stdout.toString('utf-8'))
-                        |> toArray(?))).join('').split('\n')
+  beforeEach(() => {
+    capture = ''
+  })
 
-        const expeted = await fs.readFile(`./tests/integration/${e}.txt`, 'utf-8')
-        expect(items).to.deep.eq(expeted.split('\n'))
+  examples.forEach((e, i) => {
+    if (!_fs.existsSync(`./tests/integration/${e}.txt`))
+      return it(`${e}.js`)
+
+    it(`${i} - ${e}.js`, async function() {
+      this.timeout(3000)
+      sinon.stub(console, 'log').callsFake(logger)
+      sinon.stub(console, 'error')
+      const mod = await import(`../../src/examples/${e}.js`)
+      const expected = await fs.readFile(`./tests/integration/${e}.txt`, 'utf-8')
+
+      await mod
+
+      await eventually(() => expect(capture).to.eq(expected)).catch(err => {
+        process.stdout.write(capture)
+        throw err
       })
+      sinon.restore()
     })
   })
 }
 
 describe('integration suite', () => {
-  childProcess.execFileSync('npm', ['run', 'build'])
-  buildExamples(getExamples())
+  buildDirectExamples(getExamples())
 })

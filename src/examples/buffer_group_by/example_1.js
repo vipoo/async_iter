@@ -1,4 +1,4 @@
-import {forEach, bufferGroupBy} from '../../pipeline'
+import {forEach, bufferGroupBy} from '../../pipeline/browsers'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 

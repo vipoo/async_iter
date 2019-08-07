@@ -16,7 +16,7 @@ async function* source() {
 }
 
 async function main() {
-  const items = source() |> tap(x => process.stdout.write(`tap: ${x}`))
+  const items = source() |> tap(x => console.log(`tap: ${x}`))
 
   for await (const _ of items) // eslint-disable-line no-unused-vars
     console.log('!')

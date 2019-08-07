@@ -23,7 +23,7 @@ async function main() {
 
   await (fromStream(emitter)
     |> map(x => x.toString())
-    |> forEach(x => process.stdout.write(x)))
+    |> forEach(x => console.log(x.slice(0, x.length - 1))))
 
   console.log('done....')
 }
