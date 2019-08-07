@@ -1,4 +1,4 @@
-import {delay, forEach} from '../../pipeline'
+import {delay, forEach} from '../../pipeline/browsers'
 
 /**
  * Example usage of the delay function

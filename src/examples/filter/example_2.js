@@ -1,4 +1,4 @@
-import {filter} from '../../pipeline'
+import {filter} from '../../pipeline/browsers'
 
 /**
  * Example usage of the filter function

@@ -15,7 +15,7 @@ function getExamples() {
   return examples
 }
 
-const integrationTests = JSON.stringify(getExamples().slice(0, 11))
+const integrationTests = JSON.stringify(getExamples().slice(0, 25))
 
 export default function(config) {
   config.set({

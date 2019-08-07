@@ -1,4 +1,4 @@
-import {forEach, filterWhen} from '../../pipeline'
+import {forEach, filterWhen} from '../../pipeline/browsers'
 
 /**
  * Example usage of the filterWhen function

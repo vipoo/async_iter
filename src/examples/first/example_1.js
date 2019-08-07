@@ -1,4 +1,4 @@
-import {first} from '../../pipeline'
+import {first} from '../../pipeline/browsers'
 
 /**
  * Example usage of the first function

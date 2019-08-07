@@ -1,4 +1,4 @@
-import {count} from '../../pipeline'
+import {count} from '../../pipeline/browsers'
 
 /**
  * Example usage of the count function

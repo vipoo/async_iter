@@ -1,4 +1,4 @@
-import {forEach, concat} from '../../pipeline'
+import {forEach, concat} from '../../pipeline/browsers'
 
 /**
  * Example usage of the concat function
