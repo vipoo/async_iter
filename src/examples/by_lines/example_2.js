@@ -1,4 +1,4 @@
-import {byLines} from '../../pipeline'
+import {byLines} from '../../pipeline/browsers'
 
 async function* source() {
   yield await 'abc\n'

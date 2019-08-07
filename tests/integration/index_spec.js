@@ -39,9 +39,10 @@ function buildDirectExamples(examples) {
       const mod = await import(`../../src/examples/${e}.js`)
       const expected = await fs.readFile(`./tests/integration/${e}.txt`, 'utf-8')
 
-      await mod
+      await mod.default
 
       await eventually(() => expect(capture).to.eq(expected)).catch(err => {
+        sinon.restore()
         process.stdout.write(capture)
         throw err
       })

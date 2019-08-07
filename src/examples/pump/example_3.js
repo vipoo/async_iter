@@ -46,6 +46,8 @@ async function main() {
 
   for await (const item of items)
     console.log(item)
+
+  console.log('done')
 }
 
 export default main()

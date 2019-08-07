@@ -1,4 +1,9 @@
+import hrtime from 'browser-process-hrtime'
 import {pump} from './pump'
+
+//polyfill hrtime
+if (!process.hrtime)
+  process.hrtime = hrtime
 
 /**
 ```

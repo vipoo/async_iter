@@ -1,4 +1,4 @@
-import {forEach, chunk} from '../../pipeline'
+import {forEach, chunk} from '../../pipeline/browsers'
 
 /**
  * Example usage of the chunk function

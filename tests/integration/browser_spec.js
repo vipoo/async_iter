@@ -1,4 +1,4 @@
-import {sinon, expect} from '../test_helper'
+import {sinon, expect, eventually} from '../test_helper'
 import util from 'util'
 
 if (process.env.BROWSER_TEST)
@@ -11,16 +11,22 @@ if (process.env.BROWSER_TEST)
 
     beforeEach(() => {
       capture = ''
-      sinon.stub(console, 'log').callsFake(logger)
     })
 
     integrationTests.forEach((e, i) => { // eslint-disable-line
       it(`${i} - ${e}.js`, async function() {
+        sinon.stub(console, 'log').callsFake(logger)
+        sinon.stub(console, 'error')
         const mod = await import(`../../src/examples/${e}.js`)
         const output = await import(`./${e}.txt`)
 
         await mod.default
-        expect(capture).to.eq(output.default)
+        await eventually(() => expect(capture).to.eq(output.default)).catch(err => {
+          sinon.restore()
+          console.log(capture) //eslint-disable-line
+          throw err
+        })
+        sinon.restore()
       })
     })
   })

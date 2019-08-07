@@ -1,4 +1,4 @@
-import {forEach, combineWhen} from '../../pipeline'
+import {forEach, combineWhen} from '../../pipeline/browsers'
 
 /**
  * Example usage of the combineWhen function

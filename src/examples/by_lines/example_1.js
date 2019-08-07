@@ -1,4 +1,4 @@
-import {byLines} from '../../pipeline'
+import {byLines} from '../../pipeline/browsers'
 
 /**
  * Example usage of the byLines function
