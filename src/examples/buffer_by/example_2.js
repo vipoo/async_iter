@@ -1,4 +1,4 @@
-import {range, bufferBy, forEach} from '../../pipeline'
+import {range, bufferBy, forEach} from '../../pipeline/browsers'
 
 /**
  * Example usage of the bufferBy function

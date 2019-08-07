@@ -1,11 +1,47 @@
+import fs from 'fs'
+import path from 'path'
 import webpack from 'webpack'
+
+function getExamples() {
+  const examples = []
+  fs
+    .readdirSync('./src/examples/', {withFileTypes: true})
+    .filter(r => r.isDirectory())
+    .map(r => r.name)
+    .forEach(r => fs.readdirSync(path.join('src/examples', r))
+      .filter(r => r.startsWith('example'))
+      .forEach(f => examples.push(path.join(r, path.basename(f, '.js')))))
+
+  return examples
+}
+
+const integrationTests = JSON.stringify(getExamples().slice(0, 4))
 
 export default function(config) {
   config.set({
     preprocessors: {
       './**/*.js': ['webpack'],
     },
+    webpackMiddleware: {
+      stats: {
+        colors: true,
+        hash: false,
+        version: false,
+        timings: false,
+        assets: false,
+        chunks: false,
+        modules: false,
+        reasons: false,
+        children: false,
+        source: false,
+        errors: false,
+        errorDetails: false,
+        warnings: false,
+        publicPath: false
+      }
+    },
     webpack: {
+      stats: 'none',
       mode: 'development',
       module: {
         rules: [{
@@ -19,8 +55,9 @@ export default function(config) {
         }]
       },
       plugins: [
-        new webpack.EnvironmentPlugin(['NODE_ENV', 'BROWSER_TEST'])
-      ],
+        new webpack.EnvironmentPlugin(['NODE_ENV', 'BROWSER_TEST']),
+        new webpack.DefinePlugin({integrationTests})
+      ]
     },
     frameworks: ['mocha', 'chai'],
     files: [

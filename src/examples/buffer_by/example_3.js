@@ -1,4 +1,4 @@
-import {bufferBy, forEach} from '../../pipeline'
+import {bufferBy, forEach} from '../../pipeline/browsers'
 
 /**
  * Example usage of the bufferBy function
