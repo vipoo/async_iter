@@ -1,4 +1,4 @@
-import {pump} from '../../pipeline'
+import {pump} from '../../pipeline/browsers'
 
 /**
  * Example usage of the pump function

@@ -1,4 +1,4 @@
-import {toArray} from '../../pipeline'
+import {toArray} from '../../pipeline/browsers'
 
 /**
  * Example usage of the toArray function

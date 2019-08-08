@@ -1,4 +1,4 @@
-import {merge, first, timeout, TimeoutCancel, pump} from '../../pipeline'
+import {merge, first, timeout, TimeoutCancel, pump} from '../../pipeline/browsers'
 
 /**
  * Example usage of the merge function

@@ -1,4 +1,4 @@
-import {rateLimit} from '../../pipeline'
+import {rateLimit} from '../../pipeline/browsers'
 
 /**
  * Example usage of the rateLimit function

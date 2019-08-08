@@ -1,4 +1,4 @@
-import {reduce} from '../../pipeline'
+import {reduce} from '../../pipeline/browsers'
 
 /**
  * Example usage of the reduce function

@@ -1,4 +1,4 @@
-import {takeWhile} from '../../pipeline'
+import {takeWhile} from '../../pipeline/browsers'
 
 /**
  * Example usage of the takeWhile function

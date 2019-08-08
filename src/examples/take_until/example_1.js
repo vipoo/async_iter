@@ -1,4 +1,4 @@
-import {takeUntil} from '../../pipeline'
+import {takeUntil} from '../../pipeline/browsers'
 
 /**
  * Example usage of the takeUntil function

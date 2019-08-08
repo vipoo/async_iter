@@ -1,4 +1,4 @@
-import {merge} from '../..'
+import {merge} from '../../browsers'
 
 /**
  * Example usage of the merge function

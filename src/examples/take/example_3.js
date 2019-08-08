@@ -1,4 +1,4 @@
-import {take} from '../../pipeline'
+import {take} from '../../pipeline/browsers'
 
 /**
  * Example usage of the take function

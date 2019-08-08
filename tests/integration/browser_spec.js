@@ -15,6 +15,7 @@ if (process.env.BROWSER_TEST)
 
     integrationTests.forEach((e, i) => { // eslint-disable-line
       it(`${i} - ${e}.js`, async function() {
+        this.timeout(3000)
         sinon.stub(console, 'log').callsFake(logger)
         sinon.stub(console, 'error')
         const mod = await import(`../../src/examples/${e}.js`)

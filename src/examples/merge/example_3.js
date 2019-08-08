@@ -1,4 +1,4 @@
-import {merge, first, timeout, TimeoutCancel} from '../../pipeline'
+import {merge, first, timeout, TimeoutCancel} from '../../pipeline/browsers'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 

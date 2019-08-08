@@ -1,4 +1,4 @@
-import {max} from '../../pipeline'
+import {max} from '../../pipeline/browsers'
 
 /**
  * Example usage of the max function

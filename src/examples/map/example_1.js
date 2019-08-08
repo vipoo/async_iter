@@ -1,4 +1,4 @@
-import {map} from '../../pipeline'
+import {map} from '../../pipeline/browsers'
 
 /**
  * Example usage of the map function

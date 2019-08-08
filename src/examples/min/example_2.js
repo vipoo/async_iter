@@ -1,4 +1,4 @@
-import {min} from '../../pipeline'
+import {min} from '../../pipeline/browsers'
 
 /**
  * Example usage of the min function

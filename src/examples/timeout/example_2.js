@@ -1,4 +1,4 @@
-import {timeoutError, forEach} from '../../pipeline'
+import {timeoutError, forEach} from '../../pipeline/browsers'
 
 /**
  * Example usage of the timeout function

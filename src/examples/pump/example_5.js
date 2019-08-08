@@ -1,4 +1,4 @@
-import {pump} from '../../pipeline'
+import {pump} from '../../pipeline/browsers'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 

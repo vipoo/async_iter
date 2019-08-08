@@ -1,4 +1,4 @@
-import {tap} from '../../pipeline'
+import {tap} from '../../pipeline/browsers'
 
 /**
  * Example usage of the tap function

@@ -1,4 +1,4 @@
-import {forEach, mergeMap, map} from '../../pipeline'
+import {forEach, mergeMap, map} from '../../pipeline/browsers'
 
 /**
  * Example usage of the mergeMap function

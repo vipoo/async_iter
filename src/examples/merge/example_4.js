@@ -1,4 +1,4 @@
-import {merge} from '../../pipeline'
+import {merge} from '../../pipeline/browsers'
 
 /**
  * Example usage of the merge function

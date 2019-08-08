@@ -1,4 +1,4 @@
-import {range} from '../../pipeline'
+import {range} from '../../pipeline/browsers'
 
 /**
  * Example usage of the range function

@@ -1,4 +1,4 @@
-import {timeout, forEach} from '../../pipeline'
+import {timeout, forEach} from '../../pipeline/browsers'
 
 /**
  * Example usage of the timeout function
@@ -9,7 +9,7 @@ import {timeout, forEach} from '../../pipeline'
 
 async function main() {
   await (timeout(50)
-    |> forEach(console.log))
+    |> forEach(s => console.log(s.description)))
 
   console.log('done....')
 }

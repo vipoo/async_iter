@@ -1,4 +1,4 @@
-import {last} from '../../pipeline'
+import {last} from '../../pipeline/browsers'
 
 /**
  * Example usage of the last function
