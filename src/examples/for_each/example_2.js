@@ -1,4 +1,4 @@
-import {forEach} from '../../pipeline'
+import {forEach} from '../../pipeline/browsers'
 
 /**
  * Example usage of the forEach function

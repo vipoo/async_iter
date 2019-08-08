@@ -5,6 +5,9 @@ module.exports = api => {
   return {
     plugins: [
       [
+        "@babel/plugin-syntax-bigint"
+      ],
+      [
         '@babel/plugin-proposal-class-properties',
         {
           'loose': true

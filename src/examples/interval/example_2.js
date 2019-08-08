@@ -1,4 +1,4 @@
-import {forEach, interval, take, map} from '../../pipeline'
+import {forEach, interval, take, map} from '../../pipeline/browsers'
 import {promiseSignal} from '../../lib/promise_helpers'
 
 /**

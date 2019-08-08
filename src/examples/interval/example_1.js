@@ -1,4 +1,4 @@
-import {interval, take} from '../../pipeline'
+import {interval, take} from '../../pipeline/browsers'
 
 /**
  * Example usage of the interval generator
@@ -16,7 +16,7 @@ function logTimeDiff(time) {
   const t = lastTime || startTime
   lastTime = time
   const diff = (time - t) / BigInt(1000000)
-  const diffSinceStart =  (process.hrtime.bigint() - startTime) / BigInt(1000000)
+  const diffSinceStart =  ( process.hrtime.bigint() - startTime) / BigInt(1000000)
 
   console.log(`Received interval count: ${count++}`)
   console.error(`Diff: ${diff} at ${diffSinceStart}`)
@@ -48,9 +48,9 @@ async function nonQueingInterval() {
   console.log('done....\n\n')
 }
 
-async function main() {
+export async function main() {
   await simpleInterval()
   await nonQueingInterval()
 }
 
-main()
+export default main()

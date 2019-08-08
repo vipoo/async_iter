@@ -2,8 +2,13 @@ import hrtime from 'browser-process-hrtime'
 import {pump} from './pump'
 
 //polyfill hrtime
-if (!process.hrtime)
+if (!process.hrtime) {
   process.hrtime = hrtime
+  hrtime.bigint = () => {
+    const diff = process.hrtime()
+    return BigInt(diff[1])
+  }
+}
 
 /**
 ```

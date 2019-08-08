@@ -15,7 +15,11 @@ function getExamples() {
   return examples
 }
 
-const integrationTests = JSON.stringify(getExamples().slice(0, 25))
+const nonSupported = [
+  'from_stream'
+]
+
+const integrationTests = JSON.stringify(getExamples().filter(e => !nonSupported.some(s => e.startsWith(s))).slice(0, 29))
 
 export default function(config) {
   config.set({
