@@ -42,8 +42,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import 'source-map-support/register'
-import {range, broadcast, map} from '../../pipeline'
+            <pre class="prettyprint source linenums"><code>import {range, broadcast, map} from '../../pipeline/browsers'
 import {promiseSignal} from '../../lib/promise_helpers'
 
 /**
@@ -93,7 +92,7 @@ export async function main() {
   console.log('done....')
 }
 
-main()
+export default main()
 </code></pre>
         </article>
     </section>

@@ -58,9 +58,9 @@ async function main() {
 
   for await (const item of items)
     if (item.stdout)
-      process.stdout.write(item.stdout)
+      console.log(item.stdout)
     else
-      process.stderr.write(item.stderr)
+      console.log(item.stderr)
 
   console.log('done....')
 }

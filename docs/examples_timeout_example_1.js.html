@@ -42,7 +42,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {timeout, forEach} from '../../pipeline'
+            <pre class="prettyprint source linenums"><code>import {timeout, forEach} from '../../pipeline/browsers'
 
 /**
  * Example usage of the timeout function
@@ -53,7 +53,7 @@
 
 async function main() {
   await (timeout(50)
-    |> forEach(console.log))
+    |> forEach(s => console.log(s.description)))
 
   console.log('done....')
 }
