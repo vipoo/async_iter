@@ -1,5 +1,21 @@
 import {asAsyncIterator, syncType} from './lib/get_iterator'
 
+/**
+```
+import {map} from 'async_iter/pipeline/by_lines' # pipeline version
+import {map} from 'async_iter/by_lines' # conventional version
+```
+Take a source iterations of strings, and split and emit based on the newline character
+> Supports both **sync** and **async** iterations
+
+This operator can be used to re-contructs a set of lines that have been piped thru streams.
+
+ * @param  {Iterable}         source        The source iteration to process
+ * @return {Iterable} The transformed items
+ * @function
+ * @name byLines
+ */
+
 export const byLines = syncType(syncByLines, asyncByLines)
 
 function getPotentialLines() {
@@ -18,7 +34,7 @@ function getPotentialLines() {
   return fn
 }
 
-function* syncByLines(source, fn) {
+function* syncByLines(source) {
   const potentialLinesFrom = getPotentialLines()
 
   for (const item of source)
@@ -29,7 +45,7 @@ function* syncByLines(source, fn) {
     yield potentialLinesFrom.currentLine
 }
 
-async function* asyncByLines(source, fn) {
+async function* asyncByLines(source) {
   source = await asAsyncIterator(source)
 
   const potentialLinesFrom = getPotentialLines()
