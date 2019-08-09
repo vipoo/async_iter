@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>examples/to_array/example_1.js - Documentation</title>
+    <title>buffer_group_by.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">examples/to_array/example_1.js</h1>
+    <h1 class="page-title">buffer_group_by.js</h1>
     
 
     
@@ -42,32 +42,84 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {toArray} from '../../pipeline/browsers'
+            <pre class="prettyprint source linenums"><code>import {asAsyncIterator} from './lib/get_iterator'
+
+const True = true
+const delay = period => new Promise(res => setTimeout(res, period))
 
 /**
- * Example usage of the toArray function
- * @name example_1
- * @memberof module:toArray-examples
+```
+import {bufferGroupBy} from 'async_iter/pipeline/buffer_group_by' # pipeline version
+import {bufferGroupBy} from 'async_iter/buffer_group_by' # conventional version
+```
+ * Collect and group items as per a trigger function or a time period.  Emits an array of the batched items.
+ * &lt;br/>
+ * Similar to the `bufferBy` only the batches emitted are as per the `selector` grouping function.
+ * @param  {Iterable}         source        The source iteration to buffer
+ * @param  {Function}         selector      A function that returns the key to be used to identify grouping
+ * @param  {triggerCallback}  trigger       A function to indicate when a grouped items should be emitted
+ * @param  {number}           maxWaitTime   The minimum period of time (ms), before any pending grouped items should be emitted
+ * @return {Iterable} The buffered items
+ * @name bufferGroupBy
  * @function
+ * @see also {@link bufferBy}
  */
+export function bufferGroupBy(source, selector, trigger, maxWaitTime) {
+  const state = {
+    buffers: {},
+    nextValue: undefined,
+  }
 
-function* source() {
-  yield 1
-  yield 2
-  yield 3
-  yield 4
-  yield 5
+  function emit(key) {
+    const value = state.buffers[key].data
+    delete state.buffers[key]
+    return {value}
+  }
+
+  /* eslint complexity: ['error', 29] */
+  return asAsyncIterator({
+    [Symbol.asyncIterator]() {
+      return {
+        async next() {
+          while (True) {
+            state.nextValue = state.nextValue || source.next()
+            const timers = Object.values(state.buffers).map(t => t.timer)
+            const {value, done, timed} = await Promise.race([state.nextValue, ...timers])
+
+            if (done) {
+              const keys = Object.keys(state.buffers)
+              if (keys.length === 0)
+                return {done: true}
+
+              return emit(keys[0])
+            }
+
+            if (timed)
+              return emit(timed)
+
+            const groupKey = selector(value)
+            if (!state.buffers[groupKey])
+              state.buffers[groupKey] = {
+                timer: delay(maxWaitTime).then(() => ({timed: groupKey})),
+                data: []
+              }
+            state.buffers[groupKey].data.push(value)
+            state.nextValue = undefined
+
+            if (trigger(value, state.buffers[groupKey].data))
+              return emit(groupKey)
+          }
+        },
+        async return() {
+          state.buffers = {}
+          state.nextValue = undefined
+          source.return()
+          return {done: true}
+        }
+      }
+    }
+  })
 }
-
-function main() {
-  const items = source() |> toArray()
-
-  console.log(items.join(', '))
-
-  console.log('done....')
-}
-
-main()
 </code></pre>
         </article>
     </section>

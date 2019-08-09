@@ -3,7 +3,24 @@ import {asAsyncIterator} from './lib/get_iterator'
 const True = true
 const delay = period => new Promise(res => setTimeout(res, period))
 
-export function bufferGroupBy(source, fn, trigger, maxWaitTime) {
+/**
+```
+import {bufferGroupBy} from 'async_iter/pipeline/buffer_group_by' # pipeline version
+import {bufferGroupBy} from 'async_iter/buffer_group_by' # conventional version
+```
+ * Collect and group items as per a trigger function or a time period.  Emits an array of the batched items.
+ * <br/>
+ * Similar to the `bufferBy` only the batches emitted are as per the `selector` grouping function.
+ * @param  {Iterable}         source        The source iteration to buffer
+ * @param  {Function}         selector      A function that returns the key to be used to identify grouping
+ * @param  {triggerCallback}  trigger       A function to indicate when a grouped items should be emitted
+ * @param  {number}           maxWaitTime   The minimum period of time (ms), before any pending grouped items should be emitted
+ * @return {Iterable} The buffered items
+ * @name bufferGroupBy
+ * @function
+ * @see also {@link bufferBy}
+ */
+export function bufferGroupBy(source, selector, trigger, maxWaitTime) {
   const state = {
     buffers: {},
     nextValue: undefined,
@@ -36,7 +53,7 @@ export function bufferGroupBy(source, fn, trigger, maxWaitTime) {
             if (timed)
               return emit(timed)
 
-            const groupKey = fn(value)
+            const groupKey = selector(value)
             if (!state.buffers[groupKey])
               state.buffers[groupKey] = {
                 timer: delay(maxWaitTime).then(() => ({timed: groupKey})),

@@ -40,13 +40,14 @@ import {bufferBy} from 'async_iter/buffer_by' # conventional version
 ```
  * Collect a set of items from source.  Emit as an array of those items.
  * <br/>
- * The batch is produced, when the <code>triggerFn</code> returns true, or the <code>maxWaitTime</code> has elasped since the last emitted value
+ * The batch is produced, when the <code>trigger</code> returns true, or the <code>maxWaitTime</code> has elasped since the last emitted value
  * @param  {Iterable}         source            The source iteration to buffer
  * @param  {triggerCallback}  trigger           Called for each item in the source iteration.  Return true to trigger a batch
  * @param  {Bumber}           maxWaitTime       period is milliseconds to trigger a batch, if no batch has been emitted and there are pending values
  * @return {Iterable} The buffered items
  * @name bufferBy
  * @function
+ * @see also {@link bufferGroupBy}
  */
 export async function bufferBy(source, trigger, maxWaitTime) {
   const state = {
