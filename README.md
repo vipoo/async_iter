@@ -30,6 +30,7 @@ with node 10 and above.
 * [bufferBy](https://vipoo.github.io/async_iter/global.html#bufferBy)
 * [bufferGroupBy](https://vipoo.github.io/async_iter/global.html#bufferGroupBy)
 * [byLines](https://vipoo.github.io/async_iter/global.html#byLines)
+* [chunk](https://vipoo.github.io/async_iter/global.html#chunk)
 * [count](https://https://vipoo.github.io/async_iter/global.html#count)
 * [map](https://vipoo.github.io/async_iter/global.html#map)
 * [persisted](https://vipoo.github.io/async_iter/global.html#persisted)
