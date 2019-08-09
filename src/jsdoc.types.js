@@ -1,9 +1,18 @@
 /**
+ * Evaluate the supplied item returning a boolean
+ *
+ * @callback evaluateItem
+ * @param {*} value - the value of the current source item
+ * @return {boolean}
+ */
+
+/**
  * Indicate if a batched buffer iteration should be emitted
  *
  * @callback triggerCallback
  * @param {*} value - the value of the current source item
  * @param {Array} currentBatch the current array of collected items - the last item will be `value`
+ * @return {boolean} Returning true indicate that item can be emitted
  */
 
 /**

@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>examples/to_array/example_2.js - Documentation</title>
+    <title>combine_when.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">examples/to_array/example_2.js</h1>
+    <h1 class="page-title">combine_when.js</h1>
     
 
     
@@ -42,32 +42,61 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {toArray} from '../../pipeline/browsers'
+            <pre class="prettyprint source linenums"><code>import {syncType, asAsyncIterator} from './lib/get_iterator'
 
 /**
- * Example usage of the toArray function
- * @name example_2
- * @memberof module:toArray-examples
- * @function
- */
+```
+import {map} from 'async_iter/pipeline/combineWhen' # pipeline version
+import {map} from 'async_iter/combineWhen' # conventional version
+```
+Collect items, `combining` them, until the evaluation function return true.
+> Supports both **sync** and **async** iterations
 
-async function* source() {
-  yield await 1
-  yield await 2
-  yield await 3
-  yield await 4
-  yield await 5
+* @param  {Iterable}         source        The source iteration to process
+* @param {evaluateItem} fn                 A evaluator function, that upon returing true, causes all items collected to this point to be emitted
+* @param {Function} combine                An optional function to combine two items (defaults to (a, b) => a + b)
+* @return {Iterable} Emits as per the combindation functions
+* @function
+* @name combineWhen
+*/
+
+export const combineWhen = syncType(syncCombineWhen, asyncCombineWhen)
+
+function* syncCombineWhen(source, fn, combine = (a, b) => b + a) {
+  let currentPending = undefined
+  let pending = false
+  for (const x of source) {
+    if (fn(x)) {
+      if (pending)
+        yield currentPending
+      currentPending = x
+    } else
+      currentPending = combine(x, currentPending)
+
+    pending = true
+  }
+
+  yield currentPending
 }
 
-async function main() {
-  const items = await (source() |> toArray())
+async function* asyncCombineWhen(source, fn, combine = (a, b) => b + a) {
+  source = await asAsyncIterator(source)
 
-  console.log(items.join(', '))
+  let currentPending = undefined
+  let pending = false
+  for await (const x of source) {
+    if (await fn(x)) {
+      if (pending)
+        yield currentPending
+      currentPending = x
+    } else
+      currentPending = await combine(x, currentPending)
 
-  console.log('done....')
+    pending = true
+  }
+
+  yield currentPending
 }
-
-main()
 </code></pre>
         </article>
     </section>
