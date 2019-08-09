@@ -28,6 +28,7 @@ with node 10 and above.
 
 * [broadcast](https://vipoo.github.io/async_iter/global.html#broadcast)
 * [bufferBy](https://vipoo.github.io/async_iter/global.html#bufferBy)
+* [count](https://https://vipoo.github.io/async_iter/global.html#count)
 * [map](https://vipoo.github.io/async_iter/global.html#map)
 * [persisted](https://vipoo.github.io/async_iter/global.html#persisted)
 * [rateLimit](https://vipoo.github.io/async_iter/global.html#rateLimit)
