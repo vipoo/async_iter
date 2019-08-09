@@ -1,12 +1,8 @@
 module.exports = api => {
   api.cache(true)
 
-
   return {
     plugins: [
-      [
-        "@babel/plugin-syntax-bigint"
-      ],
       [
         '@babel/plugin-proposal-class-properties',
         {
@@ -35,14 +31,14 @@ module.exports = api => {
         '@babel/plugin-proposal-throw-expressions'
       ]
     ],
-    'presets': [
+    presets: [
       [
         '@babel/preset-env',
         {
-          'corejs': 3,
-          'useBuiltIns': 'usage',
-          'targets': {
-            'node': 'current'
+          corejs: 3,
+          useBuiltIns: 'usage',
+          targets: {
+            node: 'current'
           }
         }
       ]

@@ -55,7 +55,6 @@
     "prepack": "./scripts/clean.sh && ./scripts/build.sh"
   },
   "dependencies": {
-    "browser-process-hrtime": "^1.0.0",
     "core-js": "^3.1.4",
     "mkdirp-promise": "^5.0.1",
     "uuid": "^3.3.2"
@@ -71,7 +70,6 @@
     "@babel/plugin-proposal-partial-application": "^7.4.4",
     "@babel/plugin-proposal-pipeline-operator": "^7.5.0",
     "@babel/plugin-proposal-throw-expressions": "^7.2.0",
-    "@babel/plugin-syntax-bigint": "^7.4.4",
     "@babel/preset-env": "^7.5.4",
     "@babel/register": "^7.4.4",
     "babel-eslint": "^11.0.0-beta.0",

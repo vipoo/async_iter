@@ -86,6 +86,9 @@ export default function(config) {
       FirefoxHeadless: {
         base: 'Firefox',
         flags: ['-headless'],
+        prefs: {
+          'app.update.auto': false
+        }
       }
     }
   })

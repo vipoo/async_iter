@@ -57,9 +57,5 @@ export async function eventually(fn, timeout = 1900) {
 }
 
 export function fakeTimer() {
-  const _hrtime = process.hrtime
-  const stubHrTime = {}
-  stubHrTime.bigint = _hrtime.bigint
-  sinon.stub(process, 'hrtime').value(stubHrTime)
   return sinon.useFakeTimers()
 }

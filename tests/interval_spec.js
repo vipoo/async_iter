@@ -4,10 +4,6 @@ import {interval} from '../src/browsers'
 describe('interval', () => {
   let clock
   beforeEach(() => {
-    const stubHrTime = {}
-    stubHrTime.bigint = sinon.stub().onCall(0).returns(1).onCall(1).returns(2)
-    sinon.stub(process, 'hrtime').value(stubHrTime)
-
     clock = fakeTimer()
   })
 
@@ -23,7 +19,7 @@ describe('interval', () => {
     expect(firstItem).to.be.pending
 
     clock.tick(1000)
-    await expect(firstItem).to.eventually.deep.eq({value: 1, done: false})
+    await expect(firstItem).to.eventually.deep.eq({value: 1000, done: false})
 
     clock.tick(10000)
 

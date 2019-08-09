@@ -1,14 +1,4 @@
-import hrtime from 'browser-process-hrtime'
 import {pump} from './pump'
-
-//polyfill hrtime
-if (!process.hrtime) {
-  process.hrtime = hrtime
-  hrtime.bigint = () => {
-    const diff = process.hrtime()
-    return BigInt(diff[1])
-  }
-}
 
 /**
 ```
@@ -45,7 +35,7 @@ export function interval(period, cancel = new Promise(() => {})) {
         if (currentPromise)
           return
 
-        const v = process.hrtime.bigint()
+        const v = new Date().getTime()
         currentPromise = await Promise.race([target.next(v), cancel.then(() => ({done: true}))])
         if (currentPromise.done) {
           currentPromise = null
