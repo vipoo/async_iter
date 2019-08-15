@@ -55,10 +55,13 @@
     "prepack": "./scripts/clean.sh && ./scripts/build.sh"
   },
   "dependencies": {
-    "core-js": "^3.1.4",
     "uuid": "^3.3.2"
   },
+  "peerDependencies": {
+    "core-js": ">=3.1.4"
+  },
   "devDependencies": {
+    "core-js": "^3.1.4",
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.4",
     "@babel/node": "^7.5.0",
