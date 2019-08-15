@@ -8,6 +8,7 @@
 /** @module count-examples */
 /** @module delay-examples */
 /** @module delayUntil-examples */
+/** @module entries-examples */
 /** @module filter-examples */
 /** @module filterWhen-examples */
 /** @module first-examples */
