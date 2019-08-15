@@ -52,7 +52,9 @@
     "tst": "NODE_ENV=test mocha --require \"@babel/register\" tests/**",
     "posttest": "eslint --fix src tests",
     "watch": "npm-watch",
-    "prepack": "./scripts/clean.sh && ./scripts/build.sh"
+    "prepack": "./scripts/clean.sh && ./scripts/build.sh",
+    "example": "./scripts/example.sh",
+    "example:update": "./scripts/example-update.sh"
   },
   "dependencies": {
     "uuid": "^3.3.2"

@@ -18,19 +18,13 @@ Emits the items with a key/value pair [index, value].
 
 export const entries = syncType(syncEntries, asyncEntries)
 
-function* syncEntries(source, ...args) {
-  if (source.entries)
-    return yield* source.entries(...args)
-
+function* syncEntries(source) {
   let index = 0
   for (const item of source)
     yield [index++, item]
 }
 
-async function* asyncEntries(source, ...args) {
-  if (source.entries)
-    return yield* source.entries(...args)
-
+async function* asyncEntries(source) {
   source = await asAsyncIterator(source)
 
   let index = 0
