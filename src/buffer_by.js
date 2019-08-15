@@ -57,7 +57,7 @@ export async function bufferBy(source, trigger, maxWaitTime) {
     timeout: undefined
   }
 
-  source = await asAsyncIterator(source)
+  const _source = await asAsyncIterator(source)
 
   /* eslint complexity: ['error', 9] */
   return asAsyncIterator({
@@ -70,7 +70,7 @@ export async function bufferBy(source, trigger, maxWaitTime) {
           timeoutTrigger(state, maxWaitTime)
 
           while (True) {
-            state.nextValue = state.nextValue || source.next()
+            state.nextValue = state.nextValue || _source.next()
             const {value, done, timed} = await Promise.race([state.nextValue, state.promise])
             if (done)
               return returnLastValue(state)
@@ -85,7 +85,7 @@ export async function bufferBy(source, trigger, maxWaitTime) {
           }
         },
         async return() {
-          source.return()
+          _source.return()
           return {done: true}
         }
       }

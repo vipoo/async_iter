@@ -5,7 +5,7 @@ const delay = period => new Promise(res => setTimeout(res, period))
 
 describe('#pump', () => {
   it('raises error is not passed an async function', async () => {
-    const items = await pump((t, s) => {})
+    const items = await pump(() => {})
 
     return expect(items.next()).to.be.rejectedWith('pump callback function has not returned a promise')
   })

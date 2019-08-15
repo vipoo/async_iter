@@ -13,7 +13,7 @@ describe('persisted/item_queue', () => {
   const processingDirectory = '/tmp/processing'
   const data = 'blah data'
 
-  const readFile = (p, _dir) => fs.readFileSync(path.join(dir, p), 'utf-8')
+  const readFile = p => fs.readFileSync(path.join(dir, p), 'utf-8')
 
   beforeEach(async () => {
     sinon.stub(process.hrtime, 'bigint')

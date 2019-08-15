@@ -41,7 +41,7 @@ export async function pushItem(readDirectory, writingDirectory, data, state) {
 
 function fsWatch(dir) {
   let watcher
-  return new Promise((res, rej) => watcher = _fs.watch(dir, {}, (...args) => {
+  return new Promise(res => watcher = _fs.watch(dir, {}, (...args) => {
     watcher.close()
     res(args)
   }))

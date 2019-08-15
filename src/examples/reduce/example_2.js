@@ -16,7 +16,7 @@ async function* source() {
 }
 
 async function main() {
-  const reduction = await (source() |> reduce(async (total, currentValue, currentIndex, array) => {
+  const reduction = await (source() |> reduce(async (total, currentValue, currentIndex, array) => { // eslint-disable-line no-unused-vars
     console.log(`total: ${total}, currentValue: ${currentValue}, currentIndex: ${currentIndex}`)
     return total + currentValue
   }, 5))

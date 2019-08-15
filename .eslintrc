@@ -4,7 +4,8 @@
     "BigInt": false
   },
   "rules": {
-    "complexity": ['error', 4]
+    "complexity": ['error', 4],
+    "require-atomic-updates": 0
   },
   "extends": ["eslint-config-stickler"]
 }

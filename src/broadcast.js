@@ -90,7 +90,7 @@ export function broadcast(source) {
       hasStopped.then(() => {
         delete subscribers[key]
         delete pumps[key]
-      }).catch(err => {
+      }).catch(() => {
         delete subscribers[key]
         delete pumps[key]
       })
