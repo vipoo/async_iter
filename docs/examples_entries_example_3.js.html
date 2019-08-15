@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>examples/chunk/example_2.js - Documentation</title>
+    <title>examples/entries/example_3.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">examples/chunk/example_2.js</h1>
+    <h1 class="page-title">examples/entries/example_3.js</h1>
     
 
     
@@ -42,26 +42,28 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {forEach, chunk} from '../../pipeline/browsers'
+            <pre class="prettyprint source linenums"><code>import {entries} from '../../pipeline/browsers'
 
 /**
- * Example usage of the chunk function
- * @name example_2
- * @memberof module:chunk-examples
+ * Example usage of the entries function
+ * @name example_3
+ * @memberof module:entries-examples
  * @function
  */
 
 async function* source() {
-  yield await 1
-  yield await 2
-  yield await 3
-  yield await 4
-  yield await 5
-  yield await 6
+  yield await 'a'
+  yield await 'b'
+  yield await 'c'
+  yield await 'd'
+  yield await 'e'
 }
 
 async function main() {
-  source() |> chunk(2) |> forEach(console.log)
+  const items = source() |> entries()
+
+  for await (const item of items)
+    console.log(item)
 
   console.log('done....')
 }

@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>examples/chunk/example_2.js - Documentation</title>
+    <title>entries.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">examples/chunk/example_2.js</h1>
+    <h1 class="page-title">entries.js</h1>
     
 
     
@@ -42,31 +42,45 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {forEach, chunk} from '../../pipeline/browsers'
+            <pre class="prettyprint source linenums"><code>import {asAsyncIterator, syncType} from './lib/get_iterator'
 
 /**
- * Example usage of the chunk function
- * @name example_2
- * @memberof module:chunk-examples
+```
+import {entries} from 'async_iter/pipeline/entries' # pipeline version
+import {entries} from 'async_iter/entries' # conventional version
+```
+Equivalent to [Array.prototype.entries](https://devdocs.io/javascript/global_objects/array/entries)
+> Supports both **sync** and **async** iterations
+
+Emits the items with a key/value pair [index, value].
+
+ * @param  {Iterable}         source        The source iteration to process
+ * @return {Iterable} The transformed items
  * @function
+ * @name entries
  */
 
-async function* source() {
-  yield await 1
-  yield await 2
-  yield await 3
-  yield await 4
-  yield await 5
-  yield await 6
+export const entries = syncType(syncEntries, asyncEntries)
+
+function* syncEntries(source, ...args) {
+  if (source.entries)
+    return yield* source.entries(...args)
+
+  let index = 0
+  for (const item of source)
+    yield [index++, item]
 }
 
-async function main() {
-  source() |> chunk(2) |> forEach(console.log)
+async function* asyncEntries(source, ...args) {
+  if (source.entries)
+    return yield* source.entries(...args)
 
-  console.log('done....')
+  source = await asAsyncIterator(source)
+
+  let index = 0
+  for await (const item of source)
+    yield [index++, item]
 }
-
-main()
 </code></pre>
         </article>
     </section>
