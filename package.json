@@ -58,7 +58,7 @@
     "uuid": "^3.3.2"
   },
   "peerDependencies": {
-    "core-js": ">=3.1.4"
+    "core-js": ">=3.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -101,7 +101,6 @@
     "rmfr": "^2.0.0",
     "sinon": "^7.4.1",
     "sinon-chai": "^3.3.0",
-    "util": "^0.12.1",
     "webpack": "^4.39.2"
   }
 }
