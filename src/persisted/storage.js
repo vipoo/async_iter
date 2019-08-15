@@ -1,8 +1,7 @@
 import {resolve} from 'path'
-import mkdirp from 'mkdirp-promise'
 import {join} from 'path'
-import _fs from 'fs'
-const fs = _fs.promises
+import fs from 'fs'
+const fsp = fs.promises
 import {pushItem, popItem, removeLast, restoreUnprocessedItems, isEmpty} from './item_queue'
 import {flagAsStop, unflagAsStop, hasStoppedFlag} from './stop_flaging'
 
@@ -30,11 +29,11 @@ async function* getItems(readDirectory, processingDirectory, consumerStopped, op
       const {filename, item} = await popItem(readDirectory, processingDirectory, opts)
 
       if (item.length === 0) {
-        fs.unlink(filename)
+        await fsp.unlink(filename)
         break
       }
 
-      yield {value: item, completed: () => fs.unlink(filename)}
+      yield {value: item, completed: () => fsp.unlink(filename)}
     }
   } finally {
     consumerStopped()
@@ -49,9 +48,9 @@ export async function open(storeDirectory, opts) {
   const consumerStopped = () => { _consumerHasStopped = true }
 
   await Promise.all([
-    mkdirp(readDirectory),
-    mkdirp(processingDirectory),
-    mkdirp(writingDirectory)
+    fsp.mkdir(readDirectory, {recursive: true}),
+    fsp.mkdir(processingDirectory, {recursive: true}),
+    fsp.mkdir(writingDirectory, {recursive: true})
   ])
 
   await restoreUnprocessedItems(readDirectory, processingDirectory, opts)

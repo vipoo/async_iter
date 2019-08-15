@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import * as uuidModule from '../../src/lib/uuid'
 import {pushItem, popItem, removeLast, restoreUnprocessedItems, isEmpty} from '../../src/persisted/item_queue'
-import mkdirp from 'mkdirp-promise'
+const fsp = fs.promises
 
 describe('persisted/item_queue', () => {
   const dir = '/tmp'
@@ -27,11 +27,11 @@ describe('persisted/item_queue', () => {
 
   beforeEach(async () => {
     await rmfr(readDirectory)
-    await mkdirp(readDirectory)
+    await fsp.mkdir(readDirectory)
     await rmfr(writingDirectory)
-    await mkdirp(writingDirectory)
+    await fsp.mkdir(writingDirectory)
     await rmfr(processingDirectory)
-    await mkdirp(processingDirectory)
+    await fsp.mkdir(processingDirectory)
   })
 
   describe('#pushItem', () => {
