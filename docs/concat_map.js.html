@@ -49,9 +49,14 @@
 import {concatMap} from 'async_iter/pipeline/concat_map' # pipeline version
 import {concatMap} from 'async_iter/concat_map' # conventional version
 ```
+```
+Alternative name: flatMap
+````
 Joins an inner iterable with the use of a mapping function.
 
+```
 > Supports both **sync** and **async** iterations
+```
 
  * @param  {Iterable}         source        The source iteration
  * @param {Function} fn A function called for each item in the source iteration and returns an iterable

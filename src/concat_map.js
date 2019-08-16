@@ -5,6 +5,9 @@ import {syncType, asAsyncIterator} from './lib/get_iterator'
 import {concatMap} from 'async_iter/pipeline/concat_map' # pipeline version
 import {concatMap} from 'async_iter/concat_map' # conventional version
 ```
+```
+Alternative name: flatMap
+````
 Joins an inner iterable with the use of a mapping function.
 
 > Supports both **sync** and **async** iterations
@@ -17,16 +20,16 @@ Joins an inner iterable with the use of a mapping function.
  * @memberof module:Operators
 */
 
-export const mergeMap = syncType(syncMergeMap, asyncMergeMap)
+export const concatMap = syncType(syncConcatMap, asyncConcatMap)
 
-export async function* asyncMergeMap(source, fn) {
+export async function* asyncConcatMap(source, fn) {
   source = await asAsyncIterator(source)
 
   for await (const item of source)
     yield* await asAsyncIterator(await fn(item))
 }
 
-export function* syncMergeMap(source, fn) {
+export function* syncConcatMap(source, fn) {
   for (const item of source)
     yield* fn(item)
 }

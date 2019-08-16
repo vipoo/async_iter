@@ -1,4 +1,4 @@
-import {forEach, mergeMap, map} from '../../pipeline/browsers'
+import {forEach, concatMap, map} from '../../pipeline/browsers'
 
 async function* source1() {
   yield await Promise.resolve(1)
@@ -18,7 +18,7 @@ async function* source2() {
 
 async function main() {
   await (source2()
-    |> mergeMap(x => source1() |> map(i => `${i} - ${x}`))
+    |> concatMap(x => source1() |> map(i => `${i} - ${x}`))
     |> forEach(console.log(?)))
 
   console.log('done....')

@@ -1,3 +1,3 @@
-import {mergeMap as _mergeMap} from '../concat_map'
+import {concatMap as _concatMap} from '../concat_map'
 
-export const mergeMap = (...args) => source => _mergeMap(source, ...args)
+export const concatMap = (...args) => source => _concatMap(source, ...args)
