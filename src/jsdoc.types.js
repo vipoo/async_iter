@@ -1,5 +1,20 @@
 
 /**
+ * Called by the min and max operators to identify comparison value or ordering.
+ *
+ * There are 2 forms of this function.  If the function takes only 1 argument, it
+ * is assume that the function returns a string or number to be used for comparison.
+ *
+ * If the function takes 2 arguments, then it must compare the 2 arguments and return
+ * -1 if less than, 0 if equal, and +1 is greater.
+ *
+ * @callback minMaxCallback
+ * @param {*} item to be considered for sequence
+ * @param {*=} comparisonItem - an item to be compared to the first item
+ * @return {*} a value to be compared, or -1, 0, +1 to indicate comparison
+ */
+
+/**
  * Called by the filter function, when a set of items are filtered
  *
  * @callback missingValueFn
