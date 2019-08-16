@@ -11,7 +11,7 @@
       "src/examples/delay_until",
       "src/examples/filter",
       "src/examples/timeout",
-      "src/examples/merge_map"
+      "src/examples/concat_map"
     ]
   },
   "templates": {
