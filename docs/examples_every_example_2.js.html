@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>examples/map/example_1.js - Documentation</title>
+    <title>examples/every/example_2.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">examples/map/example_1.js</h1>
+    <h1 class="page-title">examples/every/example_2.js</h1>
     
 
     
@@ -42,21 +42,29 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {map} from '../../pipeline/browsers'
+            <pre class="prettyprint source linenums"><code>import {every} from '../../pipeline/browsers'
 
 /**
- * Example usage of the map function
- * @name example_1
- * @memberof module:map-examples
+ * Example usage of the every function
+ * @name example_2
+ * @memberof module:every-examples
  * @function
  */
 
-function main() {
-  const items = [1, 2, 3, 4, 5] |> map(x => x * 2)
+async function* source() {
+  yield await 1
+  yield await 2
+  yield await 3
+  yield await 4
+  yield await 5
+}
 
-  for (const item of items)
-    console.log(item)
+async function main() {
+  const greaterThan1 = source() |> every(x => x >= 1)
+  const greaterThan4 = source() |> every(x => x >= 4)
 
+  console.log('every item greater than 1:', await greaterThan1)
+  console.log('every item greater than 4:', await greaterThan4)
   console.log('done....')
 }
 
