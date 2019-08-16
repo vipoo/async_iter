@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Generators.html">Generators</a><ul class='methods'><li data-type='method'><a href="module-Generators.html#.fromStream">fromStream</a></li><li data-type='method'><a href="module-Generators.html#.interval">interval</a></li><li data-type='method'><a href="module-Generators.html#.pump">pump</a></li><li data-type='method'><a href="module-Generators.html#.range">range</a></li></ul></li><li><a href="module-Operators.html">Operators</a><ul class='methods'><li data-type='method'><a href="module-Operators.html#.broadcast">broadcast</a></li><li data-type='method'><a href="module-Operators.html#.bufferBy">bufferBy</a></li><li data-type='method'><a href="module-Operators.html#.bufferGroupBy">bufferGroupBy</a></li><li data-type='method'><a href="module-Operators.html#.byLines">byLines</a></li><li data-type='method'><a href="module-Operators.html#.chunk">chunk</a></li><li data-type='method'><a href="module-Operators.html#.combineWhen">combineWhen</a></li><li data-type='method'><a href="module-Operators.html#.concat">concat</a></li><li data-type='method'><a href="module-Operators.html#.count">count</a></li><li data-type='method'><a href="module-Operators.html#.delay">delay</a></li><li data-type='method'><a href="module-Operators.html#.delayUntil">delayUntil</a></li><li data-type='method'><a href="module-Operators.html#.entries">entries</a></li><li data-type='method'><a href="module-Operators.html#.every">every</a></li><li data-type='method'><a href="module-Operators.html#.map">map</a></li><li data-type='method'><a href="module-Operators.html#.persisted">persisted</a></li><li data-type='method'><a href="module-Operators.html#.rateLimit">rateLimit</a></li><li data-type='method'><a href="module-Operators.html#.take">take</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Generators.html">Generators</a><ul class='methods'><li data-type='method'><a href="module-Generators.html#.fromStream">fromStream</a></li><li data-type='method'><a href="module-Generators.html#.interval">interval</a></li><li data-type='method'><a href="module-Generators.html#.pump">pump</a></li><li data-type='method'><a href="module-Generators.html#.range">range</a></li></ul></li><li><a href="module-Operators.html">Operators</a><ul class='methods'><li data-type='method'><a href="module-Operators.html#.broadcast">broadcast</a></li><li data-type='method'><a href="module-Operators.html#.bufferBy">bufferBy</a></li><li data-type='method'><a href="module-Operators.html#.bufferGroupBy">bufferGroupBy</a></li><li data-type='method'><a href="module-Operators.html#.byLines">byLines</a></li><li data-type='method'><a href="module-Operators.html#.chunk">chunk</a></li><li data-type='method'><a href="module-Operators.html#.combineWhen">combineWhen</a></li><li data-type='method'><a href="module-Operators.html#.concat">concat</a></li><li data-type='method'><a href="module-Operators.html#.count">count</a></li><li data-type='method'><a href="module-Operators.html#.delay">delay</a></li><li data-type='method'><a href="module-Operators.html#.delayUntil">delayUntil</a></li><li data-type='method'><a href="module-Operators.html#.entries">entries</a></li><li data-type='method'><a href="module-Operators.html#.every">every</a></li><li data-type='method'><a href="module-Operators.html#.filter">filter</a></li><li data-type='method'><a href="module-Operators.html#.map">map</a></li><li data-type='method'><a href="module-Operators.html#.persisted">persisted</a></li><li data-type='method'><a href="module-Operators.html#.rateLimit">rateLimit</a></li><li data-type='method'><a href="module-Operators.html#.take">take</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <div id="main">
@@ -2307,6 +2307,241 @@ import {every} from 'async_iter/every' # conventional version
     <dd>
         
 <span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".filter"><span class="type-signature">(static) </span>filter<span class="signature">(source, fn, missingValueFn<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Iterable}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="filter.js.html">filter.js</a>, <a href="filter.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>The optional <code>missingValueFn</code> allows for processing the 'filtered' items into a single item.</p>
+<p>eg: Given an input source of [1, 2, 3, 4, 5, 6] and a filter of x &gt;= 5, then the missingValueFn will be called with
+values of (1, 5) and the result of that function will be emitted before item 6.</p>
+<p>The examples include use of the <code>missingValueFn</code> function</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The source iteration to filter</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A funntion invokved for each item, returning false for items to be removed</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>missingValueFn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#missingValueFn">missingValueFn</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>When supplied, will be invokved for each group of items that are filter - returns a item to be emitted, representing the filtered items</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The filtered items</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Iterable</span>
 
 
     </dd>
