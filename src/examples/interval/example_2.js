@@ -1,13 +1,6 @@
 import {forEach, interval, take, map} from '../../pipeline/browsers'
 import {promiseSignal} from '../../lib/promise_helpers'
 
-/**
- * Example usage of the interval generator
- * @name example_2
- * @memberof module:interval-examples
- * @function
- */
-
 const delay = period => new Promise(res => setTimeout(res, period))
 
 const consumer = forEach(async x => { await delay(80); console.log(x) })

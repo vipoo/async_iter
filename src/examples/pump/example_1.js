@@ -1,11 +1,5 @@
 import {pump} from '../../pipeline/browsers'
 
-/**
- * Example usage of the pump function
- * @name example_1
- * @memberof module:pump-examples
- * @function
- */
 async function main() {
   const items = await pump(async (target, hasStopped) => {
     hasStopped.then(() => console.log('Received has stopped signal'))

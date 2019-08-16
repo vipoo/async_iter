@@ -13,6 +13,7 @@ Transforms each item in the supplied iteration using the supplied function
  * @return {Iterable} The transformed items
  * @function
  * @name map
+ * @memberof module:Operators
  */
 export const map = syncType(syncMap, asyncMap)
 

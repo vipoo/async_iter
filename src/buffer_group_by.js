@@ -19,6 +19,7 @@ import {bufferGroupBy} from 'async_iter/buffer_group_by' # conventional version
  * @name bufferGroupBy
  * @function
  * @see also {@link bufferBy}
+ * @memberof module:Operators
  */
 export function bufferGroupBy(source, selector, trigger, maxWaitTime) {
   const state = {

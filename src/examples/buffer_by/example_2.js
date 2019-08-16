@@ -1,11 +1,5 @@
 import {range, bufferBy, forEach} from '../../pipeline/browsers'
 
-/**
- * Example usage of the bufferBy function
- * @name example_2
- * @memberof module:bufferBy-examples
- * @function
- */
 async function main() {
   await (
     range({start: 1, end: 20})

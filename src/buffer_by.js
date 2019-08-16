@@ -48,6 +48,7 @@ import {bufferBy} from 'async_iter/buffer_by' # conventional version
  * @name bufferBy
  * @function
  * @see also {@link bufferGroupBy}
+ * @memberof module:Operators
  */
 export async function bufferBy(source, trigger, maxWaitTime) {
   const state = {

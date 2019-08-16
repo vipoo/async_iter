@@ -1,11 +1,5 @@
 import {range, bufferBy} from '../../pipeline/browsers'
 
-/**
- * Example usage of the bufferBy function
- * @name example_1
- * @memberof module:bufferBy-examples
- * @function
- */
 async function main() {
   const items = await (
     range({start: 1, end: 20})

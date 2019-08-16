@@ -1,12 +1,5 @@
 import {every} from '../../pipeline/browsers'
 
-/**
- * Example usage of the every function
- * @name example_2
- * @memberof module:every-examples
- * @function
- */
-
 async function* source() {
   yield await 1
   yield await 2

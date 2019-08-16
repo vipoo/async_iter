@@ -1,12 +1,5 @@
 import {forEach, combineWhen} from '../../pipeline/browsers'
 
-/**
- * Example usage of the combineWhen function
- * @name example_1
- * @memberof module:combineWhen-examples
- * @function
- */
-
 function* source() {
   yield '  this is not part of anything'
   yield '2019-05-26T08:26:14.384548+0000 blah blah'

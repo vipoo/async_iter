@@ -1,12 +1,5 @@
 import {map} from '../../pipeline/browsers'
 
-/**
- * Example usage of the map function
- * @name example_2
- * @memberof module:map-examples
- * @function
- */
-
 async function* source() {
   yield await 1
   yield await 2

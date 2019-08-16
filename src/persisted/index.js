@@ -26,6 +26,8 @@ for await (const item of items) {
   console.log(item.value.toString())
   item.completed() // If this function is not called, item will be processed if iterator restarted
 }
+ * @memberof module:Operators
+ * @name persisted
  */
 export async function persisted(source, path, opts = {}) {
   opts = {

@@ -1,12 +1,5 @@
 import {takeWhile} from '../../pipeline/browsers'
 
-/**
- * Example usage of the takeWhile function
- * @name example_2
- * @memberof module:takeWhile-examples
- * @function
- */
-
 function main() {
   const items = [1, 2, 3, 4, 5] |> takeWhile(x => x <= 3)
 

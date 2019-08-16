@@ -1,13 +1,6 @@
 import {persisted} from '../../pipeline'
 import rmfr from 'rmfr'
 
-/**
- * Example usage of the persisted function
- * @name example_4
- * @memberof module:persisted-examples
- * @function
- */
-
 async function* source(code) {
   let c = 1
   yield await `${code}-${c++}`

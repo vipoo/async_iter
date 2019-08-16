@@ -2,13 +2,6 @@ import {forEach, bufferGroupBy} from '../../pipeline/browsers'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 
-/**
- * Example usage of the bufferGroupBy function
- * @name example_1
- * @memberof module:bufferGroupBy-examples
- * @function
- */
-
 async function* source() {
   yield {a: 1, b: 'Alpha'}
   yield {a: 2, b: 'Beta'}

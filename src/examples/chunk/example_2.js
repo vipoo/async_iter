@@ -1,12 +1,5 @@
 import {forEach, chunk} from '../../pipeline/browsers'
 
-/**
- * Example usage of the chunk function
- * @name example_2
- * @memberof module:chunk-examples
- * @function
- */
-
 async function* source() {
   yield await 1
   yield await 2

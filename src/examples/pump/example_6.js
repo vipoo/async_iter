@@ -1,11 +1,5 @@
 import {pump} from '../../pipeline/browsers'
 
-/**
- * Example usage of the pump function
- * @name example_6
- * @memberof module:pump-examples
- * @function
- */
 async function main() {
   console.log('\n\n')
   const pump1 = await pump(async (target) => {

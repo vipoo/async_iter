@@ -2,12 +2,6 @@ import {pump} from '../../pipeline/browsers'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 
-/**
- * Example usage of the pump function
- * @name example_3
- * @memberof module:pump-examples
- * @function
- */
 async function main() {
   const items = await pump(async (target, hasStopped) => {
     await target.next()

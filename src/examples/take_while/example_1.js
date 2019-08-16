@@ -1,12 +1,5 @@
 import {takeWhile} from '../../pipeline/browsers'
 
-/**
- * Example usage of the takeWhile function
- * @name example_1
- * @memberof module:takeWhile-examples
- * @function
- */
-
 async function* source() {
   yield await 1
   yield await 2

@@ -1,12 +1,5 @@
 import {max} from '../../pipeline/browsers'
 
-/**
- * Example usage of the max function
- * @name example_2
- * @memberof module:max-examples
- * @function
- */
-
 async function* async(array) {
   for (const item of array)
     yield await item

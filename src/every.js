@@ -13,6 +13,7 @@ Return true if every item satisfies the supplied test function
  * @return {Boolean} True if all items are satisfied
  * @function
  * @name every
+ * @memberof module:Operators
 */
 
 export const every = syncType(syncevery, asyncevery)

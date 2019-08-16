@@ -1,12 +1,5 @@
 import {min} from '../../pipeline/browsers'
 
-/**
- * Example usage of the min function
- * @name example_2
- * @memberof module:min-examples
- * @function
- */
-
 async function* async(array) {
   for (const item of array)
     yield await item

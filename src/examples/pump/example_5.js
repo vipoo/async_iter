@@ -11,12 +11,7 @@ async function getNextValue() {
 }
 
 const True = true
-/**
- * Example usage of the pump function
- * @name example_5
- * @memberof module:pump-examples
- * @function
- */
+
 async function main() {
   const items = await pump(async (target, hasStopped) => {
     await target.next()

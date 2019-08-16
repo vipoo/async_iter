@@ -20,6 +20,9 @@ Each generator function, will iterate over the same source values
  * @return {Function} a generator function to create an iterable of the source items
  <br/>
 .return - A function to close all consumer iterators and close the source iteration.
+ * @function
+ * @memberof module:Operators
+ * @name broadcast
  */
 export function broadcast(source) {
   let count = 1

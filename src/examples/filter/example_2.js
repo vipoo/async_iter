@@ -1,12 +1,5 @@
 import {filter} from '../../pipeline/browsers'
 
-/**
- * Example usage of the filter function
- * @name example_2
- * @memberof module:filter-examples
- * @function
- */
-
 async function* source() {
   yield await 1
   yield await 2

@@ -1,12 +1,5 @@
 import {reduce} from '../../pipeline/browsers'
 
-/**
- * Example usage of the reduce function
- * @name example_2
- * @memberof module:reduce-examples
- * @function
- */
-
 async function* source() {
   yield await 1
   yield await 2

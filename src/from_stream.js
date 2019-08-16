@@ -22,6 +22,8 @@ import {fromStream} from 'async_iter/from_stream' # conventional version
  * @param  {String} [closeEvent=close]  When this event emits, the iteration is stopped
  * @return {iteration}                  An iterable source
  * @function
+ * @memberof module:Generators
+ * @name fromStream
  */
 
 export function fromStream(eventSource, dataEvent = 'data', closeEvent = 'close') {

@@ -12,13 +12,6 @@ async function* source() {
   yield await ''
 }
 
-/**
- * Example usage of the byLines function
- * @name example_2
- * @memberof module:byLines-examples
- * @function
- */
-
 async function main() {
   const items = await (source() |> byLines())
 

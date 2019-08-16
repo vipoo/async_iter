@@ -1,12 +1,5 @@
 import {takeUntil} from '../../pipeline/browsers'
 
-/**
- * Example usage of the takeUntil function
- * @name example_2
- * @memberof module:takeUntil-examples
- * @function
- */
-
 function main() {
   const items = [1, 2, 3, 4, 5] |> takeUntil(x => x === 3)
 

@@ -1,12 +1,5 @@
 import {toArray} from '../../pipeline/browsers'
 
-/**
- * Example usage of the toArray function
- * @name example_1
- * @memberof module:toArray-examples
- * @function
- */
-
 function* source() {
   yield 1
   yield 2

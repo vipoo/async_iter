@@ -14,7 +14,6 @@ class ArgumentError extends Error {
 ```
 import {pump} from 'async_iter/pump'
 ```
-
 pump allows for the 'pushing' of values into an async iterator consumer
 
 The `push` operation returns a promise, that resolves when the consuming iteration has consumed the item
@@ -26,9 +25,9 @@ for processing by the consumer as it pulls in the values
 
 The callback is not invoked, until the first item is pulled from the iteration
 
- * @param  {pumpCallback} fn        this is a function that will async pump values into the interator
- * @param  {String}   [marker=]
- * @return {Iteratable}         A standard async iterator that can consume the generated values
+@param  {pumpCallback} fn        this is a function that will async pump values into the interator
+@param  {String}   [marker=]
+@return {Iteratable}         A standard async iterator that can consume the generated values
 
 @example
 import {pump} from 'async_iter'
@@ -46,7 +45,11 @@ const items = await pump(target => {
 
 for await (const item of items)
   console.log(item)
- */
+
+@memberof module:Generators
+@name pump
+@function
+*/
 export function pump(fn, marker) {
   const myObject = new ArgumentError()
   return _pump(fn, marker, myObject)

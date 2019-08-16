@@ -1,11 +1,5 @@
 import {pump} from '../../pipeline/browsers'
 
-/**
- * Example usage of the pump function
- * @name example_2
- * @memberof module:pump-examples
- * @function
- */
 async function main() {
   await pump(async target => {
     console.log('never get here, as no consumer is started')

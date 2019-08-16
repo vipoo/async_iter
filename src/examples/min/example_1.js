@@ -1,12 +1,5 @@
 import {min} from '../../pipeline/browsers'
 
-/**
- * Example usage of the min function
- * @name example_1
- * @memberof module:min-examples
- * @function
- */
-
 function example1() {
   const item = [5, 4, 1, 2, 3] |> min()
 

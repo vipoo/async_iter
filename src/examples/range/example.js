@@ -1,12 +1,5 @@
 import {range} from '../../pipeline/browsers'
 
-/**
- * Example usage of the range function
- * @name example_1
- * @memberof module:range-examples
- * @function
- */
-
 async function example1() {
   console.log('range from 0 to 5')
   for await (const item of range(5))

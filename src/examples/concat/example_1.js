@@ -1,12 +1,5 @@
 import {forEach, concat} from '../../pipeline/browsers'
 
-/**
- * Example usage of the concat function
- * @name example_1
- * @memberof module:concat-examples
- * @function
- */
-
 function* source1() {
   yield 1
   yield 2

@@ -14,6 +14,7 @@ This operator can be used to re-contructs a set of lines that have been piped th
  * @return {Iterable} The transformed items
  * @function
  * @name byLines
+ * @memberof module:Operators
  */
 
 export const byLines = syncType(syncByLines, asyncByLines)

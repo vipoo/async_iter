@@ -1,12 +1,5 @@
 import {entries} from '../../pipeline/browsers'
 
-/**
- * Example usage of the entries function
- * @name example_3
- * @memberof module:entries-examples
- * @function
- */
-
 async function* source() {
   yield await 'a'
   yield await 'b'

@@ -26,21 +26,22 @@ with node 10 and above.
 
 #### Async/Sync Iterator functions
 
-* [broadcast](https://vipoo.github.io/async_iter/global.html#broadcast)
-* [bufferBy](https://vipoo.github.io/async_iter/global.html#bufferBy)
-* [bufferGroupBy](https://vipoo.github.io/async_iter/global.html#bufferGroupBy)
-* [byLines](https://vipoo.github.io/async_iter/global.html#byLines)
-* [chunk](https://vipoo.github.io/async_iter/global.html#chunk)
-* [combineWhen](https://vipoo.github.io/async_iter/global.html#combineWhen)
-* [count](https://https://vipoo.github.io/async_iter/global.html#count)
-* [map](https://vipoo.github.io/async_iter/global.html#map)
-* [persisted](https://vipoo.github.io/async_iter/global.html#persisted)
-* [rateLimit](https://vipoo.github.io/async_iter/global.html#rateLimit)
-* [take](https://vipoo.github.io/async_iter/global.html#take)
+* [broadcast](https://vipoo.github.io/async_iter/module-Operators.html#.broadcast)
+* [bufferBy](https://vipoo.github.io/async_iter/module-Operators.html#.bufferBy)
+* [bufferGroupBy](https://vipoo.github.io/async_iter/module-Operators.html#.bufferGroupBy)
+* [byLines](https://vipoo.github.io/async_iter/module-Operators.html#.byLines)
+* [chunk](https://vipoo.github.io/async_iter/module-Operators.html#.chunk)
+* [combineWhen](https://vipoo.github.io/async_iter/module-Operators.html#.combineWhen)
+* [count](https://https://vipoo.github.io/async_iter/module-Operators.html#.count)
+* [map](https://vipoo.github.io/async_iter/module-Operators.html#.map)
+* [persisted](https://vipoo.github.io/async_iter/module-Operators.html#.persisted)
+* [rateLimit](https://vipoo.github.io/async_iter/module-Operators.html#.rateLimit)
+* [take](https://vipoo.github.io/async_iter/module-Operators.html#.take)
 
 #### Itertor generators
 
-* [fromStream](https://vipoo.github.io/async_iter/global.html#fromStream)
-* [interval](https://vipoo.github.io/async_iter/global.html#interval)
-* [pump](https://vipoo.github.io/async_iter/global.html#pump)
-* [range](https://vipoo.github.io/async_iter/global.html#range)
+file:///home/dean/personal/async_iter/docs/module-Generators.html#.fromStream
+* [fromStream](https://vipoo.github.io/async_iter/module-Generators.html#.fromStream)
+* [interval](https://vipoo.github.io/async_iter/module-Generators.html#.interval)
+* [pump](https://vipoo.github.io/async_iter/module-Generators.html#.pump)
+* [range](https://vipoo.github.io/async_iter/module-Generators.html#.range)

@@ -1,12 +1,5 @@
 import {forEach, filterWhen} from '../../pipeline/browsers'
 
-/**
- * Example usage of the filterWhen function
- * @name example_2
- * @memberof module:filterWhen-examples
- * @function
- */
-
 function* source() {
   yield 1
   yield 2

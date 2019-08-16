@@ -1,12 +1,5 @@
 import {last} from '../../pipeline/browsers'
 
-/**
- * Example usage of the last function
- * @name example_1
- * @memberof module:last-examples
- * @function
- */
-
 function main() {
   const item = [1, 2, 3, 4, 5] |> last()
 

@@ -14,6 +14,7 @@ Collect items, `combining` them, until the evaluation function return true.
 * @return {Iterable} Emits as per the combindation functions
 * @function
 * @name combineWhen
+* @memberof module:Operators
 */
 
 export const combineWhen = syncType(syncCombineWhen, asyncCombineWhen)

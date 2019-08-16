@@ -1,12 +1,5 @@
 import {merge, first, timeout, TimeoutCancel, pump} from '../../pipeline/browsers'
 
-/**
- * Example usage of the merge function
- * @name example_5
- * @memberof module:merge-examples
- * @function
- */
-
 const delay = period => new Promise(res => setTimeout(res, period))
 
 function source1(tc) {

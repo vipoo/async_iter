@@ -12,6 +12,7 @@ Iterates thru the supplied iterable's set and returns the count
  * @return {Number} The count of items
  * @function
  * @name count
+ * @memberof module:Operators
 */
 
 export const count = syncType(syncCount, asyncCount)

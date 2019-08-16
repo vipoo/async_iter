@@ -1,12 +1,5 @@
 import {last} from '../../pipeline/browsers'
 
-/**
- * Example usage of the last function
- * @name example_2
- * @memberof module:last-examples
- * @function
- */
-
 async function* source() {
   yield 1
   yield 2

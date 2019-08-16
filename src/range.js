@@ -22,6 +22,8 @@ Returns an iterator that iterates from start to end (inclusive) by step amounts
  * @param  {Object} [opts.step=1] the increment for the iteration
  * @return {Iterable} An iteration for the specified range
  * @function
+ * @memberof module:Generators
+ * @name range
  */
 export function range(opts) {
   if (typeof opts === 'number')

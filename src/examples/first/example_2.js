@@ -1,12 +1,5 @@
 import {first} from '../../pipeline/browsers'
 
-/**
- * Example usage of the first function
- * @name example_2
- * @memberof module:first-examples
- * @function
- */
-
 async function* source() {
   yield 1
   yield 2

@@ -15,6 +15,8 @@ therefore there is no racing of producer to consumer.
  * @param  {Promise} cancel A promise that when it resolves, causes the interval to stop generating values
  * @return {Iterable} An iteration that emits as per the interval period
  * @function
+ * @memberof module:Generators
+ * @name interval
  */
 export function interval(period, cancel = new Promise(() => {})) {
   return pump(async target => {

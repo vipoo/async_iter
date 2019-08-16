@@ -27,6 +27,8 @@ import {rateLimit} from 'async_iter/pipeline'
 // Emit at no more than 5 characters per 2s
 const items = ['first', 'second', 'third', 'fourth', 'fifth']
   |> rateLimit(5, 2000, v => v.toString().length)
+ * @memberof module:Operators
+ * @name rateLimit
  */
 export async function* rateLimit(source, maxAmount, perPeriod, counter = () => 1) {
   source = await asAsyncIterator(source)

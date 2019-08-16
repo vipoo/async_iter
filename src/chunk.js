@@ -14,6 +14,7 @@ Emit a batch of `count` items from the source iterable
 * @return {Iterable} The chunked items
 * @function
 * @name chunk
+* @memberof module:Operators
 */
 
 export const chunk = syncType(syncChunk, asyncChunk)

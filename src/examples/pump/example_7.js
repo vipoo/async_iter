@@ -1,11 +1,5 @@
 import {pump} from '../../pipeline/browsers'
 
-/**
- * Example usage of the pump function
- * @name example_7
- * @memberof module:pump-examples
- * @function
- */
 async function main() {
   const items = pump((target, hasStopped) => undefined) // eslint-disable-line no-unused-vars
 

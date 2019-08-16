@@ -1,11 +1,5 @@
 import {bufferBy, forEach} from '../../pipeline/browsers'
 
-/**
- * Example usage of the bufferBy function
- * @name example_3
- * @memberof module:bufferBy-examples
- * @function
- */
 async function* source() {
   yield await Promise.resolve(1)
   yield await Promise.resolve(2)

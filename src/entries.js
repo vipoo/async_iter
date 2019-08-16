@@ -14,6 +14,7 @@ Emits the items with a key/value pair [index, value].
  * @return {Iterable} The transformed items
  * @function
  * @name entries
+ * @memberof module:Operators
  */
 
 export const entries = syncType(syncEntries, asyncEntries)

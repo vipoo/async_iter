@@ -2,13 +2,6 @@ import {merge, first, timeout, TimeoutCancel} from '../../pipeline/browsers'
 
 const delay = period => new Promise(res => setTimeout(res, period))
 
-/**
- * Example usage of the merge function
- * @name example_3
- * @memberof module:merge-examples
- * @function
- */
-
 async function* source1() {
   await delay(40)
   yield await 'Yield Value'
