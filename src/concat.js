@@ -9,7 +9,7 @@ import {concat} from 'async_iter/concat' # conventional version
 Combines multiple source iterations into a single iteration
 > Supports both **sync** and **async** iterations
 
- * @param  {...Iterable}         sources        The source iterations
+ * @param  {Iterable}         sources        The source iterations
  * @return {Iterable} An iterable that combines all values from the sources
  * @function
  * @name concat
