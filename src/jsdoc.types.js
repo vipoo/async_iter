@@ -9,6 +9,14 @@
  */
 
 /**
+ * A function that receives the items of an iterable
+ *
+ * @callback forEachCallback
+ * @param {*} value - the value of the current source item
+ * @param {Number} index the index of the item as per the source iteration
+ */
+
+/**
  * Evaluate the supplied item returning a boolean
  *
  * @callback itemTest

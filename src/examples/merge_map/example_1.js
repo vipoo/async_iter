@@ -19,7 +19,7 @@ async function* source2() {
 async function main() {
   await (source2()
     |> mergeMap(x => source1() |> map(i => `${i} - ${x}`))
-    |> forEach(console.log))
+    |> forEach(console.log(?)))
 
   console.log('done....')
 }

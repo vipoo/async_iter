@@ -15,7 +15,7 @@ async function* source() {
 async function main() {
   await (source()
     |> bufferGroupBy(item => item.a, (item, buffer) => buffer.length === 2, 10))
-    |> forEach(console.log)
+    |> forEach(console.log(?))
 
   console.log('done....')
 }

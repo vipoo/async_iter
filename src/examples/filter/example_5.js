@@ -14,7 +14,7 @@ function* source() {
 function main() {
   source()
     |> filter(i => i.a === 2, (a, b) => `skipped: ${a.b} to ${b.b}`)
-    |> forEach(console.log)
+    |> forEach(console.log(?))
 
   console.log('done....')
 }

@@ -19,11 +19,11 @@ function* source3() {
 }
 
 function main() {
-  source1() |> concat(source2()) |> forEach(console.log)
+  source1() |> concat(source2()) |> forEach(console.log(?))
   console.log('--------')
-  source1() |> concat(source2()) |> concat(source3()) |> forEach(console.log)
+  source1() |> concat(source2()) |> concat(source3()) |> forEach(console.log(?))
   console.log('--------')
-  source1() |> concat(source2(), source3()) |> forEach(console.log)
+  source1() |> concat(source2(), source3()) |> forEach(console.log(?))
 
   console.log('done....')
 }

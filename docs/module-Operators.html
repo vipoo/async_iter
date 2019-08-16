@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Generators.html">Generators</a><ul class='methods'><li data-type='method'><a href="module-Generators.html#.fromStream">fromStream</a></li><li data-type='method'><a href="module-Generators.html#.interval">interval</a></li><li data-type='method'><a href="module-Generators.html#.pump">pump</a></li><li data-type='method'><a href="module-Generators.html#.range">range</a></li></ul></li><li><a href="module-Operators.html">Operators</a><ul class='methods'><li data-type='method'><a href="module-Operators.html#.broadcast">broadcast</a></li><li data-type='method'><a href="module-Operators.html#.bufferBy">bufferBy</a></li><li data-type='method'><a href="module-Operators.html#.bufferGroupBy">bufferGroupBy</a></li><li data-type='method'><a href="module-Operators.html#.byLines">byLines</a></li><li data-type='method'><a href="module-Operators.html#.chunk">chunk</a></li><li data-type='method'><a href="module-Operators.html#.combineWhen">combineWhen</a></li><li data-type='method'><a href="module-Operators.html#.concat">concat</a></li><li data-type='method'><a href="module-Operators.html#.count">count</a></li><li data-type='method'><a href="module-Operators.html#.delay">delay</a></li><li data-type='method'><a href="module-Operators.html#.delayUntil">delayUntil</a></li><li data-type='method'><a href="module-Operators.html#.entries">entries</a></li><li data-type='method'><a href="module-Operators.html#.every">every</a></li><li data-type='method'><a href="module-Operators.html#.filter">filter</a></li><li data-type='method'><a href="module-Operators.html#.first">first</a></li><li data-type='method'><a href="module-Operators.html#.map">map</a></li><li data-type='method'><a href="module-Operators.html#.persisted">persisted</a></li><li data-type='method'><a href="module-Operators.html#.rateLimit">rateLimit</a></li><li data-type='method'><a href="module-Operators.html#.take">take</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Generators.html">Generators</a><ul class='methods'><li data-type='method'><a href="module-Generators.html#.fromStream">fromStream</a></li><li data-type='method'><a href="module-Generators.html#.interval">interval</a></li><li data-type='method'><a href="module-Generators.html#.pump">pump</a></li><li data-type='method'><a href="module-Generators.html#.range">range</a></li></ul></li><li><a href="module-Operators.html">Operators</a><ul class='methods'><li data-type='method'><a href="module-Operators.html#.broadcast">broadcast</a></li><li data-type='method'><a href="module-Operators.html#.bufferBy">bufferBy</a></li><li data-type='method'><a href="module-Operators.html#.bufferGroupBy">bufferGroupBy</a></li><li data-type='method'><a href="module-Operators.html#.byLines">byLines</a></li><li data-type='method'><a href="module-Operators.html#.chunk">chunk</a></li><li data-type='method'><a href="module-Operators.html#.combineWhen">combineWhen</a></li><li data-type='method'><a href="module-Operators.html#.concat">concat</a></li><li data-type='method'><a href="module-Operators.html#.count">count</a></li><li data-type='method'><a href="module-Operators.html#.delay">delay</a></li><li data-type='method'><a href="module-Operators.html#.delayUntil">delayUntil</a></li><li data-type='method'><a href="module-Operators.html#.entries">entries</a></li><li data-type='method'><a href="module-Operators.html#.every">every</a></li><li data-type='method'><a href="module-Operators.html#.filter">filter</a></li><li data-type='method'><a href="module-Operators.html#.first">first</a></li><li data-type='method'><a href="module-Operators.html#.forEach">forEach</a></li><li data-type='method'><a href="module-Operators.html#.map">map</a></li><li data-type='method'><a href="module-Operators.html#.persisted">persisted</a></li><li data-type='method'><a href="module-Operators.html#.rateLimit">rateLimit</a></li><li data-type='method'><a href="module-Operators.html#.take">take</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <div id="main">
@@ -2706,6 +2706,189 @@ import {first} from 'async_iter/first' # conventional version
     <dd>
         
 <span class="param-type">*</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".forEach"><span class="type-signature">(static) </span>forEach<span class="signature">(source, fn)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="for_each.js.html">for_each.js</a>, <a href="for_each.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <pre class="prettyprint source"><code>import {forEach} from 'async_iter/pipeline/for_each' # pipeline version
+import {forEach} from 'async_iter/for_each' # conventional version
+</code></pre>
+<p>Calls the supplied function for each item within the source iterable</p>
+<blockquote>
+<p>Supports both <strong>sync</strong> and <strong>async</strong> iterations</p>
+</blockquote>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The source iteration</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#forEachCallback">forEachCallback</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to be called for each item</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
 
 
     </dd>

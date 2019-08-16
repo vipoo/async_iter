@@ -9,7 +9,7 @@ async function* source() {
 }
 
 async function main() {
-  await (source() |> forEach(x => console.log(x)))
+  await (source() |> forEach((x, i) => console.log(x, i)))
 
   console.log('done....')
 }

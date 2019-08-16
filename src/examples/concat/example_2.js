@@ -19,11 +19,11 @@ async function* source3() {
 }
 
 async function main() {
-  await (source1() |> concat(source2()) |> forEach(console.log))
+  await (source1() |> concat(source2()) |> forEach(console.log(?)))
   console.log('--------')
-  await (source1() |> concat(source2()) |> concat(source3()) |> forEach(console.log))
+  await (source1() |> concat(source2()) |> concat(source3()) |> forEach(console.log(?)))
   console.log('--------')
-  await (source1() |> concat(source2(), source3()) |> forEach(console.log))
+  await (source1() |> concat(source2(), source3()) |> forEach(console.log(?)))
 
   console.log('done....')
 }

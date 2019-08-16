@@ -12,7 +12,7 @@ function* source() {
 function main() {
   source()
     |> filter(i => i < 2 || i >= 5, (a, b) => `skipped: ${a} to ${b}`)
-    |> forEach(console.log)
+    |> forEach(console.log(?))
 
   console.log('done....')
 }

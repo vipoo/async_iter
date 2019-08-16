@@ -12,7 +12,7 @@ async function* source() {
 async function main() {
   await (source()
     |> filter(async i => await i < 2 || i >= 5, async (a, b) => await `skipped: ${a} to ${b}`)
-    |> forEach(console.log))
+    |> forEach(console.log(?)))
 
   console.log('done....')
 }

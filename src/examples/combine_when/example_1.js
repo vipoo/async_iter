@@ -14,7 +14,7 @@ const pattern = /\d*-\d*-\d*T\d*:\d*:\d*\.\d*\+\d*\s/
 function main() {
   source()
     |> combineWhen(item => pattern.test(item), (i, c) => `${c}\n${i}`)
-    |> forEach(console.log)
+    |> forEach(console.log(?))
 
   console.log('done....')
 }

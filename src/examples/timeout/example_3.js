@@ -5,7 +5,7 @@ async function main() {
   const tc = new TimeoutCancel()
 
   const x = (timeoutError(5000, tc)
-    |> forEach(console.log))
+    |> forEach(console.log(?)))
 
   setTimeout(() => tc(), 1000)
 

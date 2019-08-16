@@ -2,7 +2,7 @@ import {timeoutError, forEach} from '../../pipeline/browsers'
 
 async function main() {
   await (timeoutError(50)
-    |> forEach(console.log))
+    |> forEach(console.log(?)))
 
   console.log('done....')
 }

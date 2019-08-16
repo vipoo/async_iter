@@ -10,7 +10,7 @@ function* source() {
 }
 
 function main() {
-  source() |> chunk(2) |> forEach(console.log)
+  source() |> chunk(2) |> forEach(console.log(?))
 
   console.log('done....')
 }

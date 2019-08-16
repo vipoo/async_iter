@@ -13,7 +13,7 @@ async function main() {
   await (
     Promise.resolve(source())
     |> bufferBy((item, buffer) => buffer.length === 5, 100)
-    |> forEach(console.log))
+    |> forEach(console.log(?)))
 
   console.log('done....')
 }
