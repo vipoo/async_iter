@@ -92,7 +92,43 @@ with node 10 and above.</p>
 <li><a href="https://vipoo.github.io/async_iter/module-Generators.html#.interval">interval</a></li>
 <li><a href="https://vipoo.github.io/async_iter/module-Generators.html#.pump">pump</a></li>
 <li><a href="https://vipoo.github.io/async_iter/module-Generators.html#.range">range</a></li>
-</ul></article>
+</ul>
+<h3>Importing function patterns</h3>
+<p>The operators come in 2 distinct flavours.  A standard form, and a form more suited for use with the |&gt; pipeline operator.</p>
+<h4>Standard Form - All</h4>
+<p>The import path <code>async_iter</code> imports all operators.  Including non-browser compatible versions</p>
+<p>eg: <code>import {map, filter, forEach} from 'async_iter'</code></p>
+<p>The function will typically take the form of <code>operator(source, ...)</code>.  Where source is a async or sync iterable</p>
+<pre class="prettyprint source"><code>import {map} from 'async_iter'
+
+const result = map([1, 2, 3, 4, 5], x => x * 2)
+
+</code></pre>
+<h4>Standard Form - All browser compatible only</h4>
+<p>The import path <code>async_iter/browsers</code> imports all operators that are compatible with browsers - exludes nodejs specific operators.</p>
+<p>eg: <code>import {map, filter, forEach} from 'async_iter/browsers'</code></p>
+<h4>Standard Form - Direct</h4>
+<p>For each of the function, you can reduce the import set, by only including the specific functions you want.</p>
+<p>eg: <code>import {map} from 'async_iter/map'</code></p>
+<h4>Pipeline Form - All</h4>
+<p>The import path <code>async_iter/pipeline</code> imports all operators with a signature that aligns with pipelining.</p>
+<p>eg: <code>import {map, filter, forEach} from 'async_iter/pipeline'</code></p>
+<p>The function will return a function that take a single source iterable argument.</p>
+<p>For example, the map function take a single mapping function, and returns a new function <code>map = fn =&gt; source =&gt; {...}</code>.</p>
+<pre class="prettyprint source"><code>import {map} from 'async_iter/pipeline'
+
+[1, 2, 3, 4, 5] |> map(x => x * 2)
+</code></pre>
+<h4>Pipeline Form - All browser compatible only</h4>
+<p>The import path <code>async_iter/pipeline/browsers</code> imports all operators compatible with browsers and exludes nodejs specific operators.</p>
+<p>eg: <code>import {map, filter, forEach} from 'async_iter/pipeline/browsers'</code></p>
+<h4>Pipeline Form - Direct</h4>
+<p>The paths <code>async_iter/pipeline/XXX</code> allows for the direct import of specific pipeline operators</p>
+<p>eg:</p>
+<pre class="prettyprint source"><code>import {map} from 'async_iter/pipeline/map'
+
+[1, 2, 3, 4, 5] |> map(x => x * 2)
+</code></pre></article>
     </section>
 
 
