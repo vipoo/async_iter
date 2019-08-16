@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>by_lines.js - Documentation</title>
+    <title>concat.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">by_lines.js</h1>
+    <h1 class="page-title">concat.js</h1>
     
 
     
@@ -46,61 +46,31 @@
 
 /**
 ```
-import {map} from 'async_iter/pipeline/by_lines' # pipeline version
-import {map} from 'async_iter/by_lines' # conventional version
+import {concat} from 'async_iter/pipeline/concat' # pipeline version
+import {concat} from 'async_iter/concat' # conventional version
 ```
-Take a source iterations of strings, and split and emit based on the newline character
+
+Combines multiple source iterations into a single iteration
 > Supports both **sync** and **async** iterations
 
-This operator can be used to re-contructs a set of lines that have been piped thru streams.
-
- * @param  {Iterable}         source        The source iteration to process
- * @return {Iterable} The transformed items
+ * @param  {...Iterable}         sources        The source iterations
+ * @return {Iterable} An iterable that combines all values from the sources
  * @function
- * @name byLines
+ * @name concat
  * @memberof module:Operators
- */
+*/
 
-export const byLines = syncType(syncByLines, asyncByLines)
+export const concat = syncType(syncConcat, asyncConcat)
 
-function getPotentialLines() {
-  const fn = item => {
-    const potentialLines = item.split('\n')
-    potentialLines[0] = fn.currentLine ? `${fn.currentLine}${potentialLines[0]}` : potentialLines[0]
-
-    fn.currentLine = potentialLines.pop()
-    if (fn.currentLine === '\n')
-      fn.currentLine = undefined
-
-    return potentialLines
-  }
-
-  fn.currentLine = undefined
-  return fn
+function* syncConcat(...sources) {
+  for (const s of sources)
+    yield* s
 }
 
-function* syncByLines(source) {
-  const potentialLinesFrom = getPotentialLines()
-
-  for (const item of source)
-    for (const potentialLine of potentialLinesFrom(item))
-      yield potentialLine
-
-  if (potentialLinesFrom.currentLine !== undefined)
-    yield potentialLinesFrom.currentLine
-}
-
-async function* asyncByLines(source) {
-  source = await asAsyncIterator(source)
-
-  const potentialLinesFrom = getPotentialLines()
-
-  for await (const item of source)
-    for (const potentialLine of potentialLinesFrom(item))
-      yield potentialLine
-
-  if (potentialLinesFrom.currentLine !== undefined)
-    yield potentialLinesFrom.currentLine
+async function* asyncConcat(...sources) {
+  sources = sources.map(s => asAsyncIterator(s))
+  for await (const source of sources)
+    yield* (await source)
 }
 </code></pre>
         </article>
