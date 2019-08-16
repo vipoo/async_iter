@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>concat.js - Documentation</title>
+    <title>last.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">concat.js</h1>
+    <h1 class="page-title">last.js</h1>
     
 
     
@@ -46,31 +46,37 @@
 
 /**
 ```
-import {concat} from 'async_iter/pipeline/concat' # pipeline version
-import {concat} from 'async_iter/concat' # conventional version
+import {last} from 'async_iter/pipeline/last' # pipeline version
+import {last} from 'async_iter/last' # conventional version
 ```
-
-Combines multiple source iterations into a single iteration
+Returns the last item of the source iterable
 > Supports both **sync** and **async** iterations
 
- * @param  {Iterable}         sources        The source iterations
- * @return {Iterable} An iterable that combines all values from the sources
+ * @param  {Iterable}         source          The source iteration
+ * @return {*} The last item
  * @function
- * @name concat
+ * @name last
  * @memberof module:Operators
-*/
+ */
 
-export const concat = syncType(syncConcat, asyncConcat)
+export const last = syncType(syncLast, asyncLast)
 
-function* syncConcat(...sources) {
-  for (const s of sources)
-    yield* s
+function syncLast(source) {
+  let currentItem
+  for (const item of source)
+    currentItem = item
+
+  return currentItem
 }
 
-async function* asyncConcat(...sources) {
-  sources = sources.map(s => asAsyncIterator(s))
-  for await (const source of sources)
-    yield* (await source)
+async function asyncLast(source) {
+  source = await asAsyncIterator(source)
+
+  let currentItem
+  for await (const item of source)
+    currentItem = item
+
+  return currentItem
 }
 </code></pre>
         </article>

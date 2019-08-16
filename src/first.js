@@ -9,7 +9,7 @@ Returns the first item of the source iterable
 > Supports both **sync** and **async** iterations
 
  * @param  {Iterable}         source          The source iteration
- * @return {*} The first items
+ * @return {*} The first item
  * @function
  * @name first
  * @memberof module:Operators
