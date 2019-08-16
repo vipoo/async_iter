@@ -1,5 +1,20 @@
 {
- "templates": {
+  "source": {
+    "include": ["src"],
+    "exclude": [
+      "src/examples/buffer_by",
+      "src/examples/buffer_group_by",
+      "src/examples/chunk",
+      "src/examples/combine",
+      "src/examples/concat",
+      "src/examples/delay",
+      "src/examples/delay_until",
+      "src/examples/filter",
+      "src/examples/timeout",
+      "src/examples/merge_map"
+    ]
+  },
+  "templates": {
     "default": {
       "outputSourceFiles": true,
       "includeDate": false

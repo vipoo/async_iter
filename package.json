@@ -39,7 +39,7 @@
     }
   },
   "scripts": {
-    "generate:docs": "jsdoc -r --readme README.md -c .jsdoc.json -d ./docs ./src",
+    "generate:docs": "find ./docs -mindepth 1 ! -regex '^./docs/async_iter\\(/.*\\)?' -delete && jsdoc -r --readme README.md -c .jsdoc.json -d ./docs",
     "build": "./scripts/build.sh",
     "lint": "eslint --fix src tests",
     "clean": "./scripts/clean.sh",

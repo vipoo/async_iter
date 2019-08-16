@@ -63,15 +63,17 @@ Calls the supplied function for each item within the source iterable
 export const forEach = syncType(syncForEach, asyncForEach)
 
 function syncForEach(source, fn) {
+  let index = 0
   for (const item of source)
-    fn(item)
+    fn(item, index++)
 }
 
 async function asyncForEach(source, fn) {
   source = await asAsyncIterator(source)
 
+  let index = 0
   for await (const item of source)
-    await fn(item)
+    await fn(item, index++)
 }
 </code></pre>
         </article>
