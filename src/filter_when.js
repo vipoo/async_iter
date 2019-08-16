@@ -3,7 +3,7 @@ import {asAsyncIterator, syncType} from './lib/get_iterator'
 export const filterWhen = syncType(syncFilterWhen, asyncFilterWhen)
 
 /* eslint complexity: ['error', 6] */
-function* syncFilterWhen(source, fn, missingValueFn = x => x) {
+export function* syncFilterWhen(source, fn, missingValueFn = (a, b) => b) {
   let currentState = true
   let firstDropped = undefined
   let lastItem = undefined
@@ -30,7 +30,7 @@ function* syncFilterWhen(source, fn, missingValueFn = x => x) {
     yield missingValueFn(firstDropped, lastItem)
 }
 
-async function* asyncFilterWhen(source, fn, missingValueFn = x => x) {
+export async function* asyncFilterWhen(source, fn, missingValueFn = (a, b) => b) {
   source = await asAsyncIterator(source)
 
   let currentState = true

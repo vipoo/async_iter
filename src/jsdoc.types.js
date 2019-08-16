@@ -1,3 +1,13 @@
+
+/**
+ * Called by the filter function, when a set of items are filtered
+ *
+ * @callback missingValueFn
+ * @param {*} filteredItem - the first filtered item
+ * @param {*} nonFilteredItem - the first non filtered item
+ * @return {*} a value to be emitted before the nonFilteredItem
+ */
+
 /**
  * Evaluate the supplied item returning a boolean
  *

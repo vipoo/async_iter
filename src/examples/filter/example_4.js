@@ -1,4 +1,4 @@
-import {forEach, filterWhen} from '../../pipeline/browsers'
+import {forEach, filter} from '../../pipeline/browsers'
 
 function* source() {
   yield 1
@@ -11,7 +11,7 @@ function* source() {
 
 function main() {
   source()
-    |> filterWhen(i => i < 2, (a, b) => `skipped: ${a} to ${b}`)
+    |> filter(i => i >= 5, (a, b) => `skipped: ${a} to ${b}`)
     |> forEach(console.log)
 
   console.log('done....')
