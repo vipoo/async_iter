@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Generators.html">Generators</a><ul class='methods'><li data-type='method'><a href="module-Generators.html#.fromStream">fromStream</a></li><li data-type='method'><a href="module-Generators.html#.interval">interval</a></li><li data-type='method'><a href="module-Generators.html#.pump">pump</a></li><li data-type='method'><a href="module-Generators.html#.range">range</a></li></ul></li><li><a href="module-Operators.html">Operators</a><ul class='methods'><li data-type='method'><a href="module-Operators.html#.broadcast">broadcast</a></li><li data-type='method'><a href="module-Operators.html#.bufferBy">bufferBy</a></li><li data-type='method'><a href="module-Operators.html#.bufferGroupBy">bufferGroupBy</a></li><li data-type='method'><a href="module-Operators.html#.byLines">byLines</a></li><li data-type='method'><a href="module-Operators.html#.chunk">chunk</a></li><li data-type='method'><a href="module-Operators.html#.combineWhen">combineWhen</a></li><li data-type='method'><a href="module-Operators.html#.concat">concat</a></li><li data-type='method'><a href="module-Operators.html#.concatMap">concatMap</a></li><li data-type='method'><a href="module-Operators.html#.count">count</a></li><li data-type='method'><a href="module-Operators.html#.delay">delay</a></li><li data-type='method'><a href="module-Operators.html#.delayUntil">delayUntil</a></li><li data-type='method'><a href="module-Operators.html#.entries">entries</a></li><li data-type='method'><a href="module-Operators.html#.every">every</a></li><li data-type='method'><a href="module-Operators.html#.filter">filter</a></li><li data-type='method'><a href="module-Operators.html#.first">first</a></li><li data-type='method'><a href="module-Operators.html#.flatMap">flatMap</a></li><li data-type='method'><a href="module-Operators.html#.forEach">forEach</a></li><li data-type='method'><a href="module-Operators.html#.last">last</a></li><li data-type='method'><a href="module-Operators.html#.map">map</a></li><li data-type='method'><a href="module-Operators.html#.max">max</a></li><li data-type='method'><a href="module-Operators.html#.merge">merge</a></li><li data-type='method'><a href="module-Operators.html#.min">min</a></li><li data-type='method'><a href="module-Operators.html#.persisted">persisted</a></li><li data-type='method'><a href="module-Operators.html#.rateLimit">rateLimit</a></li><li data-type='method'><a href="module-Operators.html#.reduce">reduce</a></li><li data-type='method'><a href="module-Operators.html#.take">take</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Generators.html">Generators</a><ul class='methods'><li data-type='method'><a href="module-Generators.html#.fromStream">fromStream</a></li><li data-type='method'><a href="module-Generators.html#.interval">interval</a></li><li data-type='method'><a href="module-Generators.html#.pump">pump</a></li><li data-type='method'><a href="module-Generators.html#.range">range</a></li><li data-type='method'><a href="module-Generators.html#.spawn">spawn</a></li></ul></li><li><a href="module-Operators.html">Operators</a><ul class='methods'><li data-type='method'><a href="module-Operators.html#.broadcast">broadcast</a></li><li data-type='method'><a href="module-Operators.html#.bufferBy">bufferBy</a></li><li data-type='method'><a href="module-Operators.html#.bufferGroupBy">bufferGroupBy</a></li><li data-type='method'><a href="module-Operators.html#.byLines">byLines</a></li><li data-type='method'><a href="module-Operators.html#.chunk">chunk</a></li><li data-type='method'><a href="module-Operators.html#.combineWhen">combineWhen</a></li><li data-type='method'><a href="module-Operators.html#.concat">concat</a></li><li data-type='method'><a href="module-Operators.html#.concatMap">concatMap</a></li><li data-type='method'><a href="module-Operators.html#.count">count</a></li><li data-type='method'><a href="module-Operators.html#.delay">delay</a></li><li data-type='method'><a href="module-Operators.html#.delayUntil">delayUntil</a></li><li data-type='method'><a href="module-Operators.html#.entries">entries</a></li><li data-type='method'><a href="module-Operators.html#.every">every</a></li><li data-type='method'><a href="module-Operators.html#.filter">filter</a></li><li data-type='method'><a href="module-Operators.html#.first">first</a></li><li data-type='method'><a href="module-Operators.html#.flatMap">flatMap</a></li><li data-type='method'><a href="module-Operators.html#.forEach">forEach</a></li><li data-type='method'><a href="module-Operators.html#.last">last</a></li><li data-type='method'><a href="module-Operators.html#.map">map</a></li><li data-type='method'><a href="module-Operators.html#.max">max</a></li><li data-type='method'><a href="module-Operators.html#.merge">merge</a></li><li data-type='method'><a href="module-Operators.html#.min">min</a></li><li data-type='method'><a href="module-Operators.html#.persisted">persisted</a></li><li data-type='method'><a href="module-Operators.html#.rateLimit">rateLimit</a></li><li data-type='method'><a href="module-Operators.html#.reduce">reduce</a></li><li data-type='method'><a href="module-Operators.html#.take">take</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <div id="main">
@@ -1062,6 +1062,233 @@ for await (const item of items)
     <dd>
         
 <span class="param-type">Iterable</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".spawn"><span class="type-signature">(static) </span>spawn<span class="signature">(command, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {iteration}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="spawn.js.html">spawn.js</a>, <a href="spawn.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Adapter for the nodejs function <code>child_process.spawn</code>.  Mapping the stdout and stderr to an iterable</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>command</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The command to run</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code></code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Any options to be passed thru to child_process.spawn</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An iterable source that contain an object with one of 2 keys (stdout or stderr)</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">iteration</span>
 
 
     </dd>

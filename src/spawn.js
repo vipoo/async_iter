@@ -10,6 +10,17 @@ class SpawnError extends Error {
   }
 }
 
+/**
+ * Adapter for the nodejs function `child_process.spawn`.  Mapping the stdout and stderr to an iterable
+ *
+ * @param {string}    command The command to run
+ * @param {string[]=} args The arguments to supply to the command
+ * @param {object=}   options Any options to be passed thru to child_process.spawn
+ * @return {iteration} An iterable source that contain an object with one of 2 keys (stdout or stderr)
+ * @function
+ * @memberof module:Generators
+ * @name spawn
+ */
 export function spawn(...args) {
 
   const stackTrace = {}
