@@ -1,5 +1,15 @@
 
 /**
+ * Called by the filter function, when a set of items are filtered
+ *
+ * @callback reducerCallback
+ * @param {*} accumulator - the current accumulator value (result of previous call)
+ * @param {*} item - the current item to be processed
+ * @param {Number} index - the index of the item within the iteration
+ * @return {*} the new accumulator value
+ */
+
+/**
  * Called by the min and max operators to identify comparison value or ordering.
  *
  * There are 2 forms of this function.  If the function takes only 1 argument, it

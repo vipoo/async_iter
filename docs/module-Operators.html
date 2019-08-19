@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Generators.html">Generators</a><ul class='methods'><li data-type='method'><a href="module-Generators.html#.fromStream">fromStream</a></li><li data-type='method'><a href="module-Generators.html#.interval">interval</a></li><li data-type='method'><a href="module-Generators.html#.pump">pump</a></li><li data-type='method'><a href="module-Generators.html#.range">range</a></li></ul></li><li><a href="module-Operators.html">Operators</a><ul class='methods'><li data-type='method'><a href="module-Operators.html#.broadcast">broadcast</a></li><li data-type='method'><a href="module-Operators.html#.bufferBy">bufferBy</a></li><li data-type='method'><a href="module-Operators.html#.bufferGroupBy">bufferGroupBy</a></li><li data-type='method'><a href="module-Operators.html#.byLines">byLines</a></li><li data-type='method'><a href="module-Operators.html#.chunk">chunk</a></li><li data-type='method'><a href="module-Operators.html#.combineWhen">combineWhen</a></li><li data-type='method'><a href="module-Operators.html#.concat">concat</a></li><li data-type='method'><a href="module-Operators.html#.concatMap">concatMap</a></li><li data-type='method'><a href="module-Operators.html#.count">count</a></li><li data-type='method'><a href="module-Operators.html#.delay">delay</a></li><li data-type='method'><a href="module-Operators.html#.delayUntil">delayUntil</a></li><li data-type='method'><a href="module-Operators.html#.entries">entries</a></li><li data-type='method'><a href="module-Operators.html#.every">every</a></li><li data-type='method'><a href="module-Operators.html#.filter">filter</a></li><li data-type='method'><a href="module-Operators.html#.first">first</a></li><li data-type='method'><a href="module-Operators.html#.flatMap">flatMap</a></li><li data-type='method'><a href="module-Operators.html#.forEach">forEach</a></li><li data-type='method'><a href="module-Operators.html#.last">last</a></li><li data-type='method'><a href="module-Operators.html#.map">map</a></li><li data-type='method'><a href="module-Operators.html#.max">max</a></li><li data-type='method'><a href="module-Operators.html#.merge">merge</a></li><li data-type='method'><a href="module-Operators.html#.min">min</a></li><li data-type='method'><a href="module-Operators.html#.persisted">persisted</a></li><li data-type='method'><a href="module-Operators.html#.rateLimit">rateLimit</a></li><li data-type='method'><a href="module-Operators.html#.take">take</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Generators.html">Generators</a><ul class='methods'><li data-type='method'><a href="module-Generators.html#.fromStream">fromStream</a></li><li data-type='method'><a href="module-Generators.html#.interval">interval</a></li><li data-type='method'><a href="module-Generators.html#.pump">pump</a></li><li data-type='method'><a href="module-Generators.html#.range">range</a></li></ul></li><li><a href="module-Operators.html">Operators</a><ul class='methods'><li data-type='method'><a href="module-Operators.html#.broadcast">broadcast</a></li><li data-type='method'><a href="module-Operators.html#.bufferBy">bufferBy</a></li><li data-type='method'><a href="module-Operators.html#.bufferGroupBy">bufferGroupBy</a></li><li data-type='method'><a href="module-Operators.html#.byLines">byLines</a></li><li data-type='method'><a href="module-Operators.html#.chunk">chunk</a></li><li data-type='method'><a href="module-Operators.html#.combineWhen">combineWhen</a></li><li data-type='method'><a href="module-Operators.html#.concat">concat</a></li><li data-type='method'><a href="module-Operators.html#.concatMap">concatMap</a></li><li data-type='method'><a href="module-Operators.html#.count">count</a></li><li data-type='method'><a href="module-Operators.html#.delay">delay</a></li><li data-type='method'><a href="module-Operators.html#.delayUntil">delayUntil</a></li><li data-type='method'><a href="module-Operators.html#.entries">entries</a></li><li data-type='method'><a href="module-Operators.html#.every">every</a></li><li data-type='method'><a href="module-Operators.html#.filter">filter</a></li><li data-type='method'><a href="module-Operators.html#.first">first</a></li><li data-type='method'><a href="module-Operators.html#.flatMap">flatMap</a></li><li data-type='method'><a href="module-Operators.html#.forEach">forEach</a></li><li data-type='method'><a href="module-Operators.html#.last">last</a></li><li data-type='method'><a href="module-Operators.html#.map">map</a></li><li data-type='method'><a href="module-Operators.html#.max">max</a></li><li data-type='method'><a href="module-Operators.html#.merge">merge</a></li><li data-type='method'><a href="module-Operators.html#.min">min</a></li><li data-type='method'><a href="module-Operators.html#.persisted">persisted</a></li><li data-type='method'><a href="module-Operators.html#.rateLimit">rateLimit</a></li><li data-type='method'><a href="module-Operators.html#.reduce">reduce</a></li><li data-type='method'><a href="module-Operators.html#.take">take</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <div id="main">
@@ -4749,6 +4749,216 @@ const items = ['first', 'second', 'third', 'fourth', 'fifth']
     <dd>
         
 <span class="param-type">Iterable</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".reduce"><span class="type-signature">(static) </span>reduce<span class="signature">(source, fn, initialValue)</span><span class="type-signature"> &rarr; {*}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="reduce.js.html">reduce.js</a>, <a href="reduce.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <pre class="prettyprint source"><code>import {reduce} from 'async_iter/pipeline/reduce' # pipeline version
+import {reduce} from 'async_iter/reduce' # conventional version
+</code></pre>
+<p>Apply reducer function to each item of the source iterable, returning the single reduce value</p>
+<blockquote>
+<p>Supports both <strong>sync</strong> and  <strong>async</strong> iterations.  Always returns an <strong>async</strong> iterator</p>
+</blockquote>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The source iteration to rate limit</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#reducerCallback">reducerCallback</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The function to call for each item</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initialValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The initial value to supply to the first call of fn</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The final reduced value</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
 
 
     </dd>
