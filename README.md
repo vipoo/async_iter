@@ -19,7 +19,7 @@ Below are the listed generators and functions implemented in this module.
 
 Have a look at the [examples directory](https://github.com/vipoo/async_iter/tree/master/src/examples) for working examples
 
-The module uses babel to target nodejs version 10.15.3.  It should be compatibile
+The module uses babel to target nodejs version 10.16.3.  It should be compatibile
 with node 10 and above.
 
 [API Docs](https://vipoo.github.io/async_iter/)
