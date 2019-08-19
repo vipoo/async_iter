@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>merge.js - Documentation</title>
+    <title>take_while.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">merge.js</h1>
+    <h1 class="page-title">take_while.js</h1>
     
 
     
@@ -42,49 +42,43 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {asAsyncIterator} from './lib/get_iterator'
+            <pre class="prettyprint source linenums"><code>import {syncType, asAsyncIterator} from './lib/get_iterator'
 
 /**
 ```
-import {merge} from 'async_iter/pipeline/merge' # pipeline version
-import {merge} from 'async_iter/merge' # conventional version
+import {takeWhile} from 'async_iter/pipeline/take_while' # pipeline version
+import {takeWhile} from 'async_iter/take_while' # conventional version
 ```
+ Takes a number of items from the source iteration
 
-Merges the source iterables items into a single iterable.  Order is as they come.
+ > Supports both **sync** and **async** iterations
 
-If all source iterables are stopped, then the returned iteration is stopped
-
-If the consumer stops the iteration, all source iterations are stopped.
-
- * @param  {Iterable}         sources        The source iterations
- * @return {Iterable} An iterable that combines all values from the sources
+ * @param {Iterable}      source    The source iteration
+ * @param {evaluateItem}  fn        Called for each item.  When function returns false, iteration is stopped
+ * @returns {Iterable} A set containing all items of source, upto when fn returns false (non inclusive)
+ * @name takeWhile
  * @function
- * @name merge
  * @memberof module:Operators
+ * @name takeWhile
  */
 
-export async function* merge(...sources) {
-  let done = sources.length
-  const items = sources
-    .map(s => asAsyncIterator(s))
-    .map((p, index) => p.next().then(d => ({...d, index})))
+export const takeWhile = syncType(syncTakeWhile, asyncTakeWhile)
 
-  try {
-    while (done > 0) {
-      const p = await Promise.race(items.filter(i => i))
+function* syncTakeWhile(source, fn) {
+  for (const x of source) {
+    if (!fn(x))
+      return
+    yield x
+  }
+}
 
-      if (p.done) {
-        done -= 1
-        delete items[p.index]
-      }
-      else {
-        items[p.index] = sources[p.index].next().then(d => ({...d, index: p.index}))
-        yield p.value
-      }
-    }
-  } finally {
-    for (const item of sources.filter(i => i.return))
-      item.return()
+async function* asyncTakeWhile(source, fn) {
+  source = await asAsyncIterator(source)
+
+  for await (const x of source) {
+    if (!await fn(x))
+      return
+    yield x
   }
 }
 </code></pre>

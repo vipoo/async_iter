@@ -14,7 +14,6 @@ import {takeUntil} from 'async_iter/take_until' # conventional version
  * @returns {Iterable} A set containing all items of source, upto when fn returns true (non inclusive)
  * @name takeUntil
  * @function
- * @example
  * @memberof module:Operators
  * @name takeUntil
  */
