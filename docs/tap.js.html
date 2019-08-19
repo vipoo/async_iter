@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>reduce.js - Documentation</title>
+    <title>tap.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">reduce.js</h1>
+    <h1 class="page-title">tap.js</h1>
     
 
     
@@ -46,39 +46,36 @@
 
 /**
 ```
-import {reduce} from 'async_iter/pipeline/reduce' # pipeline version
-import {reduce} from 'async_iter/reduce' # conventional version
+import {tap} from 'async_iter/pipeline/tap' # pipeline version
+import {tap} from 'async_iter/tap' # conventional version
 ```
- * Apply reducer function to each item of the source iterable, returning the single reduce value
-> Supports both **sync** and  **async** iterations.  Always returns an **async** iterator
+Call a side effect function for each item in the iteration.  The returned value is ignored
+> Supports both **sync** and **async** iterations
 
- * @param  {Iterable}         source        The source iteration to rate limit
- * @param  {reducerCallback}  fn            The function to call for each item
- * @param  {*}                initialValue  The initial value to supply to the first call of fn
- * @return {*} The final reduced value
+ * @param {Iterable}          source          The source iteration
+ * @param {itemCallback}   fn              Function to be called for each item
+ * @return {void}
  * @function
- * @name reduce
+ * @name tap
  * @memberof module:Operators
  */
 
-export const reduce = syncType(syncReduce, asyncReduce)
+export const tap = syncType(syncTap, asyncTap)
 
-function syncReduce(source, fn, initialValue) {
-  let index = 0
-  let accumulator = initialValue
-  for (const item of source)
-    accumulator = fn(accumulator, item, index++)
-  return accumulator
+function* syncTap(source, fn) {
+  for (const item of source) {
+    fn(item)
+    yield item
+  }
 }
 
-async function asyncReduce(source, fn, initialValue) {
+async function* asyncTap(source, fn) {
   source = await asAsyncIterator(source)
 
-  let index = 0
-  let accumulator = initialValue
-  for await (const item of source)
-    accumulator = await fn(accumulator, item, index++)
-  return accumulator
+  for await (const item of source) {
+    await fn(item)
+    yield item
+  }
 }
 </code></pre>
         </article>

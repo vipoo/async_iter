@@ -8,9 +8,9 @@ import {forEach} from 'async_iter/for_each' # conventional version
 Calls the supplied function for each item within the source iterable
 > Supports both **sync** and **async** iterations
 
- * @param {Iterable}          source          The source iteration
- * @param {forEachCallback}   fn              Function to be called for each item
- * @return {void}
+ * @param {Iterable}       source          The source iteration
+ * @param {itemCallback}   fn              Function to be called for each item
+ * @returns {Iterable}     The source iteration
  * @function
  * @name forEach
  * @memberof module:Operators
