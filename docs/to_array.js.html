@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>persisted/index.js - Documentation</title>
+    <title>to_array.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">persisted/index.js</h1>
+    <h1 class="page-title">to_array.js</h1>
     
 
     
@@ -42,69 +42,43 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {open} from './storage'
+            <pre class="prettyprint source linenums"><code>import {asAsyncIterator, syncType} from './lib/get_iterator'
 
 /**
 ```
-import {persisted} from 'async_iter/pipeline/persisted' # pipeline version
-import {persisted} from 'async_iter/persisted' # conventional version
+import {toArray} from 'async_iter/pipeline/to_array' # pipeline version
+import {toArray} from 'async_iter/to_array' # conventional version
 ```
-Persist items of an async iterator to files for later resumption
-> NB: `Persisted` will consume items as fast as the source will emit.  The consumer of the iteration will be 'decoupled' from the source
+ Converts an iterable source to an array
+
+ > Supports both **sync** and **async** iterations
 
  * @param {Iterable} source   The source iteration
- * @param  {String} path    is a directory for storage of items
- * @param  {Object} opts   a set of optional flags
- * @param  {boolean} [opts.allowRestart=false]   allows a restart of a previously completed iteration
- * @param  {boolean} [opts.maxBytes=0]   limits the number of bytes that can be stored. Zero indicates no limit
- * @param  {overFlowEventCallback} [opts.overFlowEvent=]   callback function invoked when &lt;code>maxBytes&lt;/code> exceeded
- * @return {Iterable&lt;PersistedItem>}        An async iteration, where each item resolves to an object containing
- * @name persisted
+ * @returns {Array}        An array containing all the items of the source iteration
+ * @name toArray
  * @function
- * @example
-import {persisted} from 'async_iter'
-
-const items = await persisted(source, './tmp/buffering_example')
-
-for await (const item of items) {
-  console.log(item.value.toString())
-  item.completed() // If this function is not called, item will be processed if iterator restarted
-}
  * @memberof module:Operators
- * @name persisted
+ * @name toArray
  */
-export async function persisted(source, path, opts = {}) {
-  opts = {
-    allowRestart: false,
-    maxBytes: 0,
-    overFlowEvent: () => undefined,
-    ...opts,
 
-    overflow: false
-  }
+export const toArray = syncType(syncToArray, asyncToArray)
 
-  const {push, stop, items, consumerHasStopped} = await open(path, opts)
+function syncToArray(source) {
+  const result = []
+  for (const item of source)
+    result.push(item)
 
-  process.nextTick(async () => {
-    let item = await source.next()
-    try {
-      while (!item.done) {
-        if (consumerHasStopped())
-          break
+  return result
+}
 
-        await push(item.value)
+async function asyncToArray(source) {
+  source = await asAsyncIterator(source)
 
-        item = await source.next()
-      }
-    } catch (err) {
-      source.throw(err)
-    } finally {
-      source.return()
-      await stop()
-    }
-  })
+  const result = []
+  for await (const item of source)
+    result.push(item)
 
-  return items
+  return result
 }
 </code></pre>
         </article>
