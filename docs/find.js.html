@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>last.js - Documentation</title>
+    <title>find.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">last.js</h1>
+    <h1 class="page-title">find.js</h1>
     
 
     
@@ -46,37 +46,34 @@
 
 /**
 ```
-import {last} from 'async_iter/pipeline/last' # pipeline version
-import {last} from 'async_iter/last' # conventional version
+import {find} from 'async_iter/pipeline/find' # pipeline version
+import {find} from 'async_iter/find' # conventional version
 ```
-Returns the last item of the source iterable
+Return the first item in the source iterations, when the supplied function returns true
 > Supports both **sync** and **async** iterations
 
  * @param  {Iterable}         source          The source iteration
- * @return {*} The last item
+ * @param  {itemTest}         fn              A function invokved for each item until true is returned
+ * @return {*} The found item or undefined if nothing found
  * @function
- * @name last
+ * @name find
  * @memberof module:Operators
  */
 
-export const last = syncType(syncLast, asyncLast)
+export const find = syncType(syncfind, asyncfind)
 
-function syncLast(source) {
-  let currentItem
+function syncfind(source, fn) {
   for (const item of source)
-    currentItem = item
-
-  return currentItem
+    if (fn(item))
+      return item
 }
 
-async function asyncLast(source) {
+async function asyncfind(source, fn) {
   source = await asAsyncIterator(source)
 
-  let currentItem
   for await (const item of source)
-    currentItem = item
-
-  return currentItem
+    if (fn(item))
+      return item
 }
 </code></pre>
         </article>
