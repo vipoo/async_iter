@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>combine_when.js - Documentation</title>
+    <title>take_until.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">combine_when.js</h1>
+    <h1 class="page-title">take_until.js</h1>
     
 
     
@@ -46,57 +46,41 @@
 
 /**
 ```
-import {map} from 'async_iter/pipeline/combineWhen' # pipeline version
-import {map} from 'async_iter/combineWhen' # conventional version
+import {takeUntil} from 'async_iter/pipeline/take_until' # pipeline version
+import {takeUntil} from 'async_iter/take_until' # conventional version
 ```
-Collect items, `combining` them, until the evaluation function return true.
-> Supports both **sync** and **async** iterations
+ Takes a number of items from the source iteration
 
-* @param  {Iterable}         source        The source iteration to process
-* @param {evaluateItem} fn                 A evaluator function, that upon returing true, causes all items collected to this point to be emitted
-* @param {Function} combine                An optional function to combine two items (defaults to (a, b) => a + b)
-* @return {Iterable} Emits as per the combindation functions
-* @function
-* @name combineWhen
-* @memberof module:Operators
-*/
+ > Supports both **sync** and **async** iterations
 
-export const combineWhen = syncType(syncCombineWhen, asyncCombineWhen)
+ * @param {Iterable}      source    The source iteration
+ * @param {evaluateItem}  fn        Called for each item.  When function returns true, iteration is stopped.
+ * @returns {Iterable} A set containing all items of source, upto when fn returns true (non inclusive)
+ * @name takeUntil
+ * @function
+ * @example
+ * @memberof module:Operators
+ * @name takeUntil
+ */
 
-function* syncCombineWhen(source, fn, combine = (a, b) => b + a) {
-  let currentPending = undefined
-  let pending = false
+export const takeUntil = syncType(syncTakeUntil, asyncTakeUntil)
+
+function* syncTakeUntil(source, fn) {
   for (const x of source) {
-    if (fn(x)) {
-      if (pending)
-        yield currentPending
-      currentPending = x
-    } else
-      currentPending = combine(x, currentPending)
-
-    pending = true
+    if (fn(x))
+      return
+    yield x
   }
-
-  yield currentPending
 }
 
-async function* asyncCombineWhen(source, fn, combine = (a, b) => b + a) {
+async function* asyncTakeUntil(source, fn) {
   source = await asAsyncIterator(source)
 
-  let currentPending = undefined
-  let pending = false
   for await (const x of source) {
-    if (await fn(x)) {
-      if (pending)
-        yield currentPending
-      currentPending = x
-    } else
-      currentPending = await combine(x, currentPending)
-
-    pending = true
+    if (await fn(x))
+      return
+    yield x
   }
-
-  yield currentPending
 }
 </code></pre>
         </article>
