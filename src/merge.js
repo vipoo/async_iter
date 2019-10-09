@@ -32,8 +32,7 @@ export async function* merge(...sources) {
       if (p.done) {
         done -= 1
         delete items[p.index]
-      }
-      else {
+      } else {
         items[p.index] = sources[p.index].next().then(d => ({...d, index: p.index}))
         yield p.value
       }

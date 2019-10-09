@@ -158,8 +158,7 @@ async function* _pump(fn, marker, myObject) {
     if (hasStoppedSignal)
       if (err) {
         hasStoppedSignal.res(err)
-      }
-      else
+      } else
         hasStoppedSignal.res()
 
     unlatchAll()

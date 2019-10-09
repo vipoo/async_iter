@@ -57,8 +57,7 @@ export async function* rateLimit(source, maxAmount, perPeriod, counter = () => 1
       }
       yield item.value
     }
-  }
-  finally {
+  } finally {
     clearInterval(interval)
   }
 }
