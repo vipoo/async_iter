@@ -16,7 +16,6 @@ async function* source() {
   console.log('first 8 yielded')
   await delay(100)
   yield await 9
-  console.log('all yielded')
 }
 
 async function main() {
