@@ -20,7 +20,8 @@ function getExamples() {
 function buildDirectExamples(examples) {
   let capture
   const logger = (...args) => {
-    capture += args.map(a => (typeof a === 'string' || a instanceof String) ? a : util.inspect(a)).join(' ')
+    const newData = args.map(a => (typeof a === 'string' || a instanceof String) ? a : util.inspect(a)).join(' ')
+    capture += newData
     capture += '\n'
   }
 
